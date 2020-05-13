@@ -1,0 +1,26 @@
+{
+    "name": "hugo-eureka",
+    "version": "0.0.1",
+    "description": "Starter files for the eureka theme for hugo.",
+    "main": "index.js",
+    "repository": "https://github.com/wangchucheng/hugo-eureka",
+    "author": "C. Wang <web@wcc.im>",
+    "license": "MIT",
+    "scripts": {
+        "start": "hugo --gc"
+    },
+    "devDependencies": {
+        "@fullhuman/postcss-purgecss": "^2.2.0",
+        "autoprefixer": "^9.7.6",
+        "postcss": "^7.0.30",
+        "postcss-cli": "^7.1.1",
+        "postcss-import": "^12.0.1",
+        "tailwindcss": "^1.4.6"
+    },
+    "browserslist": [
+        "last 1 version",
+        "> 1%",
+        "maintained node versions",
+        "not dead"
+    ]
+}
