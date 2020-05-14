@@ -1,7 +1,7 @@
 ---
-author: Dirk Olbrich
 title: Hi, and welcome.
-date: 2019-05-15
+date: 2020-05-13
+draft: false
 ---
 
 Live long and code.

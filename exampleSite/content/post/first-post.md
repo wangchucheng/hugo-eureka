@@ -1,7 +1,7 @@
 ---
-author: Dirk Olbrich
 title: First Post
-date: 2019-05-13
+date: 2020-05-13
+draft: false
 ---
 
 Wise words.
