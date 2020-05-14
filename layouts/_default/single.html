@@ -1,8 +1,108 @@
 {{ define "main" }}
+{{ $hasToc := and (in .TableOfContents "<li>" ) (.Params.toc) }}
+{{ $hasSidebar := or ($hasToc) (.Params.series) }}
 <article class="text-gray-700 sm:mx-12">
-    <h1 class="font-bold text-3xl text-gray-700">{{ .Title }}</h1>
-    <div class="markdown">
-        {{ .Content}}
-    </div>
 </article>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <div class="col-span-1 md:col-span-3">
+        <h1 class="font-bold text-3xl text-gray-700">{{ .Title }}</h1>
+        <div class="markdown">
+            {{ .Content}}
+        </div>
+    </div>
+    <div class="col-span-1">
+        {{ if .Params.series }}
+        {{ partial "post_series.html" . }}
+        {{ end }}
+        {{ if $hasToc }}
+        {{ partial "post_toc.html" . }}
+        {{ end }}
+    </div>
+    {{ $related := .Site.RegularPages.Related . | first 5 }}
+    {{ with $related }}
+    <div class="col-span-1">
+        <h2 class="subtitle">See Also</h2>
+        <div class="markdown">
+            {{ range . }}
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            {{ end }}
+        </div>
+    </div>
+    {{ end }}
+</div>
+{{ if $hasToc }}
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute('id');
+                if (entry.intersectionRatio > 0) {
+                    if (delay == true) {
+                        let element = document.querySelector('.sticky-toc li.active')
+                        element.firstChild.classList.remove('text-red-900');
+                        element.classList.remove('active');
+                        delay = false;
+                        updatePosAndColor();
+                    }
+                    document.querySelector(`.sticky-toc li a[href="#${id}"]`).parentElement.classList.add('active');
+                    updatePosAndColor();
+                } else {
+                    if (document.querySelectorAll('.sticky-toc li.active').length == 1) {
+                        delay = true;
+                    } else {
+                        let element = document.querySelector(`.sticky-toc li a[href="#${id}"]`)
+                        element.classList.remove('text-red-900');
+                        element.parentElement.classList.remove('active');
+                        updatePosAndColor();
+                    }
+                }
+            });
+        });
+
+        var delay = false;
+        var targetPos = window.innerHeight * 0.4
+
+        function updatePosAndColor() {
+            let elements = document.querySelectorAll('.sticky-toc li.active')
+            let len = elements.length
+            if (len != 0) {
+                let firstElement = elements[0]
+                firstElement.firstChild.classList.add('text-red-900')
+                let offset = firstElement.offsetTop - targetPos;
+                if (offset > 0) {
+                    document.querySelector(`.sticky-toc`).style.top = `calc( 4rem - ${offset}px)`
+                } else {
+                    document.querySelector(`.sticky-toc`).removeAttribute("style");
+                }
+                for (let i = 1; i < len; i++) {
+                    elements[i].firstChild.classList.remove('text-red-900')
+                }
+            }
+        }
+
+        // Track all sections that have an `id` applied
+        document.querySelectorAll('.markdown h1[id]').forEach((section) => {
+            observer.observe(section);
+        });
+        document.querySelectorAll('.markdown h2[id]').forEach((section) => {
+            observer.observe(section);
+        });
+        document.querySelectorAll('.markdown h3[id]').forEach((section) => {
+            observer.observe(section);
+        });
+
+        document.querySelectorAll('.markdown h4[id]').forEach((section) => {
+            observer.observe(section);
+        });
+
+        document.querySelectorAll('.markdown h5[id]').forEach((section) => {
+            observer.observe(section);
+        });
+
+        document.querySelectorAll('.markdown h6[id]').forEach((section) => {
+            observer.observe(section);
+        });
+    });
+</script>
+{{ end }}
 {{ end }}
