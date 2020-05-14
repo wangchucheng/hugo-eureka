@@ -25,7 +25,7 @@
 }
 
 .markdown a {
-  @apply text-blue-600 font-semibold;
+  @apply font-semibold;
 }
 
 .markdown strong a {
@@ -97,6 +97,6 @@
 }
 
 /* Override pygments style background color. */
-.markdown .highlight pre {
+/* .markdown .highlight pre {
   @apply bg-gray-100 !important;
-}
+} */

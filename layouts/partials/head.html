@@ -1,5 +1,5 @@
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
 <title>{{ block "title" . }}
     {{- .Title }} - {{ .Site.Title -}}
     {{ end }}</title>
@@ -19,8 +19,13 @@
 {{ if .Site.IsServer }}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
 {{ else }}
+<<<<<<< HEAD
 {{ $styles := $styles| minify | fingerprint | resources.PostProcess }}
 <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
+=======
+    {{ $styles := $styles| minify | fingerprint | resources.PostProcess }}
+    <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
+>>>>>>> f8b674b093948597e1c1d6c8a2f7a88cc89541e8
 {{ end }}
 
 <script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/js/all.min.js"></script>
