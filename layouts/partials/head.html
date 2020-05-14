@@ -1,8 +1,8 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{{ block "title" . }}
-{{- .Title }} - {{ .Site.Title -}}
-{{ end }}</title>
+    {{- .Title }} - {{ .Site.Title -}}
+    {{ end }}</title>
 {{ if .Description }}
 <meta name="description" content="{{ .Description }}" />
 {{ end }}
@@ -17,8 +17,10 @@
 
 {{ $styles := resources.Get "css/styles.css" | postCSS (dict "config" "./assets/css/postcss.config.js") }}
 {{ if .Site.IsServer }}
-    <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}">
 {{ else }}
-    {{ $styles := $styles| minify | fingerprint | resources.PostProcess }}
-    <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
+{{ $styles := $styles| minify | fingerprint | resources.PostProcess }}
+<link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
 {{ end }}
+
+<script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/js/all.min.js"></script>

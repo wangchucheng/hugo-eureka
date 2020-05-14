@@ -1,0 +1,40 @@
+{{ define "main" }}
+<main>
+    <div class=" ">
+
+        <div class="grid grid-cols-12 gap-4 flex content-center pt-12 pb-12 border border-gray-300">
+            <div
+                class="col-span-12 md:col-span-4 lg:col-span-4 xl:col-span-4 flex content-center justify-center border-r border-gray-300">
+                {{ with .Resources.ByType "image" }}
+                {{ range . }}
+                <img src='{{ .RelPermalink }}' class="h-7/12 md:h-9/12 lg:h-9/12" />
+                {{ end }}
+                {{ end }}
+            </div>
+
+            <div class="col-span-6 pl-5">
+                <div>
+                    <div class="text-xs font-medium pb-4 pt-4">ABOUT ME</div>
+                    <div class="text-6xl font-medium pb-2">{{ .Title }}</div>
+                    <div class="w-3/12 xl:w-2/12 border-b border-gray-400"></div>
+                    {{ with .Content }}
+                    <div class="pt-8 text-lg leading-normal font-medium">
+                        {{ . }}
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+
+            <div class="col-span-2 flex flex-col justify-center items-end pr-8">
+                {{ $brand := $.Param "social"}}
+                {{ range $brand }}
+                {{ $src :=  print .icon_pack " fa-" .icon }}
+                <div class="pb-2">
+                    <i class="{{ print $src }}"></i>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</main>
+{{ end }}
