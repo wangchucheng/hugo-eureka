@@ -2,6 +2,9 @@ module.exports = {
   important: true,
   theme: {
     extend: {
+      inset: {
+        '16': '4rem',
+      },
       colors: {
         primary: 'var(--color-primary)',
         secondary: 'var(--color-secondary)',

@@ -3,21 +3,22 @@
 }
 
 .sticky-title {
-  @apply sticky top-0
+  @apply sticky top-16 z-10 bg-tertiary;
 }
 
 .sticky-toc {
-  @apply sticky top-0
+  @apply sticky z-0;
+  top: 8rem;
 }
 
-.sticky-toc a {
+/* .sticky-toc a {
   @apply text-gray-100
-}
+} */
 
 .sticky-toc a:hover, a:focus {
-  @apply text-red-900
+  @apply text-primary;
 }
 
-.important-text {
-  @apply text-red-900 !important
+.object-contain {
+    object-fit: contain !important;
 }

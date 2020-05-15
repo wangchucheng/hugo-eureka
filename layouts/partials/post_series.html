@@ -1,11 +1,13 @@
 {{ $series := .Site.Taxonomies.series}}
-<h2 class="subtitle">系列文章</h2>
-<div class="markdown">
-    {{range .Params.series }}
-    {{ $key := . | urlize}}
-    {{ $value := index $series $key }}
-    {{ range $value}}
-    <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
-    {{end}}
-    {{end}}
+<div class="bg-secondary p-6">
+    <h2 class="subtitle">系列文章</h2>
+    <div class="content">
+        {{range .Params.series }}
+        {{ $key := . | urlize}}
+        {{ $value := index $series $key }}
+        {{ range $value}}
+        <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
+        {{end}}
+        {{end}}
+    </div>
 </div>
