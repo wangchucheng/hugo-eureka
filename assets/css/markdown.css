@@ -4,99 +4,99 @@
   padding-bottom: 0.125rem;
 }
 
-.markdown {
+.content {
   @apply text-gray-900 leading-normal break-words;
 }
 
-.markdown > * + * {
+.content > * + * {
   @apply mt-0 mb-4;
 }
 
-.markdown li + li {
+.content li + li {
   @apply mt-1;
 }
 
-.markdown li > p + p {
+.content li > p + p {
   @apply mt-6;
 }
 
-.markdown strong {
+.content strong {
   @apply font-semibold;
 }
 
-.markdown a {
+.content a {
   @apply font-semibold;
 }
 
-.markdown strong a {
+.content strong a {
   @apply font-bold;
 }
 
-.markdown h1 {
+.content h1 {
   @apply leading-tight border-b text-4xl font-semibold mb-4 mt-6 pb-2;
 }
 
-.markdown h2 {
+.content h2 {
   @apply leading-tight border-b text-2xl font-semibold mb-4 mt-6 pb-2;
 }
 
-.markdown h3 {
+.content h3 {
   @apply leading-snug text-lg font-semibold mb-4 mt-6;
 }
 
-.markdown h4 {
+.content h4 {
   @apply leading-none text-base font-semibold mb-4 mt-6;
 }
 
-.markdown h5 {
+.content h5 {
   @apply leading-tight text-sm font-semibold mb-4 mt-6;
 }
 
-.markdown h6 {
+.content h6 {
   @apply leading-tight text-sm font-semibold text-gray-600 mb-4 mt-6;
 }
 
-.markdown blockquote {
+.content blockquote {
   @apply text-base border-l-4 border-gray-300 pl-4 pr-4 text-gray-600;
 }
 
-.markdown code {
+.content code {
   @apply font-mono text-sm inline bg-gray-200 rounded px-1 py-05;
 }
 
-.markdown pre {
+.content pre {
   @apply bg-gray-100 rounded p-4;
 }
 
-.markdown pre code {
+.content pre code {
   @apply block bg-transparent p-0 overflow-auto rounded-none;
 }
 
-.markdown ul {
+.content ul {
   @apply text-base pl-8 list-disc;
 }
 
-.markdown ol {
+.content ol {
   @apply text-base pl-8 list-decimal;
 }
 
-.markdown kbd {
+.content kbd {
   @apply text-xs inline-block rounded border px-1 py-05 align-middle font-normal font-mono shadow;
 }
 
-.markdown table {
+.content table {
   @apply text-base border-gray-600;
 }
 
-.markdown th {
+.content th {
   @apply border py-1 px-3;
 }
 
-.markdown td {
+.content td {
   @apply border py-1 px-3;
 }
 
 /* Override pygments style background color. */
-/* .markdown .highlight pre {
+/* .content .highlight pre {
   @apply bg-gray-100 !important;
 } */

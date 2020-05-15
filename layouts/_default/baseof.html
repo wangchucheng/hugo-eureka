@@ -1,13 +1,34 @@
 <!DOCTYPE html>
 <html lang='{{ .Site.LanguageCode }}'>
-    {{- partial "head.html" . -}}
-    <body class="flex flex-col min-h-screen">
-        {{- partial "dev-size-indicator.html" . -}}
-        {{- partial "header.html" . -}}
-        <main class="flex-1 mx-4 md:mx-12 lg:mx-24 mt-4 sm:mt-16">
-        {{- block "main" . }}{{- end }}
-        </main>
-        {{- partial "dev-parameters.html" . -}}
-        {{- partial "footer.html" . -}}
-    </body>
+{{- partial "head.html" . -}}
+
+<body>
+    <header class="fixed w-full h-16 z-50 bg-secondary">
+        <div class="container mx-auto">
+            <div class="max-w-screen-xl">
+                {{- partial "header.html" . -}}
+            </div>
+        </div>
+    </header>
+
+    <main class="min-h-screen pt-16">
+        <div class="container mx-auto ">
+            <div class="max-w-screen-xl pt-12 lg:px-4 xl:px-8">
+                {{- partial "dev-size-indicator.html" . -}}
+                {{- block "main" . }}{{- end }}
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container mx-auto">
+            <div class="max-w-screen-xl">
+                {{- partial "dev-parameters.html" . -}}
+                {{- partial "footer.html" . -}}
+            </div>
+        </div>
+    </footer>
+
+</body>
+
 </html>
