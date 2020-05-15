@@ -2,7 +2,8 @@
 {{ $hasToc := and (in .TableOfContents "<li>" ) (.Params.toc) }}
 {{ $hasSidebar := or ($hasToc) (.Params.series) }}
 <div class="grid grid-cols-2 lg:grid-cols-8 gap-4">
-    <div class="col-span-2 {{ if not $hasSidebar }} {{- print "lg:col-start-2" -}} {{ end }} lg:col-span-6 bg-secondary px-6 py-8">
+    <div
+        class="col-span-2 {{ if not $hasSidebar }} {{- print "lg:col-start-2" -}} {{ end }} lg:col-span-6 bg-secondary-bg px-6 py-8">
         <h1 class="font-bold text-3xl text-gray-700">{{ .Title }}</h1>
         {{ partial "post_metadata.html" . }}
         <div class="content">
@@ -19,14 +20,16 @@
         {{ end }}
     </div>
     {{ end }}
-    
+
     {{ $related := .Site.RegularPages.Related . | first 5 }}
     {{ with $related }}
-    <div class="col-span-2 {{ if not $hasSidebar }} {{- print "lg:col-start-2" -}} {{ end }} lg:col-span-6 bg-secondary p-6">
+    <div
+        class="col-span-2 {{ if not $hasSidebar }} {{- print "lg:col-start-2" -}} {{ end }} lg:col-span-6 bg-secondary-bg p-6">
         <h2 class="subtitle">See Also</h2>
         <div class="content">
             {{ range . }}
             <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            <br />
             {{ end }}
         </div>
     </div>
@@ -41,7 +44,7 @@
                 if (entry.intersectionRatio > 0) {
                     if (delay == true) {
                         let element = document.querySelector('.sticky-toc li.active')
-                        element.firstChild.classList.remove('text-primary');
+                        element.firstChild.classList.remove(textColor);
                         element.classList.remove('active');
                         delay = false;
                         updatePosAndColor();
@@ -53,7 +56,7 @@
                         delay = true;
                     } else {
                         let element = document.querySelector(`.sticky-toc li a[href="#${id}"]`)
-                        element.classList.remove('text-primary');
+                        element.classList.remove(textColor);
                         element.parentElement.classList.remove('active');
                         updatePosAndColor();
                     }
@@ -63,13 +66,14 @@
 
         var delay = false;
         var targetPos = window.innerHeight * 0.4
+        var textColor = 'text-eureka'
 
         function updatePosAndColor() {
             let elements = document.querySelectorAll('.sticky-toc li.active')
             let len = elements.length
             if (len != 0) {
                 let firstElement = elements[0]
-                firstElement.firstChild.classList.add('text-primary')
+                firstElement.firstChild.classList.add(textColor)
                 let offset = firstElement.offsetTop - targetPos;
                 if (offset > 0) {
                     document.querySelector(`.sticky-toc`).style.top = `calc( 7rem - ${offset}px)`
@@ -77,7 +81,7 @@
                     document.querySelector(`.sticky-toc`).removeAttribute("style");
                 }
                 for (let i = 1; i < len; i++) {
-                    elements[i].firstChild.classList.remove('text-primary')
+                    elements[i].firstChild.classList.remove(textColor)
                 }
             }
         }

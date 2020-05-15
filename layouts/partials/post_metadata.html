@@ -1,68 +1,42 @@
-<div class="flex flex-row bg-gray-200">
-    <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2">
+<div class="flex flex-wrap flex-row items-center my-2">
+    <div class="mx-2 my-2">
         <i class="fas fa-calendar"></i>
         <span>{{ dateFormat "Jan 2, 2006" .Date }}</span>
     </div>
-    <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2">
+    <div class="mx-2 my-2">
+        <span>&middot;</span>
+    </div>
+    <div class="mx-2 my-2">
         <i class="fas fa-clock"></i>
         <span>{{ .ReadingTime }} min read</span>
     </div>
-    <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2">
-        <i class="fas fa-calendar"></i>
-        <span>{{ dateFormat "Jan 2, 2006" .Date }}</span>
+    {{ with .GetTerms "categories" }}
+    <div class="mx-2 my-2">
+        <span>&middot;</span>
     </div>
-    <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2">
-        <i class="fas fa-calendar"></i>
-        <span>{{ dateFormat "Jan 2, 2006" .Date }}</span>
+    <div class="mx-2 my-2">
+        <i class="fas fa-folder"></i>
+        {{ range $index, $value := . }}
+        {{ if gt $index 0 }}
+        <span>, </span>
+        {{ end -}}
+        <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        {{ end }}
     </div>
-</div>
+    {{ end }}
 
-<div class="columns is-variable is-2 is-vertical-2-mobile is-multiline has-text-grey">
-    <div class="column is-narrow">
-        <span class="icon is-inline">
-            <i class="fas fa-calendar"></i>
-        </span>
-        <span>{{ dateFormat "Jan 2, 2006" .Date }}</span>
-    </div>
-    <div class="column is-narrow is-hidden-mobile">
+    {{ with .GetTerms "series" }}
+    <div class="mx-2 my-2">
         <span>&middot;</span>
     </div>
-    <div class="column is-narrow">
-        <span class="icon is-inline">
-            <i class="fas fa-clock"></i>
-        </span>
-        <span>{{ .ReadingTime }} min read</span>
-    </div>
-    <div class="column is-narrow is-hidden-mobile">
-        {{ with .GetTerms "categories" }}
-        <span>&middot;</span>
-    </div>
-    <div class="column is-narrow">
-        <span class="icon is-inline">
-            <i class="fas fa-folder"></i>
-        </span>
+    <div class="mx-2 my-2">
+        <i class="fas fa-th-list"></i>
         {{ range $index, $value := . }}
         {{ if gt $index 0 }}
         <span>, </span>
         {{ end -}}
         <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
         {{ end }}
-        {{ end }}
     </div>
-    <div class="column is-narrow is-hidden-mobile">
-        {{ with .GetTerms "series" }}
-        <span>&middot;</span>
-    </div>
-    <div class="column is-narrow">
-        <span class="icon is-inline">
-            <i class="fas fa-th-list"></i>
-        </span>
-        {{ range $index, $value := . }}
-        {{ if gt $index 0 }}
-        <span>, </span>
-        {{ end -}}
-        <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-        {{ end }}
-        {{ end }}
-    </div>
+    {{ end }}
 </div>

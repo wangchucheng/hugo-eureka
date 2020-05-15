@@ -5,7 +5,7 @@
 }
 
 .content {
-  @apply text-gray-900 leading-normal break-words;
+  @apply text-primary-text leading-normal break-words;
 }
 
 .content > * + * {
