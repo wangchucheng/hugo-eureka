@@ -6,9 +6,13 @@ module.exports = {
         '16': '4rem',
       },
       colors: {
-        primary: 'var(--color-primary)',
-        secondary: 'var(--color-secondary)',
-        tertiary: 'var(--color-tertiary)',
+        'eureka': 'var(--color-eureka)',
+        'primary-bg': 'var(--color-primary-bg)',
+        'secondary-bg': 'var(--color-secondary-bg)',
+        'tertiary-bg': 'var(--color-tertiary-bg)',
+        'primary-text': 'var(--color-primary-text)',
+        'secondary-text': 'var(--color-secondary-text)',
+        'tertiary-text': 'var(--color-tertiary-text)',
       }
     }
   },

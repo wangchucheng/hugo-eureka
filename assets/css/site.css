@@ -3,7 +3,7 @@
 }
 
 .sticky-title {
-  @apply sticky top-16 z-10 bg-tertiary;
+  @apply sticky top-16 z-10 bg-primary-bg;
 }
 
 .sticky-toc {
@@ -16,7 +16,7 @@
 } */
 
 .sticky-toc a:hover, a:focus {
-  @apply text-primary;
+  @apply text-eureka;
 }
 
 .object-contain {
