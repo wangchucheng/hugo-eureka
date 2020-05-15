@@ -1,3 +1,12 @@
 :root{
-    @apply font-serif;
+    @apply font-serif bg-tertiary;
+    --color-primary: #38B2AC;
+    --color-secondary: #FBFBFC;
+    --color-tertiary: #F2F2F7;
+}
+
+.dark {
+    --color-primary: #38B2AC;
+    --color-secondary: #303030;
+    --color-tertiary: #000000;
 }

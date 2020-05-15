@@ -25,6 +25,9 @@
 =======
     {{ $styles := $styles| minify | fingerprint | resources.PostProcess }}
     <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
+<<<<<<< HEAD
+>>>>>>> f8b674b093948597e1c1d6c8a2f7a88cc89541e8
+=======
 >>>>>>> f8b674b093948597e1c1d6c8a2f7a88cc89541e8
 {{ end }}
 

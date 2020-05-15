@@ -1,3 +1,23 @@
 .starter {
   color: blue;
 }
+
+.sticky-title {
+  @apply sticky top-0
+}
+
+.sticky-toc {
+  @apply sticky top-0
+}
+
+.sticky-toc a {
+  @apply text-gray-100
+}
+
+.sticky-toc a:hover, a:focus {
+  @apply text-red-900
+}
+
+.important-text {
+  @apply text-red-900 !important
+}
