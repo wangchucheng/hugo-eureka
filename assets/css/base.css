@@ -3,7 +3,7 @@
     --color-eureka: #38B2AC;
     --color-primary-bg: rgba(242,242,247,1.00);
     --color-secondary-bg: rgba(255,255,255,1.00);
-    --color-tertiary-bg: rgba(120,120,128,0.20);
+    --color-tertiary-bg: rgba(242,242,247,1.00);
     --color-primary-text: rgba(0,0,0,0.85);
     --color-secondary-text: rgba(0,0,0,0.65);
     --color-tertiary-text: rgba(0,0,0,0.45);
@@ -11,9 +11,9 @@
 
 .dark {
     --color-eureka: #38B2AC;
-    --color-primary: rgba(0,0,0,1.00);
-    --color-secondary: rgba(28,28,30,1.00);
-    --color-tertiary: rgba(44,44,46,1.00);
+    --color-primary-bg: rgba(0,0,0,1.00);
+    --color-secondary-bg: rgba(28,28,30,1.00);
+    --color-tertiary-bg: rgba(44,44,46,1.00);
     --color-primary-text: rgba(255,255,255,0.85);
     --color-secondary-text: rgba(255,255,255,0.65);
     --color-tertiary-text: rgba(255,255,255,0.45);

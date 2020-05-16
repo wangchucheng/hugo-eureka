@@ -1,6 +1,6 @@
 {{ $series := .Site.Taxonomies.series}}
 <div class="bg-secondary-bg p-6">
-    <h2 class="subtitle">系列文章</h2>
+    <h3 class="text-lg font-semibold mb-4">系列文章</h3>
     <div class="content">
         {{range .Params.series }}
         {{ $key := . | urlize}}

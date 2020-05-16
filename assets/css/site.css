@@ -2,19 +2,35 @@
   color: blue;
 }
 
-.sticky-title {
-  @apply sticky top-16 z-10 bg-primary-bg;
-}
-
 .sticky-toc {
-  @apply sticky z-0;
+  @apply sticky z-0 ease-in-out duration-300;
   top: 8rem;
 }
 
-/* .sticky-toc a {
-  @apply text-gray-100
-} */
+.sticky-toc a {
+  @apply text-primary-text ease-in-out duration-200;
+}
 
-.sticky-toc a:hover, a:focus {
+.sticky-toc a:hover {
   @apply text-eureka;
+}
+
+.sticky-toc a:focus {
+  @apply text-eureka;
+}
+
+.sticky-toc ul {
+  @apply text-base pl-8 list-disc;
+}
+
+.sticky-toc ol {
+  @apply text-base pl-8 list-decimal;
+}
+
+.sticky-toc li + li {
+  @apply mt-1;
+}
+
+.sticky-toc li > p + p {
+  @apply mt-6;
 }

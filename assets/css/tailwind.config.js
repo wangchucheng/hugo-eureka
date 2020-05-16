@@ -1,6 +1,10 @@
 module.exports = {
   important: true,
   theme: {
+    fontFamily: {
+      'serif': ['Lora', 'Noto Serif SC', 'serif'],
+      'mono': ['SFMono-Regular', 'Menlo'],
+    },
     extend: {
       inset: {
         '16': '4rem',

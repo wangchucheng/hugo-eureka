@@ -1,4 +1,4 @@
-<div class="flex flex-wrap flex-row items-center my-2">
+<div class="flex flex-wrap flex-row items-center my-2 text-tertiary-text">
     <div class="mx-2 my-2">
         <i class="fas fa-calendar"></i>
         <span>{{ dateFormat "Jan 2, 2006" .Date }}</span>
@@ -20,7 +20,7 @@
         {{ if gt $index 0 }}
         <span>, </span>
         {{ end -}}
-        <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        <a href="{{ .RelPermalink }}" class="hover:text-eureka">{{ .LinkTitle }}</a>
         {{ end }}
     </div>
     {{ end }}
@@ -35,7 +35,7 @@
         {{ if gt $index 0 }}
         <span>, </span>
         {{ end -}}
-        <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        <a href="{{ .RelPermalink }}" class="hover:text-eureka">{{ .LinkTitle }}</a>
         {{ end }}
     </div>
     {{ end }}

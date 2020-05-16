@@ -4,7 +4,7 @@
 <div class="grid grid-cols-2 lg:grid-cols-8 gap-4">
     <div
         class="col-span-2 {{ if not $hasSidebar }} {{- print "lg:col-start-2" -}} {{ end }} lg:col-span-6 bg-secondary-bg px-6 py-8">
-        <h1 class="font-bold text-3xl text-gray-700">{{ .Title }}</h1>
+        <h1 class="font-bold text-3xl text-primary-text">{{ .Title }}</h1>
         {{ partial "post_metadata.html" . }}
         <div class="content">
             {{ .Content}}
@@ -25,7 +25,7 @@
     {{ with $related }}
     <div
         class="col-span-2 {{ if not $hasSidebar }} {{- print "lg:col-start-2" -}} {{ end }} lg:col-span-6 bg-secondary-bg p-6">
-        <h2 class="subtitle">See Also</h2>
+        <h2 class="text-lg font-semibold mb-4">See Also</h2>
         <div class="content">
             {{ range . }}
             <a href="{{ .RelPermalink }}">{{ .Title }}</a>
@@ -35,6 +35,8 @@
     </div>
     {{ end }}
 </div>
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.0.0/build/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 {{ if $hasToc }}
 <script>
     window.addEventListener('DOMContentLoaded', () => {

@@ -25,7 +25,15 @@
 }
 
 .content a {
-  @apply font-semibold;
+  @apply text-eureka;
+}
+
+.content a:focus {
+  @apply text-eureka underline;
+}
+
+.content a:hover {
+  @apply text-eureka underline;
 }
 
 .content strong a {
@@ -53,19 +61,19 @@
 }
 
 .content h6 {
-  @apply leading-tight text-sm font-semibold text-gray-600 mb-4 mt-6;
+  @apply leading-tight text-sm font-semibold text-secondary-text mb-4 mt-6;
 }
 
 .content blockquote {
-  @apply text-base border-l-4 border-gray-300 pl-4 pr-4 text-gray-600;
+  @apply text-base border-l-4 border-tertiary-text pl-4 pr-4 text-secondary-text;
 }
 
 .content code {
-  @apply font-mono text-sm inline bg-gray-200 rounded px-1 py-05;
+  @apply font-mono text-sm inline bg-tertiary-bg rounded p-1;
 }
 
 .content pre {
-  @apply bg-gray-100 rounded p-4;
+  @apply bg-tertiary-bg rounded p-4;
 }
 
 .content pre code {
@@ -81,11 +89,11 @@
 }
 
 .content kbd {
-  @apply text-xs inline-block rounded border px-1 py-05 align-middle font-normal font-mono shadow;
+  @apply text-xs inline-block rounded border p-1 align-middle font-normal font-mono shadow;
 }
 
 .content table {
-  @apply text-base border-gray-600;
+  @apply text-base border-secondary-text;
 }
 
 .content th {
