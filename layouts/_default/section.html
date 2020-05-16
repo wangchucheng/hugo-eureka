@@ -7,13 +7,15 @@
     </div>
     {{ end }}
 </article>
-{{ range .Pages }}
-<article class="bg-secondary-bg px-6 py-8 mb-8">
+{{ range .Paginator.Pages }}
+<article class="bg-secondary-bg px-6 pt-8 pb-4 mb-8">
     <h1 class="font-bold text-3xl text-primary-text"><a href="{{ .Permalink }}"
             class="hover:text-eureka">{{ .Title }}</a></h1>
     <div class="content">
         {{ .Summary }}
     </div>
+    {{ partial "post_metadata.html" . }}
 </article>
 {{ end }}
+{{ template "_internal/pagination.html" . }}
 {{ end }}

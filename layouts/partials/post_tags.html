@@ -1,0 +1,5 @@
+<div class="py-2">
+    {{ range $index, $value := . }}
+    <a href="{{ .RelPermalink }}" class="bg-tertiary-bg text-sm rounded px-3 py-1 m-1 hover:text-eureka">#{{ .LinkTitle }}</a>
+    {{ end }}
+</div>

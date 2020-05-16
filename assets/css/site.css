@@ -38,3 +38,15 @@
 .object-contain {
     object-fit: contain !important;
 }
+
+.pagination {
+  @apply flex justify-center;
+}
+
+.pagination .page-item {
+  @apply flex items-center p-2 m-2;
+}
+
+.pagination .page-item:not(.disabled):hover {
+  @apply text-eureka;
+}
