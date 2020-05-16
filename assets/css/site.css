@@ -34,3 +34,7 @@
 .sticky-toc li > p + p {
   @apply mt-6;
 }
+
+.object-contain {
+    object-fit: contain !important;
+}

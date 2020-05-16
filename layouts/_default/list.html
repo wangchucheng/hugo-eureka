@@ -7,14 +7,13 @@
     </div>
     {{ end }}
 </article>
-<ul class="bg-secondary-bg px-6 py-8">
+<div class="bg-secondary-bg px-6 py-8">
     {{ range .Pages }}
-    <li class="text-lg text-primary-text my-2">
+    <h2 class="text-lg text-primary-text my-2">
         <a href="{{ .Permalink }}" class="text-eureka hover:underline">
             {{ .Title }}
         </a>
-    </li>
+    </h2>
     {{ end }}
-</ul>
-
+</div>
 {{ end }}
