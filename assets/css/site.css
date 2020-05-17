@@ -15,10 +15,6 @@
   @apply text-eureka;
 }
 
-.sticky-toc a:focus {
-  @apply text-eureka;
-}
-
 .sticky-toc ul {
   @apply text-base pl-8 list-disc;
 }

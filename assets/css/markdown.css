@@ -28,10 +28,6 @@
   @apply text-eureka;
 }
 
-.content a:focus {
-  @apply text-eureka underline;
-}
-
 .content a:hover {
   @apply text-eureka underline;
 }

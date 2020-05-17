@@ -3,4 +3,82 @@
     <h1 class="font-serif font-thin text-5xl text-gray-500">{{ .Title }}</h1>
     {{ .Content }}
 </article>
+
+<div class="w-full bg-secondary-bg">
+    <div class="container mx-auto">
+        <div class="max-w-screen-xl pt-12 pb-1 mx-8 overflow-hidden">
+            <div class="grid grid-cols-8 grid-rows-6 xl:grid-rows-4 bg-cover bg-fixed -mx-8 -mt-12"
+                style="height: calc(100vh - 4rem); background-image: url(foo.jpg)">
+                <div class="col-span-2 row-start-1 row-span-2 xl:row-span-1 bg-secondary-bg -m-1"></div>
+                <div class="col-start-3 col-span-6 xl:col-span-4 row-start-1 row-span-1 bg-secondary-bg -m-1"></div>
+                <div class="col-start-1 md:col-start-3 col-span-8 md:col-span-4 row-start-3 md:row-start-2 row-span-2 md:row-span-4 xl:row-span-2 bg-secondary-bg p-16 -m-1">
+                    <div class="flex flex-col items-center justify-center min-h-full">
+                        <span class="font-bold text-3xl">靡不有初</span>
+                        <span class="font-bold text-3xl">鲜克有终</span>
+                    </div>
+                </div>
+                <div class="col-start-1 xl:col-start-3 col-span-6 xl:col-span-4 row-start-6 xl:row-start-4 row-span-1 bg-secondary-bg -m-1"></div>
+                <div class="col-start-7 col-span-2 row-start-5 xl:row-start-4 row-span-2 xl:row-span-1 bg-secondary-bg -m-1"></div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+
+<div class="container mx-auto ">
+    <div class="max-w-screen-xl pt-12 lg:px-4 xl:px-8">
+        <div class="">
+            <div class="flex flex-row items-center justify-between">
+                <h2 class=" font-bold text-3xl my-4">Recent Posts</h2>
+                {{ $post := .Site.GetPage "section" "post" }}
+                <h1 class="font-semibold text-lg text-primary-text"><a href="{{ $post.Permalink }}"
+                        class="hover:text-eureka">阅读全部</a>
+                </h1>
+            </div>
+
+            <div class="masonry grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+                {{ range first 10 $pages }}
+                <div class="item">
+                    <div class="grid-content">
+                        {{ partial "summary.html" . }}
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function resizeGridItem(item) {
+        grid = document.getElementsByClassName("masonry")[0];
+        rowHeight = 0;
+        rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
+        rowSpan = Math.ceil((item.querySelector('.grid-content').getBoundingClientRect().height + rowGap) / (rowHeight + rowGap));
+        item.style.gridRowEnd = "span " + rowSpan;
+    }
+
+    function resizeAllGridItems() {
+        allItems = document.getElementsByClassName("item");
+        for (x = 0; x < allItems.length; x++) {
+            resizeGridItem(allItems[x]);
+        }
+    }
+
+    function resizeInstance(instance) {
+        item = instance.elements[0];
+        resizeGridItem(item);
+    }
+
+    window.onload = resizeAllGridItems();
+    window.addEventListener("resize", resizeAllGridItems);
+
+    allItems = document.getElementsByClassName("item");
+    for (x = 0; x < allItems.length; x++) {
+        imagesLoaded(allItems[x], resizeInstance);
+    }
+</script>
 {{ end }}

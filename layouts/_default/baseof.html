@@ -3,7 +3,7 @@
 {{- partial "head.html" . -}}
 
 <body>
-    <header class="fixed w-full h-16 z-50 bg-secondary-bg">
+    <header class="fixed w-full h-16 z-50 bg-secondary-bg shadow-sm">
         <div class="container mx-auto">
             <div class="max-w-screen-xl">
                 {{- partial "header.html" . -}}
@@ -12,12 +12,17 @@
     </header>
 
     <main class="min-h-screen pt-16">
+        {{ if .IsHome }}
+        {{- partial "dev-size-indicator.html" . -}}
+        {{- block "main" . }}{{- end }}
+        {{ else }}
         <div class="container mx-auto ">
             <div class="max-w-screen-xl pt-12 lg:px-4 xl:px-8">
                 {{- partial "dev-size-indicator.html" . -}}
                 {{- block "main" . }}{{- end }}
             </div>
         </div>
+        {{ end }}
     </main>
 
     <footer>

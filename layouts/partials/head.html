@@ -1,8 +1,8 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
-<title>{{ block "title" . }}
-    {{- .Title }} - {{ .Site.Title -}}
-    {{ end }}</title>
+<title>
+    {{ block "title" . }}{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}
+</title>
 {{ if .Description }}
 <meta name="description" content="{{ .Description }}" />
 {{ end }}
@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
 {{ end }}
 <link
-    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif+SC:wght@400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
     rel="stylesheet">
 <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.0.3/build/styles/solarized-light.min.css">

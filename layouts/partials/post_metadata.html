@@ -1,20 +1,20 @@
 <div class="flex flex-wrap flex-row items-center my-2 text-tertiary-text">
-    <div class="mr-2 my-2">
+    <div class="mr-4 my-2">
         <i class="fas fa-calendar"></i>
         <span>{{ dateFormat "Jan 2, 2006" .Date }}</span>
     </div>
-    <div class="mx-2 my-2">
+    <div class="mr-4 my-2">
         <span>&middot;</span>
     </div>
-    <div class="mx-2 my-2">
+    <div class="mr-4 my-2">
         <i class="fas fa-clock"></i>
         <span>{{ .ReadingTime }} min read</span>
     </div>
     {{ with .GetTerms "categories" }}
-    <div class="mx-2 my-2">
+    <div class="mr-4 my-2">
         <span>&middot;</span>
     </div>
-    <div class="mx-2 my-2">
+    <div class="mr-4 my-2">
         <i class="fas fa-folder"></i>
         {{ range $index, $value := . }}
         {{ if gt $index 0 }}
@@ -26,10 +26,10 @@
     {{ end }}
 
     {{ with .GetTerms "series" }}
-    <div class="mx-2 my-2">
+    <div class="mr-4 my-2">
         <span>&middot;</span>
     </div>
-    <div class="mx-2 my-2">
+    <div class="mr-4 my-2">
         <i class="fas fa-th-list"></i>
         {{ range $index, $value := . }}
         {{ if gt $index 0 }}
