@@ -3,15 +3,13 @@
         <a href="/" class="font-semibold text-xl tracking-tight">{{ .Site.Title }}</a>
     </div>
     <div class="block md:hidden">
-        <button
-            class="flex items-center px-3 py-2 border rounded text-black border-black hover:text-eureka hover:border-primary">
-            <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <title>Menu</title>
-                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-            </svg>
+
+        <button id="navbar-btn" 
+            class="flex items-center px-3 py-2 hover:text-eureka">
+                    <i class="fas fa-bars"></i>
         </button>
     </div>
-    <div class="w-full block flex-grow md:flex md:items-center md:w-auto">
+    <div id="target" class="w-full hidden block flex-grow md:flex md:items-center md:w-auto">
         <div class="text-sm md:flex-grow">
             {{ range .Site.Menus.main }}
             <a href="{{ .URL }}"
@@ -24,3 +22,12 @@
         </div>
     </div>
 </nav>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        var element = document.getElementById('navbar-btn');
+        element.addEventListener('click', () => {
+            var target = document.getElementById('target');
+            target.classList.toggle('hidden');
+        })
+    });
+</script>

@@ -6,29 +6,54 @@
 
 <div class="w-full bg-secondary-bg">
     <div class="container mx-auto">
-        <div class="max-w-screen-xl pt-12 pb-1 mx-8 overflow-hidden">
-            <div class="grid grid-cols-8 grid-rows-6 xl:grid-rows-4 bg-cover bg-fixed -mx-8 -mt-12"
+        <div class="max-w-screen-xl">
+            <!-- <div class="bg-fixed bg-cover" style="height: calc(100vh - 4rem); background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(foo.jpg)">
+                <div class="flex flex-col items-center justify-center min-h-full">
+                    <span class="font-bold text-3xl text-white">靡不有初</span>
+                    <span class="font-bold text-3xl text-white">鲜克有终</span>
+                </div>
+            </div> -->
+            <div class="grid grid-cols-9 grid-rows-5" style="height: calc(100vh - 4rem);">
+                <div class="col-start-2 col-span-4 row-start-3 row-span-2 bg-local bg-cover z-10 shadow-2xl"
+                    style="background-image: url(img/hero-1.jpg);"></div>
+                <div class="col-start-3 col-span-5 row-start-2 row-span-3 z-20">
+                    <div class="flex flex-col items-center justify-center min-h-full">
+                        <div class="bg-white bg-opacity-75 shadow-2xl -m-12 p-12">
+                            <span class="font-bold text-2xl md:text-3xl">{{ .Site.Params.slogan }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-start-5 col-span-4 row-start-2 row-span-2 bg-local bg-cover shadow-2xl"
+                    style="background-image: url(img/hero-2.jpg);"></div>
+            </div>
+            <!-- <div class="grid grid-cols-8 grid-rows-6 xl:grid-rows-4 bg-cover bg-fixed -mx-8 -mt-12"
                 style="height: calc(100vh - 4rem); background-image: url(foo.jpg)">
                 <div class="col-span-2 row-start-1 row-span-2 xl:row-span-1 bg-secondary-bg -m-1"></div>
                 <div class="col-start-3 col-span-6 xl:col-span-4 row-start-1 row-span-1 bg-secondary-bg -m-1"></div>
-                <div class="col-start-1 md:col-start-3 col-span-8 md:col-span-4 row-start-3 md:row-start-2 row-span-2 md:row-span-4 xl:row-span-2 bg-secondary-bg p-16 -m-1">
+                <div
+                    class="col-start-1 md:col-start-3 col-span-8 md:col-span-4 row-start-3 md:row-start-2 row-span-2 md:row-span-4 xl:row-span-2 bg-secondary-bg p-16 -m-1">
                     <div class="flex flex-col items-center justify-center min-h-full">
                         <span class="font-bold text-3xl">靡不有初</span>
                         <span class="font-bold text-3xl">鲜克有终</span>
                     </div>
                 </div>
-                <div class="col-start-1 xl:col-start-3 col-span-6 xl:col-span-4 row-start-6 xl:row-start-4 row-span-1 bg-secondary-bg -m-1"></div>
-                <div class="col-start-7 col-span-2 row-start-5 xl:row-start-4 row-span-2 xl:row-span-1 bg-secondary-bg -m-1"></div>
-            </div>
-        </div>
-        
+                <div
+                    class="col-start-1 xl:col-start-3 col-span-6 xl:col-span-4 row-start-6 xl:row-start-4 row-span-1 bg-secondary-bg -m-1">
+                </div>
+                <div
+                    class="col-start-7 col-span-2 row-start-5 xl:row-start-4 row-span-2 xl:row-span-1 bg-secondary-bg -m-1">
+                </div>
+            </div> -->
+        </div> 
+
     </div>
 </div>
 
 
 <div class="container mx-auto ">
-    <div class="max-w-screen-xl pt-12 lg:px-4 xl:px-8">
-        <div class="">
+    <div class="max-w-screen-xl pt-12 md:px-4 xl:px-8">
+
+        <div class="xl:mx-16">
             <div class="flex flex-row items-center justify-between">
                 <h2 class=" font-bold text-3xl my-4">Recent Posts</h2>
                 {{ $post := .Site.GetPage "section" "post" }}
