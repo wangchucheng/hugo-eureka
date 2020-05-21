@@ -13,7 +13,7 @@
                     <span class="font-bold text-3xl text-white">鲜克有终</span>
                 </div>
             </div> -->
-            <div class="grid grid-cols-9 grid-rows-5" style="height: calc(100vh - 4rem);">
+            <div class="grid grid-cols-9 grid-rows-5 h-screen -mt-16">
                 <div class="col-start-2 col-span-4 row-start-3 row-span-2 bg-local bg-cover z-10 shadow-2xl"
                     style="background-image: url(img/hero-1.jpg);"></div>
                 <div class="col-start-3 col-span-5 row-start-2 row-span-3 z-20">
@@ -77,33 +77,4 @@
 </div>
 
 
-<script>
-    function resizeGridItem(item) {
-        grid = document.getElementsByClassName("masonry")[0];
-        rowHeight = 0;
-        rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
-        rowSpan = Math.ceil((item.querySelector('.grid-content').getBoundingClientRect().height + rowGap) / (rowHeight + rowGap));
-        item.style.gridRowEnd = "span " + rowSpan;
-    }
-
-    function resizeAllGridItems() {
-        allItems = document.getElementsByClassName("item");
-        for (x = 0; x < allItems.length; x++) {
-            resizeGridItem(allItems[x]);
-        }
-    }
-
-    function resizeInstance(instance) {
-        item = instance.elements[0];
-        resizeGridItem(item);
-    }
-
-    window.onload = resizeAllGridItems();
-    window.addEventListener("resize", resizeAllGridItems);
-
-    allItems = document.getElementsByClassName("item");
-    for (x = 0; x < allItems.length; x++) {
-        imagesLoaded(allItems[x], resizeInstance);
-    }
-</script>
 {{ end }}

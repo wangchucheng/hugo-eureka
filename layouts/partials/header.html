@@ -1,11 +1,11 @@
 <nav class="flex items-center justify-between flex-wrap p-4">
-    <div class="flex items-center flex-shrink-0 text-primary-text hover:text-eureka mr-6">
+    <div class="flex items-center flex-shrink-0 text-primary-text mr-6">
         <a href="/" class="font-semibold text-xl tracking-tight">{{ .Site.Title }}</a>
     </div>
     <div class="block md:hidden">
 
         <button id="navbar-btn" 
-            class="flex items-center px-3 py-2 hover:text-eureka">
+            class="flex items-center px-3 py-2">
                     <i class="fas fa-bars"></i>
         </button>
     </div>
@@ -17,6 +17,13 @@
             {{ end }}
         </div>
         <div>
+            <i class="fas fa-adjust"></i>
+            <a href="#"
+                class="inline-block text-sm px-4 py-2 leading-none border rounded text-black border-black hover:border-transparent hover:text-white hover:bg-primary mt-4 md:mt-0">
+                <i class="fas fa-language"></i>
+                <span>Download</span>
+            </a>
+            
             <a href="#"
                 class="inline-block text-sm px-4 py-2 leading-none border rounded text-black border-black hover:border-transparent hover:text-white hover:bg-primary mt-4 md:mt-0">Download</a>
         </div>

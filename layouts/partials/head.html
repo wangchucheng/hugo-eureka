@@ -1,19 +1,7 @@
-<meta charset="utf-8" />
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
-<title>
-    {{ block "title" . }}{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}
-</title>
-{{ if .Description }}
-<meta name="description" content="{{ .Description }}" />
-{{ end }}
-{{ if .Keywords }}
-<meta name="keywords" content="{{ delimit .Keywords "," }}" />
-{{ end }}
-{{ if .Params.Author }}
-<meta name="author" content="{{ .Params.Author}}" />
-{{ end }}
+<title>{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}</title>
 {{ hugo.Generator }}
-
 
 {{ $styles := resources.Get "css/styles.css" | postCSS (dict "config" "./assets/css/postcss.config.js") }}
 {{ if .Site.IsServer }}
@@ -29,4 +17,12 @@
     href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.0.3/build/styles/solarized-light.min.css">
 <!-- <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.0.3/build/styles/solarized-dark.min.css"> -->
+<!-- <link
+    href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"
+    rel="stylesheet"> -->
 <script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/js/all.min.js"></script>
+{{ template "_internal/schema.html" . }}
+{{ partial "opengraph.html" . }}
+{{ range .AlternativeOutputFormats -}}
+{{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+{{ end -}}
