@@ -89,7 +89,7 @@
 }
 
 .content table {
-  @apply text-base border-secondary-text;
+  @apply block text-base border-secondary-text overflow-auto;
 }
 
 .content th {

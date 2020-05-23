@@ -9,7 +9,7 @@
 </article>
 {{ range .Paginator.Pages }}
 <div class="mb-8">
-    {{ partial "summary.html" . }}
+    {{ partial "horizontal_summary.html" . }}
 </div>
 {{ end }}
 {{ template "_internal/pagination.html" . }}

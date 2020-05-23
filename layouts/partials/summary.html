@@ -1,8 +1,16 @@
-<article class="bg-secondary-bg px-6 pt-8 pb-4">
-    <h1 class="font-bold text-3xl text-primary-text"><a href="{{ .Permalink }}"
-            class="hover:text-eureka">{{ .Title }}</a></h1>
-    <div class="content">
-        {{ .Summary }}
+<div class="bg-secondary-bg pb-4 shadow rounded">
+    {{ $img := (.Resources.ByType "image").GetMatch "*featured*" }}
+    {{ with $img }}
+    <div class="">
+        <img src='{{ .RelPermalink }}' class="object-cover" />
     </div>
-    {{ partial "post_metadata.html" . }}
-</article>
+    {{ end }}
+    <article class="pt-8 px-6 ">
+        <h1 class="font-bold text-3xl text-primary-text"><a href="{{ .Permalink }}"
+                class="hover:text-eureka">{{ .Title }}</a></h1>
+        <div class="content">
+            {{ .Summary }}
+        </div>
+        {{ partial "post_metadata.html" . }}
+    </article>
+</div>

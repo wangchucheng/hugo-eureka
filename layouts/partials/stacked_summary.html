@@ -1,0 +1,15 @@
+<div class="bg-secondary-bg rounded overflow-hidden hover:shadow-xl">
+    {{ $img := (.Resources.ByType "image").GetMatch "*featured*" }}
+    {{ with $img }}
+    <img class="w-full" src='{{ .RelPermalink }}' alt="Sunset in the mountains">
+    {{ end }}
+    <div class="px-6 py-4">
+        <div class="font-bold text-3xl text-primary-text"><a href="{{ .Permalink }}" class="hover:text-eureka">{{ .Title }}</a></div>
+        <div class="content">
+            {{ .Summary }}
+        </div>
+    </div>
+    <div class="px-6 py-4">
+        {{ partial "post_metadata.html" . }}
+    </div>
+</div>

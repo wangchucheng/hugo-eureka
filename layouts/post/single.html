@@ -3,9 +3,13 @@
 {{ $hasSidebar := or ($hasToc) (.Params.series) }}
 <div class="grid grid-cols-2 lg:grid-cols-8 gap-4">
     <div
-        class="col-span-2 {{ if not $hasSidebar }} {{- print "lg:col-start-2" -}} {{ end }} lg:col-span-6 bg-secondary-bg px-6 py-8">
+        class="col-span-2 {{ if not $hasSidebar }} {{- print "lg:col-start-2" -}} {{ end }} lg:col-span-6 bg-secondary-bg rounded px-6 py-8">
         <h1 class="font-bold text-3xl text-primary-text">{{ .Title }}</h1>
         {{ partial "post_metadata.html" . }}
+        {{ $img := (.Resources.ByType "image").GetMatch "*featured*" }}
+        {{ with $img }}
+        <img src='{{ .RelPermalink }}' class="object-cover my-4" />
+        {{ end }}
         <div class="content">
             {{ .Content}}
         </div>
@@ -50,7 +54,7 @@
     {{ $related := .Site.RegularPages.Related . | first 5 }}
     {{ with $related }}
     <div
-        class="col-span-2 {{ if not $hasSidebar }} {{- print "lg:col-start-2" -}} {{ end }} lg:col-span-6 bg-secondary-bg p-6">
+        class="col-span-2 {{ if not $hasSidebar }} {{- print "lg:col-start-2" -}} {{ end }} lg:col-span-6 bg-secondary-bg rounded p-6">
         <h2 class="text-lg font-semibold mb-4">See Also</h2>
         <div class="content">
             {{ range . }}
