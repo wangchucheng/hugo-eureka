@@ -7,10 +7,15 @@
     </div>
     {{ end }}
 </article>
-{{ range .Paginator.Pages }}
-<div class="mb-8">
-    {{ partial "horizontal_summary.html" . }}
+<div class="bg-secondary-bg rounded overflow-hidden px-4 divide-y">
+    {{ range .Paginator.Pages }}
+
+    <div class="px-2 py-6">
+        {{ partial "horizontal_summary.html" . }}
+    </div>
+    {{ end }}
+
+
 </div>
-{{ end }}
 {{ template "_internal/pagination.html" . }}
 {{ end }}
