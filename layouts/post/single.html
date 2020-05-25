@@ -16,26 +16,7 @@
         {{ with .GetTerms "tags" }}
         {{ partial "post_tags.html" . }}
         {{ end }}
-        <div class="flex flex-col md:flex-row md:justify-between my-4">
-            <div class="">
-                {{with .PrevInSection}}
-                <span class="font-bold my-1">上一页</span>
-                <br />
-                <a href="{{ .RelPermalink }}" class="hover:text-eureka">
-                    {{ .LinkTitle }}
-                </a>
-                {{end}}
-            </div>
-            <div class="md:text-right">
-                {{with .NextInSection}}
-                <span class="font-bold my-1">下一页</span>
-                <br />
-                <a href="{{ .RelPermalink }}" class="hover:text-eureka">
-                    {{ .LinkTitle }}
-                </a>
-                {{end}}
-            </div>
-        </div>
+        {{ partial "post_footer.html" . }}
         <div id="commento"></div>
         <script defer src="https://commento.csquare.wang:8079/js/commento.js">
         </script>
@@ -55,7 +36,7 @@
     {{ with $related }}
     <div
         class="col-span-2 {{ if not $hasSidebar }} {{- print "lg:col-start-2" -}} {{ end }} lg:col-span-6 bg-secondary-bg rounded p-6">
-        <h2 class="text-lg font-semibold mb-4">See Also</h2>
+        <h2 class="text-lg font-semibold mb-4">{{ i18n "seeAlso" }}</h2>
         <div class="content">
             {{ range . }}
             <a href="{{ .RelPermalink }}">{{ .Title }}</a>

@@ -1,8 +1,8 @@
 {{ define "main" }}
-<article class="text-gray-700">
+{{/*  <article class="text-gray-700">
     <h1 class="font-serif font-thin text-5xl text-gray-500">{{ .Title }}</h1>
     {{ .Content }}
-</article>
+</article>  */}}
 
 <div class="w-full bg-secondary-bg">
     <div class="container mx-auto">
@@ -15,7 +15,7 @@
             </div> -->
             <div class="grid grid-cols-9 grid-rows-5 h-screen -mt-16">
                 <div class="col-start-2 col-span-4 row-start-3 row-span-2 bg-local bg-cover z-10 shadow-2xl"
-                    style="background-image: url(img/hero-1.jpg);"></div>
+                    style="background-image: url({{ print "img/hero-1.jpg" | relURL }});"></div>
                 <div class="col-start-3 col-span-5 row-start-2 row-span-3 z-20">
                     <div class="flex flex-col items-center justify-center min-h-full">
                         <div class="bg-white bg-opacity-75 shadow-2xl -m-12 p-12">
@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="col-start-5 col-span-4 row-start-2 row-span-2 bg-local bg-cover shadow-2xl"
-                    style="background-image: url(img/hero-2.jpg);"></div>
+                    style="background-image: url({{ print "img/hero-2.jpg" | relURL }});"></div>
             </div>
             <!-- <div class="grid grid-cols-8 grid-rows-6 xl:grid-rows-4 bg-cover bg-fixed -mx-8 -mt-12"
                 style="height: calc(100vh - 4rem); background-image: url(foo.jpg)">
@@ -58,7 +58,7 @@
                 <h2 class=" font-bold text-3xl my-4">Recent Posts</h2>
                 {{ $post := .Site.GetPage "section" "post" }}
                 <h1 class="font-semibold text-lg text-primary-text"><a href="{{ $post.Permalink }}"
-                        class="hover:text-eureka">阅读全部</a>
+                        class="hover:text-eureka">{{ i18n "readMore" }}</a>
                 </h1>
             </div>
 
