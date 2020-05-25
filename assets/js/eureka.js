@@ -78,7 +78,7 @@ function resizeGridItem(item) {
     grid = document.getElementsByClassName("masonry")[0];
     rowHeight = 0;
     rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
-    rowSpan = Math.ceil((item.querySelector('.grid-content').getBoundingClientRect().height + rowGap) / (rowHeight + rowGap));
+    rowSpan = Math.ceil((item.querySelector('.grid-content').getBoundingClientRect().height) / rowGap);
     item.style.gridRowEnd = "span " + rowSpan;
 }
 
