@@ -25,4 +25,4 @@ defaultContentLanguageInSubdir = false
   category = "categories"
   tag = "tags"
   series = "series"
-  authors = "authors"
+  author = "authors"

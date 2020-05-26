@@ -45,4 +45,6 @@ For more usage, please refer to Hugo's [basic usage](https://gohugo.io/getting-s
 
 ## License
 
-[MIT](https://github.com/wangchucheng/hugo-eureka/blob/master/LICENSE)
+This project is licensed under a [MIT License](https://github.com/wangchucheng/hugo-eureka/blob/master/LICENSE).
+
+The sample photos in the project are taken by me and licensed under a [CC BY-NC-SA 4.0 License](https://creativecommons.org/licenses/by-nc-sa/4.0/).

@@ -3,12 +3,12 @@
 <title>{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}</title>
 {{ hugo.Generator }}
 
-{{ $styles := resources.Get "css/styles.css" | postCSS (dict "config" "./assets/css/postcss.config.js") }}
+{{ $eureka_css := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js") }}
 {{ if .Site.IsServer }}
-<link rel="stylesheet" href="{{ $styles.RelPermalink }}">
+<link rel="stylesheet" href="{{ $eureka_css.RelPermalink }}">
 {{ else }}
-{{ $styles := $styles| minify | fingerprint | resources.PostProcess }}
-<link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
+{{ $eureka_css := $eureka_css| minify | fingerprint | resources.PostProcess }}
+<link rel="stylesheet" href="{{ $eureka_css.Permalink }}" integrity="{{ $eureka_css.Data.Integrity }}">
 {{ end }}
 {{ $eureka_js := resources.Get "js/eureka.js" }}
 <script async src="{{ $eureka_js.RelPermalink }}"></script>
