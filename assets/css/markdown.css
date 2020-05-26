@@ -104,8 +104,3 @@
   padding-top: 4.5rem;
   margin-top: -4.5rem;
 }
-  
-/* Override pygments style background color. */
-/* .content .highlight pre {
-  @apply bg-gray-100 !important;
-} */

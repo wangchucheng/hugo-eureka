@@ -16,29 +16,8 @@
         {{ with .GetTerms "tags" }}
         {{ partial "post_tags.html" . }}
         {{ end }}
-        <div class="flex flex-col md:flex-row md:justify-between my-4">
-            <div class="">
-                {{with .PrevInSection}}
-                <span class="font-bold my-1">上一页</span>
-                <br />
-                <a href="{{ .RelPermalink }}" class="hover:text-eureka">
-                    {{ .LinkTitle }}
-                </a>
-                {{end}}
-            </div>
-            <div class="md:text-right">
-                {{with .NextInSection}}
-                <span class="font-bold my-1">下一页</span>
-                <br />
-                <a href="{{ .RelPermalink }}" class="hover:text-eureka">
-                    {{ .LinkTitle }}
-                </a>
-                {{end}}
-            </div>
-        </div>
-        <div id="commento"></div>
-        <script defer src="https://commento.csquare.wang:8079/js/commento.js">
-        </script>
+        {{ partial "post_footer.html" . }}
+        {{ template "_internal/disqus.html" . }}
     </div>
     {{ if $hasSidebar}}
     <div class="col-span-2">
@@ -55,7 +34,7 @@
     {{ with $related }}
     <div
         class="col-span-2 {{ if not $hasSidebar }} {{- print "lg:col-start-2" -}} {{ end }} lg:col-span-6 bg-secondary-bg rounded p-6">
-        <h2 class="text-lg font-semibold mb-4">See Also</h2>
+        <h2 class="text-lg font-semibold mb-4">{{ i18n "seeAlso" }}</h2>
         <div class="content">
             {{ range . }}
             <a href="{{ .RelPermalink }}">{{ .Title }}</a>
@@ -68,79 +47,6 @@
 <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.0.0/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 {{ if $hasToc }}
-<script>
-    window.addEventListener('DOMContentLoaded', () => {
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                const id = entry.target.getAttribute('id');
-                if (entry.intersectionRatio > 0) {
-                    if (delay == true) {
-                        let element = document.querySelector('.sticky-toc li.active')
-                        element.firstChild.classList.remove(textColor);
-                        element.classList.remove('active');
-                        delay = false;
-                        updatePosAndColor();
-                    }
-                    document.querySelector(`.sticky-toc li a[href="#${id}"]`).parentElement.classList.add('active');
-                    updatePosAndColor();
-                } else {
-                    if (document.querySelectorAll('.sticky-toc li.active').length == 1) {
-                        delay = true;
-                    } else {
-                        let element = document.querySelector(`.sticky-toc li a[href="#${id}"]`)
-                        element.classList.remove(textColor);
-                        element.parentElement.classList.remove('active');
-                        updatePosAndColor();
-                    }
-                }
-            });
-        });
-
-        var delay = false;
-        var targetPos = window.innerHeight * 0.4
-        var textColor = 'text-eureka'
-
-        function updatePosAndColor() {
-            let elements = document.querySelectorAll('.sticky-toc li.active')
-            let len = elements.length
-            if (len != 0) {
-                let firstElement = elements[0]
-                firstElement.firstChild.classList.add(textColor)
-                let offset = firstElement.offsetTop - targetPos;
-                if (offset > 0) {
-                    document.querySelector(`.sticky-toc`).style.top = `calc( 7rem - ${offset}px)`
-                } else {
-                    document.querySelector(`.sticky-toc`).removeAttribute("style");
-                }
-                for (let i = 1; i < len; i++) {
-                    elements[i].firstChild.classList.remove(textColor)
-                }
-            }
-        }
-
-        // Track all sections that have an `id` applied
-        document.querySelectorAll('.content h1[id]').forEach((section) => {
-            observer.observe(section);
-        });
-        document.querySelectorAll('.content h2[id]').forEach((section) => {
-            observer.observe(section);
-        });
-        document.querySelectorAll('.content h3[id]').forEach((section) => {
-            observer.observe(section);
-        });
-
-        document.querySelectorAll('.content h4[id]').forEach((section) => {
-            observer.observe(section);
-        });
-
-        document.querySelectorAll('.content h5[id]').forEach((section) => {
-            observer.observe(section);
-        });
-
-        document.querySelectorAll('.content h6[id]').forEach((section) => {
-            observer.observe(section);
-        });
-    });
-</script>
+<script>enableStickyToc();</script>
 {{ end }}
 {{ end }}

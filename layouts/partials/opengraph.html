@@ -1,8 +1,9 @@
 <meta property="og:title" content="{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}" />
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
-{{ with .Params.images }}{{ range first 6 . }}
+{{ $img := (.Resources.ByType "image").GetMatch "*featured*" }}
+{{ with $img }}
 <meta property="og:image" content="{{ . | absURL }}" />
-{{ end }}{{ end }}
+{{ end }}
 <meta property="og:url" content="{{ .Permalink }}" />
 
 {{ with .Params.audio }}
@@ -12,6 +13,11 @@
     content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" />
 {{ with .Site.LanguageCode }}
 <meta property="og:locale" content="{{ . }}" />
+{{ end }}
+{{ if .IsTranslated }}
+{{ range .Translations }}
+<meta property="og:locale:alternate" content="{{ .Lang }}" />
+{{ end }}
 {{ end }}
 {{ with .Site.Title }}
 <meta property="og:site_name" content="{{ . }}" />
