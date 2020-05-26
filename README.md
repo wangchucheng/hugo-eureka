@@ -42,3 +42,7 @@ hugo server
 ```
 
 For more usage, please refer to Hugo's [basic usage](https://gohugo.io/getting-started/usage/).
+
+## License
+
+[MIT](https://github.com/wangchucheng/hugo-eureka/blob/master/LICENSE)

@@ -9,8 +9,7 @@
         </div>
         {{ partial "post_metadata.html" . }}
     </div>
-    {{ $img := (.Resources.ByType "image").GetMatch "*featured*" }}
-    {{ with $img }}
-    <img class="lg:max-w-xs object-contain mb-4 lg:mb-0 lg:ml-8" src='{{ .RelPermalink }}' alt="Featured Image">
-    {{ end }}
+    <div class="lg:max-w-xs object-contain mb-4 lg:mb-0 lg:ml-8">
+        {{ partial "featured_image.html" . }}
+    </div>
 </div>

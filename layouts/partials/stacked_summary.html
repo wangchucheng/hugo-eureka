@@ -1,8 +1,7 @@
 <div class="bg-secondary-bg rounded overflow-hidden hover:shadow-lg transition ease-in-out duration-200">
-    {{ $img := (.Resources.ByType "image").GetMatch "*featured*" }}
-    {{ with $img }}
-    <img class="w-full" src='{{ .RelPermalink }}' alt="Featured Image">
-    {{ end }}
+    <div class="w-full">
+        {{ partial "featured_image.html" . }}
+    </div>
     <div class="px-6 pt-6">
         <div class="font-bold text-xl text-primary-text mb-2"><a href="{{ .Permalink }}" class="hover:text-eureka">{{ .Title }}</a></div>
         <div class="">
