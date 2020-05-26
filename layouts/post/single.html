@@ -17,9 +17,7 @@
         {{ partial "post_tags.html" . }}
         {{ end }}
         {{ partial "post_footer.html" . }}
-        <div id="commento"></div>
-        <script defer src="https://commento.csquare.wang:8079/js/commento.js">
-        </script>
+        {{ template "_internal/disqus.html" . }}
     </div>
     {{ if $hasSidebar}}
     <div class="col-span-2">
