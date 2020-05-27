@@ -1,7 +1,7 @@
 <div class="flex flex-col-reverse lg:flex-row justify-between">
     <div>
         <div class="my-2">
-            <div class="font-bold text-xl text-primary-text mb-4"><a href="{{ .Permalink }}"
+            <div class="font-bold text-xl text-primary-text mb-4"><a href="{{ .RelPermalink }}"
                     class="hover:text-eureka">{{ .Title }}</a></div>
             <div class="content">
                 {{ .Summary | plainify }}
@@ -9,7 +9,7 @@
         </div>
         {{ partial "post_metadata.html" . }}
     </div>
-    <div class="lg:max-w-xs mb-4 lg:mb-0 lg:ml-8">
+    <div class="lg:max-w-xs w-full mb-4 lg:mb-0 lg:ml-8">
         {{ partial "featured_image.html" . }}
     </div>
 </div>

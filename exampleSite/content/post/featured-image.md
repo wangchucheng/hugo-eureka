@@ -3,7 +3,7 @@ title = "Featured Image"
 description = "Post with featured image."
 summary = ""
 toc = true
-authors = ["C. Wang"]
+authors = ["ma"]
 tags = [
     "image",
 ]
