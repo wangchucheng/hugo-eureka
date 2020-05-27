@@ -1,32 +1,13 @@
 +++
 # Name
-title = "R. Ma"
-role = "Student"
-bio = "Example Bio"
+title = "Hugo Authors"
+role = "Example Role"
+bio = "Example BioExample BioExample BioExample BioExample BioExample BioExample Bio"
 shortContent = "Example Short Content"
-interests = [
-  "Example Interest",
-  "Example Interest",
-  "Example Interest"
-]
-honor = [
-  "Example Honor",
-  "Example Honor"
-]
 
 [[organizations]]
 name = "Example Organization"
 url = "https://example.com/"
-
-[[education]]
-institution = "Example Institution"
-course = "Example Course"
-year = "2017-2021"
-
-[[education]]
-institution = "Example Institution"
-course = "Example Course"
-year = "2014-2017"
 
 [[social]]
 icon = "envelope"
