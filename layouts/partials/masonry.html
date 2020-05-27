@@ -13,5 +13,15 @@
         {{ end }}
     </div>
 </div>
-<script>enableMasonry();</script>
+<script>
+    document.addEventListener('DOMContentLoaded', ()=>{
+        window.onload = resizeAllGridItems();
+        window.addEventListener("resize", resizeAllGridItems);
+    
+        allItems = document.getElementsByClassName("item");
+        for (x = 0; x < allItems.length; x++) {
+            imagesLoaded(allItems[x], resizeInstance);
+        }
+    })
+</script>
 {{ end }}

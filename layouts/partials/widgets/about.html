@@ -31,7 +31,7 @@
                 {{ end }}
             </div>
 
-            {{ with $.Param "shortContent" }}
+            {{ with .Params.bio }}
             <div class="pt-8 text-lg leading-normal font-medium">
                 {{ . }}
             </div>

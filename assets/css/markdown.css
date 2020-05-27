@@ -1,9 +1,3 @@
-/* Additional vertical padding used by kbd tag. */
-.py-05 {
-  padding-top: 0.125rem;
-  padding-bottom: 0.125rem;
-}
-
 .content {
   @apply text-primary-text leading-normal break-words;
 }

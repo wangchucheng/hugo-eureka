@@ -3,7 +3,7 @@ title = "Placeholder Text"
 description = "Lorem Ipsum Dolor Si Amet"
 summary = ""
 toc = true
-authors = ["Hugo Authors"]
+authors = ["Hugo Authors", "Example Author"]
 tags = [
     "markdown",
     "text",
