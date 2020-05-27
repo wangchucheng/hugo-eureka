@@ -1,0 +1,17 @@
+{{ with . }}
+<div class="mx-4 xl:mx-16">
+    <div class="flex flex-row items-center justify-between">
+        <h2 class=" font-bold text-3xl my-4">{{ i18n "recent" }}</h2>
+    </div>
+    <div class="masonry grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+        {{ range first 10 . }}
+        <div class="item">
+            <div class="grid-content">
+                {{ partial "stacked_summary.html" . }}
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</div>
+<script>enableMasonry();</script>
+{{ end }}

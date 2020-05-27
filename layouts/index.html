@@ -7,12 +7,6 @@
 <div class="w-full bg-secondary-bg">
     <div class="container mx-auto">
         <div class="max-w-screen-xl">
-            <!-- <div class="bg-fixed bg-cover" style="height: calc(100vh - 4rem); background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(foo.jpg)">
-                <div class="flex flex-col items-center justify-center min-h-full">
-                    <span class="font-bold text-3xl text-white">靡不有初</span>
-                    <span class="font-bold text-3xl text-white">鲜克有终</span>
-                </div>
-            </div> -->
             <div class="grid grid-cols-9 grid-rows-5 h-screen -mt-16">
                 <div class="col-start-2 col-span-4 row-start-3 row-span-2 bg-local bg-cover z-10 shadow-2xl"
                     style="background-image: url({{ printf "img/%s" .Site.Params.hero.imgLeft | relURL }});"></div>
@@ -26,24 +20,6 @@
                 <div class="col-start-5 col-span-4 row-start-2 row-span-2 bg-local bg-cover shadow-2xl"
                     style="background-image: url({{ printf "img/%s" .Site.Params.hero.imgRight | relURL }});"></div>
             </div>
-            <!-- <div class="grid grid-cols-8 grid-rows-6 xl:grid-rows-4 bg-cover bg-fixed -mx-8 -mt-12"
-                style="height: calc(100vh - 4rem); background-image: url(foo.jpg)">
-                <div class="col-span-2 row-start-1 row-span-2 xl:row-span-1 bg-secondary-bg -m-1"></div>
-                <div class="col-start-3 col-span-6 xl:col-span-4 row-start-1 row-span-1 bg-secondary-bg -m-1"></div>
-                <div
-                    class="col-start-1 md:col-start-3 col-span-8 md:col-span-4 row-start-3 md:row-start-2 row-span-2 md:row-span-4 xl:row-span-2 bg-secondary-bg p-16 -m-1">
-                    <div class="flex flex-col items-center justify-center min-h-full">
-                        <span class="font-bold text-3xl">靡不有初</span>
-                        <span class="font-bold text-3xl">鲜克有终</span>
-                    </div>
-                </div>
-                <div
-                    class="col-start-1 xl:col-start-3 col-span-6 xl:col-span-4 row-start-6 xl:row-start-4 row-span-1 bg-secondary-bg -m-1">
-                </div>
-                <div
-                    class="col-start-7 col-span-2 row-start-5 xl:row-start-4 row-span-2 xl:row-span-1 bg-secondary-bg -m-1">
-                </div>
-            </div> -->
         </div> 
 
     </div>
@@ -52,29 +28,10 @@
 
 <div class="container mx-auto ">
     <div class="max-w-screen-xl pt-12 md:px-4 xl:px-8">
-
-        <div class="mx-4 xl:mx-16">
-            <div class="flex flex-row items-center justify-between">
-                <h2 class=" font-bold text-3xl my-4">Recent Posts</h2>
-                {{ $post := .Site.GetPage "section" "post" }}
-                <h1 class="font-semibold text-lg text-primary-text"><a href="{{ $post.Permalink }}"
-                        class="hover:text-eureka">{{ i18n "readMore" }}</a>
-                </h1>
-            </div>
-
-            <div class="masonry grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
-                {{ range first 10 $pages }}
-                <div class="item">
-                    <div class="grid-content">
-                        {{ partial "stacked_summary.html" . }}
-                    </div>
-                </div>
-                {{ end }}
-            </div>
-        </div>
+        {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+        {{ partial "masonry" $pages }}
     </div>
 </div>
-<script>enableMasonry();</script>
+
 
 {{ end }}

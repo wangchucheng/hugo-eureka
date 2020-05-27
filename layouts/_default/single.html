@@ -15,9 +15,7 @@
         {{ with .GetTerms "tags" }}
         {{ partial "post_tags.html" . }}
         {{ end }}
-        <div id="commento"></div>
-        <script defer src="https://commento.csquare.wang:8079/js/commento.js">
-        </script>
+        {{ partial "comment.html" . }}
     </div>
     {{ if $hasSidebar}}
     <div class="col-span-2">
