@@ -19,7 +19,20 @@ git init
 git submodule add https://github.com/wangchucheng/hugo-eureka.git themes/eureka
 ```
 
-Then, add the theme to the site configuration.
+If you want to customize and recompile css file, make sure to install `postcss-cli` and `autoprefixer` globally. Because Hugo Pipe’s PostCSS requires it, which you can read Hugo's [PostCSS](https://gohugo.io/hugo-pipes/postcss/).
+
+```shell
+npm install -g postcss-cli
+npm install -g autoprefixer
+```
+
+Then, install the necessary node packages in `themes/eureka`.
+
+```shell
+npm install
+```
+
+Finally, add the theme to the site configuration.
 
 ```
 theme = "eureka"

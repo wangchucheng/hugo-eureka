@@ -59,9 +59,8 @@
 
     function getcolorscheme() {
         let element = document.getElementById('lightDarkMode');
-        console.log(element)
         let targetDiv = document.getElementById('lightDarkOptions');
-        let targets = targetDiv.getElementsByTagName('div')
+        let targets = targetDiv.getElementsByTagName('div');
         let screen = document.getElementById('is-open');
 
 
@@ -71,7 +70,6 @@
             element.firstElementChild.setAttribute("data-icon", icon)
             element.firstElementChild.classList.remove('fa-' + old_icon)
             element.firstElementChild.classList.add('fa-' + icon)
-            console.log(element.firstElementChild)
         } else {
             element.firstElementChild.setAttribute("data-icon", 'adjust')
             element.firstElementChild.classList.add('fa-adjust')
@@ -97,14 +95,15 @@
             })
         }
         screen.addEventListener('click', () => {
-            console.log('关闭')
             targetDiv.classList.toggle('hidden')
             screen.classList.toggle('hidden')
-            console.log(screen)
         })
 
     }
-    getcolorscheme()
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme()
+    });
+    
 
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -132,16 +131,16 @@
 
         let elements = document.getElementsByClassName('main-a');
         for (let i in elements) {
-            let elementurl = elements[i].getAttribute('href')
-            if (elementurl.length > 1 && elementurl.charAt(elementurl.length - 1) == '/') {
-                elementurl = elementurl.substr(0, elementurl.length - 1)
-            }
-
-            console.log('sessionStorage:    ' + sessionStorage.getItem("mainKey"))
-            if (elementurl == sessionStorage.getItem("mainKey")) {
-                elements[i].classList.add('text-eureka')
-            } else {
-                elements[i].classList.remove('text-eureka')
+            if (typeof elements[i] === "object") {
+                let elementurl = elements[i].getAttribute('href')
+                if (elementurl.length > 1 && elementurl.charAt(elementurl.length - 1) == '/') {
+                    elementurl = elementurl.substr(0, elementurl.length - 1)
+                }
+                if (elementurl == sessionStorage.getItem("mainKey")) {
+                    elements[i].classList.add('text-eureka')
+                } else {
+                    elements[i].classList.remove('text-eureka')
+                }
             }
         }
     }
@@ -196,6 +195,7 @@
         document.getElementsByTagName('html')[0].classList.remove('dark')
     }
 
+    {{ if .IsTranslated }}
     document.addEventListener('DOMContentLoaded', () => {
         let element = document.getElementById('languageMode');
         let targetDiv = document.getElementById('languageOptions');
@@ -204,7 +204,6 @@
         let storagemode = localStorage.getItem("languageMode")
 
         if (storagemode != null) {
-            console.log(element.getElementsByTagName('text')[0])
             element.getElementsByTagName('text')[0].innerHTML = storagemode
         }
 
@@ -225,5 +224,5 @@
             screen.classList.toggle('hidden')
         })
     })
-
+    {{ end }}
 </script>
