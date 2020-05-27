@@ -1,0 +1,5 @@
+{{ if eq .Site.Params.comment.platform "disqus" }}
+{{ partial "comment/disqus.html" . }}
+{{ else if eq .Site.Params.comment.platform "commento" }}
+{{ partial "comment/commento.html" . }}
+{{ end }}

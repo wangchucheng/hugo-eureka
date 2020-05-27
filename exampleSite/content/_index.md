@@ -1,7 +1,4 @@
----
-title: Hi, and welcome.
-date: 2020-05-13
-draft: false
----
++++
+author = "Hugo Authors"
++++
 
-Live long and code.

@@ -42,3 +42,9 @@ hugo server
 ```
 
 For more usage, please refer to Hugo's [basic usage](https://gohugo.io/getting-started/usage/).
+
+## License
+
+This project is licensed under a [MIT License](https://github.com/wangchucheng/hugo-eureka/blob/master/LICENSE).
+
+The sample photos in the project are taken by me and licensed under a [CC BY-NC-SA 4.0 License](https://creativecommons.org/licenses/by-nc-sa/4.0/).

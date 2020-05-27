@@ -4,19 +4,13 @@
 name = "Eureka"
 license = "MIT"
 licenselink = "https://github.com/wangchucheng/hugo-eureka/blob/master/LICENSE"
-description = ""
+description = "Eureka is a elegant and powerful theme for Hugo."
 homepage = "http://example.com/"
-tags = []
-features = []
+tags = ["blog", "Responsive", "Simple", "Google analytics", "Multilingual", "Modern"]
+features = ["blog", "syntax highlighting"]
 min_version = "0.65.0"
 
 authors = [
   {name = "C. Wang", homepage = "https://wcc.im/"},
   {name = "R. Ma", homepage = "https://ruiqima.com/"}
 ]
-
-# If porting an existing theme
-[original]
-  name = ""
-  homepage = ""
-  repo = ""

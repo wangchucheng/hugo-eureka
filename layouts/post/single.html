@@ -6,18 +6,20 @@
         class="col-span-2 {{ if not $hasSidebar }} {{- print "lg:col-start-2" -}} {{ end }} lg:col-span-6 bg-secondary-bg rounded px-6 py-8">
         <h1 class="font-bold text-3xl text-primary-text">{{ .Title }}</h1>
         {{ partial "post_metadata.html" . }}
-        {{ $img := (.Resources.ByType "image").GetMatch "*featured*" }}
-        {{ with $img }}
-        <img src='{{ .RelPermalink }}' class="object-cover my-4" />
-        {{ end }}
+        <div class="my-4">
+            {{ partial "featured_image.html" . }}
+        </div>
         <div class="content">
             {{ .Content}}
         </div>
         {{ with .GetTerms "tags" }}
         {{ partial "post_tags.html" . }}
         {{ end }}
+        {{ with .GetTerms "authors" }}
+        {{ partial "post_author.html" . }}
+        {{ end }}
         {{ partial "post_footer.html" . }}
-        {{ template "_internal/disqus.html" . }}
+        {{ partial "comment.html" . }}
     </div>
     {{ if $hasSidebar}}
     <div class="col-span-2">

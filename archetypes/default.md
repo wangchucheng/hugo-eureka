@@ -1,5 +1,12 @@
----
-title: "{{ replace .Name "-" " " | title }}"
-date: {{ .Date }}
-draft: true
----
++++
+title = "{{ replace .Name "-" " " | title }}"
+summary = ""
+toc = true
+authors = []
+tags = []
+categories = []
+series = []
+date =  {{ .Date }}
+lastmod = {{ .Date }}
+draft = false
++++

@@ -18,3 +18,6 @@ other = "下一页"
 
 [seeAlso]
 other = "相关"
+
+[recent]
+other = "最近"

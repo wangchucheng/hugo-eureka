@@ -1,0 +1,28 @@
+baseURL = "https://example.com/"
+title = "Eureka Demo"
+
+theme = "eureka"
+
+paginate = 3
+copyright = "&copy; 2020 <a href=\"https://wcc.im\">C. Wang</a> and <a href=\"https://ruiqima.com\">R. Ma</a>"
+enableGitInfo = false
+enableEmoji = true
+summaryLength = 75
+
+defaultContentLanguage = "en"
+hasCJKLanguage = false  # Set `true` for Chinese/Japanese/Korean.
+defaultContentLanguageInSubdir = false
+
+# Uncomment for google analytics
+# googleAnalytics = "UA-123-45"
+
+[markup]
+  [markup.highlight]
+    codeFences = false
+    noClasses = false
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  series = "series"
+  author = "authors"

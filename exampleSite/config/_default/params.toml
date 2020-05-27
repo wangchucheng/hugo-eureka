@@ -1,0 +1,18 @@
+description = "Eureka is a elegant and powerful theme for Hugo."
+
+[hero]
+    slogan = "We are all in the gutter, but some of us are looking at the stars."
+    # Specify the image name in `static/img/` folder.
+    imgLeft = "hero-left.jpg"
+    imgRight = "hero-right.jpg"
+
+[comment]
+    # Options: disqus and commento.
+    platform = ""
+
+    [comment.disqus]
+        shortname = ""
+
+    [comment.commento]
+        # If self-hosting, please enter the url (e.g. https://commento.example.com) here. Otherwise leave empty. 
+        url = ""

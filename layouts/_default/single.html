@@ -6,15 +6,16 @@
         class="col-span-2 {{ if not $hasSidebar }} {{- print "lg:col-start-2" -}} {{ end }} lg:col-span-6 bg-secondary-bg rounded px-6 py-8">
         <h1 class="font-bold text-3xl text-primary-text">{{ .Title }}</h1>
         {{ partial "post_metadata.html" . }}
+        <div class="my-4">
+            {{ partial "featured_image.html" . }}
+        </div>
         <div class="content">
             {{ .Content}}
         </div>
         {{ with .GetTerms "tags" }}
         {{ partial "post_tags.html" . }}
         {{ end }}
-        <div id="commento"></div>
-        <script defer src="https://commento.csquare.wang:8079/js/commento.js">
-        </script>
+        {{ partial "comment.html" . }}
     </div>
     {{ if $hasSidebar}}
     <div class="col-span-2">

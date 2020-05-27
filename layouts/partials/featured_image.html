@@ -1,0 +1,13 @@
+{{ $img := (.Resources.ByType "image").GetMatch "*featured*" }}
+{{ with $img }}
+<img src="{{ .RelPermalink }}" class="w-full" alt="Featured Image">
+{{ end }}
+{{ if .Params.featuredImage }}
+{{ if or (hasPrefix .Params.featuredImage "http://") (hasPrefix .Params.featuredImage "https://") }}
+{{ $img = .Params.featuredImage }}
+{{ else }}
+{{ $imgPath := path.Join "img" .Params.featuredImage }}
+{{ $img = $imgPath | relURL }}
+{{ end }}
+<img src="{{- $img -}}" class="w-full" alt="Featured Image">
+{{ end }}
