@@ -59,7 +59,7 @@
 }
 
 .content code {
-  @apply font-mono text-sm inline bg-tertiary-bg rounded p-1;
+  @apply font-mono text-sm text-tertiary-text inline bg-tertiary-bg rounded p-1;
 }
 
 .content pre {

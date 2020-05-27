@@ -1,16 +1,5 @@
-const themeDir = __dirname + '/../../';
-
 module.exports = {
   important: true,
-  purge: {
-    enabled: true,
-    content: [
-      themeDir + 'layouts/**/*.html',
-      themeDir + 'exampleSite/content/**/*.html',
-      'layouts/**/*.html',
-      'content/**/*.html',
-    ],
-  },
   theme: {
     fontFamily: {
       'serif': ['Lora', 'Noto Serif SC', 'serif'],

@@ -3,22 +3,20 @@
 <title>{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}</title>
 {{ hugo.Generator }}
 
-{{ $eureka_css := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/tailwind.config.js") }}
+{{ $eureka_css := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js") }}
 {{ if .Site.IsServer }}
-<link rel="stylesheet" href="{{ $eureka_css.RelPermalink }}">
+<link rel="stylesheet" href="{{ $eureka_css.Permalink }}">
 {{ else }}
-{{ $eureka_css := $eureka_css| minify | fingerprint}}
-<link rel="stylesheet" href="{{ $eureka_css.Permalink }}" integrity="{{ $eureka_css.Data.Integrity }}">
+{{ $eureka_css := $eureka_css | minify | resources.PostProcess }}
+<link rel="stylesheet" href="{{ $eureka_css.Permalink }}">
 {{ end }}
 {{ $eureka_js := resources.Get "js/eureka.js" }}
 <script defer src="{{ $eureka_js.RelPermalink }}"></script>
 <link
     href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
     rel="stylesheet">
-<!-- <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.0.3/build/styles/solarized-light.min.css"> -->
 <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.0.3/build/styles/solarized-dark.min.css">
+    href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.0.3/build/styles/solarized-light.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/js/all.min.js"></script>
 {{ template "_internal/google_analytics_async.html" . }}
 {{ template "_internal/schema.html" . }}

@@ -13,12 +13,10 @@
 
     <main class="min-h-screen pt-16">
         {{ if .IsHome }}
-        {{- partial "dev-size-indicator.html" . -}}
         {{- block "main" . }}{{- end }}
         {{ else }}
         <div class="container mx-auto ">
             <div class="max-w-screen-xl pt-12 lg:px-4 xl:px-8">
-                {{- partial "dev-size-indicator.html" . -}}
                 {{- block "main" . }}{{- end }}
             </div>
         </div>
@@ -28,7 +26,6 @@
     <footer>
         <div class="container mx-auto">
             <div class="max-w-screen-xl">
-                {{- partial "dev-parameters.html" . -}}
                 {{- partial "footer.html" . -}}
             </div>
         </div>

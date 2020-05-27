@@ -9,7 +9,8 @@
     </div>
 
     <div id="target" class="hidden block flex-grow md:flex md:items-center w-full md:w-auto text-primary-text z-20">
-        <div class="text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0" id="current-url" currenturl="{{ .RelPermalink }}">
+        <div class="text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0" id="current-url"
+            currenturl="{{ .RelPermalink }}">
             {{ range .Site.Menus.main }}
             <a href="{{ .URL | relLangURL }}"
                 class="block mt-4 md:inline-block md:mt-0 hover:text-eureka mr-4 main-a">{{ .Name }}</a>
@@ -121,7 +122,7 @@
         })
     });
 
-    document.addEventListener('DOMContentLoaded', () => {
+    function switchMenu() {
         let currenturl = document.getElementById('current-url').getAttribute('currenturl')
         if (currenturl.length > 1) {
             currenturl = currenturl.substr(0, currenturl.length - 1)
@@ -133,41 +134,48 @@
         for (let i in elements) {
             let elementurl = elements[i].getAttribute('href')
             if (elementurl.length > 1 && elementurl.charAt(elementurl.length - 1) == '/') {
-                elementurl = elementurl.substr(0, currenturl.length)
+                elementurl = elementurl.substr(0, elementurl.length - 1)
             }
+
+            console.log('sessionStorage:    ' + sessionStorage.getItem("mainKey"))
             if (elementurl == sessionStorage.getItem("mainKey")) {
                 elements[i].classList.add('text-eureka')
             } else {
                 elements[i].classList.remove('text-eureka')
             }
         }
-    });
+    }
+    switchMenu();
 
     function switchMode(mode) {
         let icon = ''
         switch (mode) {
             case 'Light':
                 window.matchMedia("(prefers-color-scheme: dark)").removeListener(func)
-                window.matchMedia("(prefers-color-scheme: light)").removeListener(func)
+                //window.matchMedia("(prefers-color-scheme: light)").removeListener(func)
                 icon = 'sun'
                 document.getElementsByTagName('html')[0].classList.remove('dark')
                 break
             case 'Dark':
                 window.matchMedia("(prefers-color-scheme: dark)").removeListener(func)
-                window.matchMedia("(prefers-color-scheme: light)").removeListener(func)
+                //window.matchMedia("(prefers-color-scheme: light)").removeListener(func)
                 icon = 'moon'
                 document.getElementsByTagName('html')[0].classList.add('dark')
                 break
             case 'Auto':
                 icon = 'adjust'
                 const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
-                const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+                //const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
 
                 window.matchMedia("(prefers-color-scheme: dark)").addListener(func)
-                window.matchMedia("(prefers-color-scheme: light)").addListener(func)
+                //window.matchMedia("(prefers-color-scheme: light)").addListener(func)
 
-                if (isDarkMode) activateDarkMode()
-                if (isLightMode) activateLightMode()
+                if (isDarkMode) {
+                    activateDarkMode()
+                } else {
+                    activateLightMode()
+                }
+                //if (isLightMode) activateLightMode()
                 break
         }
         return icon
@@ -176,6 +184,8 @@
     function func(e) {
         if (e.matches) {
             activateDarkMode()
+        } else {
+            activateLightMode()
         }
     }
 
@@ -214,8 +224,6 @@
             targetDiv.classList.toggle('hidden')
             screen.classList.toggle('hidden')
         })
-
-
     })
 
 </script>

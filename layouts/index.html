@@ -1,9 +1,4 @@
 {{ define "main" }}
-{{/*  <article class="text-gray-700">
-    <h1 class="font-serif font-thin text-5xl text-gray-500">{{ .Title }}</h1>
-    {{ .Content }}
-</article>  */}}
-
 <div class="w-full bg-secondary-bg">
     <div class="container mx-auto">
         <div class="max-w-screen-xl">
@@ -24,14 +19,10 @@
 
     </div>
 </div>
-
-
 <div class="container mx-auto ">
     <div class="max-w-screen-xl pt-12 md:px-4 xl:px-8">
         {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
         {{ partial "masonry" $pages }}
     </div>
 </div>
-
-
 {{ end }}
