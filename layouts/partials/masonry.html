@@ -15,8 +15,20 @@
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', ()=>{
+        function imgLoad(img, callback) {
+            var timer = setInterval(function() {
+                if (img.complete) {
+                    resizeAllGridItems()
+                    clearInterval(timer)
+                }
+            }, 50)
+        }
         window.onload = resizeAllGridItems();
         window.addEventListener("resize", resizeAllGridItems);
+        var imgs = document.getElementsByTagName('img');
+        for (let img of imgs) {
+            imgLoad(img, resizeAllGridItems())
+        }
     })
 </script>
 {{ end }}
