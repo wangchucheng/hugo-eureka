@@ -4,12 +4,8 @@
 {{ hugo.Generator }}
 
 {{ $eureka_css := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js") }}
-{{ if .Site.IsServer }}
+{{ $eureka_css := $eureka_css | minify }}
 <link rel="stylesheet" href="{{ $eureka_css.Permalink }}">
-{{ else }}
-{{ $eureka_css := $eureka_css | minify | resources.PostProcess }}
-<link rel="stylesheet" href="{{ $eureka_css.Permalink }}">
-{{ end }}
 {{ $eureka_js := resources.Get "js/eureka.js" }}
 <script defer src="{{ $eureka_js.RelPermalink }}"></script>
 <link
