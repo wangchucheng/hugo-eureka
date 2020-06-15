@@ -17,6 +17,9 @@ module.exports = {
       'mono': ['SFMono-Regular', 'Menlo'],
     },
     extend: {
+      minHeight: {
+        '16': '4rem',
+      },
       inset: {
         '16': '4rem',
       },

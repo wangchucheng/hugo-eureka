@@ -95,6 +95,6 @@
 }
 
 .content *:target {
-  padding-top: 4.5rem;
-  margin-top: -4.5rem;
+  padding-top: 4rem;
+  margin-top: -4rem;
 }
