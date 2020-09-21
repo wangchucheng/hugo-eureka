@@ -15,7 +15,7 @@ date =  2020-05-26
 lastmod = 2020-05-26
 draft = false
 
-featuredImage = "hero-right.jpg"
+featuredImage = "https://img95.699pic.com/photo/50055/9074.jpg_wh300.jpg"
 +++
 
 Maecenas maximus, elit in ornare porttitor, nisi eros hendrerit nisl, sed fermentum nulla urna blandit tellus.

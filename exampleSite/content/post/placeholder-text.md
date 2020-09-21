@@ -9,7 +9,7 @@ tags = [
     "text",
 ]
 categories = []
-series = []
+series = ["Themes Guide"]
 date =  2019-03-09
 lastmod = 2019-03-09
 draft = false

@@ -8,7 +8,7 @@ description = "Eureka is a elegant and powerful theme for Hugo."
 homepage = "https://eureka-demo.netlify.app/"
 tags = ["blog", "Responsive", "Simple", "Google analytics", "Multilingual", "Modern"]
 features = ["blog", "syntax highlighting"]
-min_version = "0.65.0"
+min_version = "0.74.0"
 
 authors = [
   {name = "C. Wang", homepage = "https://wcc.im/"},

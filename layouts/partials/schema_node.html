@@ -1,0 +1,26 @@
+{{ with .Paginator.Pages }}
+<script type="application/ld+json">   
+{
+    "@context":"https://schema.org",
+    "@type":"ItemList",
+    "itemListElement":[
+        {{- range $index, $value := . -}}
+        {{- if gt $index 0 -}},{{- end -}}
+        {
+            "@type":"ListItem",
+            "position": {{ add $index 1 }},
+            "name": {{ .Title }},
+            "description": {{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }},
+            {{ $img := (.Resources.ByType "image").GetMatch "*featured*" -}}
+            {{ if $img -}}
+            "image": {{ $img.RelPermalink }},
+            {{ else if .Params.featuredImage -}}
+            "image": {{ .Params.featuredImage | relURL }},
+            {{ end -}}
+            "url": {{ .RelPermalink }}
+        }
+        {{- end }}
+    ]
+}
+</script>
+{{ end }}

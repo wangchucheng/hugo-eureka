@@ -1,0 +1,47 @@
+{{ if not .IsHome }}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    {{ $depth := (sub (len (split .RelPermalink "/")) 1) -}}
+    "itemListElement": [{{ template "breadcrumb" (dict "p1" . "p2" . "depth" $depth) }}]
+}
+</script>
+{{ end }}
+
+{{ if or (eq .Kind "section") (eq .Kind "term") }}
+{{ partial "schema_node.html" . }}
+{{ else if .IsPage }}
+{{ partial "schema_page.html" . }}
+{{ end }}
+
+{{- define "breadcrumb" -}}
+{{ $depth := (sub .depth 1 ) -}}
+{{ if .p1.Parent -}}
+{{ template "breadcrumb" (dict "p1" .p1.Parent "p2" .p2 "depth" $depth) -}}
+{{ else if not .p1.IsHome -}}
+{{ template "breadcrumb" (dict "p1" .p1.Site.Home "p2" .p2 "depth" $depth) -}}
+{{ end -}}
+{{ if eq .p1 .p2 -}}
+    {
+        "@type": "ListItem",
+        "position": {{ .depth }},
+        "name": {{ .p1.Title }},
+        "item": {{ .p1.Permalink }}
+    }
+{{- else if eq .depth 1 -}}
+    {
+        "@type": "ListItem",
+        "position": {{ .depth }},
+        "name": {{ .p1.Site.Title }},
+        "item": {{ .p1.Permalink }}
+    },
+{{- else -}}
+    {
+        "@type": "ListItem",
+        "position": {{ .depth }},
+        "name": {{ .p1.Title }},
+        "item": {{ .p1.Permalink }}
+    },
+{{- end -}}
+{{- end -}}

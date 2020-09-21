@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "https://example.com"
 title = "Eureka Demo"
 
 theme = "eureka"

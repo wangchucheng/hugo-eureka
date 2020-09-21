@@ -1,10 +1,17 @@
+[basic]
+    # E.g. Person, Organization, LocalBusiness, Project, EducationalOrganization
+    site_type = "Person"
+    icon = "images/icon.png"
+    publisher_name = "Test publisher"
+    publisher_logo = ""
+
 description = "Eureka is a elegant and powerful theme for Hugo."
 
 [hero]
     slogan = "We are all in the gutter, but some of us are looking at the stars."
-    # Specify the image name in `static/img/` folder.
-    imgLeft = "hero-left.jpg"
-    imgRight = "hero-right.jpg"
+    # Specify the image name in `static/images/` folder.
+    imgLeft = "images/hero-left.jpg"
+    imgRight = "images/hero-right.jpg"
 
 [comment]
     # Options: disqus and commento.

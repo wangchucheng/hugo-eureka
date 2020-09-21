@@ -1,16 +1,29 @@
 <meta property="og:title" content="{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}" />
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
-{{ $img := (.Resources.ByType "image").GetMatch "*featured*" }}
-{{ with $img }}
-<meta property="og:image" content="{{ . | absURL }}" />
-{{ end }}
+{{ $img := (.Resources.ByType "image").GetMatch "*featured*" -}}
+{{ if $img -}}
+<meta property="og:image" content="{{ $img.Permalink }}" />
+{{ else if .Params.featuredImage -}}
+<meta property="og:image" content="{{ .Params.featuredImage | absURL }}" />
+{{ end -}}
+
 <meta property="og:url" content="{{ .Permalink }}" />
 
 {{ with .Params.audio }}
-<meta property="og:audio" content="{{ . }}" />
+<meta property="og:audio" content="{{ . | absURL }}" />
 {{ end }}
-<meta property="og:description"
-    content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" />
+{{ with .Description }}
+<meta property="og:description" content="{{ . }}" />
+{{ else }}
+{{if .IsPage}}
+<meta property="og:description" content="{{ .Summary }}" />
+{{ else }}
+{{ with .Site.Params.description }}
+<meta property="og:description" content="{{ . }}" />
+{{ end }}
+{{ end }}
+{{ end }}
+
 {{ with .Site.LanguageCode }}
 <meta property="og:locale" content="{{ . }}" />
 {{ end }}
@@ -19,9 +32,11 @@
 <meta property="og:locale:alternate" content="{{ .Lang }}" />
 {{ end }}
 {{ end }}
+
 {{ with .Site.Title }}
 <meta property="og:site_name" content="{{ . }}" />
 {{ end }}
+
 {{ with .Params.videos }}
 {{ range . }}
 <meta property="og:video" content="{{ . | absURL }}" />
@@ -39,7 +54,8 @@
 {{ end }}
 {{ else }}
 {{ if not .Date.IsZero }}
-<meta property="og:updated_time" content="{{ .Date.Format "2006-01-02T15:04:05-07:00" | safeHTML }}" />{{ end }}
+<meta property="og:updated_time" content="{{ .Date.Format "2006-01-02T15:04:05-07:00" | safeHTML }}" />
+{{ end }}
 {{ end }}
 
 <meta property="article:section" content="{{ .Section }}" />

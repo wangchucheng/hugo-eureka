@@ -1,0 +1,62 @@
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": {{ .RelPermalink }}
+    },
+    "headline": "{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}",
+    {{ $img := (.Resources.ByType "image").GetMatch "*featured*" -}}
+    {{ if $img -}}
+    "image": {{ $img.RelPermalink }},
+    {{ else if .Params.featuredImage -}}
+    "image": {{ .Params.featuredImage | relURL }},
+    {{ end -}}
+    
+    {{ if .IsPage -}}
+    {{ if not .PublishDate.IsZero -}}
+    "datePublished": {{ .PublishDate.Format "2006-01-02T15:04:05-07:00" }},
+    {{ else if not .Date.IsZero -}}
+    "datePublished": {{ .Date.Format "2006-01-02T15:04:05-07:00" }},
+    {{ end -}}
+    {{ if not .Lastmod.IsZero -}}
+    "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05-07:00" }},
+    {{ end -}}
+    {{ end -}}
+    
+    {{ with .WordCount -}}
+    "wordCount": {{ . }},
+    {{ end -}}
+    {{ with .Params.authors -}}
+    "author": {
+        "@type": "Person",
+        "name": {{ . }}
+    },
+    {{ end -}}
+    "publisher": {
+        {{ with .Site.Params.basic.site_type -}}
+        "@type": {{ . }},
+        {{ else -}}
+        "@type": "Person",
+        {{ end -}}
+        {{ with .Site.Params.basic.publisher_name -}}
+        "name": {{ . }},
+        {{ else -}}
+        "name": {{ .Site.Title }},
+        {{ end -}}
+        {{ if .Site.Params.basic.publisher_logo -}}
+        "logo": {
+            "@type": "ImageObject",
+            "url": {{ .Site.Params.basic.publisher_logo | relURL }}
+        }
+        {{ else if .Site.Params.basic.icon -}}
+        "logo": {
+            "@type": "ImageObject",
+            "url": {{ .Site.Params.basic.icon | relURL }}
+        }
+        {{ end -}}
+    },
+    "description": "{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}"
+}
+</script>
