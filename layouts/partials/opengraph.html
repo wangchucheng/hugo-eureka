@@ -18,7 +18,7 @@
 {{if .IsPage}}
 <meta property="og:description" content="{{ .Summary }}" />
 {{ else }}
-{{ with .Site.Params.description }}
+{{ with .Site.Params.basic.description }}
 <meta property="og:description" content="{{ . }}" />
 {{ end }}
 {{ end }}
@@ -62,5 +62,18 @@
 {{ with .Params.tags }}
 {{ range first 6 . }}
 <meta property="article:tag" content="{{ . }}" />
+{{ end }}
+{{ end }}
+
+{{ $permalink := .Permalink }}
+{{ $siteSeries := .Site.Taxonomies.series }}
+{{ with .Params.series }}
+{{ range $name := . }}
+{{ $series := index $siteSeries (urlize $name) }}
+{{ range $page := first 6 $series.Pages }}
+{{ if ne $page.Permalink $permalink }}
+<meta property="og:see_also" content="{{ $page.Permalink }}" />
+{{ end }}
+{{ end }}
 {{ end }}
 {{ end }}

@@ -10,7 +10,7 @@
             "@type":"ListItem",
             "position": {{ add $index 1 }},
             "name": {{ .Title }},
-            "description": {{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }},
+            "description": {{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.basic.description }}{{ . }}{{ end }}{{ end }}{{ end }},
             {{ $img := (.Resources.ByType "image").GetMatch "*featured*" -}}
             {{ if $img -}}
             "image": {{ $img.RelPermalink }},

@@ -4,8 +4,7 @@
     icon = "images/icon.png"
     publisher_name = "Test publisher"
     publisher_logo = ""
-
-description = "Eureka is a elegant and powerful theme for Hugo."
+    description = "Eureka is a elegant and powerful theme for Hugo."
 
 [hero]
     slogan = "We are all in the gutter, but some of us are looking at the stars."
