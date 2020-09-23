@@ -8,7 +8,7 @@
 {{ $eureka_css := $eureka_css | minify }}
 <link rel="stylesheet" href="{{ $eureka_css.Permalink }}">
 {{ $eureka_js := resources.Get "js/eureka.js" }}
-<script defer src="{{ $eureka_js.RelPermalink }}"></script>
+<script async src="{{ $eureka_js.RelPermalink }}"></script>
 <link
     href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
     rel="stylesheet">

@@ -10,16 +10,21 @@ function enableStickyToc() {
                     delay = false;
                     updatePosAndColor();
                 }
-                document.querySelector(`.sticky-toc li a[href="#${id}"]`).parentElement.classList.add('active');
-                updatePosAndColor();
+                let element = document.querySelector(`.sticky-toc li a[href="#${id}"]`)
+                if (element) {
+                    element.parentElement.classList.add('active');
+                    updatePosAndColor();
+                }
             } else {
                 if (document.querySelectorAll('.sticky-toc li.active').length == 1) {
                     delay = true;
                 } else {
                     let element = document.querySelector(`.sticky-toc li a[href="#${id}"]`)
-                    element.classList.remove(textColor);
-                    element.parentElement.classList.remove('active');
-                    updatePosAndColor();
+                    if (element) {
+                        element.classList.remove(textColor);
+                        element.parentElement.classList.remove('active');
+                        updatePosAndColor();
+                    }
                 }
             }
         });
@@ -57,21 +62,36 @@ function enableStickyToc() {
     document.querySelectorAll('.content h3[id]').forEach((section) => {
         observer.observe(section);
     });
-
     document.querySelectorAll('.content h4[id]').forEach((section) => {
         observer.observe(section);
     });
-
     document.querySelectorAll('.content h5[id]').forEach((section) => {
         observer.observe(section);
     });
-
     document.querySelectorAll('.content h6[id]').forEach((section) => {
         observer.observe(section);
     });
 }
 
 //Masonry Layout
+function enableMasonry() {
+    window.onload = resizeAllGridItems();
+    window.addEventListener("resize", resizeAllGridItems);
+    var imgs = document.getElementsByTagName('img');
+    for (let img of imgs) {
+        imgLoad(img, resizeAllGridItems())
+    }
+}
+
+function imgLoad(img, callback) {
+    var timer = setInterval(function () {
+        if (img.complete) {
+            resizeAllGridItems()
+            clearInterval(timer)
+        }
+    }, 50)
+}
+
 function resizeGridItem(item) {
     grid = document.getElementsByClassName("masonry")[0];
     rowHeight = 0;
@@ -90,4 +110,121 @@ function resizeAllGridItems() {
 function resizeInstance(instance) {
     item = instance.elements[0];
     resizeGridItem(item);
+}
+
+//color schema
+function getcolorscheme() {
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    let element = document.getElementById('lightDarkMode');
+    let targetDiv = document.getElementById('lightDarkOptions');
+    let targets = targetDiv.getElementsByTagName('div');
+    let screen = document.getElementById('is-open');
+
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        switchMode('Auto')
+    }
+    if (storageColorScheme == 'Light') {
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == 'Dark') {
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    element.addEventListener('click', () => {
+        targetDiv.classList.toggle('hidden')
+        screen.classList.toggle('hidden')
+    })
+
+    for (let target of targets) {
+        target.addEventListener('click', () => {
+            let icon = switchMode(target.innerHTML)
+            let old_icon = element.firstElementChild.getAttribute("data-icon")
+            element.firstElementChild.setAttribute("data-icon", icon)
+            element.firstElementChild.classList.remove('fa-' + old_icon)
+            element.firstElementChild.classList.add('fa-' + icon)
+
+            localStorage.setItem("lightDarkMode", target.innerHTML)
+
+            targetDiv.classList.toggle('hidden')
+            screen.classList.toggle('hidden')
+        })
+    }
+    screen.addEventListener('click', () => {
+        targetDiv.classList.toggle('hidden')
+        screen.classList.toggle('hidden')
+    })
+
+}
+
+function switchMode(mode) {
+    let icon = ''
+    switch (mode) {
+        case 'Light':
+            window.matchMedia("(prefers-color-scheme: dark)").removeEventListener('change', switchDarkMode)
+            icon = 'sun'
+            document.getElementsByTagName('html')[0].classList.remove('dark')
+            break
+        case 'Dark':
+            window.matchMedia("(prefers-color-scheme: dark)").removeEventListener('change', switchDarkMode)
+            icon = 'moon'
+            document.getElementsByTagName('html')[0].classList.add('dark')
+            break
+        case 'Auto':
+            icon = 'adjust'
+            const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)")
+            switchDarkMode(isDarkMode)
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+            break
+    }
+    return icon
+}
+
+function switchDarkMode(e) {
+    if (e.matches) {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    } else {
+        document.getElementsByTagName('html')[0].classList.remove('dark')
+    }
+}
+
+//swithch burger
+function switchBurger() {
+    let element = document.getElementById('navbar-btn');
+    let screen = document.getElementById('is-open-mobile');
+    let target = document.getElementById('target');
+    element.addEventListener('click', () => {
+        target.classList.toggle('hidden');
+        screen.classList.toggle('hidden')
+    })
+    screen.addEventListener('click', () => {
+        target.classList.toggle('hidden')
+        screen.classList.toggle('hidden')
+    })
+}
+
+//switch language
+function switchLanguage() {
+    let element = document.getElementById('languageMode');
+    let targetDiv = document.getElementById('languageOptions');
+    let targets = targetDiv.getElementsByTagName('a')
+    let screen = document.getElementById('is-open-lang');
+
+    element.addEventListener('click', () => {
+        targetDiv.classList.toggle('hidden');
+        screen.classList.toggle('hidden')
+    })
+
+    for (let target of targets) {
+        target.addEventListener('click', () => {
+            targetDiv.classList.toggle('hidden')
+            screen.classList.toggle('hidden')
+        })
+    }
+    screen.addEventListener('click', () => {
+        targetDiv.classList.toggle('hidden')
+        screen.classList.toggle('hidden')
+    })
 }

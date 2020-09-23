@@ -1,14 +1,20 @@
+<script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+        || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    } else if (storageColorScheme == "Light") {
+        document.getElementsByTagName('html')[0].classList.remove('dark')
+    }
+</script>
 <nav class="flex items-center justify-between flex-wrap p-4">
-    <div class="flex items-center flex-shrink-0 text-primary-text mr-6">
-        <a href="/" class="font-semibold text-xl tracking-tight">{{ .Site.Title }}</a>
-    </div>
-    <div class="block md:hidden">
-        <button id="navbar-btn" class="flex items-center px-3 py-2">
-            <i class="fas fa-bars"></i>
-        </button>
-    </div>
+    <a href="/" class="mr-6 text-primary-text text-xl font-semibold ">{{ .Site.Title }}</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2">
+        <i class="fas fa-bars"></i>
+    </button>
 
-    <div id="target" class="hidden block flex-grow md:flex md:items-center w-full md:w-auto text-primary-text z-20">
+    <div id="target"
+        class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
         <div class="text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0" id="current-url"
             currenturl="{{ .RelPermalink }}">
             {{ range .Site.Menus.main }}
@@ -17,37 +23,40 @@
             {{ end }}
         </div>
 
-        <div class="relative inline-block pt-4 md:pt-0">
-            <div class=" relative cursor-pointer hover:text-eureka" id="lightDarkMode">
-                <i class="fas"></i>
+        <div class="flex">
+            <div class="pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute inline-block hidden w-48 bg-secondary-bg rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <div class="pl-6 pr-16 py-1 hover:text-eureka">Light</div>
+                    <div class="pl-6 pr-16 py-1 hover:text-eureka">Dark</div>
+                    <div class="pl-6 pr-16 py-1 hover:text-eureka">Auto</div>
+                </div>
             </div>
-            <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+
+            {{ if .IsTranslated }}
+            <div class="pt-4 pl-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="languageMode">
+                    <i class="fas fa-globe"></i>
+                    <text class="pl-1">{{ .Language.LanguageName }}</text>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open-lang">
+                </div>
+                <div class="absolute inline-block w-64 hidden flex flex-col bg-secondary-bg rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='languageOptions'>
+                    <a class="px-4 py-1 hover:text-eureka" href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
+                    {{ range .Translations }}
+                    <a class="px-4 py-1 hover:text-eureka" href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
+                    {{ end }}
+                </div>
             </div>
-            <div class="absolute hidden left-0 md:left-auto right-auto md:right-0 bg-secondary-bg rounded py-2 border border-tertiary-bg cursor-pointer z-40"
-                id='lightDarkOptions'>
-                <div class="pl-6 pr-16 py-1 hover:text-eureka">Light</div>
-                <div class="pl-6 pr-16 py-1 hover:text-eureka">Dark</div>
-                <div class="pl-6 pr-16 py-1 hover:text-eureka">Auto</div>
-            </div>
+            {{ end }}
         </div>
 
-        {{ if .IsTranslated }}
-        <div class="relative inline-block pt-4 md:pt-0">
-            <div class=" relative pl-4 cursor-pointer hover:text-eureka" id="languageMode">
-                <i class="fas fa-globe"></i>
-                <text class="pl-1">en</text>
-            </div>
-            <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open-lang">
-            </div>
-            <div class="absolute hidden left-0 md:left-auto right-auto md:right-0 bg-secondary-bg rounded py-2 border border-tertiary-bg cursor-pointer z-40"
-                id='languageOptions'>
-                <a class="block pl-6 pr-16 py-1 hover:text-eureka" href="{{ .Permalink }}">{{ .Lang }}</a>
-                {{ range .Translations }}
-                <a class="block pl-6 pr-16 py-1 hover:text-eureka" href="{{ .Permalink }}">{{ .Lang }}</a>
-                {{ end }}
-            </div>
-        </div>
-        {{ end }}
     </div>
 
     <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
@@ -55,74 +64,15 @@
 
 </nav>
 <script>
-    let storageColorScheme = localStorage.getItem("lightDarkMode")
-
-    function getcolorscheme() {
-        let element = document.getElementById('lightDarkMode');
-        let targetDiv = document.getElementById('lightDarkOptions');
-        let targets = targetDiv.getElementsByTagName('div');
-        let screen = document.getElementById('is-open');
-
-
-        if (storageColorScheme != null) {
-            let old_icon = element.firstElementChild.getAttribute("data-icon")
-            let icon = switchMode(storageColorScheme)
-            element.firstElementChild.setAttribute("data-icon", icon)
-            element.firstElementChild.classList.remove('fa-' + old_icon)
-            element.firstElementChild.classList.add('fa-' + icon)
-        } else {
-            element.firstElementChild.setAttribute("data-icon", 'adjust')
-            element.firstElementChild.classList.add('fa-adjust')
-        }
-
-        element.addEventListener('click', () => {
-            targetDiv.classList.toggle('hidden')
-            screen.classList.toggle('hidden')
-        })
-
-        for (let target of targets) {
-            target.addEventListener('click', () => {
-                let icon = switchMode(target.innerHTML)
-                let old_icon = element.firstElementChild.getAttribute("data-icon")
-                element.firstElementChild.setAttribute("data-icon", icon)
-                element.firstElementChild.classList.remove('fa-' + old_icon)
-                element.firstElementChild.classList.add('fa-' + icon)
-
-                localStorage.setItem("lightDarkMode", target.innerHTML)
-
-                targetDiv.classList.toggle('hidden')
-                screen.classList.toggle('hidden')
-            })
-        }
-        screen.addEventListener('click', () => {
-            targetDiv.classList.toggle('hidden')
-            screen.classList.toggle('hidden')
-        })
-
-    }
     document.addEventListener('DOMContentLoaded', () => {
-        getcolorscheme()
-    });
-    
-
-
-    document.addEventListener('DOMContentLoaded', () => {
-        let element = document.getElementById('navbar-btn');
-        let screen = document.getElementById('is-open-mobile');
-        let target = document.getElementById('target');
-        element.addEventListener('click', () => {
-
-            target.classList.toggle('hidden');
-            screen.classList.toggle('hidden')
-        })
-        screen.addEventListener('click', () => {
-            target.classList.toggle('hidden')
-            screen.classList.toggle('hidden')
-        })
+        getcolorscheme();
+        switchBurger();
+        {{ if .IsTranslated }}
+        switchLanguage()
+        {{ end }}
     });
 
-    function switchMenu() {
-        let currenturl = document.getElementById('current-url').getAttribute('currenturl')
+    let currenturl = document.getElementById('current-url').getAttribute('currenturl')
         if (currenturl.length > 1) {
             currenturl = currenturl.substr(0, currenturl.length - 1)
         }
@@ -143,86 +93,4 @@
                 }
             }
         }
-    }
-    switchMenu();
-
-    function switchMode(mode) {
-        let icon = ''
-        switch (mode) {
-            case 'Light':
-                window.matchMedia("(prefers-color-scheme: dark)").removeListener(func)
-                //window.matchMedia("(prefers-color-scheme: light)").removeListener(func)
-                icon = 'sun'
-                document.getElementsByTagName('html')[0].classList.remove('dark')
-                break
-            case 'Dark':
-                window.matchMedia("(prefers-color-scheme: dark)").removeListener(func)
-                //window.matchMedia("(prefers-color-scheme: light)").removeListener(func)
-                icon = 'moon'
-                document.getElementsByTagName('html')[0].classList.add('dark')
-                break
-            case 'Auto':
-                icon = 'adjust'
-                const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
-                //const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
-
-                window.matchMedia("(prefers-color-scheme: dark)").addListener(func)
-                //window.matchMedia("(prefers-color-scheme: light)").addListener(func)
-
-                if (isDarkMode) {
-                    activateDarkMode()
-                } else {
-                    activateLightMode()
-                }
-                //if (isLightMode) activateLightMode()
-                break
-        }
-        return icon
-    }
-
-    function func(e) {
-        if (e.matches) {
-            activateDarkMode()
-        } else {
-            activateLightMode()
-        }
-    }
-
-    function activateDarkMode() {
-        document.getElementsByTagName('html')[0].classList.add('dark')
-    }
-    function activateLightMode() {
-        document.getElementsByTagName('html')[0].classList.remove('dark')
-    }
-
-    {{ if .IsTranslated }}
-    document.addEventListener('DOMContentLoaded', () => {
-        let element = document.getElementById('languageMode');
-        let targetDiv = document.getElementById('languageOptions');
-        let targets = targetDiv.getElementsByTagName('a')
-        let screen = document.getElementById('is-open-lang');
-        let storagemode = localStorage.getItem("languageMode")
-
-        if (storagemode != null) {
-            element.getElementsByTagName('text')[0].innerHTML = storagemode
-        }
-
-        element.addEventListener('click', () => {
-            targetDiv.classList.toggle('hidden');
-            screen.classList.toggle('hidden')
-        })
-
-        for (let target of targets) {
-            target.addEventListener('click', () => {
-                localStorage.setItem("languageMode", target.innerHTML)
-                targetDiv.classList.toggle('hidden')
-                screen.classList.toggle('hidden')
-            })
-        }
-        screen.addEventListener('click', () => {
-            targetDiv.classList.toggle('hidden')
-            screen.classList.toggle('hidden')
-        })
-    })
-    {{ end }}
 </script>
