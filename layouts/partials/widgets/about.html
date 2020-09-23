@@ -10,24 +10,23 @@
 
     <div class="col-span-12 lg:col-span-7">
         <div>
-            <div class="text-xs font-medium pb-4 pt-4">ABOUT ME</div>
-            <div class="text-6xl font-medium pb-2">{{ .Title }}</div>
+            <div class="text-3xl md:text-6xl font-medium leading-tight py-4">{{ .Title }}</div>
             <div class="w-3/12 xl:w-2/12 border-b border-gray-400"></div>
 
-            <div class="pt-4">
-                {{ with or ($.Param "role") ($.Param "organizations")}}
+            <div class="flex items-center pt-4">
+                {{ with or (.Params.role) (.Params.organizations)}}
                 <i class="fas fa-user-tag"></i>
                 {{ end }}
+                <div class="flex flex-wrap">
+                    {{ with .Params.role }}
+                    <text class="pl-4">{{ . }}</text>
+                    {{ end }}
 
-                {{ with $.Param "role" }}
-                <text class="pl-2">{{ print .}}</text>
-                {{ end }}
+                    {{ with .Params.organization }}
+                    <a href="{{ .url }}" class="pl-4">{{ .name }}</a>
+                    {{ end }}
+                </div>
 
-                {{ with $.Param "organizations" }}
-                {{ range . }}
-                <a href="{{ .url }}" class="pl-4">{{print .name}}</a>
-                {{ end }}
-                {{ end }}
             </div>
 
             {{ with .Params.bio }}

@@ -5,24 +5,24 @@ role = "Example Role"
 bio = "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos."
 shortContent = "Example Short Content"
 
-[[organizations]]
-name = "Example Organization"
-url = "https://example.com/"
+[organization]
+    name = "Example Organization"
+    url = "https://example.com/"
 
 [[social]]
-icon = "envelope"
-icon_pack = "fas"
-link = "mailto:example@example.com"
+    icon = "envelope"
+    icon_pack = "fas"
+    link = "mailto:example@example.com"
 
 [[social]]
-icon = "twitter"
-icon_pack = "fab"
-link = "https://example.com/"
+    icon = "twitter"
+    icon_pack = "fab"
+    link = "https://example.com/"
 
 [[social]]
-icon = "github"
-icon_pack = "fab"
-link = "https://example.com/"
+    icon = "github"
+    icon_pack = "fab"
+    link = "https://example.com/"
 
 +++
 

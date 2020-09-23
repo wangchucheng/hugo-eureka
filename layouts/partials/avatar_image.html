@@ -1,0 +1,8 @@
+{{ $img := (.Resources.ByType "image").GetMatch "*avatar*" }}
+{{ if $img }}
+<img src="{{ $img.RelPermalink }}" class="w-full rounded-full" alt="Avatar">
+{{ else if .Params.avatar }}
+<img src="{{- .Params.avatar | relURL -}}" class="w-full rounded-full" alt="Avatar">
+{{ else }}
+<i class="fas fa-user-circle fa-6x"></i>
+{{ end }}
