@@ -1,5 +1,8 @@
 <div class="bg-secondary-bg pb-4 shadow rounded">
-    {{ partial "featured_image.html" . }}
+    {{ $img := partial "featured_image.html" . }}
+    {{ with $img }}
+    <img src="{{ . }}" class="w-full" alt="Featured Image">
+    {{ end }}
     <article class="pt-8 px-6 ">
         <h1 class="font-bold text-3xl text-primary-text"><a href="{{ .Permalink }}"
                 class="hover:text-eureka">{{ .Title }}</a></h1>

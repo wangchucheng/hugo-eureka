@@ -1,6 +1,7 @@
 {{ $img := (.Resources.ByType "image").GetMatch "*featured*" }}
 {{ if $img }}
-<img src="{{ $img.RelPermalink }}" class="w-full" alt="Featured Image">
+{{ $.Scratch.Set "img" $img.RelPermalink }}
 {{ else if .Params.featuredImage }}
-<img src="{{- .Params.featuredImage | relURL -}}" class="w-full" alt="Featured Image">
+{{ $.Scratch.Set "img" (.Params.featuredImage | relURL) }}
 {{ end }}
+{{ return $.Scratch.Get "img" }}

@@ -9,8 +9,10 @@
         </div>
         {{ partial "post_metadata.html" . }}
     </div>
-    
+    {{ $img := partial "featured_image.html" . }}
+    {{ with $img }}
     <div class="lg:max-w-xs mb-4 lg:mb-0 lg:ml-8">
-        {{ partial "featured_image.html" . }}
+        <img src="{{ . }}" class="w-full" alt="Featured Image">
     </div>
+    {{ end }}
 </div>

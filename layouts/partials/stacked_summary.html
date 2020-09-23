@@ -1,7 +1,11 @@
 <div class="bg-secondary-bg rounded overflow-hidden hover:shadow-lg transition ease-in-out duration-200">
-    {{ partial "featured_image.html" . }}
+    {{ $img := partial "featured_image.html" . }}
+    {{ with $img }}
+    <img src="{{ . }}" class="w-full" alt="Featured Image">
+    {{ end }}
     <div class="px-6 pt-6">
-        <div class="font-bold text-xl text-primary-text mb-2"><a href="{{ .Permalink }}" class="hover:text-eureka">{{ .Title }}</a></div>
+        <div class="font-bold text-xl text-primary-text mb-2"><a href="{{ .Permalink }}"
+                class="hover:text-eureka">{{ .Title }}</a></div>
         <div class="">
             {{- .Summary | plainify -}}
         </div>

@@ -6,9 +6,12 @@
         class="col-span-2 {{ if not $hasSidebar }} {{- print "lg:col-start-2" -}} {{ end }} lg:col-span-6 bg-secondary-bg rounded px-6 py-8">
         <h1 class="font-bold text-3xl text-primary-text">{{ .Title }}</h1>
         {{ partial "post_metadata.html" . }}
+        {{ $img := partial "featured_image.html" . }}
+        {{ with $img }}
         <div class="my-4">
-            {{ partial "featured_image.html" . }}
+            <img src="{{ . }}" class="w-full" alt="Featured Image">
         </div>
+        {{ end }}
         <div class="content">
             {{ .Content}}
         </div>
