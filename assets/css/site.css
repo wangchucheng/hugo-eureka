@@ -36,7 +36,15 @@
 }
 
 .pagination .page-item {
-  @apply flex items-center p-2 m-2;
+  @apply flex items-center;
+}
+
+.pagination .page-item .page-link{
+  @apply p-2 m-2;
+}
+
+.pagination .active {
+  @apply text-eureka;
 }
 
 .pagination .page-item:not(.disabled):hover {
