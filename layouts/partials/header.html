@@ -24,29 +24,29 @@
         </div>
 
         <div class="flex">
-            <div class="pt-4 md:pt-0">
+            <div class="relative pt-4 md:pt-0">
                 <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
                     <i class="fas fa-adjust"></i>
                 </div>
                 <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
                 </div>
-                <div class="absolute inline-block hidden w-48 bg-secondary-bg rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                <div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer"
                     id='lightDarkOptions'>
-                    <div class="pl-6 pr-16 py-1 hover:text-eureka">Light</div>
-                    <div class="pl-6 pr-16 py-1 hover:text-eureka">Dark</div>
-                    <div class="pl-6 pr-16 py-1 hover:text-eureka">Auto</div>
+                    <span class="px-4 py-1 hover:text-eureka">Light</span>
+                    <span class="px-4 py-1 hover:text-eureka">Dark</span>
+                    <span class="px-4 py-1 hover:text-eureka">Auto</span>
                 </div>
             </div>
 
             {{ if .IsTranslated }}
-            <div class="pt-4 pl-4 md:pt-0">
+            <div class="relative pt-4 pl-4 md:pt-0">
                 <div class="cursor-pointer hover:text-eureka" id="languageMode">
                     <i class="fas fa-globe"></i>
                     <text class="pl-1">{{ .Language.LanguageName }}</text>
                 </div>
                 <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open-lang">
                 </div>
-                <div class="absolute inline-block w-64 hidden flex flex-col bg-secondary-bg rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                <div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer"
                     id='languageOptions'>
                     <a class="px-4 py-1 hover:text-eureka" href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
                     {{ range .Translations }}
