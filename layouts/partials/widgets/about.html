@@ -1,44 +1,39 @@
-<div class="grid grid-cols-12 flex content-center justify-center py-12 px-10 md:px-32">
-    {{ with .Resources.ByType "image" }}
-    <div
-        class="col-span-12 lg:col-span-4 flex content-center justify-center lg:justify-start lg:border-r border-gray-300 mr-0 lg:mr-5">
-        {{ range . }}
-        <img src='{{ .RelPermalink }}' class="h-auto w-6/12 sm:w-4/12 lg:w-10/12 object-contain" />
+<div class="flex flex-col lg:flex-row items-center justify-center py-12 px-10 md:px-32">
+    <div class="w-48 mx-auto lg:mr-8 lg:ml-0">
+        {{ $img := partial "avatar_image.html" . }}
+        {{ with $img }}
+        <img src="{{ . }}" class="w-full bg-primary-bg rounded-full" alt="Avatar">
+        {{ else }}
+        <i class="fas fa-user-circle fa-6x"></i>
         {{ end }}
     </div>
-    {{ end }}
+    <div class="flex-grow mt-4 md:mt-0 lg:pl-8 lg:border-l lg:border-gray-400">
+        <div class="text-6xl font-medium leading-tight py-4">{{ .Title }}</div>
+        <div class="w-3/12 xl:w-2/12 border-b border-gray-400"></div>
 
-    <div class="col-span-12 lg:col-span-7">
-        <div>
-            <div class="text-3xl md:text-6xl font-medium leading-tight py-4">{{ .Title }}</div>
-            <div class="w-3/12 xl:w-2/12 border-b border-gray-400"></div>
-
-            <div class="flex items-center pt-4">
-                {{ with or (.Params.role) (.Params.organizations)}}
-                <i class="fas fa-user-tag"></i>
-                {{ end }}
-                <div class="flex flex-wrap">
-                    {{ with .Params.role }}
-                    <text class="pl-4">{{ . }}</text>
-                    {{ end }}
-
-                    {{ with .Params.organization }}
-                    <a href="{{ .url }}" class="pl-4">{{ .name }}</a>
-                    {{ end }}
-                </div>
-
-            </div>
-
-            {{ with .Params.bio }}
-            <div class="pt-8 text-lg leading-normal font-medium">
-                {{ . }}
-            </div>
+        <div class="flex items-center pt-4">
+            {{ with or (.Params.role) (.Params.organizations)}}
+            <i class="fas fa-user-tag"></i>
             {{ end }}
-        </div>
-    </div>
+            <div class="flex flex-wrap">
+                {{ with .Params.role }}
+                <text class="pl-4">{{ . }}</text>
+                {{ end }}
 
-    <div
-        class="col-span-12 col-start-0 lg:col-end-12 lg:col-start-12 lg:col-end-1 flex lg:flex-col justify-center items-end">
+                {{ with .Params.organization }}
+                <a href="{{ .url }}" class="pl-4">{{ .name }}</a>
+                {{ end }}
+            </div>
+
+        </div>
+
+        {{ with .Params.bio }}
+        <div class="py-8 text-lg leading-normal font-medium">
+            {{ . }}
+        </div>
+        {{ end }}
+    </div>
+    <div class="flex lg:flex-col justify-center items-end ml-8">
         {{ $brand := $.Param "social"}}
         {{ range $brand }}
         {{ $src :=  print .icon_pack " fa-" .icon }}

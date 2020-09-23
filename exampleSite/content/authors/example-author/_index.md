@@ -3,6 +3,7 @@
 title = "Example Author"
 role = "Example Role"
 bio = "Aenean vel bibendum quam. Aliquam at mollis quam. Proin efficitur."
+avatar = "images/avatar.jpg"
 
 [organization]
     name = "Example Organization"
