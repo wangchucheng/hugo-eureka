@@ -12,10 +12,12 @@
 <link
     href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
     rel="stylesheet">
+{{ $css := .Site.Data.assets.css }}
+{{ $js := .Site.Data.assets.js }}
 <link rel="stylesheet"
-    href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/styles/solarized-light.min.css">
-<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/highlight.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/js/all.min.js"></script>
+    href="{{ printf $css.highlight.url $css.highlight.version }}">
+<script defer src="{{ printf $js.highlight.url $css.highlight.version }}"></script>
+<script src="{{ printf $js.fontawesome.url $js.fontawesome.version }}" integrity="{{ $js.fontawesome.sri }}" crossorigin="anonymous"></script>
 {{ template "_internal/google_analytics_async.html" . }}
 {{ partial "schema.html" . }}
 {{ partial "opengraph.html" . }}
