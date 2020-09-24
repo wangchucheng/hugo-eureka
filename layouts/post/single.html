@@ -26,7 +26,7 @@
     </div>
     {{ if $hasSidebar}}
     <div class="col-span-2">
-        {{ if .Params.series }}
+        {{ if .GetTerms "series" }}
         {{ partial "post_series.html" . }}
         {{ end }}
         {{ if $hasToc }}
@@ -35,7 +35,7 @@
     </div>
     {{ end }}
 
-    {{ $related := .Site.RegularPages.Related . | first 5 }}
+    {{ $related := .Site.RegularPages.Related . | first 6 }}
     {{ with $related }}
     <div
         class="col-span-2 {{ if not $hasSidebar }} {{- print "lg:col-start-2" -}} {{ end }} lg:col-span-6 bg-secondary-bg rounded p-6">

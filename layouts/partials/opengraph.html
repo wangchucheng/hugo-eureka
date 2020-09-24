@@ -65,15 +65,20 @@
 {{ end }}
 {{ end }}
 
-{{ $permalink := .Permalink }}
-{{ $siteSeries := .Site.Taxonomies.series }}
-{{ with .Params.series }}
-{{ range $name := . }}
-{{ $series := index $siteSeries (urlize $name) }}
-{{ range $page := first 6 $series.Pages }}
-{{ if ne $page.Permalink $permalink }}
-<meta property="og:see_also" content="{{ $page.Permalink }}" />
+{{ if .GetTerms "series" }}
+{{ $page_link := .Permalink }}
+{{ $series := .Site.Taxonomies.series}}
+{{range (.GetTerms "series") }}
+{{ $key := .LinkTitle | anchorize }}
+{{ $value := index $series $key }}
+{{ range $value}}
+{{ if ne .Page.Permalink $page_link }}
+<meta property="og:see_also" content="{{ .Page.Permalink }}" />
 {{ end }}
 {{ end }}
+{{ end }}
+{{ else if (.Site.RegularPages.Related .) }}
+{{ range (.Site.RegularPages.Related . | first 6) }}
+<meta property="og:see_also" content="{{ .Page.Permalink }}" />
 {{ end }}
 {{ end }}
