@@ -1,13 +1,19 @@
 <meta itemprop="name" content="{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}">
-<meta itemprop="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.basic.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
+<meta itemprop="description"
+    content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.basic.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
 
 {{ if not .IsHome }}
+{{ $depth := (sub (len (split .RelPermalink "/")) 1) }}
+{{ $.Scratch.Set "depth" $depth }}
+{{ if .Site.Home.AllTranslations }}
+{{ $depth := sub ($.Scratch.Get "depth") 1 }}
+{{ $.Scratch.Set "depth" $depth }}
+{{ end }}
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    {{ $depth := (sub (len (split .RelPermalink "/")) 1) -}}
-    "itemListElement": [{{ template "breadcrumb" (dict "p1" . "p2" . "depth" $depth) }}]
+    "itemListElement": [{{ template "breadcrumb" (dict "p1" . "p2" . "depth" ($.Scratch.Get "depth")) }}]
 }
 </script>
 {{ end }}
