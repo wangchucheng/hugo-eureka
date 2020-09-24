@@ -68,10 +68,8 @@
 {{ if .GetTerms "series" }}
 {{ $page_link := .Permalink }}
 {{ $series := .Site.Taxonomies.series}}
-{{range (.GetTerms "series") }}
-{{ $key := .LinkTitle | anchorize }}
-{{ $value := index $series $key }}
-{{ range $value}}
+{{ range (.GetTerms "series") }}
+{{ range .Pages }}
 {{ if ne .Page.Permalink $page_link }}
 <meta property="og:see_also" content="{{ .Page.Permalink }}" />
 {{ end }}
