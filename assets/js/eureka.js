@@ -117,7 +117,7 @@ function getcolorscheme() {
     let storageColorScheme = localStorage.getItem("lightDarkMode")
     let element = document.getElementById('lightDarkMode');
     let targetDiv = document.getElementById('lightDarkOptions');
-    let targets = targetDiv.getElementsByTagName('div');
+    let targets = targetDiv.getElementsByTagName('span');
     let screen = document.getElementById('is-open');
 
     if (storageColorScheme == null || storageColorScheme == 'Auto') {

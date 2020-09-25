@@ -1,13 +1,13 @@
 <div class="flex flex-wrap flex-row items-center my-2 text-tertiary-text">
     <div class="mr-4 my-2">
-        <i class="fas fa-calendar"></i>
+        <i class="fas fa-calendar mr-2"></i>
         <span>{{ dateFormat "Jan 2, 2006" .Date }}</span>
     </div>
     <div class="mr-4 my-2">
         <span>&middot;</span>
     </div>
     <div class="mr-4 my-2">
-        <i class="fas fa-clock"></i>
+        <i class="fas fa-clock mr-2"></i>
         <span>{{ i18n "readingTime" . }}</span>
     </div>
     {{ with .GetTerms "categories" }}
@@ -15,7 +15,7 @@
         <span>&middot;</span>
     </div>
     <div class="mr-4 my-2">
-        <i class="fas fa-folder"></i>
+        <i class="fas fa-folder mr-2"></i>
         {{ range $index, $value := . }}
         {{ if gt $index 0 }}
         <span>, </span>
@@ -30,7 +30,7 @@
         <span>&middot;</span>
     </div>
     <div class="mr-4 my-2">
-        <i class="fas fa-th-list"></i>
+        <i class="fas fa-th-list mr-2"></i>
         {{ range $index, $value := . }}
         {{ if gt $index 0 }}
         <span>, </span>
