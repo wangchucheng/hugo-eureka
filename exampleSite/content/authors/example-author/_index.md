@@ -1,6 +1,6 @@
 +++
 # Name
-title = "Example Author"
+title = "测试"
 role = "Example Role"
 bio = "Aenean vel bibendum quam. Aliquam at mollis quam. Proin efficitur."
 avatar = "images/avatar.jpg"

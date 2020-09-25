@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
 <title>{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}</title>
-<link rel="icon" type="image/png" sizes="16x16" href="{{ .Site.Params.basic.icon | relURL }}">
+<link rel="icon" type="image/png" href="{{ .Site.Params.basic.icon | relURL }}">
 {{ hugo.Generator }}
 
 {{ $eureka_css := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js") }}
