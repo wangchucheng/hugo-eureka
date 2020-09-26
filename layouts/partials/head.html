@@ -1,8 +1,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
 <title>{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}</title>
-<link rel="icon" type="image/png" href="{{ .Site.Params.basic.icon | relURL }}">
-{{ hugo.Generator }}
+{{ with .Site.Params.basic.icon }}
+<link rel="icon" type="image/png" sizes="32x32" href="{{ (partial "get_icon" (dict "icon" . "size" 32)).RelPermalink }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ (partial "get_icon" (dict "icon" . "size" 180)).RelPermalink }}">
+{{ end }}
+
+{{ define "partials/get_icon" }}
+{{ $icon := resources.GetMatch .icon }}
+{{ $icon_resized := $icon.Fill (printf "%sx%s Center" (string .size) (string .size)) }}
+{{ return $icon_resized }}
+{{ end }}
 
 {{ $eureka_css := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js") }}
 {{ $eureka_css := $eureka_css | minify }}
