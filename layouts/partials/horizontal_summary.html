@@ -9,7 +9,7 @@
         </div>
         {{ partial "post_metadata.html" . }}
     </div>
-    {{ $img := partial "featured_image.html" . }}
+    {{ $img := partial "get_image.html" (dict "context" . "url" .Params.featuredImage "keyword" "*featured*")}}
     {{ with $img }}
     <div class="lg:max-w-xs mb-4 lg:mb-0 lg:ml-8">
         <img src="{{ . }}" class="w-full" alt="Featured Image">

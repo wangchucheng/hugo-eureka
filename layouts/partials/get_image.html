@@ -1,0 +1,12 @@
+{{ if and .keyword (.context.Resources.ByType "image") }}
+{{ .context.Scratch.Set "img" ((.context.Resources.ByType "image").GetMatch .keyword).Permalink }}
+{{ else if or (hasPrefix .url "http://") (hasPrefix .url "https://") }}
+{{ .context.Scratch.Set "img" (.url | absURL) }}
+{{ else if resources.GetMatch .url }}
+{{ .context.Scratch.Set "img" (resources.GetMatch .url).Permalink }}
+{{ else if .url }}
+{{ .context.Scratch.Set "img" (.url | absURL) }}
+{{ end }}
+{{ $img := .context.Scratch.Get "img" }}
+{{ .context.Scratch.Delete "img" }}
+{{ return $img }}

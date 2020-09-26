@@ -6,7 +6,7 @@
         class="col-span-2 {{ if not $hasSidebar }} {{- print "lg:col-start-2" -}} {{ end }} lg:col-span-6 bg-secondary-bg rounded px-6 py-8">
         <h1 class="font-bold text-3xl text-primary-text">{{ .Title }}</h1>
         {{ partial "post_metadata.html" . }}
-        {{ $img := partial "featured_image.html" . }}
+        {{ $img := partial "get_image.html" (dict "context" . "url" .Params.featuredImage "keyword" "*featured*")}}
         {{ with $img }}
         <div class="my-4">
             <img src="{{ . }}" class="w-full" alt="Featured Image">

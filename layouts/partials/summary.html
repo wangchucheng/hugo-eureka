@@ -1,5 +1,5 @@
 <div class="bg-secondary-bg pb-4 shadow rounded">
-    {{ $img := partial "featured_image.html" . }}
+    {{ $img := partial "get_image.html" (dict "context" . "url" .Params.featuredImage "keyword" "*featured*")}}
     {{ with $img }}
     <img src="{{ . }}" class="w-full" alt="Featured Image">
     {{ end }}

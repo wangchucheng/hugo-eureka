@@ -1,8 +1,0 @@
-{{ $img := (.Resources.ByType "image").GetMatch "*avatar*" }}
-{{ if $img }}
-{{ $img := $img.RelPermalink }}
-{{ $.Scratch.Set "img" $img }}
-{{ else if .Params.avatar }}
-{{ $.Scratch.Set "img" (.Params.avatar | relURL) }}
-{{ end }}
-{{ return $.Scratch.Get "img" }}

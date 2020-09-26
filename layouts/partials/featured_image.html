@@ -1,7 +1,0 @@
-{{ $img := (.Resources.ByType "image").GetMatch "*featured*" }}
-{{ if $img }}
-{{ $.Scratch.Set "img" $img.RelPermalink }}
-{{ else if .Params.featuredImage }}
-{{ $.Scratch.Set "img" (.Params.featuredImage | relURL) }}
-{{ end }}
-{{ return $.Scratch.Get "img" }}

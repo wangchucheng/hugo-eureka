@@ -2,7 +2,7 @@
     {{ range . }}
     <div class="flex flex-col md:flex-row items-center my-8">
         <a href="{{ .RelPermalink }}" class="w-24 h-24 md:mr-4">
-            {{ $img := partial "avatar_image.html" . }}
+            {{ $img := partial "get_image.html" (dict "context" . "url" .Params.avatar "keyword" "*avatar*")}}
             {{ with $img }}
             <img src="{{ . }}" class="w-full bg-primary-bg rounded-full" alt="Avatar">
             {{ else }}
