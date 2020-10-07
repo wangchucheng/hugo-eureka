@@ -1,5 +1,5 @@
 {{ with .Paginator.Pages }}
-<script type="application/ld+json">   
+<script type="application/ld+json">
 {
     "@context":"https://schema.org",
     "@type":"ItemList",
@@ -11,13 +11,11 @@
             "position": {{ add $index 1 }},
             "name": {{ .Title }},
             "description": {{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.basic.description }}{{ . }}{{ end }}{{ end }}{{ end }},
-            {{ $img := (.Resources.ByType "image").GetMatch "*featured*" -}}
-            {{ if $img -}}
-            "image": {{ $img.RelPermalink }},
-            {{ else if .Params.featuredImage -}}
-            "image": {{ .Params.featuredImage | relURL }},
-            {{ end -}}
-            "url": {{ .RelPermalink }}
+            {{- $img := partial "get_image.html" (dict "context" . "url" .Params.featuredImage "keyword" "*featured*") }}
+            {{- with $img }}
+            "image": {{ . }},
+            {{- end }}
+            "url": {{ .Permalink }}
         }
         {{- end }}
     ]

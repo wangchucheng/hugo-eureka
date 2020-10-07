@@ -4,7 +4,7 @@
         {{ with .PrevInSection }}
         <span class="font-bold my-1">{{ i18n "previous" }}</span>
         <br />
-        <a href="{{ .RelPermalink }}" class="hover:text-eureka">
+        <a href="{{ .Permalink }}" class="hover:text-eureka">
             {{ .LinkTitle }}
         </a>
         {{ end }}
@@ -13,7 +13,7 @@
         {{ with .NextInSection }}
         <span class="font-bold my-1">{{ i18n "next" }}</span>
         <br />
-        <a href="{{ .RelPermalink }}" class="hover:text-eureka">
+        <a href="{{ .Permalink }}" class="hover:text-eureka">
             {{ .LinkTitle }}
         </a>
         {{ end }}

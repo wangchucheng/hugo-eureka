@@ -4,14 +4,12 @@
     "@type": "Article",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": {{ .RelPermalink }}
+        "@id": {{ .Permalink }}
     },
     "headline": "{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}",
-    {{ $img := (.Resources.ByType "image").GetMatch "*featured*" -}}
-    {{ if $img -}}
-    "image": {{ $img.RelPermalink }},
-    {{ else if .Params.featuredImage -}}
-    "image": {{ .Params.featuredImage | relURL }},
+    {{- $img := partial "get_image.html" (dict "context" . "url" .Params.featuredImage "keyword" "*featured*") }}
+    {{- with $img }}
+    "image": {{ . }},
     {{ end -}}
     
     {{ if .IsPage -}}
@@ -45,15 +43,17 @@
         {{ else -}}
         "name": {{ .Site.Title }},
         {{ end -}}
-        {{ if .Site.Params.basic.publisher_logo -}}
+        {{ $publisher_logo := partial "get_image.html" (dict "context" . "url" .Site.Params.basic.publisher_logo) -}}
+        {{ $icon := partial "get_image.html" (dict "context" . "url" .Site.Params.basic.icon) -}}
+        {{ if $publisher_logo -}}
         "logo": {
             "@type": "ImageObject",
-            "url": {{ .Site.Params.basic.publisher_logo | relURL }}
+            "url": {{ $publisher_logo }}
         }
-        {{ else if .Site.Params.basic.icon -}}
+        {{ else if $icon -}}
         "logo": {
             "@type": "ImageObject",
-            "url": {{ .Site.Params.basic.icon | relURL }}
+            "url": {{ $icon }}
         }
         {{ end -}}
     },

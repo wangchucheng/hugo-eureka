@@ -2,8 +2,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
 <title>{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}</title>
 {{ with .Site.Params.basic.icon }}
-<link rel="icon" type="image/png" sizes="32x32" href="{{ (partial "get_icon" (dict "icon" . "size" 32)).RelPermalink }}">
-<link rel="apple-touch-icon" sizes="180x180" href="{{ (partial "get_icon" (dict "icon" . "size" 180)).RelPermalink }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ (partial "get_icon" (dict "icon" . "size" 32)).Permalink }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ (partial "get_icon" (dict "icon" . "size" 180)).Permalink }}">
 {{ end }}
 
 {{ define "partials/get_icon" }}
@@ -16,7 +16,7 @@
 {{ $eureka_css := $eureka_css | minify }}
 <link rel="stylesheet" href="{{ $eureka_css.Permalink }}">
 {{ $eureka_js := resources.Get "js/eureka.js" }}
-<script async src="{{ $eureka_js.RelPermalink }}"></script>
+<script async src="{{ $eureka_js.Permalink }}"></script>
 <link
     href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
     rel="stylesheet">
