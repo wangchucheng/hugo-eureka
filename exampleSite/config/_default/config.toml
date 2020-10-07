@@ -4,7 +4,7 @@ title = "Eureka Demo"
 theme = "eureka"
 
 paginate = 3
-copyright = "&copy; 2020 <a href=\"https://wcc.im\">C. Wang</a> and <a href=\"https://ruiqima.com\">R. Ma</a>"
+copyright = "&copy; 2020 <a href=\"https://www.wangchucheng.com/\">C. Wang</a> and <a href=\"https://www.ruiqima.com/\">R. Ma</a>"
 enableGitInfo = false
 enableEmoji = true
 summaryLength = 75

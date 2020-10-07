@@ -11,6 +11,6 @@ features = ["blog", "syntax highlighting"]
 min_version = "0.74.0"
 
 authors = [
-  {name = "C. Wang", homepage = "https://wcc.im/"},
+  {name = "C. Wang", homepage = "https://wangchucheng.com/"},
   {name = "R. Ma", homepage = "https://ruiqima.com/"}
 ]
