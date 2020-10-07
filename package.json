@@ -4,7 +4,7 @@
     "description": "Starter files for the eureka theme for hugo.",
     "main": "index.js",
     "repository": "https://github.com/wangchucheng/hugo-eureka",
-    "author": "C. Wang <web@wcc.im>",
+    "author": "C. Wang <web@wangchucheng.com>",
     "license": "MIT",
     "scripts": {
         "start": "hugo --gc"
