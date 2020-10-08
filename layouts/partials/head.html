@@ -12,20 +12,39 @@
 {{ return $icon_resized }}
 {{ end }}
 
+{{ $css := .Site.Data.assets.css }}
+{{ $js := .Site.Data.assets.js }}
+
+{{ if $css.eureka.url }}
+{{ if $css.eureka.version }}
+<link rel="stylesheet" href="{{ printf $css.eureka.url $css.eureka.version }}">
+{{ else }}
+<link rel="stylesheet" href="{{ $css.eureka.url }}">
+{{ end }}
+{{ else }}
 {{ $eureka_css := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js") }}
 {{ $eureka_css := $eureka_css | minify }}
 <link rel="stylesheet" href="{{ $eureka_css.Permalink }}">
-{{ $eureka_js := resources.Get "js/eureka.js" }}
-<script async src="{{ $eureka_js.Permalink }}"></script>
+{{ end }}
+
+{{ if $js.eureka.url }}
+{{ if $js.eureka.version }}
+<script defer src="{{ printf $js.eureka.url $js.eureka.version }}"></script>
+{{ else }}
+<script defer src="{{ $js.eureka.url }}"></script>
+{{ end }}
+{{ else }}
+{{ $eureka_js := resources.Get "js/eureka.js" | minify }}
+<script defer src="{{ $eureka_js.Permalink }}"></script>
+{{ end }}
+
 <link
     href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
     rel="stylesheet">
-{{ $css := .Site.Data.assets.css }}
-{{ $js := .Site.Data.assets.js }}
 <link rel="stylesheet"
     href="{{ printf $css.highlight.url $css.highlight.version }}">
-<script defer src="{{ printf $js.highlight.url $css.highlight.version }}"></script>
-<script src="{{ printf $js.fontawesome.url $js.fontawesome.version }}" integrity="{{ $js.fontawesome.sri }}" crossorigin="anonymous"></script>
+<script defer src="{{ printf $js.highlight.url $js.highlight.version }}"></script>
+<script async src="{{ printf $js.fontawesome.url $js.fontawesome.version }}" integrity="{{ $js.fontawesome.sri }}" crossorigin="anonymous"></script>
 {{ template "_internal/google_analytics_async.html" . }}
 {{ partial "schema.html" . }}
 {{ partial "opengraph.html" . }}
