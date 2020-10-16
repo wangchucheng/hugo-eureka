@@ -2,7 +2,7 @@
 <html lang='{{ .Site.LanguageCode }}'>
 {{- partial "head.html" . -}}
 
-<body>
+<body class="flex flex-col min-h-screen">
     <header class="flex items-center fixed w-full h-16 z-50 bg-secondary-bg shadow-sm">
         <div class="container mx-auto">
             <div class="max-w-screen-xl">
@@ -11,7 +11,7 @@
         </div>
     </header>
 
-    <main class="min-h-screen pt-16">
+    <main class="flex-grow pt-16">
         {{ if .IsHome }}
         {{- block "main" . }}{{- end }}
         {{ else }}
