@@ -20,8 +20,13 @@ module.exports = {
       minHeight: {
         '16': '4rem',
       },
+      maxHeight: {
+        'doc-sidebar': 'calc(100vh - 4rem - var(--height-doc-title, 4rem))',
+      },
       inset: {
         '16': '4rem',
+        '32': '8rem',
+        '48': '12rem',
       },
       colors: {
         'eureka': 'var(--color-eureka)',

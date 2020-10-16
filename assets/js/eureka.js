@@ -190,7 +190,7 @@ function switchDarkMode(e) {
     }
 }
 
-//swithch burger
+//switch burger
 function switchBurger() {
     let element = document.getElementById('navbar-btn');
     let screen = document.getElementById('is-open-mobile');
@@ -227,4 +227,22 @@ function switchLanguage() {
         targetDiv.classList.toggle('hidden')
         screen.classList.toggle('hidden')
     })
+}
+
+//switch doc toc
+function switchDocToc() {
+    let element = document.getElementById('sidebar-title');
+    let target = document.getElementById('sidebar-toc');
+    element.addEventListener('click', () => {
+        target.classList.toggle('hidden');
+        element.lastElementChild.classList.toggle('fa-caret-right');
+        element.lastElementChild.classList.toggle('fa-caret-down');
+    })
+}
+
+//change sidebar height
+function changeSidebarHeight() {
+    let element = document.getElementById('sidebar-title');
+    let target = document.getElementById('sidebar-toc');
+    target.style.setProperty('--height-doc-title', `${element.offsetHeight}px`);
 }

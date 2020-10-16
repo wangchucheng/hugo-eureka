@@ -18,7 +18,9 @@
 </script>
 {{ end }}
 
-{{ if or (eq .Kind "section") (eq .Kind "term") }}
+{{ if and (eq .Type "docs") (ne .Params.layout "doc_list") }}
+{{ partial "schema_page.html" . }}
+{{ else if or (eq .Kind "section") (eq .Kind "term") }}
 {{ partial "schema_node.html" . }}
 {{ else if .IsPage }}
 {{ partial "schema_page.html" . }}

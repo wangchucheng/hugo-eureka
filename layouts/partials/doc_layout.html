@@ -1,0 +1,93 @@
+{{ $hasToc := and (in .TableOfContents "<li>" ) (.Params.toc) }}
+{{ $hasSidebar := or ($hasToc) (.Params.series) }}
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-r">
+            <div class="sticky top-16 pt-6">
+                {{ template "doc_sidebar" (dict "context" . "permalink" .Permalink) }}
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="w-full lg:w-3/4 pl-6 ml-0 mr-auto">
+                <h1 class="font-bold text-3xl text-primary-text">{{ .Title }}</h1>
+                {{ partial "post_metadata.html" . }}
+            </div>
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    {{ $img := partial "get_image.html" (dict "context" . "url" .Params.featuredImage "keyword" "*featured*")}}
+                    {{ with $img }}
+                    <div class="my-4">
+                        <img src="{{ . }}" class="w-full" alt="Featured Image">
+                    </div>
+                    {{ end }}
+                    <div class="content">
+                        {{ .Content}}
+                    </div>
+                    {{ with .GetTerms "tags" }}
+                    {{ partial "post_tags.html" . }}
+                    {{ end }}
+                    {{ with .GetTerms "authors" }}
+                    {{ partial "post_author.html" . }}
+                    {{ end }}
+                    {{ partial "post_footer.html" . }}
+                    {{ partial "comment.html" . }}
+                </div>
+                {{ if $hasSidebar}}
+                <div class="hidden lg:block lg:w-1/4">
+                    {{ if ne $hasToc false }}
+                    {{ partial "doc_toc.html" . }}
+                    {{ end }}
+                </div>
+                {{ end }}
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        hljs.initHighlightingOnLoad();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+{{ define "doc_sidebar" }}
+{{ if eq .context.Parent.Params.layout "doc_list" }}
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">{{ i18n "toc" }}</span>
+    <i class="fas fa-caret-right ml-1"></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pr-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="ml-4 -mr-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class="{{ if eq .context.Permalink .permalink }}text-eureka{{ end }} hover:text-eureka" href="{{ .context.Permalink }}">{{ .context.Title }}</a>
+    </div>
+
+    {{ template "list_pages" (dict "context" .context "permalink" .permalink) }}
+</div>
+{{ else }}
+{{ template "doc_sidebar" (dict "context" .context.Parent "permalink" .permalink) }}
+{{ end }}
+{{ end }}
+
+{{ define "list_pages"}}
+<ul class="pl-6">
+    {{ range .context.Pages }}
+    <li class="py-2">
+        <div class="{{ if .IsSection }} pb-2 {{ end }}">
+            <a class="{{ if eq .Permalink $.permalink }} text-eureka {{ end }} hover:text-eureka"
+            href="{{ .Permalink }}">{{ .Title }}</a>
+        </div>
+        {{ if .IsSection }}
+        {{ template "list_pages" (dict "context" . "permalink" $.permalink) }}
+        {{ end }}
+    </li>
+    {{ end }}
+</ul>
+{{ end }}

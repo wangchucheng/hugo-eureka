@@ -1,3 +1,5 @@
+mainSections = ["post"]
+
 [basic]
     # E.g. Person, Organization, LocalBusiness, Project, EducationalOrganization
     site_type = "Person"
