@@ -8,5 +8,6 @@ categories = []
 series = []
 date =  {{ .Date }}
 lastmod = {{ .Date }}
+featuredImage = ""
 draft = false
 +++

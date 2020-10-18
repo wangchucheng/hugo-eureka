@@ -1,16 +1,16 @@
 +++
 # Name
-title = ""
+title = "{{ replace .Name "-" " " | title }}"
 role = ""
 bio = ""
+avatar = ""
 
-[[organizations]]
-name = ""
-url = ""
+[organization]
+    name = ""
+    url = ""
 
 [[social]]
-icon = ""
-icon_pack = ""
-link = ""
-
+    icon = ""
+    icon_pack = ""
+    link = ""
 +++
