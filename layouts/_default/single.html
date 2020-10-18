@@ -18,9 +18,15 @@
         {{ with .GetTerms "tags" }}
         {{ partial "post_tags.html" . }}
         {{ end }}
+        
+        {{ if or .Site.Params.repoURL .Site.Params.repoEditURL }}
+        {{ partial "post_edit.html" . }}
+        {{ end }}
+        
         {{ with .GetTerms "authors" }}
         {{ partial "post_author.html" . }}
         {{ end }}
+        
         {{ partial "post_footer.html" . }}
         {{ partial "comment.html" . }}
     </div>

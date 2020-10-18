@@ -1,0 +1,24 @@
+<div class="flex md:justify-end my-4">
+    {{ $repoEditURL := partial "get_edit_url" . }}
+    {{ $contentDir := cond .Site.IsMultiLingual .Site.Params.contentDir "/content/" }}
+    {{ $path := path.Join $repoEditURL $contentDir .File.Path }}
+    {{ $path := replace $path "http:/" "http://" 1 }}
+    {{ $path := replace $path "https:/" "https://" 1 }}
+    
+    <a href="{{ $path }}" title="Edit this page">
+        <i class="fas fa-edit mr-1"></i>
+        <span>{{ i18n "editThisPage" }}</span>
+    </a>
+</div>
+
+{{ define "partials/get_edit_url" }}
+{{ with .Site.Params.repoEditURL }}
+{{ $.Scratch.Set "repoEditURL" . }}
+{{ else }}
+{{ $repoEditURL := path.Join .Site.Params.repoURL "/blob/master/"}}
+{{ $.Scratch.Set "repoEditURL" $repoEditURL }}
+{{ end }}
+{{ $repoEditURL := .Scratch.Get "repoEditURL" }}
+{{ .Scratch.Delete "repoEditURL" }}
+{{ return $repoEditURL }}
+{{ end }}

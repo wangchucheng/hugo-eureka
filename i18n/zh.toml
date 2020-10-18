@@ -24,3 +24,6 @@ other = "最近"
 
 [onThisPage]
 other = "本页内容"
+
+[editThisPage]
+other = "编辑本页"

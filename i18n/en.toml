@@ -24,3 +24,6 @@ other = "Recent"
 
 [onThisPage]
 other = "On This Page"
+
+[editThisPage]
+other = "Edit this page"

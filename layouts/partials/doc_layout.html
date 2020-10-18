@@ -30,6 +30,11 @@
                     {{ with .GetTerms "authors" }}
                     {{ partial "post_author.html" . }}
                     {{ end }}
+
+                    {{ if or .Site.Params.repoURL .Site.Params.repoEditURL }}
+                    {{ partial "post_edit.html" . }}
+                    {{ end }}
+                    
                     {{ partial "post_footer.html" . }}
                     {{ partial "comment.html" . }}
                 </div>
@@ -66,7 +71,8 @@
 <div id="sidebar-toc"
     class="hidden md:block overflow-y-auto mx-6 md:mx-0 pr-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
     <div class="ml-4 -mr-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
-        <a class="{{ if eq .context.Permalink .permalink }}text-eureka{{ end }} hover:text-eureka" href="{{ .context.Permalink }}">{{ .context.Title }}</a>
+        <a class="{{ if eq .context.Permalink .permalink }}text-eureka{{ end }} hover:text-eureka"
+            href="{{ .context.Permalink }}">{{ .context.Title }}</a>
     </div>
 
     {{ template "list_pages" (dict "context" .context "permalink" .permalink) }}
@@ -82,7 +88,7 @@
     <li class="py-2">
         <div class="{{ if .IsSection }} pb-2 {{ end }}">
             <a class="{{ if eq .Permalink $.permalink }} text-eureka {{ end }} hover:text-eureka"
-            href="{{ .Permalink }}">{{ .Title }}</a>
+                href="{{ .Permalink }}">{{ .Title }}</a>
         </div>
         {{ if .IsSection }}
         {{ template "list_pages" (dict "context" . "permalink" $.permalink) }}
