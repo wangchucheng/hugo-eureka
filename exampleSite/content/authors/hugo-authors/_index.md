@@ -6,23 +6,23 @@ bio = "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per i
 shortContent = "Example Short Content"
 
 [organization]
-    name = "Example Organization"
-    url = "https://example.com/"
+  name = "Example Organization"
+  url = "https://example.com/"
 
 [[social]]
-    icon = "envelope"
-    icon_pack = "fas"
-    link = "mailto:example@example.com"
+  icon = "envelope"
+  icon_pack = "fas"
+  link = "mailto:example@example.com"
 
 [[social]]
-    icon = "twitter"
-    icon_pack = "fab"
-    link = "https://example.com/"
+  icon = "twitter"
+  icon_pack = "fab"
+  link = "https://example.com/"
 
 [[social]]
-    icon = "github"
-    icon_pack = "fab"
-    link = "https://example.com/"
+  icon = "github"
+  icon_pack = "fab"
+  link = "https://example.com/"
 
 +++
 
@@ -37,13 +37,13 @@ Nullam eleifend fringilla quam. Sed faucibus efficitur metus at rhoncus. Sed non
 ## Nunc magna est
 
 Donec porta:  
--   Aenean aliquam sapien id fermentum hendrerit.
--   Nullam quis augue id ante tempor suscipit sodales sed velit.
--   Sed at nulla consectetur, sodales nisl sed, luctus velit.
--   Morbi ornare purus at porttitor tristique.
+- Aenean aliquam sapien id fermentum hendrerit.
+- Nullam quis augue id ante tempor suscipit sodales sed velit.
+- Sed at nulla consectetur, sodales nisl sed, luctus velit.
+- Morbi ornare purus at porttitor tristique.
 
 Gravida urna in: 
--   Maecenas blandit diam at massa hendrerit maximus.
--   Sed lacinia purus ac cursus tincidunt.
--   Maecenas posuere ante sed elit tempus porttitor.
--   Sed vel justo quis diam convallis hendrerit ac non mi. 
+- Maecenas blandit diam at massa hendrerit maximus.
+- Sed lacinia purus ac cursus tincidunt.
+- Maecenas posuere ante sed elit tempus porttitor.
+- Sed vel justo quis diam convallis hendrerit ac non mi. 

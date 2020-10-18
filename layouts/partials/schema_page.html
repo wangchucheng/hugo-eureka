@@ -33,18 +33,18 @@
     },
     {{ end -}}
     "publisher": {
-        {{ with .Site.Params.basic.site_type -}}
+        {{ with .Site.Params.site_type -}}
         "@type": {{ . }},
         {{ else -}}
         "@type": "Person",
         {{ end -}}
-        {{ with .Site.Params.basic.publisher_name -}}
+        {{ with .Site.Params.publisher_name -}}
         "name": {{ . }},
         {{ else -}}
         "name": {{ .Site.Title }},
         {{ end -}}
-        {{ $publisher_logo := partial "get_image.html" (dict "context" . "url" .Site.Params.basic.publisher_logo) -}}
-        {{ $icon := partial "get_image.html" (dict "context" . "url" .Site.Params.basic.icon) -}}
+        {{ $publisher_logo := partial "get_image.html" (dict "context" . "url" .Site.Params.publisher_logo) -}}
+        {{ $icon := partial "get_image.html" (dict "context" . "url" .Site.Params.icon) -}}
         {{ if $publisher_logo -}}
         "logo": {
             "@type": "ImageObject",
@@ -57,6 +57,6 @@
         }
         {{ end -}}
     },
-    "description": "{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.basic.description }}{{ . }}{{ end }}{{ end }}{{ end }}"
+    "description": "{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}"
 }
 </script>

@@ -6,23 +6,23 @@ bio = "Aenean vel bibendum quam. Aliquam at mollis quam. Proin efficitur."
 avatar = "images/avatar.jpg"
 
 [organization]
-    name = "Example Organization"
-    url = "https://example.com/"
+  name = "Example Organization"
+  url = "https://example.com/"
 
 [[social]]
-    icon = "envelope"
-    icon_pack = "fas"
-    link = "mailto:example@example.com"
+  icon = "envelope"
+  icon_pack = "fas"
+  link = "mailto:example@example.com"
 
 [[social]]
-    icon = "twitter"
-    icon_pack = "fab"
-    link = "https://example.com/"
+  icon = "twitter"
+  icon_pack = "fab"
+  link = "https://example.com/"
 
 [[social]]
-    icon = "github"
-    icon_pack = "fab"
-    link = "https://example.com/"
+  icon = "github"
+  icon_pack = "fab"
+  link = "https://example.com/"
 
 +++
 
@@ -35,12 +35,12 @@ Aliquam pretium diam eget leo feugiat finibus. Donec malesuada commodo ipsum. Ae
 ## Details  
 
 Nunc pellentesque vitae:
--   Morbi accumsan nibh efficitur diam molestie, non dignissim diam facilisis.
--   Donec dignissim leo in mollis faucibus.
--   Donec blandit lacus a pellentesque fermentum.
+- Morbi accumsan nibh efficitur diam molestie, non dignissim diam facilisis.
+- Donec dignissim leo in mollis faucibus.
+- Donec blandit lacus a pellentesque fermentum.
 
 Donec mollis sollicitudin:
--   Nunc dictum purus ornare purus consectetur, eu pellentesque massa ullamcorper.
--   Aliquam eu leo vitae justo aliquam tincidunt.
--   Fusce non massa id augue interdum feugiat sed et nulla.
--   Vivamus molestie augue in tristique laoreet.
+- Nunc dictum purus ornare purus consectetur, eu pellentesque massa ullamcorper.
+- Aliquam eu leo vitae justo aliquam tincidunt.
+- Fusce non massa id augue interdum feugiat sed et nulla.
+- Vivamus molestie augue in tristique laoreet.

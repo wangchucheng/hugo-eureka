@@ -6,11 +6,11 @@ bio = ""
 avatar = ""
 
 [organization]
-    name = ""
-    url = ""
+  name = ""
+  url = ""
 
 [[social]]
-    icon = ""
-    icon_pack = ""
-    link = ""
+  icon = ""
+  icon_pack = ""
+  link = ""
 +++

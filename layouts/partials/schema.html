@@ -1,6 +1,6 @@
 <meta itemprop="name" content="{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}">
 <meta itemprop="description"
-    content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.basic.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
+    content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
 
 {{ if not .IsHome }}
 {{ $depth := (sub (len (split .RelPermalink "/")) 1) }}

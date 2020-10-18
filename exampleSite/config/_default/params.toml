@@ -1,30 +1,29 @@
 mainSections = ["post"]
+description = "Eureka is a elegant and powerful theme for Hugo."
 
 repoURL = ""
 # If it is a Github repo, leave blank
 repoEditURL = ""
 
-[basic]
-    # E.g. Person, Organization, LocalBusiness, Project, EducationalOrganization
-    site_type = "Person"
-    icon = "images/icon.png"
-    publisher_name = "Test publisher"
-    publisher_logo = ""
-    description = "Eureka is a elegant and powerful theme for Hugo."
+# E.g. Person, Organization, LocalBusiness, Project, EducationalOrganization
+site_type = "Person"
+icon = "images/icon.png"
+publisher_name = "Test publisher"
+publisher_logo = ""
 
 [hero]
-    slogan = "We are all in the gutter, but some of us are looking at the stars."
-    # Specify the image name in `assets/images/` folder.
-    imgLeft = "images/hero-left.jpg"
-    imgRight = "images/hero-right.jpg"
+  slogan = "We are all in the gutter, but some of us are looking at the stars."
+  # Specify the image name in `assets/images/` folder.
+  imgLeft = "images/hero-left.jpg"
+  imgRight = "images/hero-right.jpg"
 
 [comment]
-    # Options: disqus and commento.
-    platform = ""
+  # Options: disqus and commento.
+  platform = ""
 
-    [comment.disqus]
-        shortname = ""
+  [comment.disqus]
+    shortname = ""
 
-    [comment.commento]
-        # If self-hosting, please enter the url (e.g. https://commento.example.com) here. Otherwise leave empty. 
-        url = ""
+  [comment.commento]
+    # If self-hosting, please enter the url (e.g. https://commento.example.com) here. Otherwise leave empty. 
+    url = ""

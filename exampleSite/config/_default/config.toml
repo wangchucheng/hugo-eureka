@@ -30,3 +30,6 @@ defaultContentLanguageInSubdir = false
   tag = "tags"
   series = "series"
   author = "authors"
+
+# [build]
+#   useResourceCacheWhen = "always"
