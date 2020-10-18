@@ -18,7 +18,7 @@
 {{if .IsPage}}
 <meta property="og:description" content="{{ .Summary }}" />
 {{ else }}
-{{ with .Site.Params.description }}
+{{ with .Site.Params.Description }}
 <meta property="og:description" content="{{ . }}" />
 {{ end }}
 {{ end }}

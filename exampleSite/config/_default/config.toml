@@ -31,5 +31,5 @@ defaultContentLanguageInSubdir = false
   series = "series"
   author = "authors"
 
-# [build]
-#   useResourceCacheWhen = "always"
+[build]
+  useResourceCacheWhen = "always"

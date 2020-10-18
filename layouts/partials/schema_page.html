@@ -57,6 +57,6 @@
         }
         {{ end -}}
     },
-    "description": "{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}"
+    "description": "{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.Description }}{{ . }}{{ end }}{{ end }}{{ end }}"
 }
 </script>

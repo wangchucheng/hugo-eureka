@@ -5,9 +5,9 @@ name = "Eureka"
 license = "MIT"
 licenselink = "https://github.com/wangchucheng/hugo-eureka/blob/master/LICENSE"
 description = "Eureka is a elegant and powerful theme for Hugo."
-homepage = "https://eureka-demo.netlify.app/"
-tags = ["blog", "Responsive", "Simple", "Google analytics", "Multilingual", "Modern"]
-features = ["blog", "syntax highlighting"]
+homepage = "https://github.com/wangchucheng/hugo-eureka/"
+tags = ["blog", "Responsive", "Simple", "Personal", "Light", "Dark", "Mobile", "Fast", "Disqus", "Google analytics", "Syntax highlighting", "Highlighting", "Multilingual", "Modern", "Font awesome", "Fontawesome", "Documentation", "Docs", "Seo", "Tailwindcss"]
+features = ["Blog", "Responsive", "Documentation", "Light", "Dark"]
 min_version = "0.74.0"
 
 authors = [
