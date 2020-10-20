@@ -33,3 +33,8 @@ defaultContentLanguageInSubdir = false
 
 [build]
   useResourceCacheWhen = "always"
+
+# Uncomment when installing using Hugo Modules
+# [module]
+#   [[module.imports]]
+#     path = "github.com/wangchucheng/hugo-eureka"

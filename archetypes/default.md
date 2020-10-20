@@ -1,13 +1,13 @@
 +++
 title = "{{ replace .Name "-" " " | title }}"
-summary = ""
+description = ""
 toc = true
 authors = []
 tags = []
 categories = []
 series = []
-date =  {{ .Date }}
-lastmod = {{ .Date }}
+date =  "{{ .Date }}"
+lastmod = "{{ .Date }}"
 featuredImage = ""
 draft = false
 +++
