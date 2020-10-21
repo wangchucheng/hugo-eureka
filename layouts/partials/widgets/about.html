@@ -36,8 +36,7 @@
         {{ range $brand }}
         {{ $src :=  print .icon_pack " fa-" .icon }}
         <div class="pb-2 pr-4 lg:pr-0 pt-4 lg:pt-0">
-            {{/*  Deprecation in v1.0.0: .link will be deprecated in v1.0.0 */}}
-            <a href="{{ with .url }}{{ . }}{{ else }}{{ .link }}{{ end }}"><i class="{{ print $src }}"></i></a>
+            <a href="{{ .url }}"><i class="{{ print $src }}"></i></a>
         </div>
         {{ end }}
     </div>
