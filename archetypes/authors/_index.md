@@ -15,5 +15,5 @@ avatar = ""
 [[social]]
   icon = ""
   icon_pack = ""
-  link = ""
+  url = ""
 +++
