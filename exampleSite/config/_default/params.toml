@@ -6,10 +6,10 @@ repoURL = ""
 repoEditURL = ""
 
 # E.g. Person, Organization, LocalBusiness, Project, EducationalOrganization
-site_type = "Person"
+siteType = "Person"
 icon = "images/icon.png"
-publisher_name = "Test publisher"
-publisher_logo = ""
+publisherName = "Example publisher"
+publisherLogo = ""
 
 [hero]
   slogan = "We are all in the gutter, but some of us are looking at the stars."

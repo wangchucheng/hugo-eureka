@@ -33,22 +33,22 @@
     },
     {{ end -}}
     "publisher": {
-        {{ with .Site.Params.site_type -}}
+        {{ with .Site.Params.siteType -}}
         "@type": {{ . }},
         {{ else -}}
         "@type": "Person",
         {{ end -}}
-        {{ with .Site.Params.publisher_name -}}
+        {{ with .Site.Params.publisherName -}}
         "name": {{ . }},
         {{ else -}}
         "name": {{ .Site.Title }},
         {{ end -}}
-        {{ $publisher_logo := partial "get_image.html" (dict "context" . "url" .Site.Params.publisher_logo) -}}
+        {{ $publisherLogo := partial "get_image.html" (dict "context" . "url" .Site.Params.publisherLogo) -}}
         {{ $icon := partial "get_image.html" (dict "context" . "url" .Site.Params.icon) -}}
-        {{ if $publisher_logo -}}
+        {{ if $publisherLogo -}}
         "logo": {
             "@type": "ImageObject",
-            "url": {{ $publisher_logo }}
+            "url": {{ $publisherLogo }}
         }
         {{ else if $icon -}}
         "logo": {

@@ -1,12 +1,15 @@
 baseURL = "https://example.com"
 title = "Eureka Demo"
 
+# Comment when installing using Hugo Modules
 theme = "eureka"
+# Uncomment when installing using Hugo Modules
+# theme = "github.com/wangchucheng/hugo-eureka"
 
 paginate = 3
 copyright = "&copy; 2020 <a href=\"https://www.wangchucheng.com/\">C. Wang</a> and <a href=\"https://www.ruiqima.com/\">R. Ma</a>"
-enableGitInfo = false
 enableEmoji = true
+enableGitInfo = false
 summaryLength = 75
 
 defaultContentLanguage = "en"
@@ -17,13 +20,14 @@ defaultContentLanguageInSubdir = false
 # googleAnalytics = "UA-123-45"
 
 [markup]
+  # Do not modify markup.highlight
   [markup.highlight]
     codeFences = false
     noClasses = false
   [markup.tableOfContents]
+    startLevel = 2
     endLevel = 6
     ordered = false
-    startLevel = 2
 
 [taxonomies]
   category = "categories"
@@ -33,8 +37,3 @@ defaultContentLanguageInSubdir = false
 
 [build]
   useResourceCacheWhen = "always"
-
-# Uncomment when installing using Hugo Modules
-# [module]
-#   [[module.imports]]
-#     path = "github.com/wangchucheng/hugo-eureka"

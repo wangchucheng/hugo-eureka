@@ -1,84 +1,21 @@
-# Hugo Eureka
+English | [简体中文](https://github.com/wangchucheng/hugo-eureka/blob/master/README.zh.md)
 
-Eureka is a elegant and powerful theme for [Hugo](https://gohugo.io/). Eureka is committed to providing an elegant, feature-rich and highly customizable theme.
+# Eureka
 
-## Get Started
+Eureka is a feature-rich and highly customizable [Hugo](https://gohugo.io/) theme. Using Eureka allows you to customize and deploy your website quickly and easily.
 
-### Prerequisites
+## Try Eureka
 
--   [Git](https://git-scm.com/)
--   [Hugo Extended 0.74.0+](https://gohugo.io/getting-started/installing/)
--   [Node.js](https://nodejs.org/en/)
+Eureka is committed to providing an elegant, feature-rich and highly customizable theme for [Hugo](https://gohugo.io/).
 
-Eureka uses [Hugo Pipes](https://gohugo.io/hugo-pipes/introduction/) to process PostCSS.
+Read [Getting Started](https://www.wangchucheng.com/en/docs/eureka/getting-started/) to learn how to build and deploy your website. Or check the latest [Demo](https://themes.gohugo.io/theme/hugo-eureka/) and [Project Repository](https://github.com/wangchucheng/hugo-eureka/) to start exploring!
 
-### Installation
+If this project is helpful to you, please give [Eureka](https://github.com/wangchucheng/hugo-eureka/) a star and follow my [Github](https://github.com/wangchucheng/).
 
- If you are new to Hugo or do not have a Hugo site, you can read Hugo's [quick start](https://gohugo.io/getting-started/quick-start/).
+## View Document
 
- Then, add Eureka as a submodule to the current project.
-
-```shell
-cd <your_hugo_site>
-git init
-git submodule add https://github.com/wangchucheng/hugo-eureka.git themes/eureka
-```
-
-Since Eureka uses PostCSS, make sure to install `postcss-cli` and `autoprefixer` globally, which you can read Hugo's [PostCSS](https://gohugo.io/hugo-pipes/postcss/) for details.
-
-```shell
-npm install -g postcss-cli
-npm install -g autoprefixer
-```
-
-Then, install the necessary packages in `themes/eureka`.
-
-```shell
-cd themes/eureka
-npm install
-```
-
-Following that, set theme in `config.toml`.
-
-```toml
-theme = "eureka"
-```
-
-Finally, you can preview the site in the root directory of the site.
-
-```shell
-hugo server
-```
-
-### Specify Version
-
-If you want to specify the version of Eureka, you can do so as follows.
-
-```shell
-cd themes/eureka
-git checkout <eureka_version>
-```
-
-## Usage
-
-Copy the `config` folder in Eureka's `exampleSite` folder to the root folder of your Hugo site. Feel free to change it. After that, you need to delete the automatically generated `config.toml` file.
-
-Then you can add some content in your blog:
-
-```shell
-hugo new post/hello-world.md
-```
-
-After that, you can preview it in the browser:
-
-```shell
-hugo server
-```
-
-For more usage, please refer to Hugo's [basic usage](https://gohugo.io/getting-started/usage/).
-
-## License
-
-This project is licensed under a [MIT License](https://github.com/wangchucheng/hugo-eureka/blob/master/LICENSE).
-
-The sample photos in the project are taken by me and licensed under a [CC BY-NC-SA 4.0 License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- **[Getting Started](https://www.wangchucheng.com/en/docs/eureka/getting-started/)**: In [Getting Started](https://www.wangchucheng.com/en/docs/eureka/getting-started/) you will learn how to quickly build a Hugo site with Eureka.
+- **[Content Management](https://www.wangchucheng.com/en/docs/eureka/content-management/)**: In [Getting Started](https://www.wangchucheng.com/en/docs/eureka/getting-started/), I believe you have successfully run the Hugo site using Eureka. Next we will add some content. Content Management will lead you to understand site content structure and editing skills.
+- **[Customize Eureka](https://www.wangchucheng.com/en/docs/eureka/customize-eureka/)**: In [Content Management](https://www.wangchucheng.com/en/docs/eureka/content-management/), you have already learned about all kinds of content of Eureka. Next, we will introduce Eureka's customization options. [Customize Eureka](https://www.wangchucheng.com/en/docs/eureka/customize-eureka/) will lead you to understand how Eureka is configured and its options.
+- **[Multilingual Mode](https://www.wangchucheng.com/en/docs/eureka/multilingual-mode/)**: In addition to [Content Management](https://www.wangchucheng.com/en/docs/eureka/content-management/) and [Customize Eureka](https://www.wangchucheng.com/en/docs/eureka/customize-eureka/) described above, Eureka also supports [Multilingual Mode](https://www.wangchucheng.com/en/docs/eureka/multilingual-mode/). [Multilingual Mode](https://www.wangchucheng.com/en/docs/eureka/multilingual-mode/) will lead you to understand how to build a multilingual site.
+- **[Update Eureka](https://www.wangchucheng.com/en/docs/eureka/update-eureka/)**: [Update Eureka](https://www.wangchucheng.com/en/docs/eureka/update-eureka/) will introduce different ways to update Eureka.
