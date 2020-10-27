@@ -4,9 +4,9 @@
 name = "Eureka"
 license = "MIT"
 licenselink = "https://github.com/wangchucheng/hugo-eureka/blob/master/LICENSE"
-description = "Eureka is a elegant and powerful theme for Hugo."
+description = "Eureka is a feature-rich and highly customizable Hugo theme."
 homepage = "https://www.wangchucheng.com/en/docs/eureka/"
-tags = ["blog", "Responsive", "Simple", "Personal", "Light", "Dark", "Mobile", "Fast", "Disqus", "Google analytics", "Syntax highlighting", "Highlighting", "Multilingual", "Modern", "Font awesome", "Fontawesome", "Documentation", "Docs", "Seo", "Tailwindcss"]
+tags = ["blog", "Responsive", "Simple", "Personal", "Light", "Dark", "Mobile", "Fast", "Disqus", "Google analytics", "Syntax highlighting", "Highlighting", "Multilingual", "Modern", "Font awesome", "Fontawesome", "Documentation", "Docs", "Seo"]
 features = ["Blog", "Responsive", "Documentation", "Light", "Dark"]
 min_version = "0.74.0"
 
