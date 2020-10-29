@@ -34,7 +34,7 @@
                     {{ if or .Site.Params.repoURL .Site.Params.repoEditURL }}
                     {{ partial "post_edit.html" . }}
                     {{ end }}
-                    
+
                     {{ partial "post_footer.html" . }}
                     {{ partial "comment.html" . }}
                 </div>
@@ -63,6 +63,15 @@
 
 {{ define "doc_sidebar" }}
 {{ if eq .context.Parent.Params.layout "doc_list" }}
+{{ template "list_pages" (dict "context" .context "permalink" .permalink) }}
+{{ else if (findRE "v?(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?/$" .context.Permalink) }}
+{{ template "list_pages" (dict "context" .context "permalink" .permalink) }}
+{{ else }}
+{{ template "doc_sidebar" (dict "context" .context.Parent "permalink" .permalink) }}
+{{ end }}
+{{ end }}
+
+{{ define "list_pages" }}
 <div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
     <span class="font-semibold">{{ i18n "toc" }}</span>
     <i class="fas fa-caret-right ml-1"></i>
@@ -70,30 +79,89 @@
 
 <div id="sidebar-toc"
     class="hidden md:block overflow-y-auto mx-6 md:mx-0 pr-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
-    <div class="ml-4 -mr-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+    <div class="flex flex-wrap ml-4 -mr-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
         <a class="{{ if eq .context.Permalink .permalink }}text-eureka{{ end }} hover:text-eureka"
             href="{{ .context.Permalink }}">{{ .context.Title }}</a>
+        
+        {{ $versions := partial "get_versions" (dict "context" .context) }}
+        {{ if $versions }}
+        <div class="relative ml-2 cursor-pointer">
+            <div id="doc-version" class="flex items-center bg-primary-bg md:bg-secondary-bg">
+                {{ $version := findRE "v?(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?" .context.Permalink }}
+                <span class="ml-2 mr-1">{{ cond (gt (len $version) 0) (index $version 0) "latest" }}</span>
+                <i class="fas fa-caret-right w-4 h-4 mr-1"></i>
+            </div>
+            <div id="version-options" class="hidden absolute left-0 bg-secondary-bg rounded z-40">
+                {{ range $index, $value := $versions }}
+                {{ if eq $index 0 }}
+                <div class="ml-2 mr-8 my-1">
+                    <a class="" href="{{ $.context.Permalink }}">latest</a>
+                </div>
+                {{ end }}
+                {{ $version := findRE "v?(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?" . }}
+                <div class="ml-2 mr-8 my-1">
+                    <a class="" href="{{ . }}">{{ index $version 0 }}</a>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+        <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="switch-canvas">
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                switchDocVersion();
+            })
+        </script>
+        {{ end }}
+
+
     </div>
-
-    {{ template "list_pages" (dict "context" .context "permalink" .permalink) }}
+    {{ template "list_items" (dict "context" .context "permalink" .permalink) }}
 </div>
-{{ else }}
-{{ template "doc_sidebar" (dict "context" .context.Parent "permalink" .permalink) }}
-{{ end }}
 {{ end }}
 
-{{ define "list_pages"}}
+{{ define "list_items"}}
 <ul class="pl-6">
     {{ range .context.Pages }}
+    {{ $version := findRE "v?(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?/$" .Permalink }}
+    {{ if eq (len $version) 0 }}
     <li class="py-2">
         <div class="{{ if .IsSection }} pb-2 {{ end }}">
             <a class="{{ if eq .Permalink $.permalink }} text-eureka {{ end }} hover:text-eureka"
                 href="{{ .Permalink }}">{{ .Title }}</a>
         </div>
         {{ if .IsSection }}
-        {{ template "list_pages" (dict "context" . "permalink" $.permalink) }}
+        {{ template "list_items" (dict "context" . "permalink" $.permalink) }}
         {{ end }}
     </li>
     {{ end }}
+    {{ end }}
 </ul>
+{{ end }}
+
+{{ define "partials/get_versions" }}
+{{ if eq .context.Parent.Params.layout "doc_list" }}
+{{/*  {{ $latest := slice .context.Permalink }}
+{{ $.context.Scratch.Add "versions" $latest }}  */}}
+{{ range .context.Pages.Reverse }}
+{{ $hasVersion := findRE "v?(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?/$" .Permalink }}
+{{ if $hasVersion}}
+{{ $version := slice .Permalink }}
+{{ $.context.Scratch.Add "versions" $version }}
+{{ end }}
+{{ end }}
+{{ else }}
+{{/*  {{ $latest := slice .context.Parent.Permalink }}
+{{ $.context.Scratch.Add "versions" $latest }}  */}}
+{{ range .context.Parent.Pages.Reverse }}
+{{ $hasVersion := findRE "v?(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?/$" .Permalink }}
+{{ if $hasVersion }}
+{{ $version := slice .Permalink }}
+{{ $.context.Scratch.Add "versions" $version }}
+{{ end }}
+{{ end }}
+{{ end }}
+{{ $versions := .context.Scratch.Get "versions" }}
+{{ .context.Scratch.Delete "versions" }}
+{{ return $versions }}
 {{ end }}

@@ -246,3 +246,31 @@ function changeSidebarHeight() {
     let target = document.getElementById('sidebar-toc');
     target.style.setProperty('--height-doc-title', `${element.offsetHeight}px`);
 }
+
+//switch doc version
+function switchDocVersion() {
+    let element = document.getElementById('doc-version');
+    let targetDiv = document.getElementById('version-options');
+    let targets = targetDiv.getElementsByTagName('a')
+    let screen = document.getElementById('switch-canvas');
+
+    element.addEventListener('click', () => {
+        targetDiv.classList.toggle('hidden');
+        screen.classList.toggle('hidden');
+        element.lastElementChild.classList.toggle('fa-caret-right');
+        element.lastElementChild.classList.toggle('fa-caret-down');
+    })
+
+    for (let target of targets) {
+        target.addEventListener('click', () => {
+            targetDiv.classList.toggle('hidden')
+            screen.classList.toggle('hidden')
+        })
+    }
+    screen.addEventListener('click', () => {
+        targetDiv.classList.toggle('hidden')
+        screen.classList.toggle('hidden')
+        element.lastElementChild.classList.toggle('fa-caret-right');
+        element.lastElementChild.classList.toggle('fa-caret-down');
+    })
+}
