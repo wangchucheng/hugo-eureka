@@ -10,7 +10,7 @@
             {{ end }}
         </a>
         <div class="w-full md:w-auto mt-4 md:mt-0">
-            <a href="{{ .Permalink }}" class="block font-bold text-lg pb-1 mb-2 border-b">{{ .Params.title }}</a>
+            <a href="{{ .Permalink }}" class="block font-bold text-lg pb-1 mb-2 border-b">{{ .LinkTitle }}</a>
             <span class="block pb-2">{{ .Params.bio }}</span>
             {{ range .Params.social }}
             {{ $src :=  print .icon_pack " fa-" .icon }}

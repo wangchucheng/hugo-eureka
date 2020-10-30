@@ -3,17 +3,13 @@
     <div>
         {{ with .NextInSection }}
         <span class="block font-bold">{{ i18n "previous" }}</span>
-        <a href="{{ .Permalink }}" class="block">
-            {{ .Title }}
-        </a>
+        <a href="{{ .Permalink }}" class="block">{{ .LinkTitle }}</a>
         {{ end }}
     </div>
     <div class="md:text-right mt-4 md:mt-0">
         {{ with .PrevInSection }}
         <span class="block font-bold">{{ i18n "next" }}</span>
-        <a href="{{ .Permalink }}" class="block">
-            {{ .Title }}
-        </a>
+        <a href="{{ .Permalink }}" class="block">{{ .LinkTitle }}</a>
         {{ end }}
     </div>
 </div>
