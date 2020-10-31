@@ -14,7 +14,7 @@
             <span class="block pb-2">{{ .Params.bio }}</span>
             {{ range .Params.social }}
             {{ $src :=  print .icon_pack " fa-" .icon }}
-            <a href="{{ .link }}" class="mr-1">
+            <a href="{{ .url }}" class="mr-1">
                 <i class="{{ print $src }}"></i>
             </a>
             {{ end }}
