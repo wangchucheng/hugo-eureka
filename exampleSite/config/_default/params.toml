@@ -5,6 +5,8 @@ repoURL = ""
 # If it is a Github repo, leave blank
 repoEditURL = ""
 
+dateFormat = ""
+
 # E.g. Person, Organization, LocalBusiness, Project, EducationalOrganization
 siteType = "Person"
 icon = "images/icon.png"
