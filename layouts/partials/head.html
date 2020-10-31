@@ -1,16 +1,6 @@
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+<meta name="viewport" content="width=device-width">
 <title>{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}</title>
-{{ with .Site.Params.icon }}
-<link rel="icon" type="image/png" sizes="32x32" href="{{ (partial "get_icon" (dict "icon" . "size" 32)).Permalink }}">
-<link rel="apple-touch-icon" sizes="180x180" href="{{ (partial "get_icon" (dict "icon" . "size" 180)).Permalink }}">
-{{ end }}
-
-{{ define "partials/get_icon" }}
-{{ $icon := resources.GetMatch .icon }}
-{{ $icon_resized := $icon.Fill (printf "%sx%s Center" (string .size) (string .size)) }}
-{{ return $icon_resized }}
-{{ end }}
 
 {{ $css := .Site.Data.assets.css }}
 {{ $js := .Site.Data.assets.js }}
@@ -38,14 +28,28 @@
 <script defer src="{{ $eureka_js.Permalink }}"></script>
 {{ end }}
 
-<link
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="preload"
     href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
-    rel="stylesheet">
-<link rel="stylesheet"
-    href="{{ printf $css.highlight.url $css.highlight.version }}">
+    as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="{{ printf $css.highlight.url $css.highlight.version }}" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
 <script defer src="{{ printf $js.highlight.url $js.highlight.version }}"></script>
-<script async src="{{ printf $js.fontawesome.url $js.fontawesome.version }}" integrity="{{ $js.fontawesome.sri }}" crossorigin="anonymous"></script>
+<script async src="{{ printf $js.fontawesome.url $js.fontawesome.version }}" integrity="{{ $js.fontawesome.sri }}"
+    crossorigin="anonymous"></script>
 {{ template "_internal/google_analytics_async.html" . }}
+
+{{ with .Site.Params.icon }}
+<link rel="icon" type="image/png" sizes="32x32" href="{{ (partial "get_icon" (dict "icon" . "size" 32)).Permalink }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ (partial "get_icon" (dict "icon" . "size" 180)).Permalink }}">
+{{ end }}
+
+{{ define "partials/get_icon" }}
+{{ $icon := resources.GetMatch .icon }}
+{{ $icon_resized := $icon.Fill (printf "%sx%s Center" (string .size) (string .size)) }}
+{{ return $icon_resized }}
+{{ end }}
+
 {{ partial "schema.html" . }}
 {{ partial "opengraph.html" . }}
 {{ range .AlternativeOutputFormats -}}

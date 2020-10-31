@@ -1,5 +1,4 @@
-<meta itemprop="name" content="{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}">
-<meta itemprop="description"
+<meta name="description"
     content="{{ if .Description }}{{ .Description }}{{ else if .Summary }}{{ .Summary }}{{ else if .Site.Params.Description }}{{ .Site.Params.Description }}{{ end }}">
 
 {{ if not .IsHome }}
@@ -34,25 +33,25 @@
 {{ template "breadcrumb" (dict "p1" .p1.Site.Home "p2" .p2 "depth" $depth) -}}
 {{ end -}}
 {{ if eq .p1 .p2 -}}
-    {
-        "@type": "ListItem",
-        "position": {{ .depth }},
-        "name": {{ .p1.Title }},
-        "item": {{ .p1.Permalink }}
-    }
+{
+"@type": "ListItem",
+"position": {{ .depth }},
+"name": {{ .p1.Title }},
+"item": {{ .p1.Permalink }}
+}
 {{- else if eq .depth 1 -}}
-    {
-        "@type": "ListItem",
-        "position": {{ .depth }},
-        "name": {{ .p1.Site.Title }},
-        "item": {{ .p1.Permalink }}
-    },
+{
+"@type": "ListItem",
+"position": {{ .depth }},
+"name": {{ .p1.Site.Title }},
+"item": {{ .p1.Permalink }}
+},
 {{- else -}}
-    {
-        "@type": "ListItem",
-        "position": {{ .depth }},
-        "name": {{ .p1.Title }},
-        "item": {{ .p1.Permalink }}
-    },
+{
+"@type": "ListItem",
+"position": {{ .depth }},
+"name": {{ .p1.Title }},
+"item": {{ .p1.Permalink }}
+},
 {{- end -}}
 {{- end -}}

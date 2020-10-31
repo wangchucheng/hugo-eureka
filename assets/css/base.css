@@ -5,8 +5,8 @@
     --color-secondary-bg: rgba(255,255,255,1.00);
     --color-tertiary-bg: rgba(242,242,247,1.00);
     --color-primary-text: rgba(0,0,0,0.85);
-    --color-secondary-text: rgba(0,0,0,0.65);
-    --color-tertiary-text: rgba(0,0,0,0.45);
+    --color-secondary-text: rgba(0,0,0,0.7);
+    --color-tertiary-text: rgba(0,0,0,0.55);
 }
 
 .dark {
@@ -15,8 +15,8 @@
     --color-secondary-bg: rgba(28,28,30,1.00);
     --color-tertiary-bg: rgba(44,44,46,1.00);
     --color-primary-text: rgba(255,255,255,0.85);
-    --color-secondary-text: rgba(255,255,255,0.65);
-    --color-tertiary-text: rgba(255,255,255,0.45);
+    --color-secondary-text: rgba(255,255,255,0.7);
+    --color-tertiary-text: rgba(255,255,255,0.55);
 }
 
 a:hover {

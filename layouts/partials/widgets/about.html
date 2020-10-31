@@ -6,7 +6,7 @@
     </div>
     {{ end }}
     <div class="flex-grow mt-4 md:mt-0">
-        <div class="text-6xl font-medium leading-tight py-4">{{ .Title }}</div>
+        <div class="text-6xl leading-tight py-4">{{ .Title }}</div>
         <div class="w-3/12 xl:w-2/12 border-b"></div>
 
         <div class="flex items-center pt-4">
@@ -26,7 +26,7 @@
         </div>
 
         {{ with .Params.bio }}
-        <div class="py-8 text-lg leading-normal font-medium">
+        <div class="py-8 text-lg leading-normal">
             {{ . }}
         </div>
         {{ end }}
