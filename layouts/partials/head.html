@@ -28,7 +28,7 @@
 <script defer src="{{ $eureka_js.Permalink }}"></script>
 {{ end }}
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload"
     href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
     as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -37,7 +37,18 @@
 <script defer src="{{ printf $js.highlight.url $js.highlight.version }}"></script>
 <script async src="{{ printf $js.fontawesome.url $js.fontawesome.version }}" integrity="{{ $js.fontawesome.sri }}"
     crossorigin="anonymous"></script>
-{{ template "_internal/google_analytics_async.html" . }}
+
+{{ with .Site.GoogleAnalytics }}
+<link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '{{ . }}');
+</script>
+{{ end }}
 
 {{ with .Site.Params.icon }}
 <link rel="icon" type="image/png" sizes="32x32" href="{{ (partial "get_icon" (dict "icon" . "size" 32)).Permalink }}">
