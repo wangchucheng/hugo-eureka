@@ -1,14 +1,14 @@
 [[main]]
   name = "About"
   url = "/about/"
-  weight = 10
+  weight = 1
 
 [[main]]
   name = "Posts"
-  url = "/post/"
-  weight = 20
+  url = "/posts/"
+  weight = 2
 
 [[main]]
   name = "Docs"
   url = "/docs/"
-  weight = 30
+  weight = 3

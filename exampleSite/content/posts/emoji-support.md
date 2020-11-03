@@ -7,8 +7,8 @@ authors = ["Hugo Authors"]
 tags = ["emoji"]
 categories = []
 series = []
-date =  2019-03-05
-lastmod = 2019-03-05
+date =  "2019-03-05"
+lastmod = "2019-03-05"
 draft = false
 +++
 

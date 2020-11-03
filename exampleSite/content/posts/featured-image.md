@@ -7,8 +7,8 @@ authors = ["Example Author"]
 tags = ["image"]
 categories = ["themes"]
 series = ["Themes Guide"]
-date =  2020-05-26
-lastmod = 2020-05-26
+date =  "2020-05-26"
+lastmod = "2020-05-26"
 draft = false
 
 featuredImage = "images/hero-right.jpg"
