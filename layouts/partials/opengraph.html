@@ -1,11 +1,9 @@
 <meta property="og:title" content="{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}" />
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
-{{ $img := (.Resources.ByType "image").GetMatch "*featured*" -}}
-{{ if $img -}}
-<meta property="og:image" content="{{ $img.Permalink }}" />
-{{ else if .Params.featuredImage -}}
-<meta property="og:image" content="{{ .Params.featuredImage | absURL }}" />
-{{ end -}}
+{{ $icon := partial "get_image.html" (dict "context" . "url" .Site.Params.icon) }}
+{{ with $icon }}
+<meta property="og:image" content="{{ . }}">
+{{ end }}
 
 <meta property="og:url" content="{{ .Permalink }}" />
 
