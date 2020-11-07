@@ -4,6 +4,8 @@ English | [简体中文](https://github.com/wangchucheng/hugo-eureka/blob/master
 
 Eureka is a feature-rich and highly customizable [Hugo](https://gohugo.io/) theme. Using Eureka allows you to customize and deploy your website quickly and easily.
 
+![eureka-landing.jpg](https://i.loli.net/2020/11/07/B6GZn1V2AS8XYIT.jpg)
+
 ## Try Eureka
 
 Eureka is committed to providing an elegant, feature-rich and highly customizable theme for [Hugo](https://gohugo.io/).
