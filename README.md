@@ -10,9 +10,9 @@ Eureka is a feature-rich and highly customizable [Hugo](https://gohugo.io/) them
 
 Eureka is committed to providing an elegant, feature-rich and highly customizable theme for [Hugo](https://gohugo.io/).
 
-Read [Getting Started](https://www.wangchucheng.com/en/docs/eureka/getting-started/) to learn how to build and deploy your website. Or check the latest [Demo](https://themes.gohugo.io/theme/hugo-eureka/) and [Project Repository](https://github.com/wangchucheng/hugo-eureka/) to start exploring!
+If this project is helpful to you, you can give [Eureka](https://github.com/wangchucheng/hugo-eureka/) a star and follow my [Github](https://github.com/wangchucheng/).
 
-If this project is helpful to you, please give [Eureka](https://github.com/wangchucheng/hugo-eureka/) a star and follow my [Github](https://github.com/wangchucheng/).
+Read [Getting Started](https://www.wangchucheng.com/en/docs/eureka/getting-started/) to learn how to build and deploy your website. Or check the latest [Demo](https://themes.gohugo.io/theme/hugo-eureka/) and [Project Repository](https://github.com/wangchucheng/hugo-eureka/) to start exploring!
 
 ## View Document
 
