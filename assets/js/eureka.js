@@ -42,7 +42,7 @@ function enableStickyToc() {
             firstElement.firstChild.classList.add(textColor)
             let offset = firstElement.offsetTop - targetPos;
             if (offset > 0) {
-                document.querySelector(`.sticky-toc`).style.top = `calc( 7rem - ${offset}px)`
+                document.querySelector(`.sticky-toc`).style.top = `calc( 8rem - ${offset}px)`
             } else {
                 document.querySelector(`.sticky-toc`).removeAttribute("style");
             }

@@ -1,5 +1,5 @@
 .sticky-toc {
-  @apply sticky z-0 ease-in-out duration-300;
+  @apply sticky top-32 z-0 ease-in-out duration-300;
 }
 
 .sticky-toc a {
