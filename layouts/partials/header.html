@@ -1,11 +1,24 @@
 <script>
     let storageColorScheme = localStorage.getItem("lightDarkMode")
-    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches)
-        || storageColorScheme == "Dark") {
+    {{ if eq .Site.Params.colorScheme "light" }}
+    if (storageColorScheme == 'Auto' && window.matchMedia("(prefers-color-scheme: dark)").matches) {
         document.getElementsByTagName('html')[0].classList.add('dark')
+    } else if (storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+    {{ else if eq .Site.Params.colorScheme "dark" }}
+    if (storageColorScheme == 'Auto' && window.matchMedia("(prefers-color-scheme: light)").matches) {
+        document.getElementsByTagName('html')[0].classList.remove('dark')
     } else if (storageColorScheme == "Light") {
         document.getElementsByTagName('html')[0].classList.remove('dark')
     }
+    {{ else }}
+    if ((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    } else if (storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+    {{ end }}
 </script>
 <nav class="flex items-center justify-between flex-wrap p-4">
     <a href="{{ "/" | relLangURL }}" class="mr-6 text-primary-text text-xl font-bold">{{ .Site.Title }}</a>
@@ -26,7 +39,13 @@
         <div class="flex">
             <div class="relative pt-4 md:pt-0">
                 <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    {{ if eq .Site.Params.colorScheme "dark" }}
+                    <i class="fas fa-moon"></i>
+                    {{ else if eq .Site.Params.colorScheme "light" }}
+                    <i class="fas fa-sun"></i>
+                    {{ else }}
                     <i class="fas fa-adjust"></i>
+                    {{ end }}
                 </div>
                 <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
                 </div>
@@ -63,6 +82,49 @@
 
 </nav>
 <script>
+    let element = document.getElementById('lightDarkMode')
+    {{ if eq .Site.Params.colorScheme "light" }}
+    if (storageColorScheme == 'Auto') {
+        element.firstElementChild.classList.remove('fa-sun')
+        element.firstElementChild.setAttribute("data-icon", 'adjust')
+        element.firstElementChild.classList.add('fa-adjust')
+        document.addEventListener('DOMContentLoaded', () => {
+            switchMode('Auto')
+        })
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-sun')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+    {{ else if eq .Site.Params.colorScheme "dark" }}
+    if (storageColorScheme == 'Auto') {
+        element.firstElementChild.classList.remove('fa-moon')
+        element.firstElementChild.setAttribute("data-icon", 'adjust')
+        element.firstElementChild.classList.add('fa-adjust')
+        document.addEventListener('DOMContentLoaded', () => {
+            switchMode('Auto')
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-moon')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    }
+    {{ else }}
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            switchMode('Auto')
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+    {{ end }}
+    
     document.addEventListener('DOMContentLoaded', () => {
         getcolorscheme();
         switchBurger();

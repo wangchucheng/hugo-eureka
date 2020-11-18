@@ -120,19 +120,6 @@ function getcolorscheme() {
     let targets = targetDiv.getElementsByTagName('span');
     let screen = document.getElementById('is-open');
 
-    if (storageColorScheme == null || storageColorScheme == 'Auto') {
-        switchMode('Auto')
-    }
-    if (storageColorScheme == 'Light') {
-        element.firstElementChild.setAttribute("data-icon", 'sun')
-        element.firstElementChild.classList.remove('fa-adjust')
-        element.firstElementChild.classList.add('fa-sun')
-    } else if (storageColorScheme == 'Dark') {
-        element.firstElementChild.setAttribute("data-icon", 'moon')
-        element.firstElementChild.classList.remove('fa-adjust')
-        element.firstElementChild.classList.add('fa-moon')
-    }
-
     element.addEventListener('click', () => {
         targetDiv.classList.toggle('hidden')
         screen.classList.toggle('hidden')
