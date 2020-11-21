@@ -94,7 +94,13 @@
   @apply border py-1 px-3;
 }
 
+.content .katex * {
+  @apply border-primary-text;
+}
+
 .content *:target {
   padding-top: 4rem;
   margin-top: -4rem;
 }
+
+
