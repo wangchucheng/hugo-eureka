@@ -22,6 +22,15 @@ publisherLogo = ""
   imgLeft = "images/hero-left.jpg"
   imgRight = "images/hero-right.jpg"
 
+[math]
+  handler = "katex"
+
+  # [math.katex]
+  #   # Browse https://katex.org/docs/options.html to see the options available.
+  #   # You can list the key and value you want as below.
+  #   displayMode = ""
+  #   output = ""
+
 [comment]
   # Options: disqus and commento.
   platform = ""

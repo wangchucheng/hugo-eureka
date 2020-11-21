@@ -42,13 +42,56 @@
 <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', '{{ . }}');
+    gtag('config', '{{ . }}');
 </script>
 {{ end }}
+
+{{ define "partials/get_bundles" }}
+{{ $currentPage := . }}
+{{ $bundles := slice $currentPage }}
+{{ if ne $currentPage $currentPage.FirstSection }}
+{{ $currentPage = $currentPage.Parent }}
+{{ $bundles = $bundles | append $currentPage }}
+{{ end }}
+{{ return $bundles.Reverse }}
+{{ end }}
+
+{{- $assets := .Site.Data.assets -}}
+{{- $enableMath := false }}
+{{- if .Site.Params.math.handler -}}
+{{- $bundles := partial "get_bundles" . -}}
+{{- $enableMath = true }}
+{{- range $bundles -}}
+{{- if and (ne .Params.math nil) (ne .Params.math "") -}}
+{{- $enableMath = .Params.math -}}
+{{- end -}}
+{{- end -}}
+{{- end -}}
+
+{{- if and (eq .Site.Params.math.handler "katex") $enableMath -}}
+<link rel="stylesheet" href="{{ printf $assets.katex.css.url $assets.katex.version }}"
+    {{- with $assets.katex.css.sri -}} integrity="{{ . }}" {{- end -}} media="print"
+    onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="{{ printf $assets.katex.js.url $assets.katex.version }}" {{- with $assets.katex.js.sri -}}
+    integrity="{{ . }}" {{- end -}} crossorigin></script>
+<script defer src="{{ printf $assets.katex.autoRender.url $assets.katex.version }}"
+    {{- with $assets.katex.autoRender.sri -}} integrity="{{ . }}" {{- end -}} crossorigin></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body{{- with .Site.Params.math.katex -}}, {
+            {{- range $key, $value := . -}}
+            {{- if $value -}}
+            {{- $key | safeJS -}}: {{- $value | safeJS -}}
+            {{- end -}}
+            {{- end -}}
+        }{{- end -}});
+    });
+</script>
+{{- end -}}
 
 {{ with .Site.Params.icon }}
 <link rel="icon" type="image/png" sizes="32x32" href="{{ (partial "get_icon" (dict "icon" . "size" 32)).Permalink }}">
