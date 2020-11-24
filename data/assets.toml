@@ -1,19 +1,24 @@
 # When the asset version is updated, its sri needs to be updated simultaneously.
 
-[css.highlight]
+# highlight.js
+[highlightjs]
   version = "10.1.0"
-  url = "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@%s/build/styles/solarized-light.min.css"
 
-[js.highlight]
-  version = "10.1.0"
-  url = "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@%s/build/highlight.min.js"
+  [highlightjs.css]
+    url = "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@%s/build/styles/solarized-light.min.css"
 
-[js.fontawesome]
+  [highlightjs.js]
+    url = "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@%s/build/highlight.min.js"
+
+# Font Awesome
+[fontawesome]
   version = "5.14.0"
-  url = "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@%s/js/all.min.js"
-  sri = "sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo="
 
-# Katex
+  [fontawesome.js]
+    url = "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@%s/js/all.min.js"
+    sri = "sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo="
+
+# KaTeX
 [katex]
   version = "0.12.0"
 

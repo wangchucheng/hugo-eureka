@@ -13,7 +13,7 @@ colorScheme = ""
 # E.g. Person, Organization, LocalBusiness, Project, EducationalOrganization
 siteType = "Person"
 icon = "images/icon.png"
-publisherName = "Example publisher"
+publisherName = "C. Wang"
 publisherLogo = ""
 
 [hero]

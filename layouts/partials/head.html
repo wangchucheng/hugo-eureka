@@ -1,54 +1,27 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}</title>
+<title>{{- with .Params.Title -}}{{- . -}} | {{- end -}}{{- .Site.Title -}}</title>
 
-{{ $css := .Site.Data.assets.css }}
-{{ $js := .Site.Data.assets.js }}
-
-{{ if $css.eureka.url }}
-{{ if $css.eureka.version }}
-<link rel="stylesheet" href="{{ printf $css.eureka.url $css.eureka.version }}">
-{{ else }}
-<link rel="stylesheet" href="{{ $css.eureka.url }}">
-{{ end }}
-{{ else }}
-{{ $eureka_css := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js") }}
-{{ $eureka_css := $eureka_css | minify }}
+{{- $eureka_css := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js") -}}
+{{- $eureka_css := $eureka_css | minify -}}
 <link rel="stylesheet" href="{{ $eureka_css.Permalink }}">
-{{ end }}
 
-{{ if $js.eureka.url }}
-{{ if $js.eureka.version }}
-<script defer src="{{ printf $js.eureka.url $js.eureka.version }}"></script>
-{{ else }}
-<script defer src="{{ $js.eureka.url }}"></script>
-{{ end }}
-{{ else }}
-{{ $eureka_js := resources.Get "js/eureka.js" | minify }}
+{{- $eureka_js := resources.Get "js/eureka.js" | minify -}}
 <script defer src="{{ $eureka_js.Permalink }}"></script>
-{{ end }}
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload"
-    href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
-    as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="{{ printf $css.highlight.url $css.highlight.version }}" as="style"
-    onload="this.onload=null;this.rel='stylesheet'">
-<script defer src="{{ printf $js.highlight.url $js.highlight.version }}"></script>
-<script async src="{{ printf $js.fontawesome.url $js.fontawesome.version }}" integrity="{{ $js.fontawesome.sri }}"
-    crossorigin="anonymous"></script>
+  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
 
-{{ with .Site.GoogleAnalytics }}
-<link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', '{{ . }}');
-</script>
-{{ end }}
+{{- $assets := .Site.Data.assets -}}
+<link rel="stylesheet" href="{{ printf $assets.highlightjs.css.url $assets.highlightjs.version }}"
+  {{- with $assets.highlightjs.css.sri -}} integrity="{{- . -}}" {{- end -}} media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="{{ printf $assets.highlightjs.js.url $assets.highlightjs.version }}"
+  {{- with $assets.highlightjs.js.sri -}} integrity="{{- . -}}" {{- end -}} crossorigin></script>
+<script defer src="{{ printf $assets.fontawesome.js.url $assets.fontawesome.version }}"
+  {{- with $assets.fontawesome.js.sri -}} integrity="{{- . -}}" {{- end -}} crossorigin></script>
 
 {{ define "partials/get_bundles" }}
 {{ $currentPage := . }}
@@ -60,7 +33,6 @@
 {{ return $bundles.Reverse }}
 {{ end }}
 
-{{- $assets := .Site.Data.assets -}}
 {{- $enableMath := false }}
 {{- if .Site.Params.math.handler -}}
 {{- $bundles := partial "get_bundles" . -}}
@@ -74,35 +46,46 @@
 
 {{- if and (eq .Site.Params.math.handler "katex") $enableMath -}}
 <link rel="stylesheet" href="{{ printf $assets.katex.css.url $assets.katex.version }}"
-    {{- with $assets.katex.css.sri -}} integrity="{{ . }}" {{- end -}} media="print"
-    onload="this.media='all';this.onload=null" crossorigin>
+  {{- with $assets.katex.css.sri -}} integrity="{{- . -}}" {{- end -}} media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
 <script defer src="{{ printf $assets.katex.js.url $assets.katex.version }}" {{- with $assets.katex.js.sri -}}
-    integrity="{{ . }}" {{- end -}} crossorigin></script>
+  integrity="{{ . }}" {{- end -}} crossorigin></script>
 <script defer src="{{ printf $assets.katex.autoRender.url $assets.katex.version }}"
-    {{- with $assets.katex.autoRender.sri -}} integrity="{{ . }}" {{- end -}} crossorigin></script>
+  {{- with $assets.katex.autoRender.sri -}} integrity="{{- . -}}" {{- end -}} crossorigin></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-            delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false},
-                {left: "\\(", right: "\\)", display: false},
-                {left: "\\[", right: "\\]", display: true}
-              ],
-            {{- range $key, $value := .Site.Params.math.katex -}}
-            {{- if and (ne $value nil) (ne $value "") -}}
-            {{- $key | safeJS -}}: {{- $value | safeJS -}},
-            {{- end -}}
-            {{- end -}}
-        });
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+      {{- range $key, $value := .Site.Params.math.katex -}}
+      {{- if and (ne $value nil) (ne $value "") -}}
+      {{- $key | safeJS -}}: {{- $value | safeJS -}},
+      {{- end -}}
+      {{- end -}}
     });
+  });
 </script>
 {{- end -}}
 
-{{ with .Site.Params.icon }}
-<link rel="icon" type="image/png" sizes="32x32" href="{{ (partial "get_icon" (dict "icon" . "size" 32)).Permalink }}">
-<link rel="apple-touch-icon" sizes="180x180" href="{{ (partial "get_icon" (dict "icon" . "size" 180)).Permalink }}">
+{{- with .Site.GoogleAnalytics -}}
+<link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
+<script async src="https://www.googletagmanager.com/gtag/js?id={{- . -}}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', '{{- . -}}');
+</script>
 {{ end }}
+
+{{- with .Site.Params.icon -}}
+<link rel="icon" type="image/png" sizes="32x32" href="{{- (partial "get_icon" (dict "icon" . "size" 32)).Permalink -}}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{- (partial "get_icon" (dict "icon" . "size" 180)).Permalink -}}">
+{{- end -}}
 
 {{ define "partials/get_icon" }}
 {{ $icon := resources.GetMatch .icon }}
@@ -110,8 +93,8 @@
 {{ return $icon_resized }}
 {{ end }}
 
-{{ partial "schema.html" . }}
-{{ partial "opengraph.html" . }}
-{{ range .AlternativeOutputFormats -}}
-{{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
-{{ end -}}
+{{- partial "schema.html" . -}}
+{{- partial "opengraph.html" . -}}
+{{- range .AlternativeOutputFormats -}}
+{{- printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML -}}
+{{- end -}}
