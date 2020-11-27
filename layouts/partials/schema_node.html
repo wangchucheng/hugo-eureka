@@ -1,5 +1,9 @@
-{{ $paginator := .Paginate .Pages }}
-{{ with .Paginator.Pages }}
+{{- $paginator := .Paginate .Pages }}
+{{- $pages := .Paginator.Pages }}
+{{- if eq .Type "authors" }}
+{{- $pages = .Pages }}
+{{- end }}
+{{- with $pages }}
 <script type="application/ld+json">
 {
     "@context":"https://schema.org",
@@ -22,4 +26,4 @@
     ]
 }
 </script>
-{{ end }}
+{{- end }}

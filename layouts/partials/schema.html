@@ -1,57 +1,31 @@
 <meta name="description"
-    content="{{ if .Description }}{{ .Description }}{{ else if .Summary }}{{ .Summary }}{{ else if .Site.Params.Description }}{{ .Site.Params.Description }}{{ end }}">
+  content="{{ if .Description }}{{ .Description }}{{ else if .Summary }}{{ .Summary }}{{ else if .Site.Params.Description }}{{ .Site.Params.Description }}{{ end }}">
 
-{{ if not .IsHome }}
-{{ $depth := (sub (len (split .RelPermalink "/")) 1) }}
-{{ $.Scratch.Set "depth" $depth }}
-{{ if .Site.Home.AllTranslations }}
-{{ $depth := sub ($.Scratch.Get "depth") 1 }}
-{{ $.Scratch.Set "depth" $depth }}
-{{ end }}
+{{- $bundles := partial "get_bundles" . }}
+{{- if gt (len $bundles) 1 }}
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [{{ template "breadcrumb" (dict "p1" . "p2" . "depth" ($.Scratch.Get "depth")) }}]
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {{- range $index, $value := $bundles.Reverse -}}
+    {{- if gt $index 0 -}},{{- end -}}
+    {
+      "@type": "ListItem",
+      "position": {{- add $index 1 -}},
+      "name": {{- .LinkTitle -}},
+      "item": {{- .Permalink -}}
+    }
+    {{- end -}}
+  ]
 }
 </script>
-{{ end }}
+{{- end }}
 
-{{ if and (eq .Type "docs") (ne .Params.layout "doc_list") }}
-{{ partial "schema_page.html" . }}
-{{ else if or (eq .Kind "section") (eq .Kind "term") }}
-{{ partial "schema_node.html" . }}
-{{ else if .IsPage }}
-{{ partial "schema_page.html" . }}
-{{ end }}
-
-{{- define "breadcrumb" -}}
-{{ $depth := (sub .depth 1 ) -}}
-{{ if .p1.Parent -}}
-{{ template "breadcrumb" (dict "p1" .p1.Parent "p2" .p2 "depth" $depth) -}}
-{{ else if not .p1.IsHome -}}
-{{ template "breadcrumb" (dict "p1" .p1.Site.Home "p2" .p2 "depth" $depth) -}}
-{{ end -}}
-{{ if eq .p1 .p2 -}}
-{
-"@type": "ListItem",
-"position": {{ .depth }},
-"name": {{ .p1.Title }},
-"item": {{ .p1.Permalink }}
-}
-{{- else if eq .depth 1 -}}
-{
-"@type": "ListItem",
-"position": {{ .depth }},
-"name": {{ .p1.Site.Title }},
-"item": {{ .p1.Permalink }}
-},
-{{- else -}}
-{
-"@type": "ListItem",
-"position": {{ .depth }},
-"name": {{ .p1.Title }},
-"item": {{ .p1.Permalink }}
-},
-{{- end -}}
-{{- end -}}
+{{- if and (eq .Type "docs") (ne .Params.layout "doc_list") }}
+{{- partial "schema_page.html" . }}
+{{- else if or (eq .Kind "section") (eq .Kind "term") }}
+{{- partial "schema_node.html" . }}
+{{- else if .IsPage }}
+{{- partial "schema_page.html" . }}
+{{- end }}

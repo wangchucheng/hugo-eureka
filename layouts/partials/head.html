@@ -2,19 +2,19 @@
 <meta name="viewport" content="width=device-width">
 <title>{{- with .Params.Title -}}{{- . -}} | {{- end -}}{{- .Site.Title -}}</title>
 
-{{- $eureka_css := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js") -}}
-{{- $eureka_css := $eureka_css | minify -}}
-<link rel="stylesheet" href="{{ $eureka_css.Permalink }}">
+{{- $eurekaCSS := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js") }}
+{{- $eurekaCSS := $eurekaCSS | minify }}
+<link rel="stylesheet" href="{{ $eurekaCSS.Permalink }}">
 
-{{- $eureka_js := resources.Get "js/eureka.js" | minify -}}
-<script defer src="{{ $eureka_js.Permalink }}"></script>
+{{- $eurekaJS := resources.Get "js/eureka.js" | minify }}
+<script defer src="{{ $eurekaJS.Permalink }}"></script>
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload"
   href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
   as="style" onload="this.onload=null;this.rel='stylesheet'">
 
-{{- $assets := .Site.Data.assets -}}
+{{- $assets := .Site.Data.assets }}
 <link rel="stylesheet" href="{{ printf $assets.highlightjs.css.url $assets.highlightjs.version }}"
   {{- with $assets.highlightjs.css.sri -}} integrity="{{- . -}}" {{- end -}} media="print"
   onload="this.media='all';this.onload=null" crossorigin>
@@ -26,25 +26,25 @@
 {{ define "partials/get_bundles" }}
 {{ $currentPage := . }}
 {{ $bundles := slice $currentPage }}
-{{ if ne $currentPage $currentPage.FirstSection }}
-{{ $currentPage = $currentPage.Parent }}
-{{ $bundles = $bundles | append $currentPage }}
+{{ if and (ne $currentPage.Kind "taxonomy") (or (ne $currentPage $currentPage.FirstSection) (eq $currentPage.Kind "term")) }}
+{{ $currentBundles := partial "get_bundles" $currentPage.Parent }}
+{{ $bundles = $bundles | append $currentBundles }}
 {{ end }}
-{{ return $bundles.Reverse }}
+{{ return $bundles }}
 {{ end }}
 
 {{- $enableMath := false }}
-{{- if .Site.Params.math.handler -}}
-{{- $bundles := partial "get_bundles" . -}}
+{{- if .Site.Params.math.handler }}
+{{- $bundles := partial "get_bundles" . }}
 {{- $enableMath = true }}
-{{- range $bundles -}}
-{{- if and (ne .Params.math nil) (ne .Params.math "") -}}
-{{- $enableMath = .Params.math -}}
-{{- end -}}
-{{- end -}}
-{{- end -}}
+{{- range $bundles.Reverse }}
+{{- if and (ne .Params.math nil) (ne .Params.math "") }}
+{{- $enableMath = .Params.math }}
+{{- end }}
+{{- end }}
+{{- end }}
 
-{{- if and (eq .Site.Params.math.handler "katex") $enableMath -}}
+{{- if and (eq .Site.Params.math.handler "katex") $enableMath }}
 <link rel="stylesheet" href="{{ printf $assets.katex.css.url $assets.katex.version }}"
   {{- with $assets.katex.css.sri -}} integrity="{{- . -}}" {{- end -}} media="print"
   onload="this.media='all';this.onload=null" crossorigin>
@@ -61,31 +61,33 @@
         { left: "\\(", right: "\\)", display: false },
         { left: "\\[", right: "\\]", display: true }
       ],
-      {{- range $key, $value := .Site.Params.math.katex -}}
-      {{- if and (ne $value nil) (ne $value "") -}}
-      {{- $key | safeJS -}}: {{- $value | safeJS -}},
-      {{- end -}}
-      {{- end -}}
+      {{- range $key, $value := .Site.Params.math.katex }}
+      {{- if and (ne $value nil) (ne $value "") }}
+      {{- $key | safeJS -}}: {{- $value | safeJS }},
+      {{- end }}
+      {{- end }}
     });
   });
 </script>
-{{- end -}}
+{{- end }}
 
-{{- with .Site.GoogleAnalytics -}}
+{{- if and .Site.GoogleAnalytics hugo.IsProduction }}
 <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
-<script async src="https://www.googletagmanager.com/gtag/js?id={{- . -}}"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.GoogleAnalytics }}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag() { dataLayer.push(arguments); }
   gtag('js', new Date());
-  gtag('config', '{{- . -}}');
+  gtag('config', '{{ .Site.GoogleAnalytics }}');
 </script>
-{{ end }}
+{{- end }}
 
-{{- with .Site.Params.icon -}}
+{{ partial "custom_head.html" . }}
+
+{{- with .Site.Params.icon }}
 <link rel="icon" type="image/png" sizes="32x32" href="{{- (partial "get_icon" (dict "icon" . "size" 32)).Permalink -}}">
 <link rel="apple-touch-icon" sizes="180x180" href="{{- (partial "get_icon" (dict "icon" . "size" 180)).Permalink -}}">
-{{- end -}}
+{{- end }}
 
 {{ define "partials/get_icon" }}
 {{ $icon := resources.GetMatch .icon }}
@@ -93,8 +95,8 @@
 {{ return $icon_resized }}
 {{ end }}
 
-{{- partial "schema.html" . -}}
-{{- partial "opengraph.html" . -}}
-{{- range .AlternativeOutputFormats -}}
-{{- printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML -}}
-{{- end -}}
+{{- partial "schema.html" . }}
+{{- partial "opengraph.html" . }}
+{{- range .AlternativeOutputFormats }}
+{{- printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+{{- end }}
