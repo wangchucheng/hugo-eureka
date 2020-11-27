@@ -7,6 +7,8 @@
 {{- end }}
 {{- if $validKeyword }}
 {{- $img = ((.context.Resources.ByType "image").GetMatch .keyword).Permalink }}
+{{- else if or (hasPrefix .url "//") (or (hasPrefix .url "http://") (hasPrefix .url "https://")) }}
+{{- $img = (.url | absURL) }}
 {{- else if resources.GetMatch .url }}
 {{- $img = (resources.GetMatch .url).Permalink }}
 {{- else if .url }}
