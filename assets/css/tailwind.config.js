@@ -28,6 +28,9 @@ module.exports = {
         '32': '8rem',
         '48': '12rem',
       },
+      padding: {
+        'scrollbar': 'calc(100vw - 100%)',
+      },
       colors: {
         'eureka': 'var(--color-eureka)',
         'primary-bg': 'var(--color-primary-bg)',

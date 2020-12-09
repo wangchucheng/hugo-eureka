@@ -1,33 +1,27 @@
 <!DOCTYPE html>
-<html lang='{{ .Site.LanguageCode }}' {{ if eq .Site.Params.colorScheme "dark" }}class="dark"{{ end }}>
-{{- partial "head.html" . -}}
+<html lang='{{ .Site.LanguageCode }}' {{ if eq .Site.Params.colorScheme "dark" }}class="dark" {{ end }}>
+{{- partial "head.html" . }}
 
 <body class="flex flex-col min-h-screen">
-    <header class="flex items-center fixed w-full min-h-16 z-50 bg-secondary-bg shadow-sm">
-        <div class="container mx-auto">
-            <div class="max-w-screen-xl">
-                {{- partial "header.html" . -}}
-            </div>
+    <header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm">
+        <div class="w-full max-w-screen-xl mx-auto">
+            {{- partial "header.html" . -}}
         </div>
     </header>
-
     <main class="flex-grow pt-16">
-        {{ if .IsHome }}
+        {{- if .IsHome }}
         {{- block "main" . }}{{- end }}
-        {{ else }}
-        <div class="container mx-auto ">
-            <div class="max-w-screen-xl lg:px-4 xl:px-8">
+        {{- else }}
+        <div class="pl-scrollbar">
+            <div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto">
                 {{- block "main" . }}{{- end }}
             </div>
         </div>
         {{ end }}
     </main>
-
-    <footer>
-        <div class="container mx-auto">
-            <div class="max-w-screen-xl">
-                {{- partial "footer.html" . -}}
-            </div>
+    <footer class="pl-scrollbar">
+        <div class="w-full max-w-screen-xl mx-auto">
+            {{- partial "footer.html" . -}}
         </div>
     </footer>
 </body>

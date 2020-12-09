@@ -1,4 +1,4 @@
-:root{
+:root {
     @apply font-serif bg-primary-bg text-primary-text;
     --color-eureka: #38B2AC;
     --color-primary-bg: rgba(242,242,247,1.00);

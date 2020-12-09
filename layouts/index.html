@@ -1,37 +1,34 @@
-{{ define "main" }}
-<div class="w-full bg-secondary-bg">
-    <div class="container mx-auto">
-        <div class="max-w-screen-xl">
-            <div class="grid grid-cols-9 grid-rows-5 h-screen -mt-16">
-                {{ $imgLeft := partial "get_image.html" (dict "context" . "url" .Site.Params.hero.imgLeft)}}
-                {{ with $imgLeft }}
-                <div class="col-start-2 col-span-4 row-start-3 row-span-2 bg-local bg-cover z-10 shadow-2xl"
-                    style="background-image: url({{ . }});"></div>
-                {{ end }}
-                
-                <div class="col-start-3 col-span-5 row-start-2 row-span-3 z-20">
-                    <div class="flex flex-col items-center justify-center min-h-full">
-                        <div class="bg-white bg-opacity-75 shadow-2xl -m-12 p-12">
-                            <span
-                                class="font-bold text-black text-opacity-75 text-2xl md:text-3xl">{{ .Site.Params.hero.slogan }}</span>
-                        </div>
+{{- define "main" }}
+<div class="bg-secondary-bg pl-scrollbar">
+    <div class="max-w-screen-xl mx-auto">
+        <div class="grid grid-cols-9 grid-rows-5 h-screen -mt-16">
+            {{- $imgLeft := partial "get_image.html" (dict "context" . "url" .Site.Params.hero.imgLeft)}}
+            {{- with $imgLeft }}
+            <div class="col-start-2 col-span-4 row-start-3 row-span-2 bg-local bg-cover z-10 shadow-2xl"
+                style="background-image: url({{ . }});"></div>
+            {{- end }}
+
+            <div class="col-start-3 col-span-5 row-start-2 row-span-3 z-20">
+                <div class="flex flex-col items-center justify-center min-h-full">
+                    <div class="bg-white bg-opacity-75 shadow-2xl -m-12 p-12">
+                        <span
+                            class="font-bold text-black text-opacity-75 text-2xl md:text-3xl">{{ .Site.Params.hero.slogan }}</span>
                     </div>
                 </div>
-                {{ $imgRight := partial "get_image.html" (dict "context" . "url" .Site.Params.hero.imgRight)}}
-                {{ with $imgRight }}
-                <div class="col-start-5 col-span-4 row-start-2 row-span-2 bg-local bg-cover shadow-2xl"
-                    style="background-image: url({{ . }});">
-                </div>
-                {{ end }}
-                
             </div>
+            {{- $imgRight := partial "get_image.html" (dict "context" . "url" .Site.Params.hero.imgRight)}}
+            {{- with $imgRight }}
+            <div class="col-start-5 col-span-4 row-start-2 row-span-2 bg-local bg-cover shadow-2xl"
+                style="background-image: url({{ . }});">
+            </div>
+            {{- end }}
         </div>
     </div>
 </div>
-<div class="container mx-auto ">
-    <div class="max-w-screen-xl pt-12 md:px-4 xl:px-8">
-        {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
-        {{ partial "masonry" $pages }}
+<div class="max-w-screen-xl mx-auto">
+    <div class="pt-12 md:px-4 xl:px-8">
+        {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+        {{- partial "masonry" $pages }}
     </div>
 </div>
-{{ end }}
+{{- end }}
