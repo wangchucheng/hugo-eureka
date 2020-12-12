@@ -95,7 +95,7 @@
                 {{ range $index, $value := $versions }}
                 {{ if eq $index 0 }}
                 <div class="ml-2 mr-8 my-1">
-                    <a class="" href="{{ $.context.Permalink }}">latest</a>
+                    <a class="" href="{{ $.context.Parent.Permalink }}">latest</a>
                 </div>
                 {{ end }}
                 {{ $version := findRE "v?(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?" . }}

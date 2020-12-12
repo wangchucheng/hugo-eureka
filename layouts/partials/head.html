@@ -1,6 +1,46 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>{{- with .Params.Title -}}{{- . -}} | {{- end -}}{{- .Site.Title -}}</title>
+
+{{ define "partials/get_title" }}
+{{ $separator := .Site.Params.titleSeparator | default "|" }}
+{{ $primarySep := $separator }}
+{{ $secondarySep := $separator }}
+{{ if reflect.IsSlice $separator }}
+{{ $primarySep = index $separator 0 }}
+{{ $secondarySep = index $separator 1 | default (index $separator 0) }}
+{{ end }}
+{{ $title := .Site.Title }}
+{{/*  Generate prefix  */}}
+{{ $prefix := "" }}
+{{ if .Params.Title }}
+{{ $prefix = .Params.Title }}
+{{ if and (eq .Type "docs") (ne .Layout "doc_list") }}
+{{ $docTitle := "" }}
+{{ $bundles := partial "get_bundles" . }}
+{{ range $bundles.Reverse }}
+{{ $version := findRE "v?(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?" (path.Base .Permalink) }}
+{{ if and (eq .Parent.Layout "doc_list") (ne .Layout "doc_list") }}
+{{ $docTitle = .Title }}
+{{ else if $version }}
+{{ $docTitle = .Title }}
+{{ end }}
+{{ end }}
+{{/*  Doc title  */}}
+{{ $version := findRE "v?(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?" (path.Base .Permalink) }}
+{{ if or (eq .Parent.Layout "doc_list") $version }}
+{{ $prefix = $docTitle }}
+{{ else }}
+{{ $prefix = print $prefix " " $secondarySep " " $docTitle }}
+{{ end }}
+{{ end }}
+{{ end }}
+{{/*  Add prefix  */}}
+{{ with $prefix }}
+{{ $title = print . " " $primarySep " " $title }}
+{{ end }}
+{{ return $title }}
+{{ end }}
+<title>{{ partial "get_title" . }}</title>
 
 {{- $eurekaCSS := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js") }}
 {{- $eurekaCSS := $eurekaCSS | minify }}
@@ -16,12 +56,12 @@
 
 {{- $assets := .Site.Data.assets }}
 <link rel="stylesheet" href="{{ printf $assets.highlightjs.css.url $assets.highlightjs.version }}"
-  {{- with $assets.highlightjs.css.sri -}} integrity="{{- . -}}" {{- end -}} media="print"
+  {{ with $assets.highlightjs.css.sri }} integrity="{{ . }}" {{ end }} media="print"
   onload="this.media='all';this.onload=null" crossorigin>
 <script defer src="{{ printf $assets.highlightjs.js.url $assets.highlightjs.version }}"
-  {{- with $assets.highlightjs.js.sri -}} integrity="{{- . -}}" {{- end -}} crossorigin></script>
+  {{ with $assets.highlightjs.js.sri }} integrity="{{ . }}" {{ end }} crossorigin></script>
 <script defer src="{{ printf $assets.fontawesome.js.url $assets.fontawesome.version }}"
-  {{- with $assets.fontawesome.js.sri -}} integrity="{{- . -}}" {{- end -}} crossorigin></script>
+  {{ with $assets.fontawesome.js.sri }} integrity="{{ . }}" {{ end }} crossorigin></script>
 
 {{ define "partials/get_bundles" }}
 {{ $currentPage := . }}
@@ -46,12 +86,12 @@
 
 {{- if and (eq .Site.Params.math.handler "katex") $enableMath }}
 <link rel="stylesheet" href="{{ printf $assets.katex.css.url $assets.katex.version }}"
-  {{- with $assets.katex.css.sri -}} integrity="{{- . -}}" {{- end -}} media="print"
+  {{ with $assets.katex.css.sri }} integrity="{{ . }}" {{ end }} media="print"
   onload="this.media='all';this.onload=null" crossorigin>
-<script defer src="{{ printf $assets.katex.js.url $assets.katex.version }}" {{- with $assets.katex.js.sri -}}
-  integrity="{{ . }}" {{- end -}} crossorigin></script>
+<script defer src="{{ printf $assets.katex.js.url $assets.katex.version }}" {{ with $assets.katex.js.sri }}
+  integrity="{{ . }}" {{ end }} crossorigin></script>
 <script defer src="{{ printf $assets.katex.autoRender.url $assets.katex.version }}"
-  {{- with $assets.katex.autoRender.sri -}} integrity="{{- . -}}" {{- end -}} crossorigin></script>
+  {{ with $assets.katex.autoRender.sri }} integrity="{{ . }}" {{ end }} crossorigin></script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     renderMathInElement(document.body, {
@@ -85,8 +125,8 @@
 {{ partial "custom_head.html" . }}
 
 {{- with .Site.Params.icon }}
-<link rel="icon" type="image/png" sizes="32x32" href="{{- (partial "get_icon" (dict "icon" . "size" 32)).Permalink -}}">
-<link rel="apple-touch-icon" sizes="180x180" href="{{- (partial "get_icon" (dict "icon" . "size" 180)).Permalink -}}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ (partial "get_icon" (dict "icon" . "size" 32)).Permalink }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ (partial "get_icon" (dict "icon" . "size" 180)).Permalink }}">
 {{- end }}
 
 {{ define "partials/get_icon" }}

@@ -6,7 +6,7 @@
         "@type": "WebPage",
         "@id": {{ .Permalink }}
     },
-    "headline": "{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}",
+    "headline": "{{ partial "get_title" . }}",
     {{- $img := partial "get_image.html" (dict "context" . "url" .Params.featuredImage "keyword" "*featured*") }}
     {{- with $img }}
     "image": {{ . }},

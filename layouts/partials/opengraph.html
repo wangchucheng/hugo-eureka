@@ -1,4 +1,4 @@
-<meta property="og:title" content="{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}" />
+<meta property="og:title" content="{{ partial "get_title" . }}" />
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
 {{ $icon := partial "get_image.html" (dict "context" . "url" .Site.Params.icon) }}
 {{ with $icon }}
