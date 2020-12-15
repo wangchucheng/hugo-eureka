@@ -15,10 +15,10 @@
             </div>
             <div class="flex">
                 <div class="w-full lg:w-3/4 px-6">
-                    {{ $img := partial "get_image.html" (dict "context" . "url" .Params.featuredImage "keyword" "*featured*")}}
-                    {{ with $img }}
+                    {{ $featured := partial "get_featured" . }}
+                    {{ with $featured }}
                     <div class="my-4">
-                        <img src="{{ . }}" class="w-full" alt="Featured Image">
+                        {{ . }}
                     </div>
                     {{ end }}
                     <div class="content">

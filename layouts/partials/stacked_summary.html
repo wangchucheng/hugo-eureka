@@ -1,7 +1,7 @@
 <div class="bg-secondary-bg rounded overflow-hidden hover:shadow-lg transition ease-in-out duration-200">
-    {{ $img := partial "get_image.html" (dict "context" . "url" .Params.featuredImage "keyword" "*featured*")}}
-    {{ with $img }}
-    <img src="{{ . }}" class="w-full" alt="Featured Image">
+    {{ $featured := partial "get_featured" . }}
+    {{ with $featured }}
+    {{ . }}
     {{ end }}
     <div class="px-6 pt-6">
         <div class="font-bold text-xl text-primary-text mb-2">
