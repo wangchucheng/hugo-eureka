@@ -1,4 +1,4 @@
 +++
 title = "Docs"
-layout = "doc_list"
+layout = "doc-list"
 +++

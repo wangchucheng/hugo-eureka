@@ -1,4 +1,4 @@
 +++
 title = "Docs"
-layout = "doc_list" #Do not modify
+layout = "doc-list" #Do not modify
 +++

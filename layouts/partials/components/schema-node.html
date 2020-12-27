@@ -6,7 +6,7 @@
 {{- with $pages }}
 <script type="application/ld+json">
 {
-    "@context":"https://schema.org",
+    "@context":"https://components/schema.org",
     "@type":"ItemList",
     "itemListElement":[
         {{- range $index, $value := . -}}
@@ -16,7 +16,7 @@
             "position": {{ add $index 1 }},
             "name": {{ .Title }},
             "description": {{ if .Description }}{{ .Description }}{{ else if .Summary }}{{ .Summary }}{{ else if .Site.Params.Description }}{{ .Site.Params.Description }}{{ end }},
-            {{- $img := partial "get_image.html" (dict "context" . "url" .Params.featuredImage "keyword" "*featured*") }}
+            {{- $img := partial "utils/get-image" (dict "context" . "url" .Params.featuredImage "keyword" "*featured*") }}
             {{- with $img }}
             "image": {{ . }},
             {{- end }}

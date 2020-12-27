@@ -1,13 +1,13 @@
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
+    "@context": "https://components/schema.org",
     "@type": "Article",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": {{ .Permalink }}
     },
-    "headline": "{{ partial "get_title" . }}",
-    {{- $img := partial "get_image.html" (dict "context" . "url" .Params.featuredImage "keyword" "*featured*") }}
+    "headline": "{{ partial "get-title" . }}",
+    {{- $img := partial "utils/get-image" (dict "context" . "url" .Params.featuredImage "keyword" "*featured*") }}
     {{- with $img }}
     "image": {{ . }},
     {{ end -}}
@@ -43,8 +43,8 @@
         {{ else -}}
         "name": {{ .Site.Title }},
         {{ end -}}
-        {{ $publisherLogo := partial "get_image.html" (dict "context" . "url" .Site.Params.publisherLogo) -}}
-        {{ $icon := partial "get_image.html" (dict "context" . "url" .Site.Params.icon) -}}
+        {{ $publisherLogo := partial "utils/get-image" (dict "context" . "url" .Site.Params.publisherLogo) -}}
+        {{ $icon := partial "utils/get-image" (dict "context" . "url" .Site.Params.icon) -}}
         {{ if $publisherLogo -}}
         "logo": {
             "@type": "ImageObject",

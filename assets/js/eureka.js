@@ -112,7 +112,7 @@ function resizeInstance(instance) {
     resizeGridItem(item);
 }
 
-//color schema
+//color components/schema
 function getcolorscheme() {
     let storageColorScheme = localStorage.getItem("lightDarkMode")
     let element = document.getElementById('lightDarkMode');

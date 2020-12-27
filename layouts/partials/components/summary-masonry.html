@@ -1,0 +1,17 @@
+<div class="bg-secondary-bg rounded overflow-hidden border shadow hover:shadow-lg transition ease-in-out duration-200">
+  {{ $featured := partial "utils/get-featured" . }}
+  {{ with $featured }}
+  {{ . }}
+  {{ end }}
+  <div class="px-6 pt-6">
+    <div class="font-bold text-xl text-primary-text mb-2">
+      <a href="{{ .Permalink }}" class="hover:text-eureka">{{ .LinkTitle }}</a>
+    </div>
+    <div class="">
+      {{- .Summary | plainify -}}
+    </div>
+  </div>
+  <div class="px-6 pb-2">
+    {{ partial "components/post-metadata" . }}
+  </div>
+</div>

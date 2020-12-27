@@ -1,18 +1,6 @@
+{{/*  Deprecation warning(v1.0.0) starts */}}
 {{ define "main" }}
-<article class="mx-6 my-8">
-    <h1 class="font-bold text-3xl text-primary-text">{{ .Title }}</h1>
-    {{ with .Content }}
-    <div class="content">
-        {{ . }}
-    </div>
-    {{ end }}
-</article>
-<div class="bg-secondary-bg rounded overflow-hidden px-4 divide-y">
-    {{ range .Paginator.Pages }}
-    <div class="px-2 py-6">
-        {{ partial "horizontal_summary.html" . }}
-    </div>
-    {{ end }}
-</div>
-{{ template "_internal/pagination.html" . }}
+{{ warnf "Value 'doc_list' of layout param in %q is deprecated and will be removed in Eureka v1.0.0. Use 'doc-list' instead." .File.Path }}
+{{ partial "components/doc-list" . }}
 {{ end }}
+{{/*  Deprecation warning(v1.0.0) ends  */}}

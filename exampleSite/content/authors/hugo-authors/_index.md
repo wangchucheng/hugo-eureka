@@ -11,17 +11,17 @@ shortContent = "Example Short Content"
 
 [[social]]
   icon = "envelope"
-  icon_pack = "fas"
+  iconPack = "fas"
   url = "mailto:example@example.com"
 
 [[social]]
   icon = "twitter"
-  icon_pack = "fab"
+  iconPack = "fab"
   url = "https://example.com/"
 
 [[social]]
   icon = "github"
-  icon_pack = "fab"
+  iconPack = "fab"
   url = "https://example.com/"
 
 +++

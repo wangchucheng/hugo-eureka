@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang='{{ .Site.LanguageCode }}' {{ if eq .Site.Params.colorScheme "dark" }}class="dark" {{ end }}>
-{{- partial "head.html" . }}
+{{- partial "head" . }}
 
 <body class="flex flex-col min-h-screen">
     <header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm">
         <div class="w-full max-w-screen-xl mx-auto">
-            {{- partial "header.html" . -}}
+            {{- partial "header" . -}}
         </div>
     </header>
     <main class="flex-grow pt-16">
@@ -21,7 +21,7 @@
     </main>
     <footer class="pl-scrollbar">
         <div class="w-full max-w-screen-xl mx-auto">
-            {{- partial "footer.html" . -}}
+            {{- partial "footer" . -}}
         </div>
     </footer>
 </body>

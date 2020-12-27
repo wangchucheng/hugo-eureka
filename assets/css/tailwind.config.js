@@ -17,6 +17,12 @@ module.exports = {
       'mono': ['SFMono-Regular', 'Menlo'],
     },
     extend: {
+      height: {
+        '(screen-16)': 'calc(100vh - 4rem)',
+        '96': '24rem',
+        '128': '32rem',
+        '160': '40rem',
+      },
       minHeight: {
         '16': '4rem',
       },

@@ -1,6 +1,6 @@
-<meta property="og:title" content="{{ partial "get_title" . }}" />
+<meta property="og:title" content="{{ partial "get-title" . }}" />
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
-{{ $icon := partial "get_image.html" (dict "context" . "url" .Site.Params.icon) }}
+{{ $icon := partial "utils/get-image" (dict "context" . "url" .Site.Params.icon) }}
 {{ with $icon }}
 <meta property="og:image" content="{{ . }}">
 {{ end }}
@@ -64,11 +64,11 @@
 {{ end }}
 
 {{ if .GetTerms "series" }}
-{{ $page_link := .Permalink }}
+{{ $pageLink := .Permalink }}
 {{ $series := .Site.Taxonomies.series}}
 {{ range (.GetTerms "series") }}
 {{ range .Pages }}
-{{ if ne .Page.Permalink $page_link }}
+{{ if ne .Page.Permalink $pageLink }}
 <meta property="og:see_also" content="{{ .Page.Permalink }}" />
 {{ end }}
 {{ end }}

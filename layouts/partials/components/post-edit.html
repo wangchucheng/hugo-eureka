@@ -1,5 +1,5 @@
 <div class="flex md:justify-end my-4">
-    {{ $repoEditURL := partial "get_edit_url" . }}
+    {{ $repoEditURL := partial "get-edit-url" . }}
     {{ $contentDir := cond .Site.IsMultiLingual .Site.Params.contentDir "/content/" }}
     {{ $path := path.Join $repoEditURL $contentDir .File.Path }}
     {{ $path := replace $path "http:/" "http://" 1 }}
@@ -11,7 +11,7 @@
     </a>
 </div>
 
-{{ define "partials/get_edit_url" }}
+{{ define "partials/get-edit-url" }}
 {{ with .Site.Params.repoEditURL }}
 {{ $.Scratch.Set "repoEditURL" . }}
 {{ else }}

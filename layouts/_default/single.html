@@ -5,9 +5,9 @@
     <div
         class="col-span-2 {{ if not $hasSidebar }} {{- print "lg:col-start-2" -}} {{ end }} lg:col-span-6 bg-secondary-bg rounded px-6 py-8">
         <h1 class="font-bold text-3xl text-primary-text">{{ .Title }}</h1>
-        {{ partial "post_metadata.html" . }}
+        {{ partial "components/post-metadata" . }}
         
-        {{ $featured := partial "get_featured" . }}
+        {{ $featured := partial "utils/get-featured" . }}
         {{ with $featured }}
         <div class="my-4">
             {{ . }}
@@ -18,27 +18,27 @@
             {{ .Content}}
         </div>
         {{ with .GetTerms "tags" }}
-        {{ partial "post_tags.html" . }}
+        {{ partial "components/post-tags" . }}
         {{ end }}
         
         {{ if or .Site.Params.repoURL .Site.Params.repoEditURL }}
-        {{ partial "post_edit.html" . }}
+        {{ partial "components/post-edit" . }}
         {{ end }}
         
         {{ with .GetTerms "authors" }}
-        {{ partial "post_author.html" . }}
+        {{ partial "components/post-author" . }}
         {{ end }}
         
-        {{ partial "post_footer.html" . }}
+        {{ partial "components/post-footer" . }}
         {{ partial "comment.html" . }}
     </div>
     {{ if $hasSidebar}}
     <div class="col-span-2">
         {{ if .GetTerms "series" }}
-        {{ partial "post_series.html" . }}
+        {{ partial "components/post-series" . }}
         {{ end }}
         {{ if $hasToc }}
-        {{ partial "post_toc.html" . }}
+        {{ partial "components/post-toc" . }}
         {{ end }}
     </div>
     {{ end }}

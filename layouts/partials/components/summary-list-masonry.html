@@ -1,0 +1,15 @@
+<div class="masonry grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+  {{ range . }}
+  <div class="item">
+    <div class="grid-content">
+      {{ partial "components/summary-masonry" . }}
+    </div>
+  </div>
+  {{ end }}
+
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    enableMasonry()
+  })
+</script>

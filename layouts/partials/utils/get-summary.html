@@ -1,0 +1,29 @@
+<div class="mb-4">
+  <a href="{{ .Permalink }}" class="font-bold text-xl hover:text-eureka">{{ .LinkTitle }}</a>
+</div>
+<div class="content">
+  {{ .Summary | plainify }}
+</div>
+{{ if eq .Type "docs" }}
+<div class="px-6 pt-4">
+  {{ range $index, $value := first 3 .Pages }}
+  {{ if gt $index 0 }}
+  <div class="-mx-4 my-4 border-t"></div>
+  {{ end -}}
+  <div class="">
+      <div class="mb-2">
+          <a href="{{ .Permalink }}" class="font-semibold hover:text-eureka">{{ .LinkTitle }}</a>
+      </div>
+      <div class="">
+          {{- .Summary | plainify -}}
+      </div>
+  </div>
+  {{ end }}
+  <div class="pt-6 hover:text-eureka">
+      <a href="{{ .Permalink }}" class="font-semibold">{{ i18n "readMore" }}</a>
+      <i class="fas fa-caret-right ml-1"></i>
+  </div>
+</div>
+{{ else }}
+{{ partial "components/post-metadata" . }}
+{{ end }}

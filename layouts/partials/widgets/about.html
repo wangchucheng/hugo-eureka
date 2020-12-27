@@ -1,5 +1,5 @@
 <div class="flex flex-col lg:flex-row items-center justify-center py-12">
-    {{ $img := partial "get_image.html" (dict "context" . "url" .Params.avatar "keyword" "*avatar*")}}
+    {{ $img := partial "utils/get-image" (dict "context" . "url" .Params.avatar "keyword" "*avatar*")}}
     {{ with $img }}
     <div class="w-48 mx-auto lg:-my-8 lg:ml-0 lg:mr-8 lg:pr-8 lg:py-8 lg:border-r">
         <img src="{{ . }}" class="rounded-full" alt="Avatar">  
@@ -34,10 +34,19 @@
     <div class="flex lg:flex-col justify-center items-end ml-8">
         {{ $brand := $.Param "social"}}
         {{ range $brand }}
-        {{ $src :=  print .icon_pack " fa-" .icon }}
+        {{/*  Deprecation warning(v1.0.0) starts  */}}
+        {{ if .icon_pack }}
+        {{ warnf "Param 'icon_pack' in %q is deprecated and will be removed in Eureka v1.0.0. Use 'iconPack' instead." $.File.Path }}
+        {{ end }}
+        {{ $iconPack := .iconPack | default .icon_pack }}
+        {{/*  Deprecation warning(v1.0.0) ends  */}}
+        {{ $src :=  print $iconPack " fa-" .icon }}
         <div class="pb-2 pr-4 lg:pr-0 pt-4 lg:pt-0">
             <a href="{{ .url }}"><i class="{{ print $src }}"></i></a>
         </div>
         {{ end }}
     </div>
+</div>
+<div class="content">
+    {{ .Content }}
 </div>

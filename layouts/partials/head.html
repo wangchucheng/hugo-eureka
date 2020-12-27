@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 
-{{ define "partials/get_title" }}
+{{ define "partials/get-title" }}
 {{ $separator := .Site.Params.titleSeparator | default "|" }}
 {{ $primarySep := $separator }}
 {{ $secondarySep := $separator }}
@@ -14,12 +14,19 @@
 {{ $prefix := "" }}
 {{ if .Params.Title }}
 {{ $prefix = .Params.Title }}
-{{ if and (eq .Type "docs") (ne .Layout "doc_list") }}
+{{/*  Deprecation warning(v1.0.0) starts */}}
+{{ $layout := partial "utils/hyphenate" (.Layout | default .Type) }}
+{{/*  Deprecation warning(v1.0.0) ends */}}
+{{ if and (eq .Type "docs") (ne $layout "doc-list") }}
 {{ $docTitle := "" }}
-{{ $bundles := partial "get_bundles" . }}
+{{ $bundles := partial "get-bundles" . }}
 {{ range $bundles.Reverse }}
 {{ $version := findRE "v?(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?" (path.Base .Permalink) }}
-{{ if and (eq .Parent.Layout "doc_list") (ne .Layout "doc_list") }}
+{{/*  Deprecation warning(v1.0.0) starts */}}
+{{ $parentLayout := partial "utils/hyphenate" (.Parent.Layout | default .Parent.Type) }}
+{{ $layout := partial "utils/hyphenate" (.Layout | default .Type) }}
+{{/*  Deprecation warning(v1.0.0) ends */}}
+{{ if and (eq $parentLayout "doc-list") (ne $layout "doc-list") }}
 {{ $docTitle = .Title }}
 {{ else if $version }}
 {{ $docTitle = .Title }}
@@ -27,7 +34,10 @@
 {{ end }}
 {{/*  Doc title  */}}
 {{ $version := findRE "v?(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?" (path.Base .Permalink) }}
-{{ if or (eq .Parent.Layout "doc_list") $version }}
+{{/*  Deprecation warning(v1.0.0) starts */}}
+{{ $parentLayout := partial "utils/hyphenate" (.Parent.Layout | default .Parent.Type) }}
+{{/*  Deprecation warning(v1.0.0) ends */}}
+{{ if or (eq $parentLayout "doc-list") $version }}
 {{ $prefix = $docTitle }}
 {{ else }}
 {{ $prefix = print $prefix " " $secondarySep " " $docTitle }}
@@ -40,7 +50,7 @@
 {{ end }}
 {{ return $title }}
 {{ end }}
-<title>{{ partial "get_title" . }}</title>
+<title>{{ partial "get-title" . }}</title>
 
 {{- $eurekaCSS := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js") }}
 {{- $eurekaCSS := $eurekaCSS | minify }}
@@ -63,11 +73,11 @@
 <script defer src="{{ printf $assets.fontawesome.js.url $assets.fontawesome.version }}"
   {{ with $assets.fontawesome.js.sri }} integrity="{{ . }}" {{ end }} crossorigin></script>
 
-{{ define "partials/get_bundles" }}
+{{ define "partials/get-bundles" }}
 {{ $currentPage := . }}
 {{ $bundles := slice $currentPage }}
 {{ if and (ne $currentPage.Kind "taxonomy") (or (ne $currentPage $currentPage.FirstSection) (eq $currentPage.Kind "term")) }}
-{{ $currentBundles := partial "get_bundles" $currentPage.Parent }}
+{{ $currentBundles := partial "get-bundles" $currentPage.Parent }}
 {{ $bundles = $bundles | append $currentBundles }}
 {{ end }}
 {{ return $bundles }}
@@ -75,7 +85,7 @@
 
 {{- $enableMath := false }}
 {{- if .Site.Params.math.handler }}
-{{- $bundles := partial "get_bundles" . }}
+{{- $bundles := partial "get-bundles" . }}
 {{- $enableMath = true }}
 {{- range $bundles.Reverse }}
 {{- if and (ne .Params.math nil) (ne .Params.math "") }}
@@ -122,21 +132,21 @@
 </script>
 {{- end }}
 
-{{ partial "custom_head.html" . }}
+{{ partial "custom-head" . }}
 
 {{- with .Site.Params.icon }}
-<link rel="icon" type="image/png" sizes="32x32" href="{{ (partial "get_icon" (dict "icon" . "size" 32)).Permalink }}">
-<link rel="apple-touch-icon" sizes="180x180" href="{{ (partial "get_icon" (dict "icon" . "size" 180)).Permalink }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ (partial "get-icon" (dict "icon" . "size" 32)).Permalink }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ (partial "get-icon" (dict "icon" . "size" 180)).Permalink }}">
 {{- end }}
 
-{{ define "partials/get_icon" }}
+{{ define "partials/get-icon" }}
 {{ $icon := resources.GetMatch .icon }}
-{{ $icon_resized := $icon.Fill (printf "%sx%s Center" (string .size) (string .size)) }}
-{{ return $icon_resized }}
+{{ $iconResized := $icon.Fill (printf "%sx%s Center" (string .size) (string .size)) }}
+{{ return $iconResized }}
 {{ end }}
 
-{{- partial "schema.html" . }}
-{{- partial "opengraph.html" . }}
+{{- partial "components/schema" . }}
+{{- partial "components/opengraph" . }}
 {{- range .AlternativeOutputFormats }}
 {{- printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
 {{- end }}

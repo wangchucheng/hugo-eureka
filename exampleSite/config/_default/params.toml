@@ -18,12 +18,6 @@ icon = "images/icon.png"
 publisherName = "C. Wang"
 publisherLogo = ""
 
-[hero]
-  slogan = "We are all in the gutter, but some of us are looking at the stars."
-  # Specify the image name in `assets/images/` folder.
-  imgLeft = "images/hero-left.jpg"
-  imgRight = "images/hero-right.jpg"
-
 [math]
   handler = "katex"
 

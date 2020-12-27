@@ -1,0 +1,49 @@
+{{ if not .Params.widget.sidebar.position }}
+<h2 class=" font-bold text-3xl my-4">{{ .Params.Title }}</h2>
+{{ end }}
+{{ if eq .Params.style "plain" }}
+{{ partial "widgets/pages-plain" . }}
+{{ else if eq .Params.style "masonry" }}
+{{ partial "widgets/pages-masonry" . }}
+{{ else }}
+{{ partial "widgets/pages-card" . }}
+{{ end }}
+
+{{ define "partials/widgets/pages-get" }}
+{{- $section := .Site.GetPage .Params.section }}
+{{ $pages := $section.Pages }}
+{{ $count := .Params.count | default 5 }}
+{{ with $count }}
+{{ $pages = first $count $pages }}
+{{ end }}
+{{ return $pages }}
+{{ end }}
+
+{{ define "partials/widgets/pages-plain" }}
+{{ $pages := partial "widgets/pages-get" . }}
+{{ partial "components/summary-list-plain" $pages }}
+<div class="pt-2 hover:text-eureka">
+  <a href="{{ .Permalink }}" class="font-semibold">{{ i18n "readMore" }}</a>
+  <i class="fas fa-caret-right ml-1"></i>
+</div>
+{{ end }}
+
+{{ define "partials/widgets/pages-card" }}
+{{ $pages := partial "widgets/pages-get" . }}
+<div class="overflow-hidden">
+  {{ partial "components/summary-list-card" $pages }}
+  <div class="px-8 pt-2 hover:text-eureka">
+    <a href="{{ .Permalink }}" class="font-semibold">{{ i18n "readMore" }}</a>
+    <i class="fas fa-caret-right ml-1"></i>
+  </div>
+</div>
+{{ end }}
+
+{{ define "partials/widgets/pages-masonry" }}
+<div class="pb-2 text-right hover:text-eureka">
+  <a href="{{ .Permalink }}" class="font-semibold">{{ i18n "readMore" }}</a>
+  <i class="fas fa-caret-right ml-1"></i>
+</div>
+{{ $pages := partial "widgets/pages-get" . }}
+{{ partial "components/summary-list-masonry" $pages }}
+{{ end }}

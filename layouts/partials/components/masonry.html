@@ -7,7 +7,7 @@
         {{ range first 10 . }}
         <div class="item">
             <div class="grid-content">
-                {{ partial "stacked_summary.html" . }}
+                {{ partial "components/summary-masonry" . }}
             </div>
         </div>
         {{ end }}
