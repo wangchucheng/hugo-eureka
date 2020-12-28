@@ -5,7 +5,7 @@
 {{- if gt (len $bundles) 1 }}
 <script type="application/ld+json">
 {
-  "@context": "https://components/schema.org",
+  "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
     {{- range $index, $value := $bundles.Reverse -}}
