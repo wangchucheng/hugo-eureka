@@ -2,8 +2,8 @@
   @apply text-primary-text leading-normal break-words;
 }
 
-.content > * + * {
-  @apply mt-0 mb-4;
+.content > * {
+  @apply mb-4;
 }
 
 .content li + li {
