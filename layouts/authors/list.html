@@ -1,60 +1,16 @@
 {{ define "main" }}
-<div class="lg:pt-12">
-    <div class="bg-secondary-bg rounded primary-text px-6 md:px-16 lg:px-32">
-        <div class="flex flex-col lg:flex-row items-center justify-center py-12">
-            {{ $img := partial "utils/get-image" (dict "context" . "url" .Params.avatar "keyword" "*avatar*")}}
-            {{ with $img }}
-            <div class="w-48 mx-auto lg:-my-8 lg:ml-0 lg:mr-8 lg:pr-8 lg:py-8 lg:border-r">
-                <img src="{{ . }}" class="rounded-full" alt="Avatar">  
-            </div>
-            {{ end }}
-            <div class="flex-grow mt-4 md:mt-0">
-                <div class="text-3xl leading-tight py-4">{{ .Title }}</div>
-                <div class="w-3/12 xl:w-2/12 border-b"></div>
-        
-                <div class="flex items-center pt-4">
-                    {{ with or (.Params.role) (.Params.organizations)}}
-                    <i class="fas fa-user-tag"></i>
-                    {{ end }}
-                    <div class="flex flex-wrap">
-                        {{ with .Params.role }}
-                        <span class="pl-4">{{ . }}</span>
-                        {{ end }}
-        
-                        {{ with .Params.organization }}
-                        <a href="{{ .url }}" class="pl-4">{{ .name }}</a>
-                        {{ end }}
-                    </div>
-        
-                </div>
-        
-                {{ with .Params.bio }}
-                <div class="py-8 text-lg leading-normal">
-                    {{ . }}
-                </div>
-                {{ end }}
-            </div>
-            <div class="flex lg:flex-col justify-center items-end ml-8">
-                {{ $brand := $.Param "social"}}
-                {{ range $brand }}
-                {{/*  Deprecation warning(v1.0.0) starts  */}}
-                {{ if .icon_pack }}
-                {{ warnf "Param 'icon_pack' in %q is deprecated and will be removed in Eureka v1.0.0. Use 'iconPack' instead." $.File.Path }}
-                {{ end }}
-                {{ $iconPack := .iconPack | default .icon_pack }}
-                {{/*  Deprecation warning(v1.0.0) ends  */}}
-                {{ $src :=  print $iconPack " fa-" .icon }}
-                <div class="pb-2 pr-4 lg:pr-0 pt-4 lg:pt-0">
-                    <a href="{{ .url }}"><i class="{{ print $src }}"></i></a>
-                </div>
-                {{ end }}
-            </div>
-        </div>
-        <div class="content pb-20">
-            {{ .Content }}
-        </div>
+<div class="pl-scrollbar bg-secondary-bg">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="lg:w-3/4 mx-auto px-6 md:px-8 xl:px-12 py-12">
+      {{ partial "widgets/about" . }}
     </div>
-    {{ $pages := .Pages }}
-    {{ partial "components/masonry" $pages }}
+  </div>
+</div>
+<div class="pl-scrollbar bg-primary-bg">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="lg:w-3/4 mx-auto px-6 md:px-8 xl:px-12 py-12">
+      {{ partial "components/summary-list-plain" .Pages }}
+    </div>
+  </div>
 </div>
 {{ end }}
