@@ -2,7 +2,7 @@
 # See https://github.com/gohugoio/hugoThemes#themetoml for an example
 
 name = "Eureka"
-license = "MIT"
+license = "Apache 2.0"
 licenselink = "https://github.com/wangchucheng/hugo-eureka/blob/master/LICENSE"
 description = "Eureka is a feature-rich and highly customizable Hugo theme."
 homepage = "https://www.wangchucheng.com/en/docs/eureka/"
