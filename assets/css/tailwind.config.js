@@ -18,16 +18,20 @@ module.exports = {
     },
     extend: {
       height: {
-        '(screen-16)': 'calc(100vh - 4rem)',
-        '96': '24rem',
-        '128': '32rem',
-        '160': '40rem',
+          '(screen-16)': 'calc(100vh - 4rem)',
+          '(16-4px)': 'calc(4rem - 4px)',
+          '96': '24rem',
+          '128': '32rem',
+          '160': '40rem',
       },
       minHeight: {
         '16': '4rem',
       },
       maxHeight: {
         'doc-sidebar': 'calc(100vh - 4rem - var(--height-doc-title, 4rem))',
+      },
+      lineHeight: {
+        '(16-4px)': 'calc(4rem - 4px)',
       },
       inset: {
         '16': '4rem',

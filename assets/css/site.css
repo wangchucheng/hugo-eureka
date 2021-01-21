@@ -49,3 +49,9 @@
 .pagination .page-item:not(.disabled):hover {
   @apply text-eureka;
 }
+
+.selected-menu-item {
+  @apply text-eureka;
+  border-top-color: var(--color-eureka);
+  border-bottom-color: transparent;
+}

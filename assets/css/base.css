@@ -20,5 +20,5 @@
 }
 
 a:hover {
-    @apply text-eureka;
+    @apply text-eureka transition duration-300 ease-in-out;
 }
