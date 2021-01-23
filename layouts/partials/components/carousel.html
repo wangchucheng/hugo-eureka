@@ -1,0 +1,42 @@
+<section>
+	<div id="tinyslider-carousel">
+		{{ range sort $.Params.carousel.images "weight" }}
+		<div class="item">
+			<div>
+				<img class="img-responsive" src="{{ .image }}" alt="{{ .description }}" />
+			</div>
+			{{ if .description }}
+			<p>{{ .description }}</p>
+			{{ end }}
+		</div>
+		{{ end }}
+	</div>
+	<div class="tinyslider-controls">
+		<ul class="thumbnails" id="customize-thumbnails">
+		{{ range sort $.Params.carousel.images "weight" }}
+			<li class="item"><img class="img-responsive" src="{{ .image }}" alt="{{ .description }}" width="50px" /></li>
+		{{ end }}
+		</ul>
+		<ul class="controls" id="customize-controls">
+			{{- $angleleft := resources.Get "images/angle-left.png" }}
+			{{- $angleright := resources.Get "images/angle-right.png" }}
+			<li class="prev"><img src="{{ $angleleft.Permalink }}" alt="Move selection to left" /></li>
+			<li class="next"><img src="{{ $angleright.Permalink }}" alt="Move selection to right" /></li>
+		</ul>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/min/tiny-slider.js"></script>
+	<script>  const slider = tns({
+		container: '#tinyslider-carousel',
+		items: 1,
+		autoplay: false,
+		center: true,
+		nav: true,
+		navContainer: "#customize-thumbnails",
+		controlsContainer: "#customize-controls",
+		navAsThumbnails: true,
+		autoHeight: true,
+	  });
+	</script>
+
+</section>
+

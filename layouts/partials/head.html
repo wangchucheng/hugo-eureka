@@ -55,6 +55,13 @@
 {{- $eurekaCSS := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js") }}
 {{- $eurekaCSS := $eurekaCSS | minify }}
 <link rel="stylesheet" href="{{ $eurekaCSS.Permalink }}">
+{{ if isset $.Params "carousel" }}
+{{ if $.Params.carousel.enable }}
+<link preload rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css">
+{{- $carouselCSS := resources.Get "css/carousel.css" | minify }}
+<link rel="stylesheet" href="{{ $carouselCSS.Permalink }}">
+{{ end }}
+{{ end }}
 
 {{- $eurekaJS := resources.Get "js/eureka.js" | minify }}
 <script defer src="{{ $eurekaJS.Permalink }}"></script>
