@@ -52,11 +52,12 @@
 {{ end }}
 <title>{{ partial "get-title" . }}</title>
 
+{{- $assets := .Site.Data.assets }}
 {{- $eurekaCSS := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js") }}
 {{- $eurekaCSS := $eurekaCSS | minify }}
 <link rel="stylesheet" href="{{ $eurekaCSS.Permalink }}">
 {{ if isset $.Params "carousel" }}
-<link preload rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css">
+<link preload rel="stylesheet" href="{{ printf $assets.tinyslider.css.url $assets.tinyslider.version }}" crossorigin>
 {{- $carouselCSS := resources.Get "css/carousel.css" | minify }}
 <link rel="stylesheet" href="{{ $carouselCSS.Permalink }}">
 {{ end }}
@@ -69,7 +70,6 @@
   href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
   as="style" onload="this.onload=null;this.rel='stylesheet'">
 
-{{- $assets := .Site.Data.assets }}
 <link rel="stylesheet" href="{{ printf $assets.highlightjs.css.url $assets.highlightjs.version }}"
   {{ with $assets.highlightjs.css.sri }} integrity="{{ . }}" {{ end }} media="print"
   onload="this.media='all';this.onload=null" crossorigin>

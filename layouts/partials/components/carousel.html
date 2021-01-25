@@ -35,7 +35,7 @@
 			<li class="next"><img src="{{ $angleright.Permalink }}" alt="Move selection to right" /></li>
 		</ul>
 	</div>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/min/tiny-slider.js"></script>
+	<script src="{{ printf .Site.Data.assets.tinyslider.js.url .Site.Data.assets.tinyslider.version }}"></script>
 	<script>  const slider = tns({
 		container: '#tinyslider-carousel',
 		items: 1,

@@ -33,3 +33,13 @@
   [katex.autoRender]
     url = "https://cdn.jsdelivr.net/npm/katex@%s/dist/contrib/auto-render.min.js"
     sri = "sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa"
+
+[tinyslider]
+  version = "2.9.3"
+
+  [tinyslider.css]
+    url = "https://cdn.jsdelivr.net/npm/tiny-slider@%s/dist/tiny-slider.css"
+
+  [tinyslider.js]
+    url = "https://cdn.jsdelivr.net/npm/tiny-slider@%s/dist/tiny-slider.min.js"
+
