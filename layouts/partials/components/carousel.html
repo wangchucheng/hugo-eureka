@@ -1,20 +1,31 @@
 <section>
 	<div id="tinyslider-carousel">
-		{{ range sort $.Params.carousel.images "weight" }}
+		{{ range $.Params.carousel }}
 		<div class="item">
 			<div>
+				{{ if reflect.IsMap . }}
 				<img class="img-responsive" src="{{ .image }}" alt="{{ .description }}" />
 			</div>
-			{{ if .description }}
-			<p>{{ .description }}</p>
-			{{ end }}
+					{{ if .description }}
+					<p>{{ .description }}</p>
+					{{ end }}
+				{{ else }}
+				<img class="img-responsive" src="{{ . }}" />
+			</div>
+				{{ end }}
 		</div>
 		{{ end }}
 	</div>
 	<div class="tinyslider-controls">
 		<ul class="thumbnails" id="customize-thumbnails">
-		{{ range sort $.Params.carousel.images "weight" }}
-			<li class="item"><img class="img-responsive" src="{{ .image }}" alt="{{ .description }}" width="50px" /></li>
+		{{ range $.Params.carousel }}
+			<li class="item">
+				{{ if reflect.IsMap . }}
+				<img class="img-responsive" src="{{ .image }}" alt="{{ .description }}" width="50px" />
+				{{ else }}
+				<img class="img-responsive" src="{{ . }}" width="50px" />
+				{{ end }}
+			</li>
 		{{ end }}
 		</ul>
 		<ul class="controls" id="customize-controls">
