@@ -31,4 +31,16 @@
         {{ end }}
     </div>
     {{ end }}
+
+    {{ with .GetTerms "tags" }}
+    <div class="mr-6 my-2">
+        <i class="fas fa-tags mr-1"></i>
+        {{ range $index, $value := . }}
+        {{ if gt $index 0 }}
+        <span>, </span>
+        {{ end -}}
+        <a href="{{ .Permalink }}" class="hover:text-eureka">#{{ .LinkTitle }}</a>
+        {{ end }}
+    </div>
+    {{ end }}
 </div>
