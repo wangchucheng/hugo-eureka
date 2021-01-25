@@ -29,10 +29,8 @@
 		{{ end }}
 		</ul>
 		<ul class="controls" id="customize-controls">
-			{{- $angleleft := resources.Get "images/angle-left.png" }}
-			{{- $angleright := resources.Get "images/angle-right.png" }}
-			<li class="prev"><img src="{{ $angleleft.Permalink }}" alt="Move selection to left" /></li>
-			<li class="next"><img src="{{ $angleright.Permalink }}" alt="Move selection to right" /></li>
+			<li class="prev"><i class="fas fa-angle-left"></i></li>
+			<li class="next"><i class="fas fa-angle-right"></i></li>
 		</ul>
 	</div>
 	<script src="{{ printf .Site.Data.assets.tinyslider.js.url .Site.Data.assets.tinyslider.version }}"></script>
