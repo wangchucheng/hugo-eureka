@@ -15,11 +15,11 @@
       {{ end }}
       <div class="flex flex-wrap">
         {{ with .Params.role }}
-          <span class="pl-4">{{ . }}</span>
+          <span class="pl-4">{{ . | markdownify }}</span>
         {{ end }}
 
         {{ with .Params.organization }}
-          <a href="{{ .url }}" class="pl-4">{{ .name }}</a>
+          <a href="{{ .url }}" class="pl-4">{{ .name | markdownify }}</a>
         {{ end }}
       </div>
 
@@ -27,7 +27,7 @@
 
     {{ with .Params.bio }}
       <div class="py-8 text-lg leading-normal">
-        {{ . }}
+        {{ . | markdownify }}
       </div>
     {{ end }}
   </div>
