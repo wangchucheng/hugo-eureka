@@ -1,6 +1,6 @@
 +++
-title = "Carousel with image description"
-description = "Post with carousel which has image description, but can also omit it "
+title = "Carousel with image array"
+description = "Post with carousel which does not have description per image"
 summary = ""
 toc = true
 authors = ["Example Author"]
@@ -11,15 +11,10 @@ date =  "2020-05-26"
 lastmod = "2020-05-26"
 draft = false
 
-carousel = [
-	{ image = "../carousel1.png", description = "Caption of the first image." },
-	{ image = "../carousel2.png", description = "Caption of the second image." },
-	{ image = "../carousel3.png", description = "The next image does not have a caption." },
-	{ image = "../carousel4.png" }
-]
+carousel = ["carousel1.jpg", "carousel2.jpg", "carousel3.jpg", "carousel4.jpg"]
 +++
 
-This post includes a carousel on the end. It is displayed like a gallery and you can
+This post includes a carousel without descriptions on the end. It is displayed like a gallery and you can
 move around the images so that they do not take too much space. Style is at the moment
 not configurable, but configuration of the carousel style could be done in the future.
 
