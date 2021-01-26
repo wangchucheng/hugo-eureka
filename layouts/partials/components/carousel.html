@@ -4,7 +4,8 @@
 		<div class="item">
 			<div>
 				{{ if reflect.IsMap . }}
-				<img class="img-responsive" src="{{ .image }}" alt="{{ .description }}" />
+				{{ $image := partial "utils/get-image" (dict "context" $ "url" .image "keyword" .image) }}
+				<img class="img-responsive" src="{{ $image }}" alt="{{ .description }}" />
 			</div>
 					{{ if .description }}
 					<p>{{ .description }}</p>
@@ -48,4 +49,3 @@
 	</script>
 
 </section>
-
