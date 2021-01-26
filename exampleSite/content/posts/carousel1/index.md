@@ -11,7 +11,7 @@ date =  "2020-05-26"
 lastmod = "2020-05-26"
 draft = false
 
-carousel = [
+featuredImage = [
 	{ image = "carousel1.jpg", description = "Caption of the first image." },
 	{ image = "carousel2.jpg", description = "Caption of the second image." },
 	{ image = "carousel3.jpg", description = "The next image does not have a caption." },

@@ -1,6 +1,6 @@
 <section>
 	<div id="tinyslider-carousel">
-		{{ range $.Params.carousel }}
+		{{ range .Params.featuredImage }}
 		<div class="item">
 			<div>
 				{{ if reflect.IsMap . }}
@@ -20,7 +20,7 @@
 	</div>
 	<div class="tinyslider-controls">
 		<ul class="thumbnails" id="customize-thumbnails">
-		{{ range $.Params.carousel }}
+		{{ range .Params.featuredImage }}
 			<li class="item">
 				{{ if reflect.IsMap . }}
 				{{ $image := partial "utils/get-image" (dict "context" $ "url" .image "keyword" .image) }}

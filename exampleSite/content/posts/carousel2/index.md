@@ -11,7 +11,7 @@ date =  "2020-05-26"
 lastmod = "2020-05-26"
 draft = false
 
-carousel = ["carousel1.jpg", "carousel2.jpg", "carousel3.jpg", "carousel4.jpg"]
+featuredImage = ["carousel1.jpg", "carousel2.jpg", "carousel3.jpg", "carousel4.jpg"]
 +++
 
 This post includes a carousel without descriptions on the end. It is displayed like a gallery and you can
