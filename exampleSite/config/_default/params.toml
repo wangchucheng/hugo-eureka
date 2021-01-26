@@ -11,6 +11,7 @@ titleSeparator = ""
 
 # Options: auto, light and dark. Default is auto.
 colorScheme = ""
+carouselPosition = "top"
 
 # E.g. Person, Organization, LocalBusiness, Project, EducationalOrganization
 siteType = "Person"

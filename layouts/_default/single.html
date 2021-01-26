@@ -7,6 +7,12 @@
         <h1 class="font-bold text-3xl text-primary-text">{{ .Title }}</h1>
         {{ partial "components/post-metadata" . }}
         
+		{{ if eq .Site.Params.carouselPosition "top" }}
+			{{ if isset $.Params "carousel" }}
+			{{ partial "components/carousel" . }}
+			{{ end }}
+		{{ end }}
+
         {{ $featured := partial "utils/get-featured" . }}
         {{ with $featured }}
         <div class="my-4">
@@ -18,9 +24,11 @@
             {{ .Content}}
         </div>
 
-        {{ if isset $.Params "carousel" }}
-        {{ partial "components/carousel" . }}
-        {{ end }}
+		{{ if eq .Site.Params.carouselPosition "bottom" }}
+			{{ if isset $.Params "carousel" }}
+			{{ partial "components/carousel" . }}
+			{{ end }}
+		{{ end }}
 
         {{ with .GetTerms "tags" }}
         {{ partial "components/post-tags" . }}
