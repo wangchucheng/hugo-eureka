@@ -11,7 +11,8 @@
 					<p>{{ .description }}</p>
 					{{ end }}
 				{{ else }}
-				<img class="img-responsive" src="{{ . }}" />
+				{{ $image := partial "utils/get-image" (dict "context" $ "url" . "keyword" .) }}
+				<img class="img-responsive" src="{{ $image }}" />
 			</div>
 				{{ end }}
 		</div>
@@ -22,9 +23,11 @@
 		{{ range $.Params.carousel }}
 			<li class="item">
 				{{ if reflect.IsMap . }}
-				<img class="img-responsive" src="{{ .image }}" alt="{{ .description }}" width="50px" />
+				{{ $image := partial "utils/get-image" (dict "context" $ "url" .image "keyword" .image) }}
+				<img class="img-responsive" src="{{ $image }}" alt="{{ .description }}" width="50px" />
 				{{ else }}
-				<img class="img-responsive" src="{{ . }}" width="50px" />
+				{{ $image := partial "utils/get-image" (dict "context" $ "url" . "keyword" .) }}
+				<img class="img-responsive" src="{{ $image }}" width="50px" />
 				{{ end }}
 			</li>
 		{{ end }}
