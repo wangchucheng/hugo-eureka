@@ -7,8 +7,7 @@
                     <div class="mb-4">
                         <div class="font-bold text-xl">{{ .title }}</div>
                         <div> {{ .organization | markdownify }}</div>
-                        <div> {{ .dates | markdownify }}</div>
-                        <div> {{ .location | markdownify }} </div>
+                        <span class="mr-8"> {{ .dates | markdownify }}</span> <span> {{ .location | markdownify }} </span>
                     </div>
                     
                     <div class="content">
