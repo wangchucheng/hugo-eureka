@@ -1,4 +1,4 @@
-{{ $experiences := $.Param "experiences"}}
+{{ $experiences := $.Param "experiences" }}
 {{ range $experiences }}
     <div class="mb-6">
         <div class="bg-secondary-bg rounded border hover:shadow-lg transition ease-in-out duration-200 px-6 pt-6 pb-4">
@@ -8,7 +8,7 @@
                     <div>
                         <a>{{ .organization | markdownify }}</a>
                         {{if and .organization .location}}
-                        <span class="ml-2 mr-2"> · </span>
+                            <span class="ml-2 mr-2"> · </span>
                         {{end}}
                         <span>{{ .location | markdownify }} </span>
                     </div>
