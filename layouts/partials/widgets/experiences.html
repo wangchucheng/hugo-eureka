@@ -7,7 +7,9 @@
                 <div class="flex justify-between">
                     <div>
                         <a>{{ .organization | markdownify }}</a>
+                        {{if and .organization .location}}
                         <span class="ml-2 mr-2"> · </span>
+                        {{end}}
                         <span>{{ .location | markdownify }} </span>
                     </div>
                     <div> {{ .dates | markdownify }}</div>
