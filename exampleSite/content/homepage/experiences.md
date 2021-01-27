@@ -4,8 +4,10 @@ weight = 4
 draft = false
 
 [[experiences]]
+    hide_entry = false #Change this value to true to hide this entry
     title = "Example Role 1"
-    organization = "Example Organization 1"
+    organization_name = "Example Organization 1"
+    organization_url = "https://example.org"
     dates = "2019 - Present"
     location = "Country"
     writeup = """
@@ -16,8 +18,10 @@ Donec scelerisque egestas augue at tempor. Fusce faucibus magna in.
 """
 
 [[experiences]]
+    hide_entry = false #Change this value to true to hide this entry
     title = "Example Role 2"
-    organization = "Example Organization 2"
+    organization_name = "Example Organization 2"
+    organization_url = ""
     dates = "2017 - 2019"
     location = "Country"
     writeup = """
