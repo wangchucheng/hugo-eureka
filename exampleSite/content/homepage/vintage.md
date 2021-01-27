@@ -1,6 +1,6 @@
 +++
 title = "Vintage"
-weight = 3
+weight = 4
 draft = false
 
 slogan = "We are all in the gutter, but some of us are looking at the stars."
