@@ -15,13 +15,6 @@
             </div>
             <div class="flex">
                 <div class="w-full lg:w-3/4 px-6">
-
-					{{ if eq .Site.Params.carouselPosition "top" }}
-						{{ if isset $.Params "carousel" }}
-						{{ partial "components/carousel" . }}
-						{{ end }}
-					{{ end }}
-
                     {{ $featured := partial "utils/get-featured" . }}
                     {{ with $featured }}
                     <div class="my-4">
@@ -31,12 +24,9 @@
                     <div class="content">
                         {{ .Content}}
                     </div>
-
-					{{ if eq .Site.Params.carouselPosition "bottom" }}
                     {{ if isset $.Params "carousel" }}
                     {{ partial "components/carousel" . }}
                     {{ end }}
-					{{ end }}
 
                     {{ with .GetTerms "tags" }}
                     {{ partial "components/post-tags" . }}
