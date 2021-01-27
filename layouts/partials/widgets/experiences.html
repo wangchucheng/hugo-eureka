@@ -9,10 +9,17 @@
                 <div class="font-bold text-xl">{{ .title }}</div>
                 <div class="flex justify-between">
                     <div>
-                        <a>{{ .organization | markdownify }}</a>
-                        {{if and .organization .location}}
+                        {{ $org_name := .organization_name}}
+                        {{ with .organization_url }} 
+                            <a href="{{.}}">{{ $org_name | markdownify }}</a>
+                        {{ else }}
+                            <span>{{ $org_name | markdownify }}</span>
+                        {{ end }}
+
+                        {{if and .organization_name .location}}
                             <span class="ml-2 mr-2"> · </span>
                         {{end}}
+                        
                         <span>{{ .location | markdownify }} </span>
                     </div>
                     <div> {{ .dates | markdownify }}</div>
