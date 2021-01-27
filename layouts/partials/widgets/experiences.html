@@ -1,5 +1,8 @@
 {{ $experiences := $.Param "experiences" }}
 {{ range $experiences }}
+    <!-- Does not render the card is the hide_entry variable is true -->
+    <!-- Does not render the card if the hide_entry variable is undefined -->
+    {{ if not (eq .hide_entry true)}}
     <div class="mb-6">
         <div class="bg-secondary-bg rounded border hover:shadow-lg transition ease-in-out duration-200 px-6 pt-6 pb-4">
             <div class="mb-4">
@@ -21,4 +24,5 @@
             </div>
         </div>
     </div>
+    {{ end }}
 {{ end }}
