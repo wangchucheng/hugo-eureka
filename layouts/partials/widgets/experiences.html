@@ -2,16 +2,21 @@
 {{ range $experiences }}
     <div class="mb-6">
         <div class="bg-secondary-bg rounded border hover:shadow-lg transition ease-in-out duration-200 px-6 pt-6 pb-4">
-                <div class="mb-4">
-                    <div class="font-bold text-xl">{{ .title }}</div>
-                    <div> {{ .organization | markdownify }}</div>
-                    <span class="mr-4"> {{ .dates | markdownify }}</span>
-                    <span> {{ .location | markdownify }} </span>
+            <div class="mb-4">
+                <div class="font-bold text-xl">{{ .title }}</div>
+                <div class="flex justify-between">
+                    <div>
+                        <a>{{ .organization | markdownify }}</a>
+                        <span class="ml-2 mr-2"> · </span>
+                        <span>{{ .location | markdownify }} </span>
+                    </div>
+                    <div> {{ .dates | markdownify }}</div>
                 </div>
+            </div>
                 
-                <div class="content">
-                    {{ .writeup | markdownify }}
-                </div>
+            <div class="content">
+                {{ .writeup | markdownify }}
+            </div>
         </div>
-  </div>
+    </div>
 {{ end }}
