@@ -1,4 +1,4 @@
-+++
-title = "Docs"
-layout = "doc-list"
-+++
+---
+title: Docs
+layout: doc-list
+---

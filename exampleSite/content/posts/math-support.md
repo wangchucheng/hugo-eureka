@@ -1,16 +1,17 @@
-+++
-title = "Math Support"
-description = ""
-toc = true
-authors = ["example-author"]
-tags = []
-categories = []
-series = []
-date =  "2020-11-20T22:52:56+08:00"
-lastmod = "2020-11-20T22:52:56+08:00"
-featuredImage = ""
-draft = false
-+++
+---
+title: Math Support
+description:
+toc: true
+authors:
+  - example-author
+tags:
+categories:
+series:
+date: '2020-11-20T22:52:56+08:00'
+lastmod: '2020-11-20T22:52:56+08:00'
+featuredImage:
+draft: false
+---
 
 Eureka supports the rendering of mathematical formulas by using KaTeX.
 

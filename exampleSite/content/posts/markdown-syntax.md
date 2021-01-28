@@ -1,16 +1,23 @@
-+++
-title = "Markdown Syntax Guide"
-description = "Sample article showcasing basic Markdown syntax and formatting for HTML elements."
-summary = ""
-toc = true
-authors = ["Hugo Authors"]
-tags = ["markdown", "css", "html", "themes"]
-categories = ["themes", "syntax"]
-series = ["Themes Guide"]
-date =  "2019-03-11"
-lastmod = "2019-03-11"
-draft = false
-+++
+---
+title: Markdown Syntax Guide
+description: Sample article showcasing basic Markdown syntax and formatting for HTML elements.
+toc: true
+authors:
+  - Hugo Authors
+tags:
+  - markdown
+  - css
+  - html
+  - themes
+categories:
+  - themes
+  - syntax
+series:
+  - Themes Guide
+date: '2019-03-11'
+lastmod: '2019-03-11'
+draft: false
+---
 
 This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.
 <!--more-->

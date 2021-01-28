@@ -1,0 +1,44 @@
+baseURL: /
+title: Eureka Demo
+
+# Comment when installing using Hugo Modules
+theme: eureka
+# Uncomment when installing using Hugo Modules
+# theme: github.com/wangchucheng/hugo-eureka
+
+paginate: 3
+copyright: >
+  &copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a
+  href="https://www.ruiqima.com/">R. Ma</a>
+enableEmoji: true
+enableGitInfo: false
+summaryLength: 75
+
+defaultContentLanguage: en
+hasCJKLanguage: false # Set `true` for Chinese/Japanese/Korean.
+defaultContentLanguageInSubdir: false
+
+# Uncomment for google analytics
+# googleAnalytics: UA-123-45
+
+markup:
+  # Do not modify markup.highlight
+  highlight:
+    codeFences: false
+    noClasses: false
+  tableOfContents:
+    startLevel: 2
+    endLevel: 6
+    ordered: false
+  goldmark:
+    renderer:
+      unsafe: true
+
+taxonomies:
+  category: categories
+  tag: tags
+  series: series
+  author: authors
+
+build:
+  useResourceCacheWhen: always

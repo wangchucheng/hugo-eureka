@@ -1,18 +1,20 @@
-+++
-title = "Featured Image"
-description = "Post with featured image."
-summary = ""
-toc = true
-authors = ["Example Author"]
-tags = ["image"]
-categories = ["themes"]
-series = ["Themes Guide"]
-date =  "2020-05-26"
-lastmod = "2020-05-26"
-draft = false
-
-featuredImage = "images/hero-right.jpg"
-+++
+---
+title: Featured Image
+description: Post with featured image.
+toc: true
+authors:
+  - Example Author
+tags:
+  - image
+categories:
+  - themes
+series:
+  - Themes Guide
+date: '2020-05-26'
+lastmod: '2020-05-26'
+featuredImage: images/hero-right.jpg
+draft: false
+---
 
 Maecenas maximus, elit in ornare porttitor, nisi eros hendrerit nisl, sed fermentum nulla urna blandit tellus.
 
