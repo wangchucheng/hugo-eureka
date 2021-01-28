@@ -1,0 +1,20 @@
+readMore:
+  other: Read More
+readingTime:
+  other: '{{ .ReadingTime }} min read'
+toc:
+  other: Table of Contents
+seriesOfPosts:
+  other: Series of Posts
+previous:
+  other: Previous
+next:
+  other: Next
+seeAlso:
+  other: See Also
+recent:
+  other: Recent
+onThisPage:
+  other: On This Page
+editThisPage:
+  other: Edit this page

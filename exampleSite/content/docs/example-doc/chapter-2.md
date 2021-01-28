@@ -1,16 +1,15 @@
-+++
-title = "Chapter 2"
-description = "Chapter 2 of example doc"
-summary = ""
-toc = true
-authors = []
-tags = []
-categories = []
-series = []
-date =  "2020-10-16"
-lastmod = "2020-10-16"
-draft = false
-+++
+---
+title: Chapter 2
+description: Chapter 2 of example doc
+toc: true
+authors:
+tags:
+categories:
+series:
+date: '2020-10-16'
+lastmod: '2020-10-16'
+draft: false
+---
 
 This is chapter 2 of example doc.
 

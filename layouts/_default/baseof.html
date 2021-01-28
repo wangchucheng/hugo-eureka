@@ -9,7 +9,7 @@
     </div>
   </header>
   <main class="flex-grow pt-16">
-    {{- if or .IsHome (eq .Type "authors") }}
+    {{- if or .IsHome (and (eq .Type "authors") (eq .Kind "term")) }}
     {{- block "main" . }}{{- end }}
     {{- else }}
     <div class="pl-scrollbar">
