@@ -9,5 +9,7 @@
   {{ else }}
     {{ $image = partial "utils/get-image" (dict "context" . "url" .Params.featuredimage "keyword" "*featured*") }}
   {{ end }}
+  {{ if $image }}
+    <img src="{{ $image }}" class="w-full" alt="Featured Image">
+  {{ end }}
 {{ end }}
-{{ return $image }}

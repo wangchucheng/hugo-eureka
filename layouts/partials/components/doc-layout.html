@@ -15,18 +15,12 @@
             </div>
             <div class="flex">
                 <div class="w-full lg:w-3/4 px-6">
-                    {{ $featured := partial "utils/get-featured" . }}
-                    {{ with $featured }}
                     <div class="my-4">
-                        {{ . }}
+	                    {{ partial "utils/render-featured" . }}
                     </div>
-                    {{ end }}
                     <div class="content">
                         {{ .Content}}
                     </div>
-                    {{ if isset $.Params "carousel" }}
-                    {{ partial "components/carousel" . }}
-                    {{ end }}
 
                     {{ with .GetTerms "tags" }}
                     {{ partial "components/post-tags" . }}

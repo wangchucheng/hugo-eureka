@@ -1,6 +1,6 @@
-<section>
-	<div id="tinyslider-carousel">
-		{{ range .Params.featuredImage }}
+<section class="w-full">
+	<div id="tinyslider-carousel" class="w-full">
+		{{ range .Params.featuredimage }}
 		<div class="item">
 			<div>
 				{{ if reflect.IsMap . }}
@@ -20,7 +20,7 @@
 	</div>
 	<div class="tinyslider-controls">
 		<ul class="thumbnails" id="customize-thumbnails">
-		{{ range .Params.featuredImage }}
+		{{ range .Params.featuredimage }}
 			<li class="item">
 				{{ if reflect.IsMap . }}
 				{{ $image := partial "utils/get-image" (dict "context" $ "url" .image "keyword" .image) }}
@@ -43,10 +43,12 @@
 		items: 1,
 		autoplay: false,
 		center: true,
+		controls: false,
 		nav: true,
 		navContainer: "#customize-thumbnails",
 		controlsContainer: "#customize-controls",
 		navAsThumbnails: true,
+		autoWidth: true,
 		autoHeight: true,
 	  });
 	</script>
