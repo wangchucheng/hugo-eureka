@@ -1,13 +1,13 @@
 {{ if or .PrevInSection .NextInSection }}
 <div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t">
     <div>
-        {{ with .NextInSection }}
+        {{ with .PrevInSection }}
         <span class="block font-bold">{{ i18n "previous" }}</span>
         <a href="{{ .Permalink }}" class="block">{{ .LinkTitle }}</a>
         {{ end }}
     </div>
     <div class="md:text-right mt-4 md:mt-0">
-        {{ with .PrevInSection }}
+        {{ with .NextInSection }}
         <span class="block font-bold">{{ i18n "next" }}</span>
         <a href="{{ .Permalink }}" class="block">{{ .LinkTitle }}</a>
         {{ end }}
