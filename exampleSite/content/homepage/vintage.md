@@ -1,34 +1,31 @@
-+++
-title = "Vintage"
-weight = 4
-draft = false
+---
+title: Vintage
+draft: false
+slogan: We are all in the gutter, but some of us are looking at the stars.
+imgLeft: images/hero-left.jpg
+imgRight: images/hero-right.jpg
 
-slogan = "We are all in the gutter, but some of us are looking at the stars."
-imgLeft = "images/hero-left.jpg"
-imgRight = "images/hero-right.jpg"
+weight: 4
+widget:
+  handler: vintage
 
-[widget]
-  handler = "vintage"
-    
   # Options: sm, md, lg and xl. Default is md.
-  width = ""
+  width:
 
-  [widget.sidebar]
+  sidebar:
     # Options: left and right. Leave blank to hide.
-    position = ""
+    position:
     # Options: sm, md, lg and xl. Default is md.
-    scale = ""
+    scale:
     
-  [widget.background]
+  background:
     # Options: primary, secondary, tertiary or any valid color value. Default is primary.
-    color = "secondary"
-    
-    # See TODO
-    image = ""
+    color: secondary
+    image:
     # Options: auto, cover and contain. Default is auto.
-    size = ""
+    size:
     # Options: center, top, right, bottom, left.
-    position = ""
+    position:
     # Options: fixed, local, scroll.
-    attachment = ""
-+++
+    attachment: 
+---

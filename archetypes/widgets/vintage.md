@@ -1,35 +1,31 @@
-+++
-title = "{{ replace .Name "-" " " | title }}"
-weight = 1
-draft = false
+---
+title: {{ replace .Name "-" " " | title }}
+draft: false
+slogan:
+imgLeft:
+imgRight:
 
-slogan = ""
-# See TODO
-imgLeft = ""
-imgRight = ""
+weight:
+widget:
+  handler: vintage
 
-[widget]
-  handler = "vintage"
-    
   # Options: sm, md, lg and xl. Default is md.
-  width = ""
+  width:
 
-  [widget.sidebar]
+  sidebar:
     # Options: left and right. Leave blank to hide.
-    position = ""
+    position:
     # Options: sm, md, lg and xl. Default is md.
-    scale = ""
+    scale:
     
-  [widget.background]
+  background:
     # Options: primary, secondary, tertiary or any valid color value. Default is primary.
-    color = ""
-    
-    # See TODO
-    image = ""
+    color:
+    image:
     # Options: auto, cover and contain. Default is auto.
-    size = ""
+    size:
     # Options: center, top, right, bottom, left.
-    position = ""
+    position:
     # Options: fixed, local, scroll.
-    attachment = ""
-+++
+    attachment: 
+---

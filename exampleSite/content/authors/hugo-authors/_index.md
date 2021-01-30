@@ -1,30 +1,21 @@
-+++
-# Name
-title = "Hugo Authors"
-role = "Example Role"
-bio = "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos."
-shortContent = "Example Short Content"
-
-[organization]
-  name = "Example Organization"
-  url = "https://example.com/"
-
-[[social]]
-  icon = "envelope"
-  iconPack = "fas"
-  url = "mailto:example@example.com"
-
-[[social]]
-  icon = "twitter"
-  iconPack = "fab"
-  url = "https://example.com/"
-
-[[social]]
-  icon = "github"
-  iconPack = "fab"
-  url = "https://example.com/"
-
-+++
+---
+title: Hugo Authors
+role: Example Role
+bio: Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos.
+organization:
+  name: Example Organization
+  url: https://example.com/
+social:
+  - icon: envelope
+    iconPack: fas
+    url: mailto:example@example.com
+  - icon: twitter
+    iconPack: fab
+    url: https://example.com/
+  - icon: github
+    iconPack: fab
+    url: https://example.com/
+---
 
 ## Vestibulum vel arcu
 
