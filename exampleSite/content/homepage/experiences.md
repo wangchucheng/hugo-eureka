@@ -10,9 +10,13 @@ experiences:
     location: Country
     writeup: >
       Donec scelerisque egestas augue at tempor. Fusce faucibus magna in.
+
       - Suspendisse lacinia mauris a laoreet vehicula.
+
       - Aenean tincidunt enim vitae ante blandit tempor.
+
       - Nam tincidunt diam quis lorem rutrum ullamcorper.
+      
   - title: Example Role 2
     organization:
       name: Example Organization 2
