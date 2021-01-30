@@ -1,30 +1,22 @@
-+++
-# Name
-title = "Example Author"
-role = "Example Role"
-bio = "Aenean vel bibendum quam. Aliquam at mollis quam. Proin efficitur."
-avatar = "images/icon.png"
-
-[organization]
-  name = "Example Organization"
-  url = "https://example.com/"
-
-[[social]]
-  icon = "envelope"
-  iconPack = "fas"
-  url = "mailto:example@example.com"
-
-[[social]]
-  icon = "twitter"
-  iconPack = "fab"
-  url = "https://example.com/"
-
-[[social]]
-  icon = "github"
-  iconPack = "fab"
-  url = "https://example.com/"
-
-+++
+---
+title: Example Author
+role: Example Role
+avatar: images/icon.png
+bio: Aenean vel bibendum quam. Aliquam at mollis quam. Proin efficitur.
+organization:
+  name: Example Organization
+  url: https://example.com/
+social:
+  - icon: envelope
+    iconPack: fas
+    url: mailto:example@example.com
+  - icon: twitter
+    iconPack: fab
+    url: https://example.com/
+  - icon: github
+    iconPack: fab
+    url: https://example.com/
+---
 
 ## Self Introduction
 

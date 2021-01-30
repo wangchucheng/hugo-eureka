@@ -1,46 +1,38 @@
-+++
-title = "{{ replace .Name "-" " " | title }}"
-weight = 1
-draft = false
+---
+title: {{ replace .Name "-" " " | title }}
+draft: false
+role:
+avatar:
+bio:
+organization:
+  name:
+  url:
+social:
+  - icon:
+    iconPack:
+    url:
 
-role = ""
-bio = ""
-avatar = ""
+weight:
+widget:
+  handler: about
 
-[organization]
-  name = ""
-  url = ""
-
-# Check the available icons on https://fontawesome.com/.
-# You can get similar results like this <i class="fab fa-github"></i> after searching.
-# Then icon is github and iconPack is fab for this case.
-[[social]]
-  icon = ""
-  iconPack = ""
-  url = ""
-
-[widget]
-  handler = "about"
-    
   # Options: sm, md, lg and xl. Default is md.
-  width = ""
+  width:
 
-  [widget.sidebar]
+  sidebar:
     # Options: left and right. Leave blank to hide.
-    position = ""
+    position:
     # Options: sm, md, lg and xl. Default is md.
-    scale = ""
-    
-  [widget.background]
+    scale:
+  
+  background:
     # Options: primary, secondary, tertiary or any valid color value. Default is primary.
-    color = ""
-    
-    # See TODO
-    image = ""
+    color: secondary
+    image:
     # Options: auto, cover and contain. Default is auto.
-    size = ""
+    size:
     # Options: center, top, right, bottom, left.
-    position = ""
+    position:
     # Options: fixed, local, scroll.
-    attachment = ""
-+++
+    attachment: 
+---

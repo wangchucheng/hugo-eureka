@@ -1,37 +1,34 @@
-+++
-title = "Pages"
-weight = 2
-draft = false
-
+---
+title: Pages
+draft: false
 # Section you want to display
-section = "posts"
+section: posts
 # Pages count
-count = 5
+count: 5
 # Options: card, plain and masonry.
-style = "plain"
+style: plain
 
-[widget]
-  handler = "pages"
-    
+weight: 2
+widget:
+  handler: pages
+
   # Options: sm, md, lg and xl. Default is md.
-  width = ""
+  width:
 
-  [widget.sidebar]
+  sidebar:
     # Options: left and right. Leave blank to hide.
-    position = ""
+    position:
     # Options: sm, md, lg and xl. Default is md.
-    scale = ""
-    
-  [widget.background]
+    scale:
+
+  background:
     # Options: primary, secondary, tertiary or any valid color value. Default is primary.
-    color = ""
-    
-    # See TODO
-    image = ""
+    color:
+    image:
     # Options: auto, cover and contain. Default is auto.
-    size = ""
+    size:
     # Options: center, top, right, bottom, left.
-    position = ""
+    position:
     # Options: fixed, local, scroll.
-    attachment = ""
-+++
+    attachment: 
+---

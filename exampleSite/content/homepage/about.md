@@ -1,56 +1,47 @@
-+++
-title = "Example Author"
-weight = 1
-draft = false
+---
+title: Example Author
+draft: false
+role: Example Role
+avatar: images/icon.png
+bio: Aenean vel bibendum quam. Aliquam at mollis quam. Proin efficitur.
+organization:
+  name: Example Organization
+  url: https://example.com/
+social:
+  - icon: envelope
+    iconPack: fas
+    url: mailto:example@example.com
+  - icon: twitter
+    iconPack: fab
+    url: https://example.com/
+  - icon: github
+    iconPack: fab
+    url: https://example.com/
 
-role = "Example Role"
-bio = "Aenean vel bibendum quam. Aliquam at mollis quam. Proin efficitur."
-avatar = "images/icon.png"
+weight: 1
+widget:
+  handler: about
 
-[organization]
-  name = "Example Organization"
-  url = "https://example.com/"
-
-[[social]]
-  icon = "envelope"
-  iconPack = "fas"
-  url = "mailto:example@example.com"
-
-[[social]]
-  icon = "twitter"
-  iconPack = "fab"
-  url = "https://example.com/"
-
-[[social]]
-  icon = "github"
-  iconPack = "fab"
-  url = "https://example.com/"
-
-[widget]
-  handler = "about"
-    
   # Options: sm, md, lg and xl. Default is md.
-  width = ""
+  width:
 
-  [widget.sidebar]
+  sidebar:
     # Options: left and right. Leave blank to hide.
-    position = ""
+    position:
     # Options: sm, md, lg and xl. Default is md.
-    scale = ""
-    
-  [widget.background]
+    scale:
+  
+  background:
     # Options: primary, secondary, tertiary or any valid color value. Default is primary.
-    color = "secondary"
-    
-    # See TODO
-    image = ""
+    color: secondary
+    image:
     # Options: auto, cover and contain. Default is auto.
-    size = ""
+    size:
     # Options: center, top, right, bottom, left.
-    position = ""
+    position:
     # Options: fixed, local, scroll.
-    attachment = ""
-+++
+    attachment: 
+---
 
 ## Self Introduction
 
