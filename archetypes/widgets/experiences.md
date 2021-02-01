@@ -10,14 +10,6 @@ experiences:
     location:
     writeup:
 
-  - title:
-    organization:
-      name: 
-      url:
-    dates:
-    location:
-    writeup:
-
 weight:
 widget:
   handler: experiences
