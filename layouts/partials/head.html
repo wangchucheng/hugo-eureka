@@ -57,10 +57,12 @@
 {{- $eurekaCSS := $eurekaCSS | minify }}
 <link rel="stylesheet" href="{{ $eurekaCSS.Permalink }}">
 {{ if isset .Params "featuredimage" }}
-{{ if and (reflect.IsSlice .Params.featuredimage) (gt (len .Params.featuredimage) 1) }}
+{{ if (reflect.IsSlice .Params.featuredimage) }}
+{{ if (gt (len .Params.featuredimage) 1) }}
 <link preload rel="stylesheet" href="{{ printf $assets.tinyslider.css.url $assets.tinyslider.version }}" crossorigin>
 {{- $carouselCSS := resources.Get "css/carousel.css" | minify }}
 <link rel="stylesheet" href="{{ $carouselCSS.Permalink }}">
+{{ end }}
 {{ end }}
 {{ end }}
 
