@@ -7,6 +7,8 @@ highlightjs:
     url: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@%s/build/styles/solarized-light.min.css
   js:
     url: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@%s/build/highlight.min.js
+  languages:
+    url: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@%s/build/languages/%s.min.js
 
 # Font Awesome
 fontawesome:
