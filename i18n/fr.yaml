@@ -1,0 +1,20 @@
+readMore:
+  other: Lire plus
+readingTime:
+  other: '{{ .ReadingTime }} min à lire'
+toc:
+  other: Table des matiéres
+seriesOfPosts:
+  other: Series d'articles
+previous:
+  other: Précédent
+next:
+  other: Suivant
+seeAlso:
+  other: Voir aussi
+recent:
+  other: Récent
+onThisPage:
+  other: Sur cette page
+editThisPage:
+  other: Editer cette page
