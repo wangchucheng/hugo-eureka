@@ -9,14 +9,15 @@
         <div class="flex flex-wrap flex-row items-center my-2 text-tertiary-text">
         </div>
 
-        {{ with .Content }}
+        {{ $featured := partial "utils/get-featured" . }}
+        {{ with $featured }}
         <div class="my-4">
             {{ . }}
         </div>
         {{ end }}
 
         <div class="content">
-          <script type='text/javascript' src="https://lib.baomitu.com/jquery/1.11.1/jquery.min.js"></script>
+          <script type='text/javascript' src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
           <style type="text/css">.car-collapse .car-yearmonth { cursor: s-resize; } </style>
           <script type="text/javascript">
             /* <![CDATA[ */
@@ -44,7 +45,8 @@
             <a href="#" class="car-toggler">展开全部</a>
 
             <ul class="car-list">
-              {{ range (.Site.RegularPages.GroupByDate "01月 2006") }}
+              {{- $section := .Site.GetPage "posts" }}
+              {{ range ($section.Pages.GroupByDate "01月 2006") }}
               <li>
                 <span class="car-yearmonth">{{ .Key }} <span title="Post Count">({{ len .Pages }})</span></span>
                 <ul class="car-monthlisting">
