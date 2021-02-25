@@ -1,0 +1,64 @@
+{{ define "main" }}
+{{ $hasToc := and (in .TableOfContents "<li>" ) (.Params.toc) }}
+{{ $hasSidebar := or ($hasToc) (.Params.series) }}
+<div class="grid grid-cols-2 lg:grid-cols-8 gap-4 lg:pt-12">
+    <div
+        class="col-span-2 {{ if not $hasSidebar }} {{- print "lg:col-start-2" -}} {{ end }} lg:col-span-6 bg-secondary-bg rounded px-6 py-8">
+        <h1 class="font-bold text-3xl text-primary-text">{{ .Title }}</h1>
+
+        <div class="flex flex-wrap flex-row items-center my-2 text-tertiary-text">
+        </div>
+
+        {{ with .Content }}
+        <div class="my-4">
+            {{ . }}
+        </div>
+        {{ end }}
+
+        <div class="content">
+          <script type='text/javascript' src="https://lib.baomitu.com/jquery/1.11.1/jquery.min.js"></script>
+          <style type="text/css">.car-collapse .car-yearmonth { cursor: s-resize; } </style>
+          <script type="text/javascript">
+            /* <![CDATA[ */
+              jQuery(document).ready(function() {
+                jQuery('.car-collapse').find('.car-monthlisting').hide();
+                jQuery('.car-collapse').find('.car-monthlisting:first').show();
+                jQuery('.car-collapse').find('.car-yearmonth').click(function() {
+                  jQuery(this).next('ul').slideToggle('fast');
+                });
+                jQuery('.car-collapse').find('.car-toggler').click(function() {
+                  if ( '展开全部' == jQuery(this).text() ) {
+                    jQuery(this).parent('.car-container').find('.car-monthlisting').show();
+                    jQuery(this).text('折叠全部');
+                  }
+                  else {
+                    jQuery(this).parent('.car-container').find('.car-monthlisting').hide();
+                    jQuery(this).text('展开全部');
+                  }
+                  return false;
+                });
+              });
+            /* ]]> */
+          </script>
+          <div class="car-container car-collapse">
+            <a href="#" class="car-toggler">展开全部</a>
+
+            <ul class="car-list">
+              {{ range (.Site.RegularPages.GroupByDate "01月 2006") }}
+              <li>
+                <span class="car-yearmonth">{{ .Key }} <span title="Post Count">({{ len .Pages }})</span></span>
+                <ul class="car-monthlisting">
+                  {{ range .Pages }}
+                  <li>
+                    {{ .Date.Format "02"}}: <a href="{{ .Permalink }}">{{ .Title }} </a> <!--<span title="Comment Count">(0)</span>-->
+                  </li>
+                  {{ end }}
+                </ul>
+              </li>
+              {{ end }}
+            </ul>
+          </div>
+        </div>
+    </div>
+</div>
+{{ end }}
