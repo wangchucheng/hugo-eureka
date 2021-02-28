@@ -18,3 +18,9 @@ onThisPage:
   other: On This Page
 editThisPage:
   other: Edit this page
+light:
+  other: light
+dark:
+  other: Dark
+auto:
+  other: Auto

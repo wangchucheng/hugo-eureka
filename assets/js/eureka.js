@@ -127,13 +127,14 @@ function getcolorscheme() {
 
     for (let target of targets) {
         target.addEventListener('click', () => {
-            let icon = switchMode(target.innerHTML)
+            let targetName = target.getAttribute("name")
+            let icon = switchMode(targetName)
             let old_icon = element.firstElementChild.getAttribute("data-icon")
             element.firstElementChild.setAttribute("data-icon", icon)
             element.firstElementChild.classList.remove('fa-' + old_icon)
             element.firstElementChild.classList.add('fa-' + icon)
 
-            localStorage.setItem("lightDarkMode", target.innerHTML)
+            localStorage.setItem("lightDarkMode", targetName)
 
             targetDiv.classList.toggle('hidden')
             screen.classList.toggle('hidden')
