@@ -19,8 +19,8 @@ onThisPage:
 editThisPage:
   other: 编辑本页
 light:
-  other: 白天
+  other: 浅色
 dark:
-  other: 黑夜
+  other: 深色
 auto:
   other: 自动
