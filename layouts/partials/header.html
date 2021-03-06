@@ -45,9 +45,9 @@
                 </div>
                 <div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
                     id='lightDarkOptions'>
-                    <span class="px-4 py-1 hover:text-eureka">Light</span>
-                    <span class="px-4 py-1 hover:text-eureka">Dark</span>
-                    <span class="px-4 py-1 hover:text-eureka">Auto</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">{{i18n "light"}}</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">{{i18n "dark"}}</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">{{i18n "auto"}}</span>
                 </div>
             </div>
 
@@ -118,7 +118,7 @@
         element.firstElementChild.classList.add('fa-moon')
     }
     {{- end }}
-    
+
     document.addEventListener('DOMContentLoaded', () => {
         getcolorscheme();
         switchBurger();
