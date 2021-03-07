@@ -1,0 +1,28 @@
+<!-- valine -->
+{{ if .Site.Params.comment.valine.enable }}
+<!-- id 将作为查询条件 -->
+<span
+  id="{{ .URL | relURL }}"
+  class="leancloud_visitors"
+  data-flag-title="{{ .Title }}"
+>
+  <span class="post-meta-item-text">文章阅读量 </span>
+  <span class="leancloud-visitors-count">0</span>
+  <p></p>
+</span>
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script type="text/javascript">
+  new Valine({
+    el: "#vcomments",
+    appId: "{{ .Site.Params.comment.valine.appId }}",
+    appKey: "{{ .Site.Params.comment.valine.appKey }}",
+    notify: "{{ .Site.Params.comment.valine.notify }}",
+    verify: "{{ .Site.Params.comment.valine.verify }}",
+    avatar: "{{ .Site.Params.comment.valine.avatar }}",
+    placeholder: "{{ .Site.Params.comment.valine.placeholder }}",
+    visitor: "{{ .Site.Params.comment.valine.visitor }}",
+  });
+</script>
+{{ end }}
