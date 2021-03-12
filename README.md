@@ -2,6 +2,9 @@ English | [简体中文](https://github.com/wangchucheng/hugo-eureka/blob/master
 
 # Eureka
 
+![build](https://github.com/wangchucheng/hugo-eureka/workflows/build/badge.svg)
+![license](https://img.shields.io/github/license/wangchucheng/hugo-eureka)
+
 Eureka is a feature-rich and highly customizable [Hugo](https://gohugo.io/) theme. Using Eureka allows you to customize and deploy your website quickly and easily.
 
 ![eureka-landing.jpg](https://i.loli.net/2020/11/07/B6GZn1V2AS8XYIT.jpg)
