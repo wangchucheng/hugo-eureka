@@ -2,6 +2,9 @@
 
 # Eureka
 
+![build](https://github.com/wangchucheng/hugo-eureka/workflows/build/badge.svg)
+![license](https://img.shields.io/github/license/wangchucheng/hugo-eureka)
+
 Eureka是一个功能丰富且可高度定制化的[Hugo](https://gohugo.io/)主题，使用Eureka可以让你轻松快捷地定制并部署网站。
 
 ![eureka-landing.jpg](https://i.loli.net/2020/11/07/B6GZn1V2AS8XYIT.jpg)

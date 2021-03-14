@@ -18,3 +18,9 @@ onThisPage:
   other: 本页内容
 editThisPage:
   other: 编辑本页
+light:
+  other: 浅色
+dark:
+  other: 深色
+auto:
+  other: 自动

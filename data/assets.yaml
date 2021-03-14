@@ -4,7 +4,7 @@
 highlightjs:
   version: 10.1.0
   css:
-    url: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@%s/build/styles/solarized-light.min.css
+    url: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@%s/build/styles/%s.min.css
   js:
     url: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@%s/build/highlight.min.js
   languages:

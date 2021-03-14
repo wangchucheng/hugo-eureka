@@ -94,6 +94,10 @@
   @apply border py-1 px-3;
 }
 
+.content .katex {
+  @apply overflow-x-auto overflow-y-hidden;
+}
+
 .content .katex * {
   @apply border-primary-text;
 }
