@@ -21,7 +21,7 @@ publisherLogo:
 
 highlight:
   handler: highlightjs
-  
+
   highlightjs:
     # highlight.js doesn't bundle every language. So please specify additional languages you want here.
     # See https://github.com/highlightjs/cdn-release/tree/master/build/languages for available languages.
@@ -40,7 +40,7 @@ math:
   #   leqno:
 
 comment:
-  # Options: disqus and commento.
+  # Options: disqus, commento and valine.
   platform:
 
   disqus:
@@ -49,3 +49,9 @@ comment:
   commento:
     # If self-hosting, please enter the url (e.g. https://commento.example.com) here. Otherwise leave empty.
     url:
+
+  valine:
+    # See Valine Document https://valine.js.org/
+    appId:
+    appKey:
+    placeholder:

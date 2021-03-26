@@ -2,4 +2,6 @@
 {{ partial "comment/disqus" . }}
 {{ else if eq .Site.Params.comment.platform "commento" }}
 {{ partial "comment/commento" . }}
+{{ else if eq .Site.Params.comment.platform "valine" }}
+{{ partial "comment/valine" . }}
 {{ end }}
