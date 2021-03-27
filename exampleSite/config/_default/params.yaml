@@ -37,6 +37,8 @@ math:
   #   # Browse https://katex.org/docs/options.html to see the options available.
   #   # KaTeX's Auto-render ignores `displayMode` property of the options, so this property will not work.
   #   # You can list the key and value you want as below.
+  #   # Because Hugo's config params are case-insensitive, you need to add `-` or `_` before the uppercase letters.
+  #   # For example, `throwOnError` should be written as `throw-On-Error` or other acceptable formats.
   #   leqno:
 
 comment:

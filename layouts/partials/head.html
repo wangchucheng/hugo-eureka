@@ -99,6 +99,17 @@
 {{- end }}
 {{- end }}
 
+{{ define "partials/camelize" }}
+{{ $input := . }}
+{{ $regexp := "(-|_)([a-z])" }}
+{{ $matches := findRE $regexp $input }}
+{{ range $matches }}
+    {{ $input = $input | replaceRE . (upper .) }}
+{{ end }}
+{{ $input = $input | replaceRE "(-|_)" "" }}
+{{ return $input }}
+{{ end }}
+
 {{- if and (eq .Site.Params.math.handler "katex") $enableMath }}
 <link rel="stylesheet" href="{{ printf $assets.katex.css.url $assets.katex.version }}"
   {{ with $assets.katex.css.sri }} integrity="{{ . }}" {{ end }} media="print"
@@ -118,6 +129,7 @@
       ],
       {{- range $key, $value := .Site.Params.math.katex }}
       {{- if and (ne $value nil) (ne $value "") }}
+      {{- $key = partial "partials/camelize" $key }}
       {{- $key | safeJS -}}: {{- $value | safeJS }},
       {{- end }}
       {{- end }}
