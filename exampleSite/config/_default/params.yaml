@@ -52,6 +52,21 @@ comment:
 
   valine:
     # See Valine Document https://valine.js.org/
+    # you can specify the Valine version by yourself!
+    version: 1.4.14
     appId:
     appKey:
-    placeholder:
+    placeholder: Just go go
+    avatar: mp
+    meta: ['nick','mail','link']
+    pageSize: 10
+    lang: zh-CN
+    visitor: false
+    highlight: true
+    avatarForce: false
+    recordIP: false
+    serverURLs: http[s]://[tab/us].avoscloud.com
+    emojiCDN:
+    emojiMaps: null
+    enableQQ: false
+    requiredFields: []

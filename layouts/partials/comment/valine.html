@@ -1,10 +1,23 @@
-<div id="valine-comments" style="margin-top: 32px;"></div>
-<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<div id="valine-comments" class="mt-4"></div>
+<script src="//cdn.jsdelivr.net/npm/valine@{{ .Site.Params.comment.valine.version }}/dist/Valine.min.js"></script>
 <script type="text/javascript">
-new Valine({
-    el: '#valine-comments' ,
-    appId: '{{ .Site.Params.comment.valine.appId }}',
-    appKey: '{{ .Site.Params.comment.valine.appKey }}',
-    placeholder: '{{ .Site.Params.comment.valine.placeholder }}'
-});
+    new Valine({
+        el: "#valine-comments",
+        appId: {{ .Site.Params.comment.valine.appId }},
+        appKey: {{ .Site.Params.comment.valine.appKey }},
+        placeholder: {{ .Site.Params.comment.valine.placeholder }},
+        avatar: {{ .Site.Params.comment.valine.avatar }},
+        meta: {{ .Site.Params.comment.valine.meta }},
+        pageSize: {{ .Site.Params.comment.valine.pageSize }},
+        lang: {{ .Site.Params.comment.valine.lang }},
+        visitor: {{ .Site.Params.comment.valine.visitor }},
+        highlight: {{ .Site.Params.comment.valine.highlight }},
+        avatarForce: {{ .Site.Params.comment.valine.avatarForce }},
+        recordIP: {{ .Site.Params.comment.valine.recordIP }},
+        serverURLs: {{ .Site.Params.comment.valine.serverURLs }},
+        emojiCDN: {{ .Site.Params.comment.valine.emojiCDN }},
+        emojiMaps: {{ .Site.Params.comment.valine.emojiMaps }},
+        enableQQ: {{ .Site.Params.comment.valine.enableQQ }},
+        requiredFields: {{ .Site.Params.comment.valine.requiredFields }},
+    })
 </script>
