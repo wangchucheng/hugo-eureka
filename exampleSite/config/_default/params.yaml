@@ -65,7 +65,6 @@ comment:
     highlight: true
     avatarForce: false
     recordIP: false
-    serverURLs: http[s]://[tab/us].avoscloud.com
     emojiCDN:
     emojiMaps: null
     enableQQ: false
