@@ -51,3 +51,15 @@ comment:
   commento:
     # If self-hosting, please enter the url (e.g. https://commento.example.com) here. Otherwise leave empty.
     url:
+
+diagram:
+  handler: mermaid
+
+  # mermaid:
+  #   # Browse https://mermaid-js.github.io/mermaid/#/Setup to see the options available.
+  #   # You can list the key and value you want as below.
+  #   # Because Hugo's config params are case-insensitive, you need to add `-` or `_` before the uppercase letters.
+  #   # For example, `diagramPadding` should be written as `diagram-Padding` or other acceptable formats.
+  #   theme: 
+  #   flowchart:
+  #     diagram-padding:
