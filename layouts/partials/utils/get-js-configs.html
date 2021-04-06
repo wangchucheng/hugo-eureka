@@ -1,0 +1,13 @@
+{{- range $key, $value := . }}
+  {{- if or $value (eq $value false) }}
+    {{- $key = partial "partials/camelize" $key }}
+    {{- $key }}: 
+    {{- if reflect.IsMap $value }}
+      {
+        {{ partial "utils/get-js-configs" . }}
+      },
+    {{- else -}}
+      "{{ $value }}",
+    {{- end }}
+  {{- end }}
+{{- end }}
