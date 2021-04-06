@@ -1,0 +1,26 @@
+readMore:
+  other: Читать далее
+readingTime:
+  other: '{{ .ReadingTime }} мин. чтения'
+toc:
+  other: Содержание
+seriesOfPosts:
+  other: Серия постов
+previous:
+  other: Ранее
+next:
+  other: Далее
+seeAlso:
+  other: Смотрите также
+recent:
+  other: Последнее
+onThisPage:
+  other: На этой странице
+editThisPage:
+  other: Редактировать эту страницу
+light:
+  other: Светлая
+dark:
+  other: Тёмная
+auto:
+  other: Авто
