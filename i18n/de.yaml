@@ -1,0 +1,26 @@
+readMore:
+  other: Mehr erfahren
+readingTime:
+  other: 'Lesezeit: {{ .ReadingTime }} min'
+toc:
+  other: Inhaltsverzeichnis
+seriesOfPosts:
+  other: Reihe von Beiträgen
+previous:
+  other: Vorherige
+next:
+  other: Nächste
+seeAlso:
+  other: Siehe auch
+recent:
+  other: Neueste
+onThisPage:
+  other: Auf dieser Seite
+editThisPage:
+  other: Diese Seite bearbeiten
+light:
+  other: Hell
+dark:
+  other: Dunkel
+auto:
+  other: Auto
