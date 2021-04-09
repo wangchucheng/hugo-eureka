@@ -1,7 +1,7 @@
 <meta name="description"
   content="{{ if .Description }}{{ .Description }}{{ else if .Summary }}{{ .Summary }}{{ else if .Site.Params.Description }}{{ .Site.Params.Description }}{{ end }}">
 
-{{- $bundles := partial "get-bundles" . }}
+{{- $bundles := partial "utils/get-bundles" . }}
 {{- if gt (len $bundles) 1 }}
 <script type="application/ld+json">
 {

@@ -19,7 +19,7 @@
 {{/*  Deprecation warning(v1.0.0) ends */}}
 {{ if and (eq .Type "docs") (ne $layout "doc-list") }}
 {{ $docTitle := "" }}
-{{ $bundles := partial "get-bundles" . }}
+{{ $bundles := partial "utils/get-bundles" . }}
 {{ range $bundles.Reverse }}
 {{ $version := findRE "v?(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?" (path.Base .Permalink) }}
 {{/*  Deprecation warning(v1.0.0) starts */}}
@@ -52,6 +52,8 @@
 {{ end }}
 <title>{{ partial "get-title" . }}</title>
 
+<meta name="generator" content="Hugo Eureka {{ .Site.Data.eureka.version }}" />
+
 {{- $eurekaCSS := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js") }}
 {{- $eurekaCSS := $eurekaCSS | minify }}
 <link rel="stylesheet" href="{{ $eurekaCSS.Permalink }}">
@@ -78,19 +80,9 @@
 <script defer src="{{ printf $assets.fontawesome.js.url $assets.fontawesome.version }}"
   {{ with $assets.fontawesome.js.sri }} integrity="{{ . }}" {{ end }} crossorigin></script>
 
-{{ define "partials/get-bundles" }}
-{{ $currentPage := . }}
-{{ $bundles := slice $currentPage }}
-{{ if and (ne $currentPage.Kind "taxonomy") (or (ne $currentPage $currentPage.FirstSection) (eq $currentPage.Kind "term")) }}
-{{ $currentBundles := partial "get-bundles" $currentPage.Parent }}
-{{ $bundles = $bundles | append $currentBundles }}
-{{ end }}
-{{ return $bundles }}
-{{ end }}
-
 {{- $enableMath := false }}
 {{- if .Site.Params.math.handler }}
-{{- $bundles := partial "get-bundles" . }}
+{{- $bundles := partial "utils/get-bundles" . }}
 {{- $enableMath = true }}
 {{- range $bundles.Reverse }}
 {{- if and (ne .Params.math nil) (ne .Params.math "") }}

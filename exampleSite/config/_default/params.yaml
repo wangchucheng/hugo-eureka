@@ -2,8 +2,6 @@ mainSections:
   - posts
 description: Eureka is a elegant and powerful theme for Hugo.
 
-repoURL:
-# If it is a Github repo, leave blank
 repoEditURL:
 
 dateFormat:

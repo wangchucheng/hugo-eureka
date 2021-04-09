@@ -1,0 +1,7 @@
+{{ $currentPage := . }}
+{{ $bundles := slice $currentPage }}
+{{ if and (ne $currentPage.Kind "taxonomy") (or (ne $currentPage $currentPage.FirstSection) (eq $currentPage.Kind "term")) }}
+{{ $currentBundles := partial "utils/get-bundles" $currentPage.Parent }}
+{{ $bundles = $bundles | append $currentBundles }}
+{{ end }}
+{{ return $bundles }}
