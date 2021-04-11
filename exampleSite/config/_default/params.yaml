@@ -3,6 +3,9 @@ mainSections:
 description: Eureka is a elegant and powerful theme for Hugo.
 
 repoURL:
+# GitHub Page deploy branch, default is master!
+# BLACK LIVES MATTER! Advice setting as main!
+branch: master
 # If it is a Github repo, leave blank
 repoEditURL:
 
@@ -68,6 +71,6 @@ diagram:
   #   # You can list the key and value you want as below.
   #   # Because Hugo's config params are case-insensitive, you need to add `-` or `_` before the uppercase letters.
   #   # For example, `diagramPadding` should be written as `diagram-Padding` or other acceptable formats.
-  #   theme: 
+  #   theme:
   #   flowchart:
   #     diagram-padding:
