@@ -148,7 +148,10 @@ function getcolorscheme() {
 }
 
 {{/*  Utterances  */}}
-{{ $enableUtterances := and (eq .Site.Params.comment.platform "utterances") (eq .Site.Params.comment.utterances.theme "eureka") }}
+{{/*  Deprecation warning(v1.0.0) starts */}}
+{{- $commentHandler := .Site.Params.comment.handler | default .Site.Params.comment.platform }}
+{{/*  Deprecation warning(v1.0.0) ends  */}}
+{{ $enableUtterances := and (eq $commentHandler "utterances") (eq .Site.Params.comment.utterances.theme "eureka") }}
 {{- if $enableUtterances }}
 function switchUtterancesTheme(theme) {
     const message = {

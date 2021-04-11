@@ -41,21 +41,21 @@ math:
 
 comment:
   # Options: disqus, commento and utterances.
-  platform:
+  handler:
 
-  disqus:
-    shortname:
+  # disqus:
+  #   shortname:
 
-  commento:
-    # If self-hosting, please enter the url (e.g. https://commento.example.com) here. Otherwise leave empty.
-    url:
+  # utterances:
+  #   # Browse https://utteranc.es/ to see the options available.
+  #   # If you want the color scheme of utterances to follow eureka's, you can set `theme: eureka`.
+  #   repo:
+  #   issue-term:
+  #   theme:
 
-  utterances:
-    # Browse https://utteranc.es/ to see the options available.
-    # If you want the color scheme of utterances to follow eureka's, you can set `theme: eureka'.
-    repo:
-    issue-term:
-    theme:
+  # commento:
+  #   # If self-hosting, please enter the url (e.g. https://commento.example.com) here. Otherwise leave empty.
+  #   url:
 
 diagram:
   handler: mermaid
