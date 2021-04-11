@@ -58,7 +58,7 @@
 {{- $eurekaCSS := $eurekaCSS | minify }}
 <link rel="stylesheet" href="{{ $eurekaCSS.Permalink }}">
 
-{{- $eurekaJS := resources.Get "js/eureka.js" | minify }}
+{{- $eurekaJS := resources.Get "js/eureka.js" | resources.ExecuteAsTemplate "js/eureka.js" . | minify }}
 <script defer src="{{ $eurekaJS.Permalink }}"></script>
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

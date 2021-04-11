@@ -1,5 +1,3 @@
-{{ if eq .Site.Params.comment.platform "disqus" }}
-{{ partial "comment/disqus" . }}
-{{ else if eq .Site.Params.comment.platform "commento" }}
-{{ partial "comment/commento" . }}
+{{ if .Site.Params.comment.platform }}
+  {{ partial (printf "comment/%s" .Site.Params.comment.platform) . }}
 {{ end }}
