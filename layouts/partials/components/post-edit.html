@@ -4,7 +4,7 @@
     {{ $path := path.Join $repoEditURL $contentDir .File.Path }}
     {{ $path := replace $path "http:/" "http://" 1 }}
     {{ $path := replace $path "https:/" "https://" 1 }}
-
+    
     <a href="{{ $path }}" title="Edit this page">
         <i class="fas fa-edit mr-1"></i>
         <span>{{ i18n "editThisPage" }}</span>
@@ -15,7 +15,7 @@
 {{ with .Site.Params.repoEditURL }}
 {{ $.Scratch.Set "repoEditURL" . }}
 {{ else }}
-{{ $repoEditURL := path.Join .Site.Params.repoURL "/blob/" .Site.Params.branch "/" }}
+{{ $repoEditURL := path.Join .Site.Params.repoURL "/blob/master/"}}
 {{ $.Scratch.Set "repoEditURL" $repoEditURL }}
 {{ end }}
 {{ $repoEditURL := .Scratch.Get "repoEditURL" }}
