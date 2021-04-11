@@ -2,8 +2,6 @@ mainSections:
   - posts
 description: Eureka is a elegant and powerful theme for Hugo.
 
-repoURL:
-# If it is a Github repo, leave blank
 repoEditURL:
 
 dateFormat:
@@ -42,15 +40,22 @@ math:
   #   leqno:
 
 comment:
-  # Options: disqus, commento and valine.
-  platform:
+  # Options: disqus, commento, valine and utterances.
+  handler:
 
-  disqus:
-    shortname:
+  # disqus:
+  #   shortname:
 
-  commento:
-    # If self-hosting, please enter the url (e.g. https://commento.example.com) here. Otherwise leave empty.
-    url:
+  # utterances:
+  #   # Browse https://utteranc.es/ to see the options available.
+  #   # If you want the color scheme of utterances to follow eureka's, you can set `theme: eureka`.
+  #   repo:
+  #   issue-term:
+  #   theme:
+
+  # commento:
+  #   # If self-hosting, please enter the url (e.g. https://commento.example.com) here. Otherwise leave empty.
+  #   url:
 
   valine:
     # Browse https://valine.js.org/configuration.html to see the options available.
