@@ -25,3 +25,13 @@ Eureka致力于为[Hugo](https://gohugo.io/)提供一个优雅，功能丰富且
 - **[定制Eureka](https://www.wangchucheng.com/zh/docs/hugo-eureka/customization/)**：在[内容管理](https://www.wangchucheng.com/zh/docs/hugo-eureka/content-management/)中，你已经了解了Eureka的各类内容。接下来我们将介绍Eureka的定制化选项。[定制Eureka](https://www.wangchucheng.com/zh/docs/hugo-eureka/customization/)将带领你了解Eureka的配置方式及其选项。
 - **[多语言模式](https://www.wangchucheng.com/zh/docs/hugo-eureka/multilingual-mode/)**：除了前文的[内容管理](https://www.wangchucheng.com/zh/docs/hugo-eureka/content-management/)以及[定制Eureka](https://www.wangchucheng.com/zh/docs/hugo-eureka/customization/)，Eureka也支持[多语言模式](https://www.wangchucheng.com/zh/docs/hugo-eureka/multilingual-mode/)。[多语言模式](https://www.wangchucheng.com/zh/docs/hugo-eureka/multilingual-mode/)将带领你了解如何构建一个多语言网站。
 - **[更新Eureka](https://www.wangchucheng.com/zh/docs/hugo-eureka/update/)**：[更新Eureka](https://www.wangchucheng.com/zh/docs/hugo-eureka/update/)将介绍通过不同方式更新Eureka的方法。
+
+## 使用Eureka的网站
+
+- [wangchucheng.com](https://www.wangchucheng.com)
+- [ruiqima.com](https://www.ruiqima.com)
+- 以及更多……
+
+你是否在使用Hugo Eureka？ [为你的仓库添加`hugo-eureka`标签！](https://docs.github.com/cn/github/administering-a-repository/classifying-your-repository-with-topics)
+
+也许你还可以在[Hugo Eureka Showcase](https://github.com/wangchucheng/hugo-eureka/discussions/93)与社区成员分享你的有趣项目。 🙌
