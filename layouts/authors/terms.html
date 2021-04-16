@@ -10,7 +10,7 @@
 <div class="bg-secondary-bg rounded px-6 py-8">
     {{ range .Pages }}
     <h2 class="text-lg text-primary-text my-2">
-        <a href="{{ .Permalink }}" class="text-eureka hover:underline">{{ .LinkTitle }}</a>
+        <a href="{{ .Permalink }}" title="{{ .LinkTitle }}" class="text-eureka hover:underline">{{ .LinkTitle }}</a>
     </h2>
     {{ end }}
 </div>

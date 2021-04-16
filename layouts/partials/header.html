@@ -15,7 +15,7 @@
     {{- end }}
 </script>
 <nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
-    <a href="{{ "/" | relLangURL }}" class="mr-6 text-primary-text text-xl font-bold">{{ .Site.Title }}</a>
+    <a href="{{ "/" | relLangURL }}" title="{{ .Site.Title }}" class="mr-6 text-primary-text text-xl font-bold">{{ .Site.Title }}</a>
     <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
         <i class="fas fa-bars"></i>
     </button>
@@ -26,7 +26,7 @@
             {{- $relPermalink := .RelPermalink }}
             {{- range .Site.Menus.main }}
             {{- $url := .URL | relLangURL }}
-            <a href="{{ $url }}" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 {{ if hasPrefix $relPermalink $url }} selected-menu-item {{ else }} border-transparent {{ end }} mr-4">{{ .Name }}</a>
+            <a href="{{ $url }}" title="{{ .Name }}" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 {{ if hasPrefix $relPermalink $url }} selected-menu-item {{ else }} border-transparent {{ end }} mr-4">{{ .Name }}</a>
             {{- end }}
         </div>
 
@@ -61,9 +61,9 @@
                 </div>
                 <div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
                     id='languageOptions'>
-                    <a class="px-4 py-1 hover:text-eureka" href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
+                    <a class="px-4 py-1 hover:text-eureka" href="{{ .Permalink }}" title="{{ .Language.LanguageName }}">{{ .Language.LanguageName }}</a>
                     {{- range .Translations }}
-                    <a class="px-4 py-1 hover:text-eureka" href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
+                    <a class="px-4 py-1 hover:text-eureka" href="{{ .Permalink }}" title="{{ .Language.LanguageName }}">{{ .Language.LanguageName }}</a>
                     {{- end }}
                 </div>
             </div>

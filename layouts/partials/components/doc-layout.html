@@ -82,7 +82,7 @@
     class="hidden md:block overflow-y-auto mx-6 md:mx-0 pr-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
     <div class="flex flex-wrap ml-4 -mr-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
         <a class="{{ if eq .context.Permalink .permalink }}text-eureka{{ end }} hover:text-eureka"
-            href="{{ .context.Permalink }}">{{ .context.LinkTitle }}</a>
+            href="{{ .context.Permalink }}" title="{{ .context.LinkTitle }}">{{ .context.LinkTitle }}</a>
         
         {{ $versions := partial "get-versions" (dict "context" .context) }}
         {{ if $versions }}
@@ -96,12 +96,12 @@
                 {{ range $index, $value := $versions }}
                 {{ if eq $index 0 }}
                 <div class="ml-2 mr-8 my-1">
-                    <a class="" href="{{ $.context.Parent.Permalink }}">latest</a>
+                    <a class="" href="{{ $.context.Parent.Permalink }}" title="latest">latest</a>
                 </div>
                 {{ end }}
                 {{ $version := findRE "v?(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?" . }}
                 <div class="ml-2 mr-8 my-1">
-                    <a class="" href="{{ . }}">{{ index $version 0 }}</a>
+                    <a class="" href="{{ . }}" title="{{ index $version 0 }}">{{ index $version 0 }}</a>
                 </div>
                 {{ end }}
             </div>
@@ -129,7 +129,7 @@
     <li class="py-2">
         <div class="{{ if .IsSection }} pb-2 {{ end }}">
             <a class="{{ if eq .Permalink $.permalink }} text-eureka {{ end }} hover:text-eureka"
-                href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+                href="{{ .Permalink }}" title="{{ .LinkTitle }}">{{ .LinkTitle }}</a>
         </div>
         {{ if .IsSection }}
         {{ template "list-items" (dict "context" . "permalink" $.permalink) }}

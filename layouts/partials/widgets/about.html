@@ -19,7 +19,7 @@
         {{ end }}
 
         {{ with .Params.organization }}
-          <a href="{{ .url }}" class="pl-4">{{ .name | markdownify }}</a>
+          <a href="{{ .url }}" title="{{ .name | markdownify }}" class="pl-4">{{ .name | markdownify }}</a>
         {{ end }}
       </div>
 
@@ -42,7 +42,7 @@
       {{/* Deprecation warning(v1.0.0) ends */}}
       {{ $src := print $iconPack " fa-" .icon }}
       <div class="pb-2 pr-4 md:pr-0 pt-4 md:pt-0">
-        <a href="{{ .url }}"><i class="{{ print $src }}"></i></a>
+        <a href="{{ .url }}" title="{{ .icon }}"><i class="{{ print $src }}"></i></a>
       </div>
     {{ end }}
   </div>

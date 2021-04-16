@@ -1,5 +1,5 @@
 <div class="mb-4">
-  <a href="{{ .Permalink }}" class="font-bold text-xl hover:text-eureka">{{ .LinkTitle }}</a>
+  <a href="{{ .Permalink }}" title="{{ .LinkTitle }}" class="font-bold text-xl hover:text-eureka">{{ .LinkTitle }}</a>
 </div>
 <div class="content">
   {{ .Summary | plainify }}
@@ -12,7 +12,7 @@
   {{ end -}}
   <div class="">
       <div class="mb-2">
-          <a href="{{ .Permalink }}" class="font-semibold hover:text-eureka">{{ .LinkTitle }}</a>
+          <a href="{{ .Permalink }}" title="{{ .LinkTitle }}" class="font-semibold hover:text-eureka">{{ .LinkTitle }}</a>
       </div>
       <div class="">
           {{- .Summary | plainify -}}
@@ -20,7 +20,7 @@
   </div>
   {{ end }}
   <div class="pt-6 hover:text-eureka">
-      <a href="{{ .Permalink }}" class="font-semibold">{{ i18n "readMore" }}</a>
+      <a href="{{ .Permalink }}" title="{{ i18n "readMore" }}" class="font-semibold">{{ i18n "readMore" }}</a>
       <i class="fas fa-caret-right ml-1"></i>
   </div>
 </div>

@@ -1,7 +1,7 @@
 <div class="py-2">
     {{ range . }}
     <div class="flex flex-col md:flex-row items-center my-8">
-        <a href="{{ .Permalink }}" class="w-24 h-24 md:mr-4">
+        <a href="{{ .Permalink }}" title="{{ .LinkTitle }}" class="w-24 h-24 md:mr-4">
             {{ $img := partial "utils/get-image" (dict "context" . "url" .Params.avatar "keyword" "*avatar*")}}
             {{ with $img }}
             <img src="{{ . }}" class="w-full bg-primary-bg rounded-full" alt="Avatar">
@@ -10,14 +10,14 @@
             {{ end }}
         </a>
         <div class="w-full md:w-auto mt-4 md:mt-0">
-            <a href="{{ .Permalink }}" class="block font-bold text-lg pb-1 mb-2 border-b">{{ .LinkTitle }}</a>
+            <a href="{{ .Permalink }}" title="{{ .LinkTitle }}" class="block font-bold text-lg pb-1 mb-2 border-b">{{ .LinkTitle }}</a>
             <span class="block pb-2">{{ .Params.bio }}</span>
             {{ range .Params.social }}
             {{/*  Deprecation warning(v1.0.0) starts  */}}
             {{ $iconPack := .iconPack | default .icon_pack }}
             {{/*  Deprecation warning(v1.0.0) ends  */}}
             {{ $src :=  print $iconPack " fa-" .icon }}
-            <a href="{{ .url }}" class="mr-1">
+            <a href="{{ .url }}" class="mr-1" title="{{ .icon }}"> 
                 <i class="{{ print $src }}"></i>
             </a>
             {{ end }}

@@ -4,7 +4,7 @@
     <div class="content">
         {{ range (.GetTerms "series") }}
         {{ range .Pages }}
-        <a href="{{ .Page.Permalink }}">{{ .Page.LinkTitle }}</a>
+        <a href="{{ .Page.Permalink }}" title="{{ .Page.LinkTitle }}">{{ .Page.LinkTitle }}</a>
         <br />
         {{end}}
         {{end}}

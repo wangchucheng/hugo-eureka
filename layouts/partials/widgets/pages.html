@@ -47,6 +47,6 @@
 
 {{ define "partials/widgets/pages-readmore" }}
   {{- $section := .Site.GetPage .Params.section }}
-  <a href="{{ $section.Permalink }}" class="font-semibold">{{ i18n "readMore" }}</a>
+  <a href="{{ $section.Permalink }}" title="{{ i18n "readMore" }}" class="font-semibold">{{ i18n "readMore" }}</a>
   <i class="fas fa-caret-right ml-1"></i>
 {{ end }}

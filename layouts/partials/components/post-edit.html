@@ -14,7 +14,7 @@
     {{- $path = replace $path "http:/" "http://" 1 }}
     {{- $path = replace $path "https:/" "https://" 1 }}
 
-    <a href="{{ $path }}" title="Edit this page">
+    <a href="{{ $path }}" title="{{ i18n "editThisPage" }}">
       <i class="fas fa-edit mr-1"></i>
       <span>{{ i18n "editThisPage" }}</span>
     </a>
@@ -29,7 +29,7 @@
     {{ $path = replace $path "http:/" "http://" 1 }}
     {{ $path = replace $path "https:/" "https://" 1 }}
 
-    <a href="{{ $path }}" title="Edit this page">
+    <a href="{{ $path }}" title="{{ i18n "editThisPage" }}">
       <i class="fas fa-edit mr-1"></i>
       <span>{{ i18n "editThisPage" }}</span>
     </a>

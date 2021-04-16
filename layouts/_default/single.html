@@ -48,7 +48,7 @@
         <h2 class="text-lg font-semibold mb-4">{{ i18n "seeAlso" }}</h2>
         <div class="content">
             {{ range . }}
-            <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+            <a href="{{ .Permalink }}" title="{{ .LinkTitle }}">{{ .LinkTitle }}</a>
             <br />
             {{ end }}
         </div>
