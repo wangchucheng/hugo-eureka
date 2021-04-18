@@ -19,7 +19,7 @@ publisherLogo:
 
 highlight:
   handler: highlightjs
-  
+
   highlightjs:
     # highlight.js doesn't bundle every language. So please specify additional languages you want here.
     # See https://github.com/highlightjs/cdn-release/tree/master/build/languages for available languages.
@@ -40,7 +40,7 @@ math:
   #   leqno:
 
 comment:
-  # Options: disqus, commento and utterances.
+  # Options: disqus, commento, valine and utterances.
   handler:
 
   # disqus:
@@ -56,6 +56,14 @@ comment:
   # commento:
   #   # If self-hosting, please enter the url (e.g. https://commento.example.com) here. Otherwise leave empty.
   #   url:
+
+  valine:
+    # Browse https://valine.js.org/configuration.html to see the options available.
+    # You can list the key and value you want as below.
+    # Because Hugo's config params are case-insensitive, you need to add `-` or `_` before the uppercase letters.
+    # For example, `appId` should be written as `app-Id` or other acceptable formats.
+    app-Id:
+    app-Key:
 
 diagram:
   handler: mermaid
