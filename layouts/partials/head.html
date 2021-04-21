@@ -82,13 +82,18 @@
 
 {{- $enableMath := false }}
 {{- if .Site.Params.math.handler }}
-{{- $bundles := partial "utils/get-bundles" . }}
-{{- $enableMath = true }}
-{{- range $bundles.Reverse }}
-{{- if and (ne .Params.math nil) (ne .Params.math "") }}
-{{- $enableMath = .Params.math }}
-{{- end }}
-{{- end }}
+  {{- $bundles := partial "utils/get-bundles" . }}
+  {{- $enableMath = true }}
+  {{- range $bundles.Reverse }}
+    {{- if and (ne .Params.enableMath nil) (ne .Params.enableMath "") }}
+      {{- $enableMath = .Params.enableMath }}
+    {{/* Deprecation warning(v1.0.0) starts */}}
+    {{- else if and (ne .Params.math nil) (ne .Params.math "") }}
+      {{ warnf "Param 'math' in %q is deprecated and will be removed in Eureka v1.0.0. Please use 'enableMath' instead." .File.Path }}
+      {{- $enableMath = .Params.math }}
+    {{/* Deprecation warning(v1.0.0) ends */}}
+    {{- end }}
+  {{- end }}
 {{- end }}
 
 {{ define "partials/camelize" }}

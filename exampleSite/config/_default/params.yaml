@@ -57,13 +57,13 @@ comment:
   #   # If self-hosting, please enter the url (e.g. https://commento.example.com) here. Otherwise leave empty.
   #   url:
 
-  valine:
-    # Browse https://valine.js.org/configuration.html to see the options available.
-    # You can list the key and value you want as below.
-    # Because Hugo's config params are case-insensitive, you need to add `-` or `_` before the uppercase letters.
-    # For example, `appId` should be written as `app-Id` or other acceptable formats.
-    app-Id:
-    app-Key:
+  # valine:
+  #   # Browse https://valine.js.org/en/configuration.html to see the options available.
+  #   # You can list the key and value you want as below.
+  #   # Because Hugo's config params are case-insensitive, you need to add `-` or `_` before the uppercase letters.
+  #   # For example, `appId` should be written as `app-Id` or other acceptable formats.
+  #   app-Id:
+  #   app-Key:
 
 diagram:
   handler: mermaid

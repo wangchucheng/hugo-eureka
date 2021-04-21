@@ -21,7 +21,7 @@
   </div>
 {{/*  Deprecation warning(v1.0.0) starts */}}
 {{- else if .Site.Params.repoURL }}
-  {{ warnf "Param 'repoURL' in params.yaml is deprecated and will be removed in Eureka v1.0.0. See https://www.wangchucheng.com/en/docs/hugo-eureka/customization/" }}
+  {{ warnf "Param 'repoURL' in params.yaml is deprecated and will be removed in Eureka v1.0.0. See https://www.wangchucheng.com/en/docs/hugo-eureka/customization/#params-config-file" }}
   <div class="flex md:justify-end my-4">
     {{- $repoEditURL := path.Join .Site.Params.repoURL "/blob/master/" }}
     {{ $contentDir := cond .Site.IsMultiLingual .Site.Params.contentDir "/content/" }}
