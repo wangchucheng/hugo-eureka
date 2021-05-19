@@ -6,18 +6,18 @@ toc:
   other: 목차
 seriesOfPosts:
   other: 같은 시리즈의 포스트
-previous:
-  other: 이전 포스트
+prxevious:
+  other: 이전
 next:
-  other: 다음 포스트
+  other: 다음
 seeAlso:
-  other: 다른 포스트도 읽어보기
+  other: 다른 포스트
 recent:
   other: 최신
 onThisPage:
   other: 현재 페이지
 editThisPage:
-  other: 이 페이지 수정하기
+  other: 수정하기
 light:
   other: Light
 dark:
