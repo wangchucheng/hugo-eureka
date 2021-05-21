@@ -19,9 +19,7 @@
         {{ partial "components/post-tags" . }}
         {{ end }}
         
-        {{ if or .Site.Params.repoURL .Site.Params.repoEditURL }}
         {{ partial "components/post-edit" . }}
-        {{ end }}
         
         {{ with .GetTerms "authors" }}
         {{ partial "components/post-author" . }}

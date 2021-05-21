@@ -30,6 +30,20 @@ katex:
     url: https://cdn.jsdelivr.net/npm/katex@%s/dist/contrib/auto-render.min.js
     sri: sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa
 
+# Mermaid
+mermaid:
+  version: 8.9.2
+  js:
+    url: https://cdn.jsdelivr.net/npm/mermaid@%s/dist/mermaid.min.js
+    sri: sha256-Zmpaaj+GXFsPF5WdPArSrnW3b30dovldeKsW00xBVwE=
+
+# Valine
+valine:
+  version: 1.4.14
+  js:
+    url: https://cdn.jsdelivr.net/npm/valine@%s/dist/Valine.min.js
+    sri: sha256-fPqMAsW3FDt/rNyneSJ7HOpZNRs/O2rM016SU08JtCk=
+
 # TinySlider
 tinyslider:
   version: 2.9.3

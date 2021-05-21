@@ -147,6 +147,22 @@ function getcolorscheme() {
 
 }
 
+{{/*  Utterances  */}}
+{{/*  Deprecation warning(v1.0.0) starts */}}
+{{- $commentHandler := .Site.Params.comment.handler | default .Site.Params.comment.platform }}
+{{/*  Deprecation warning(v1.0.0) ends  */}}
+{{ $enableUtterances := and (eq $commentHandler "utterances") (eq .Site.Params.comment.utterances.theme "eureka") }}
+{{- if $enableUtterances }}
+function switchUtterancesTheme(theme) {
+    const message = {
+        type: 'set-theme',
+        theme: theme,
+      };
+    const utterances = document.querySelector('iframe').contentWindow; // try event.source instead
+    utterances.postMessage(message, 'https://utteranc.es');
+}
+{{- end }}
+
 function switchMode(mode) {
     let icon = ''
     switch (mode) {
@@ -154,11 +170,19 @@ function switchMode(mode) {
             window.matchMedia("(prefers-color-scheme: dark)").removeEventListener('change', switchDarkMode)
             icon = 'sun'
             document.getElementsByTagName('html')[0].classList.remove('dark')
+            {{/*  Utterances  */}}
+            {{- if $enableUtterances }}
+            switchUtterancesTheme('github-light')
+            {{- end }}
             break
         case 'Dark':
             window.matchMedia("(prefers-color-scheme: dark)").removeEventListener('change', switchDarkMode)
             icon = 'moon'
             document.getElementsByTagName('html')[0].classList.add('dark')
+            {{/*  Utterances  */}}
+            {{- if $enableUtterances }}
+            switchUtterancesTheme('github-dark')
+            {{- end }}
             break
         case 'Auto':
             icon = 'adjust'
@@ -173,8 +197,16 @@ function switchMode(mode) {
 function switchDarkMode(e) {
     if (e.matches) {
         document.getElementsByTagName('html')[0].classList.add('dark')
+        {{/*  Utterances  */}}
+        {{- if $enableUtterances }}
+        switchUtterancesTheme('github-dark')
+        {{- end }}
     } else {
         document.getElementsByTagName('html')[0].classList.remove('dark')
+        {{/*  Utterances  */}}
+        {{- if $enableUtterances }}
+        switchUtterancesTheme('github-light')
+        {{- end }}
     }
 }
 

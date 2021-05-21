@@ -1,24 +1,51 @@
-<div class="flex md:justify-end my-4">
-    {{ $repoEditURL := partial "get-edit-url" . }}
+{{- $editMap := partial "get-edit-url" . }}
+{{- if or .Site.Params.repoEditURL $editMap.repoEditURL }}
+  <div class="flex md:justify-end my-4">
+    {{- $contentDir := cond .Site.IsMultiLingual .Site.Params.contentDir "/content/" }}
+    {{- $filePath := ""}}
+    {{- if $editMap.fileDir }}
+      {{- $filePath = strings.TrimPrefix $editMap.fileDir .File.Path }}
+    {{- else }}
+      {{- $filePath = path.Join $contentDir .File.Path }}
+    {{- end }}
+  
+    {{- $repoEditURL := cond (ne $editMap.repoEditURL "") $editMap.repoEditURL .Site.Params.repoEditURL }}
+    {{- $path := path.Join $repoEditURL $filePath }}
+    {{- $path = replace $path "http:/" "http://" 1 }}
+    {{- $path = replace $path "https:/" "https://" 1 }}
+
+    <a href="{{ $path }}" title="Edit this page">
+      <i class="fas fa-edit mr-1"></i>
+      <span>{{ i18n "editThisPage" }}</span>
+    </a>
+  </div>
+{{/*  Deprecation warning(v1.0.0) starts */}}
+{{- else if .Site.Params.repoURL }}
+  {{ warnf "Param 'repoURL' in params.yaml is deprecated and will be removed in Eureka v1.0.0. See https://www.wangchucheng.com/en/docs/hugo-eureka/customization/#params-config-file" }}
+  <div class="flex md:justify-end my-4">
+    {{- $repoEditURL := path.Join .Site.Params.repoURL "/blob/master/" }}
     {{ $contentDir := cond .Site.IsMultiLingual .Site.Params.contentDir "/content/" }}
     {{ $path := path.Join $repoEditURL $contentDir .File.Path }}
-    {{ $path := replace $path "http:/" "http://" 1 }}
-    {{ $path := replace $path "https:/" "https://" 1 }}
-    
+    {{ $path = replace $path "http:/" "http://" 1 }}
+    {{ $path = replace $path "https:/" "https://" 1 }}
+
     <a href="{{ $path }}" title="Edit this page">
-        <i class="fas fa-edit mr-1"></i>
-        <span>{{ i18n "editThisPage" }}</span>
+      <i class="fas fa-edit mr-1"></i>
+      <span>{{ i18n "editThisPage" }}</span>
     </a>
-</div>
+  </div>
+{{/*  Deprecation warning(v1.0.0) ends */}}
+{{- end }}
 
 {{ define "partials/get-edit-url" }}
-{{ with .Site.Params.repoEditURL }}
-{{ $.Scratch.Set "repoEditURL" . }}
-{{ else }}
-{{ $repoEditURL := path.Join .Site.Params.repoURL "/blob/master/"}}
-{{ $.Scratch.Set "repoEditURL" $repoEditURL }}
+{{ $repoEditURL := "" }}
+{{ $fileDir := "" }}
+{{ $bundles := partial "utils/get-bundles" . }}
+{{ range $bundles.Reverse }}
+  {{ if .Params.repoEditURL }}
+    {{ $repoEditURL = .Params.repoEditURL }}
+    {{ $fileDir = .File.Dir }}
+  {{ end }}
 {{ end }}
-{{ $repoEditURL := .Scratch.Get "repoEditURL" }}
-{{ .Scratch.Delete "repoEditURL" }}
-{{ return $repoEditURL }}
+{{ return (dict "repoEditURL" $repoEditURL "fileDir" $fileDir) }}
 {{ end }}
