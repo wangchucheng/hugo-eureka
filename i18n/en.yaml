@@ -24,3 +24,5 @@ dark:
   other: Dark
 auto:
   other: Auto
+wordCount:
+  other: '{{ .WordCount }} words'

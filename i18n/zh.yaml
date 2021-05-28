@@ -1,7 +1,7 @@
 readMore:
   other: 阅读更多
 readingTime:
-  other: '{{ .ReadingTime }}分钟阅读时长'
+  other: '{{ .ReadingTime }} 分钟阅读时长'
 toc:
   other: 目录
 seriesOfPosts:
@@ -24,3 +24,5 @@ dark:
   other: 深色
 auto:
   other: 自动
+wordCount:
+  other: '{{ .WordCount }} 字'

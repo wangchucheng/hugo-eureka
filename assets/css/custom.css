@@ -1,1 +1,68 @@
 /* Custon CSS */
+
+/* 主题色 */
+:root {
+    --color-eureka: #fa233b;
+    --color-primary-bg: rgba(255, 255, 255);
+    --color-secondary-bg: rgba(255, 255, 255, 0.72);
+}
+.dark {
+    --color-eureka: #fa2d48;
+    --color-primary-bg: rgba(31, 31, 31);
+    --color-secondary-bg: rgba(29, 29, 31, 0.72);
+}
+
+/* scrollbar 样式 */
+body::-webkit-scrollbar { width: 12px; }
+body::-webkit-scrollbar-track { background-color: transparent; }
+body::-webkit-scrollbar-thumb {
+    background-clip: padding-box;
+    padding-top: 80px;
+    background-color: rgba(120, 120, 120, 0.72);
+    border: 3px solid transparent;
+    border-radius: 6px
+}
+body:hover::-webkit-scrollbar-thumb { background-color: rgba(160, 160, 160, 0.72); }
+html.dark body::-webkit-scrollbar-thumb { background-color: rgba(160, 160, 160, 0.72); }
+html.dark body:hover::-webkit-scrollbar-thumb { background-color: rgba(115, 115, 115, 0.72); }
+
+
+/* navbar和部分上层窗口的毛玻璃效果 */
+.bg-secondary-bg {
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+}
+
+/* 排版微调 */
+.content { line-height: 1.8; }
+.text-tertiary-text { font-size: 0.9rem; margin-bottom: .5rem!important; }
+
+/* 细节调整 */
+header #navbar-btn { outline: none; }
+#pages>div>.py-6 .content+.text-tertiary-text svg { display: none; } /* 不喜欢时间前的图标 */
+
+/* 正文图片边框 */
+#article img[alt="Featured Image"],
+#article>.content>p>img { border: solid 6px white; }
+
+/* 图片注释 */
+#article>.content>p>img+span {
+    display: block;
+    margin-top: -6px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-top: solid 4px white;
+    border-bottom: solid 4px white;
+    background-color: white;
+    color: black;
+    text-align: center;
+    line-height: 1rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+/* 部分图片为不同的颜色模式准备了不同版本 */
+img.d-color-scheme-light { display: unset; }
+img.d-color-scheme-dark { display: none; }
+html.dark img.d-color-scheme-light { display: none; }
+html.dark img.d-color-scheme-dark { display: unset; }
