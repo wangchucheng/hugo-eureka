@@ -58,6 +58,9 @@
 {{- $eurekaCSS := $eurekaCSS | minify }}
 <link rel="stylesheet" href="{{ $eurekaCSS.Permalink }}">
 
+{{- $customCSS := resources.Get "css/custom.css" | minify }}
+<link rel="stylesheet" href="{{ $customCSS.Permalink }}">
+
 {{- $eurekaJS := resources.Get "js/eureka.js" | resources.ExecuteAsTemplate "js/eureka.js" . | minify }}
 <script defer src="{{ $eurekaJS.Permalink }}"></script>
 
