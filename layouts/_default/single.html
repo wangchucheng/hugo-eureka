@@ -47,9 +47,9 @@
     <div
         class="col-span-2 {{ if not $hasSidebar }} {{- print "lg:col-start-2" -}} {{ end }} lg:col-span-6 bg-secondary-bg rounded p-6">
         <h2 class="text-lg font-semibold mb-4">{{ i18n "seeAlso" }}</h2>
-        <div class="content">
+        <div class="">
             {{ range . }}
-            <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+            <a class="hover:text-eureka-highlight" href="{{ .Permalink }}">{{ .LinkTitle }}</a>
             <br />
             {{ end }}
         </div>

@@ -66,3 +66,31 @@ img.d-color-scheme-light { display: unset; }
 img.d-color-scheme-dark { display: none; }
 html.dark img.d-color-scheme-light { display: none; }
 html.dark img.d-color-scheme-dark { display: unset; }
+
+/* 文章标题和文章内超链接样式 */
+/* 重置颜色、下划线，加入动画 */
+.hover\:text-eureka-highlight, .content a {
+    color: unset !important;
+    text-decoration: none !important;
+    transition: all .3s cubic-bezier(0.71,0,0,0.99);
+}
+/* 文章内超链接有下划线样式 */
+.content a {
+    box-shadow: inset 0 -0.1em 0 var(--color-eureka);
+}
+/* 重置浅色模式下hover颜色、添加hover样式 */
+.hover\:text-eureka-highlight:hover, .content a:hover {
+    color: white !important;
+    box-shadow: inset 0 -1.4em 0 var(--color-eureka);
+}
+/* 重置深色模式下hover文字颜色 */
+html.dark .hover\:text-eureka-highlight:hover, html.dark .content a:hover {
+    color: unset !important;
+}
+
+::selection { color: white; background:var(--color-eureka); }
+::-moz-selection { color: white; background:var(--color-eureka); }
+::-webkit-selection { color: white; background:var(--color-eureka); }
+html.dark::selection { color: white; background:var(--color-eureka); }
+html.dark::-moz-selection { color: white; background:var(--color-eureka); }
+html.dark::-webkit-selection { color: white; background:var(--color-eureka); }
