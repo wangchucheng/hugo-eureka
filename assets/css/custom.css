@@ -1,15 +1,18 @@
 /* Custon CSS */
+@import url("https://cdn.jsdelivr.net/npm/@fontsource/cascadia-code@4.2.1/index.min.css");
 
 /* 主题色 */
 :root {
     --color-eureka: #fa233b;
     --color-primary-bg: rgba(255, 255, 255);
     --color-secondary-bg: rgba(255, 255, 255, 0.72);
+    --color-tertiary-bg: rgba(250, 248, 248, 1);
 }
 .dark {
     --color-eureka: #fa2d48;
     --color-primary-bg: rgba(31, 31, 31);
     --color-secondary-bg: rgba(29, 29, 31, 0.72);
+    --color-tertiary-bg: rgba(46, 44, 44, 1);
 }
 
 /* scrollbar 样式 */
@@ -94,3 +97,13 @@ html.dark .hover\:text-eureka-highlight:hover, html.dark .content a:hover {
 html.dark::selection { color: white; background:var(--color-eureka); }
 html.dark::-moz-selection { color: white; background:var(--color-eureka); }
 html.dark::-webkit-selection { color: white; background:var(--color-eureka); }
+
+/* 更换代码字体 */
+.content code {
+    font-family: Cascadia Code;
+    font-variant-ligatures: none;
+}
+/* 统一数学公式的CJK字体 */
+.katex {
+    font: normal 1.21em KaTeX_Main,Lora, Noto Serif SC, serif !important;
+}
