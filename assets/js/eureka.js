@@ -154,12 +154,14 @@ function getcolorscheme() {
 {{ $enableUtterances := and (eq $commentHandler "utterances") (eq .Site.Params.comment.utterances.theme "eureka") }}
 {{- if $enableUtterances }}
 function switchUtterancesTheme(theme) {
-    const message = {
-        type: 'set-theme',
-        theme: theme,
-      };
-    const utterances = document.querySelector('iframe').contentWindow; // try event.source instead
-    utterances.postMessage(message, 'https://utteranc.es');
+    try {
+        const message = {
+            type: 'set-theme',
+            theme: theme,
+          };
+        const utterances = document.querySelector('iframe').contentWindow; // try event.source instead
+        utterances.postMessage(message, 'https://utteranc.es');
+    } catch {}
 }
 {{- end }}
 
