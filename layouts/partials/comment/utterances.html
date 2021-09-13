@@ -1,0 +1,38 @@
+<script id="utterances" src="https://utteranc.es/client.js"
+        {{- range $key, $value := .Site.Params.comment.utterances }}
+          {{- if and (eq $key "theme") (eq $value "eureka") }}
+            {{- if eq $.Site.Params.colorScheme "light" }}
+              {{ printf "%s=%v" $key "github-light" | safeHTMLAttr }}
+            {{- else if eq $.Site.Params.colorScheme "dark" }}
+              {{ printf "%s=%v" $key "github-dark" | safeHTMLAttr }}
+            {{- else }}
+              {{ printf "%s=%v" $key "preferred-color-scheme" | safeHTMLAttr }}
+            {{- end }}
+          {{- else if or $value (eq $value false) }}
+            {{ printf "%s=%v" $key $value | safeHTMLAttr }}
+          {{- end }}
+        {{- end }}
+        crossorigin="anonymous"
+        async>
+</script>
+<script>
+  {{- if eq .Site.Params.colorScheme "light" }}
+    if (storageColorScheme == "Auto") {
+      document.getElementById('utterances').setAttribute('theme', 'preferred-color-scheme')
+    } else if (storageColorScheme == "Dark") {
+      document.getElementById('utterances').setAttribute('theme', 'github-dark')
+    }
+  {{- else if eq .Site.Params.colorScheme "dark" }}
+    if (storageColorScheme == "Auto") {
+      document.getElementById('utterances').setAttribute('theme', 'preferred-color-scheme')
+    } else if (storageColorScheme == "Light") {
+      document.getElementById('utterances').setAttribute('theme', 'github-light')
+    }
+  {{- else }}
+    if (storageColorScheme == "Light") {
+      document.getElementById('utterances').setAttribute('theme', 'github-light')
+    } else if (storageColorScheme == "Dark") {
+      document.getElementById('utterances').setAttribute('theme', 'github-dark')
+    }
+  {{- end }}
+</script>

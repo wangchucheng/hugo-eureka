@@ -1,5 +1,22 @@
-{{ if eq .Site.Params.comment.platform "disqus" }}
-{{ partial "comment/disqus" . }}
-{{ else if eq .Site.Params.comment.platform "commento" }}
-{{ partial "comment/commento" . }}
+{{/*  Deprecation warning(v1.0.0) starts */}}
+{{- if .Site.Params.comment.platform }}
+  {{- warnf "Param `comment.platform` in params.yaml is deprecated and will be removed in Eureka v1.0.0. Please use `comment.handler` instead." }}
+{{- end }}
+{{- $commentHandler := .Site.Params.comment.handler | default .Site.Params.comment.platform }}
+{{/*  Deprecation warning(v1.0.0) ends  */}}
+
+{{- $enableComment := false }}
+
+{{- if $commentHandler }}
+{{- $bundles := partial "utils/get-bundles" . }}
+{{- $enableComment = true }}
+{{- range $bundles.Reverse }}
+{{- if and (ne .Params.enableComment nil) (ne .Params.enableComment "") }}
+{{- $enableComment = .Params.enableComment }}
+{{- end }}
+{{- end }}
+{{- end }}
+
+{{ if $enableComment }}
+  {{ partial (printf "comment/%s" $commentHandler) . }}
 {{ end }}

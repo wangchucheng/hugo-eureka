@@ -19,7 +19,7 @@
 {{/*  Deprecation warning(v1.0.0) ends */}}
 {{ if and (eq .Type "docs") (ne $layout "doc-list") }}
 {{ $docTitle := "" }}
-{{ $bundles := partial "get-bundles" . }}
+{{ $bundles := partial "utils/get-bundles" . }}
 {{ range $bundles.Reverse }}
 {{ $version := findRE "v?(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?" (path.Base .Permalink) }}
 {{/*  Deprecation warning(v1.0.0) starts */}}
@@ -52,11 +52,13 @@
 {{ end }}
 <title>{{ partial "get-title" . }}</title>
 
+<meta name="generator" content="Hugo Eureka {{ .Site.Data.eureka.version }}" />
+
 {{- $eurekaCSS := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js") }}
 {{- $eurekaCSS := $eurekaCSS | minify }}
 <link rel="stylesheet" href="{{ $eurekaCSS.Permalink }}">
 
-{{- $eurekaJS := resources.Get "js/eureka.js" | minify }}
+{{- $eurekaJS := resources.Get "js/eureka.js" | resources.ExecuteAsTemplate "js/eureka.js" . | minify }}
 <script defer src="{{ $eurekaJS.Permalink }}"></script>
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -78,27 +80,34 @@
 <script defer src="{{ printf $assets.fontawesome.js.url $assets.fontawesome.version }}"
   {{ with $assets.fontawesome.js.sri }} integrity="{{ . }}" {{ end }} crossorigin></script>
 
-{{ define "partials/get-bundles" }}
-{{ $currentPage := . }}
-{{ $bundles := slice $currentPage }}
-{{ if and (ne $currentPage.Kind "taxonomy") (or (ne $currentPage $currentPage.FirstSection) (eq $currentPage.Kind "term")) }}
-{{ $currentBundles := partial "get-bundles" $currentPage.Parent }}
-{{ $bundles = $bundles | append $currentBundles }}
-{{ end }}
-{{ return $bundles }}
-{{ end }}
-
 {{- $enableMath := false }}
 {{- if .Site.Params.math.handler }}
-{{- $bundles := partial "get-bundles" . }}
-{{- $enableMath = true }}
-{{- range $bundles.Reverse }}
-{{- if and (ne .Params.math nil) (ne .Params.math "") }}
-{{- $enableMath = .Params.math }}
-{{- end }}
-{{- end }}
+  {{- $bundles := partial "utils/get-bundles" . }}
+  {{- $enableMath = true }}
+  {{- range $bundles.Reverse }}
+    {{- if and (ne .Params.enableMath nil) (ne .Params.enableMath "") }}
+      {{- $enableMath = .Params.enableMath }}
+    {{/* Deprecation warning(v1.0.0) starts */}}
+    {{- else if and (ne .Params.math nil) (ne .Params.math "") }}
+      {{ warnf "Param 'math' in %q is deprecated and will be removed in Eureka v1.0.0. Please use 'enableMath' instead." .File.Path }}
+      {{- $enableMath = .Params.math }}
+    {{/* Deprecation warning(v1.0.0) ends */}}
+    {{- end }}
+  {{- end }}
 {{- end }}
 
+{{ define "partials/camelize" }}
+{{ $input := . }}
+{{ $regexp := "(-|_)([a-z])" }}
+{{ $matches := findRE $regexp $input }}
+{{ range $matches }}
+    {{ $input = $input | replaceRE . (upper .) }}
+{{ end }}
+{{ $input = $input | replaceRE "(-|_)" "" }}
+{{ return $input }}
+{{ end }}
+
+{{/*  KaTeX  */}}
 {{- if and (eq .Site.Params.math.handler "katex") $enableMath }}
 <link rel="stylesheet" href="{{ printf $assets.katex.css.url $assets.katex.version }}"
   {{ with $assets.katex.css.sri }} integrity="{{ . }}" {{ end }} media="print"
@@ -116,14 +125,25 @@
         { left: "\\(", right: "\\)", display: false },
         { left: "\\[", right: "\\]", display: true }
       ],
-      {{- range $key, $value := .Site.Params.math.katex }}
-      {{- if and (ne $value nil) (ne $value "") }}
-      {{- $key | safeJS -}}: {{- $value | safeJS }},
-      {{- end }}
-      {{- end }}
+      {{- partial "utils/get-js-configs" .Site.Params.math.katex | safeJS }}
     });
   });
 </script>
+{{- end }}
+
+{{/*  Mermaid  */}}
+{{- if eq .Site.Params.diagram.handler "mermaid" }}
+<script defer src="{{ printf $assets.mermaid.js.url $assets.mermaid.version }}" {{ with $assets.mermaid.js.sri }}
+  integrity="{{ . }}" {{ end }} crossorigin></script>
+{{- with .Site.Params.diagram.mermaid }}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    mermaid.initialize({
+      {{- partial "utils/get-js-configs" . | safeJS }}
+    });
+  });
+</script>
+{{- end }}
 {{- end }}
 
 {{- if and .Site.GoogleAnalytics hugo.IsProduction }}

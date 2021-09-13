@@ -31,9 +31,7 @@
                     {{ partial "components/post-author" . }}
                     {{ end }}
 
-                    {{ if or .Site.Params.repoURL .Site.Params.repoEditURL }}
                     {{ partial "components/post-edit" . }}
-                    {{ end }}
 
                     {{ partial "components/post-footer" . }}
                     {{ partial "comment" . }}
