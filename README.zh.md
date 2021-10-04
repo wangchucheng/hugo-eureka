@@ -32,6 +32,4 @@ Eureka致力于为[Hugo](https://gohugo.io/)提供一个优雅，功能丰富且
 - [ruiqima.com](https://www.ruiqima.com)
 - 以及更多……
 
-你是否在使用Hugo Eureka？ [为你的仓库添加`hugo-eureka`标签！](https://docs.github.com/cn/github/administering-a-repository/classifying-your-repository-with-topics)
-
-也许你还可以在[Hugo Eureka Showcase](https://github.com/wangchucheng/hugo-eureka/discussions/93)与社区成员分享你的有趣项目。 🙌
+你是否在使用Hugo Eureka？ [为你的仓库添加`hugo-eureka`标签！](https://docs.github.com/cn/github/administering-a-repository/classifying-your-repository-with-topics) 🙌

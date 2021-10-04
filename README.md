@@ -32,6 +32,4 @@ Read [Getting Started](https://www.wangchucheng.com/en/docs/hugo-eureka/getting-
 - [ruiqima.com](https://www.ruiqima.com)
 - and more...
 
-Are you using Hugo Eureka? [Add the `hugo-eureka` topic on your repo!](https://docs.github.com/en/github/administering-a-repository/classifying-your-repository-with-topics)
-
-Maybe you can also share your awesome projects with the community at [Hugo Eureka Showcase](https://github.com/wangchucheng/hugo-eureka/discussions/93). 🙌
+Are you using Hugo Eureka? [Add the `hugo-eureka` topic on your repo!](https://docs.github.com/en/github/administering-a-repository/classifying-your-repository-with-topics) 🙌
