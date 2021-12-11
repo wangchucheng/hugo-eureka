@@ -15,7 +15,7 @@ Eureka致力于为[Hugo](https://gohugo.io/)提供一个优雅，功能丰富且
 
 如果本项目对你有帮助的话，欢迎给[Eureka](https://github.com/wangchucheng/hugo-eureka/)点个star并关注我的[Github](https://github.com/wangchucheng/)。
 
-阅读[入门](https://www.wangchucheng.com/zh/docs/hugo-eureka/getting-started/)了解如何构建并部署你网站。或查看最新[示例网站](https://themes.gohugo.io/theme/hugo-eureka/)和[项目仓库](https://github.com/wangchucheng/hugo-eureka/)开始探索！
+阅读[入门](https://www.wangchucheng.com/zh/docs/hugo-eureka/getting-started/)了解如何构建并部署你网站。或查看最新[示例网站](https://hugo-eureka.netlify.app/)和[项目仓库](https://github.com/wangchucheng/hugo-eureka/)开始探索！
 
 ## 阅读文档
 
@@ -32,6 +32,4 @@ Eureka致力于为[Hugo](https://gohugo.io/)提供一个优雅，功能丰富且
 - [ruiqima.com](https://www.ruiqima.com)
 - 以及更多……
 
-你是否在使用Hugo Eureka？ [为你的仓库添加`hugo-eureka`标签！](https://docs.github.com/cn/github/administering-a-repository/classifying-your-repository-with-topics)
-
-也许你还可以在[Hugo Eureka Showcase](https://github.com/wangchucheng/hugo-eureka/discussions/93)与社区成员分享你的有趣项目。 🙌
+你是否在使用Hugo Eureka？ [为你的仓库添加`hugo-eureka`标签！](https://docs.github.com/cn/github/administering-a-repository/classifying-your-repository-with-topics) 🙌

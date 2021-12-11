@@ -8,7 +8,11 @@
       <a href="{{ .Permalink }}" class="hover:text-eureka-highlight">{{ .LinkTitle }}</a>
     </div>
     <div class="">
-      {{- .Summary | plainify -}}
+      {{ if .Description }}
+        {{ .Description | plainify | htmlUnescape }}
+      {{ else if .Summary }}
+        {{ .Summary | plainify | htmlUnescape }}
+      {{ end }}
     </div>
   </div>
   <div class="px-6 pb-2">

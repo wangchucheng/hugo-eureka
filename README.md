@@ -15,7 +15,7 @@ Eureka is committed to providing an elegant, feature-rich and highly customizabl
 
 If this project is helpful to you, you can give [Eureka](https://github.com/wangchucheng/hugo-eureka/) a star and follow my [Github](https://github.com/wangchucheng/).
 
-Read [Getting Started](https://www.wangchucheng.com/en/docs/hugo-eureka/getting-started/) to learn how to build and deploy your website. Or check the latest [Demo](https://themes.gohugo.io/theme/hugo-eureka/) and [Project Repository](https://github.com/wangchucheng/hugo-eureka/) to start exploring!
+Read [Getting Started](https://www.wangchucheng.com/en/docs/hugo-eureka/getting-started/) to learn how to build and deploy your website. Or check the latest [Demo](https://hugo-eureka.netlify.app/) and [Project Repository](https://github.com/wangchucheng/hugo-eureka/) to start exploring!
 
 ## View Document
 
@@ -32,6 +32,4 @@ Read [Getting Started](https://www.wangchucheng.com/en/docs/hugo-eureka/getting-
 - [ruiqima.com](https://www.ruiqima.com)
 - and more...
 
-Are you using Hugo Eureka? [Add the `hugo-eureka` topic on your repo!](https://docs.github.com/en/github/administering-a-repository/classifying-your-repository-with-topics)
-
-Maybe you can also share your awesome projects with the community at [Hugo Eureka Showcase](https://github.com/wangchucheng/hugo-eureka/discussions/93). 🙌
+Are you using Hugo Eureka? [Add the `hugo-eureka` topic on your repo!](https://docs.github.com/en/github/administering-a-repository/classifying-your-repository-with-topics) 🙌
