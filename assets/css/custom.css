@@ -1,6 +1,41 @@
 /* Custon CSS */
 @import url("https://cdn.jsdelivr.net/npm/@fontsource/cascadia-code@4.2.1/index.min.css");
 
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.pt-2 {
+    padding-top: 0.5rem !important;
+}
+
+.pl-8 {
+    padding-left: 2rem !important;
+}
+.pr-8 {
+    padding-right: 2rem !important;
+}
+
+@media(min-width: 768px) {
+    .md\:pl-0 {
+        padding-left: 0 !important;
+    }
+    .md\:pr-0 {
+        padding-right: 0 !important;
+    }
+    .md\:ml-4 {
+        margin-left: 1rem;
+    }
+    .md\:ml-8 {
+        margin-left: 2rem;
+    }
+    .md\:items-flex-end {
+        align-items: flex-end !important;
+    }
+}
+
+
+
 /* 主题色 */
 :root {
     --color-eureka: #fa233b;

@@ -5,10 +5,27 @@
       <img src="{{ . }}" class="rounded-full" alt="Avatar">
     </div>
   {{ end }}
-  <div class="flex-grow mt-4 md:mt-0">
-    <div class="text-3xl py-4">{{ .Title }}</div>
-    <div class="w-3/12 xl:w-2/12 border-b"></div>
+  <div class="flex-grow mt-4 md:mt-0 w-full">
 
+    <div class="flex flex-col items-center md:flex-row md:items-flex-end">
+
+      <div class="inline-block text-3xl md:mr-8 py-4">{{ .Title }}</div>
+      {{ with .Params.bio }}
+        <div class="inline-block py-4 text-lg leading-normal">
+          {{ . | markdownify }}
+        </div>
+      {{ end }}
+
+    </div>
+
+    <div class="pl-8 pr-8 md:pl-0 md:pr-0">
+
+      <div class="w-3/12 xl:w-2/12 border-b"></div>
+      
+      <div id="whisper" class=""><div></div></div>
+
+    </div>
+<!--
     <div class="flex items-center pt-4">
       {{ with or (.Params.role) (.Params.organizations)}}
         <i class="fas fa-user"></i>
@@ -24,14 +41,11 @@
       </div>
 
     </div>
+-->
 
-    {{ with .Params.bio }}
-      <div class="py-8 text-lg leading-normal">
-        {{ . | markdownify }}
-      </div>
-    {{ end }}
+
   </div>
-  <div class="flex md:flex-col justify-center items-end ml-8">
+  <div class="flex md:flex-col justify-center items-end md:ml-8">
     {{ $brand := $.Param "social"}}
     {{ range $brand }}
       {{/* Deprecation warning(v1.0.0) starts */}}
@@ -41,7 +55,7 @@
       {{ $iconPack := .iconPack | default .icon_pack }}
       {{/* Deprecation warning(v1.0.0) ends */}}
       {{ $src := print $iconPack " fa-" .icon }}
-      <div class="pb-2 pr-4 md:pr-0 pt-4 md:pt-0">
+      <div class="pt-2 pb-2 pl-4 pr-4 md:pr-0 pt-4 md:pt-0">
         <a href="{{ .url }}"><i class="{{ print $src }}"></i></a>
       </div>
     {{ end }}
