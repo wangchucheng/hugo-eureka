@@ -1,0 +1,82 @@
+<div id="waline-comments" class="mt-4"></div>
+{{- $assets := .Site.Data.assets }}
+<script defer src="{{ printf $assets.waline.js.url}}" {{ with $assets.waline.js.sri }}
+  integrity="{{ . }}" {{ end }} crossorigin></script>
+{{- with .Site.Params.comment.waline }}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    new Waline({
+      el: "#waline-comments",
+      {{- partial "utils/get-js-configs" . | safeJS }}
+    })
+  });
+</script> 
+
+<style>
+:root {
+  /* 主题色 */
+  --waline-theme-color: var(--color-eureka);
+  --waline-active-color: var(--color-eureka);
+
+  /* 徽章 */
+  --waline-badge-color: var(--color-eureka);
+}
+
+.dark {
+  /* 常规颜色 */
+  --waline-white: #000;
+  --waline-light-grey: #666;
+  --waline-dark-grey: #999;
+
+  /* 布局颜色 */
+  --waline-text-color: #888;
+  --waline-bgcolor: #1e1e1e;
+  --waline-bgcolor-light: #272727;
+  --waline-border-color: #333;
+  --waline-disable-bgcolor: #444;
+  --waline-disable-color: #272727;
+
+  /* 特殊颜色 */
+  --waline-bq-color: #272727;
+
+  /* 其他颜色 */
+  --waline-badge-color: #b3192a;
+  --waline-info-bgcolor: #272727;
+  --waline-info-color: #666;
+}
+
+.dark .v[data-class=v] .vbtn.primary {
+  color: var(--color-primary-text);
+}
+
+.dark .v[data-class=v] p {
+  color: var(--color-primary-text);
+}
+
+.dark .v[data-class=v] .vcard .vhead .vbadge {
+  color: var(--color-primary-text);
+}
+
+
+
+div#waline-comments svg.verified-icon { display: none !important; }
+div#waline-comments button { outline: none !important; }
+div#waline-comments div.vactions { display: none !important; }
+div#waline-comments div.vpreview { display: none !important; }
+div#waline-comments div.vemoji-popup { display: none !important; }
+
+.v[data-class=v] .veditor:focus, .v[data-class=v] .vinput:focus {
+  background: inherit;
+}
+
+.v[data-class=v] .veditor {
+  display: block;
+  width: calc(100% - 1.5em);
+  margin: 0.75em 0.75em;
+}
+
+.v[data-class=v] .vbtn {
+  padding: 0.2em 0.5em;
+}
+</style>
+{{- end }}

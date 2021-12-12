@@ -43,3 +43,10 @@ valine:
   js:
     url: https://cdn.jsdelivr.net/npm/valine@%s/dist/Valine.min.js
     sri: sha256-fPqMAsW3FDt/rNyneSJ7HOpZNRs/O2rM016SU08JtCk=
+
+#  Waline
+waline:
+  version: 1.5.2
+  js:
+    url: https://cdn.jsdelivr.net/npm/@waline/client@1.5.2/dist/Waline.min.js
+    sri: sha256-DFteZ90hNOmSYxaFWoDz5fylEvZVaQvVw6BPEUjCfOM=
