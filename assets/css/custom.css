@@ -79,12 +79,17 @@ html.dark body:hover::-webkit-scrollbar-thumb { background-color: rgba(115, 115,
 header #navbar-btn { outline: none; }
 #pages>div>.py-6 .content+.text-tertiary-text svg { display: none; } /* 不喜欢时间前的图标 */
 
+
+#article>.content>figure {
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
+}
+
 /* 正文图片边框 */
 #article img[alt="Featured Image"],
-#article>.content>p>img { border: solid 6px white; }
+#article>.content>figure>img { border: solid 6px white; }
 
 /* 图片注释 */
-#article>.content>p>img+span {
+#article>.content>figure>figcaption>h4 {
     display: block;
     margin-top: -6px;
     padding-left: 1rem;
