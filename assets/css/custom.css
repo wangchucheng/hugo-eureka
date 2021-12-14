@@ -71,6 +71,10 @@ html.dark body:hover::-webkit-scrollbar-thumb { background-color: rgba(115, 115,
     backdrop-filter: saturate(180%) blur(20px);
 }
 
+/* 文章卡片分隔线 */
+*, ::before, ::after { border-color: rgb(200, 200, 200); }
+.dark *, ::before, ::after { border-color: rgb(90, 90, 90); }
+
 /* 排版微调 */
 .content { line-height: 1.8; }
 .text-tertiary-text { font-size: 0.9rem; margin-bottom: .5rem!important; }
@@ -131,12 +135,18 @@ html.dark .hover\:text-eureka-highlight:hover, html.dark .content a:hover {
     color: unset !important;
 }
 
-::selection { color: white; background:var(--color-eureka); }
-::-moz-selection { color: white; background:var(--color-eureka); }
-::-webkit-selection { color: white; background:var(--color-eureka); }
-html.dark::selection { color: white; background:var(--color-eureka); }
-html.dark::-moz-selection { color: white; background:var(--color-eureka); }
-html.dark::-webkit-selection { color: white; background:var(--color-eureka); }
+html:not([class*="rwl-exempt"]) ::selection { background: rgb(180, 180, 180) !important; }
+html:not([class*="rwl-exempt"]) ::-moz-selection { background: rgb(180, 180, 180) !important; }
+html:not([class*="rwl-exempt"]) ::-webkit-selection { background: rgb(180, 180, 180) !important; }
+html.dark :not([class*="rwl-exempt"]) ::selection { background: rgb(121, 114, 114) !important; }
+html.dark :not([class*="rwl-exempt"]) ::-moz-selection { background: rgb(121, 114, 114) !important; }
+html.dark :not([class*="rwl-exempt"]) ::-webkit-selection { background: rgb(121, 114, 114) !important; }
+
+
+/* mark 标签样式，selection 时 mark a 样式 */
+mark { color: white; background-color: var(--color-eureka); }
+mark::selection { background-color: var(--color-eureka) !important; }
+a::selection { color: var(--color-eureka) !important; }
 
 /* 更换代码字体 */
 .content code {
