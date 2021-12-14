@@ -2,10 +2,10 @@
   <a href="{{ .Permalink }}" class="font-bold text-xl hover:text-eureka-highlight">{{ .LinkTitle }}</a>
 </div>
 <div class="content">
-  {{ if .Description }}
-    {{ .Description | plainify | htmlUnescape }}
-  {{ else if .Summary }}
+  {{ if .Summary }}
     {{ .Summary | plainify | htmlUnescape }}
+  {{ else if .Description }}
+    {{ .Description | plainify | htmlUnescape }}
   {{ end }}
 </div>
 {{ if eq .Type "docs" }}
@@ -19,10 +19,10 @@
           <a href="{{ .Permalink }}" class="font-semibold hover:text-eureka">{{ .LinkTitle }}</a>
       </div>
       <div class="">
-        {{ if .Description }}
-          {{ .Description | plainify | htmlUnescape }}
-        {{ else if .Summary }}
+        {{ if .Summary }}
           {{ .Summary | plainify | htmlUnescape }}
+        {{ else if .Description }}
+          {{ .Description | plainify | htmlUnescape }}
         {{ end }}
       </div>
   </div>
