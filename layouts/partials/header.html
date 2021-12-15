@@ -30,8 +30,8 @@
             {{- end }}
         </div>
 
-        <div class="flex">
-            <div class="relative pt-4 md:pt-0">
+        <div class="flex flex-row-reverse">
+            <div class="relative px-3 pt-4 md:pt-0">
                 <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
                     {{- if eq .Site.Params.colorScheme "dark" }}
                     <i class="fas fa-moon"></i>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
                 </div>
-                <div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                <div class="absolute flex flex-col left-auto right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
                     id='lightDarkOptions'>
                     <span class="px-4 py-1 hover:text-eureka" name="Light">{{i18n "light"}}</span>
                     <span class="px-4 py-1 hover:text-eureka" name="Dark">{{i18n "dark"}}</span>

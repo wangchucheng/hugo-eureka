@@ -34,6 +34,17 @@
     }
 }
 
+.left-auto {
+    left: auto !important;
+}
+
+.right-0 {
+    right: 0;
+}
+
+.flex-row-reverse {
+    flex-direction: row-reverse!important
+}
 
 
 /* 主题色 */
@@ -76,7 +87,10 @@ html.dark body:hover::-webkit-scrollbar-thumb { background-color: rgba(115, 115,
 .dark *, ::before, ::after { border-color: rgb(90, 90, 90); }
 
 /* 排版微调 */
-.content { line-height: 1.8; }
+.text-xl .text-2xl .text-3xl { letter-spacing: .012em; }
+
+.content { letter-spacing: .012em; line-height: 1.9; font-weight: 300; }
+.content strong { font-weight: 700; }
 .text-tertiary-text { font-size: 0.9rem; margin-bottom: .5rem!important; }
 
 /* 细节调整 */
@@ -90,6 +104,8 @@ header #navbar-btn { outline: none; }
 
 /* 正文图片边框 */
 #article img[alt="Featured Image"],
+#article>.content>p>img,
+#article>.content>p>video, 
 #article>.content>figure>img { border: solid 6px white; }
 
 /* 图片注释 */
@@ -150,7 +166,7 @@ a::selection { color: var(--color-eureka) !important; }
 
 /* 更换代码字体 */
 .content code {
-    font-family: Cascadia Code;
+    font-family: Cascadia Code, Noto Sans SC;
     font-variant-ligatures: none;
 }
 /* 统一数学公式的CJK字体 */
