@@ -4,44 +4,44 @@
 highlightjs:
   version: 10.1.0
   css:
-    url: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@%s/build/styles/%s.min.css
+    url: https://cdn.staticfile.org/highlight.js/%s/styles/%s.min.css
   js:
-    url: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@%s/build/highlight.min.js
+    url: https://cdn.staticfile.org/highlight.js/%s/highlight.min.js
   languages:
-    url: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@%s/build/languages/%s.min.js
+    url: https://cdn.staticfile.org/highlight.js/%s/languages/%s.min.js
 
 # Font Awesome
 fontawesome:
   version: 5.14.0
   js:
-    url: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@%s/js/all.min.js
+    url: https://cdn.staticfile.org/font-awesome/%s/css/all.min.js
     sri: sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=
 
 # KaTeX
 katex:
   version: 0.12.0
   css:
-    url: https://cdn.jsdelivr.net/npm/katex@%s/dist/katex.min.css
+    url: https://cdn.staticfile.org/KaTeX/%s/katex.min.css
     sri: sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X
   js:
-    url: https://cdn.jsdelivr.net/npm/katex@%s/dist/katex.min.js
+    url: https://cdn.staticfile.org/KaTeX/%s/katex.min.js
     sri: sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4
   autoRender:
-    url: https://cdn.jsdelivr.net/npm/katex@%s/dist/contrib/auto-render.min.js
+    url: https://cdn.staticfile.org/KaTeX/%s/contrib/auto-render.min.js
     sri: sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa
 
 # Mermaid
 mermaid:
   version: 8.9.2
   js:
-    url: https://cdn.jsdelivr.net/npm/mermaid@%s/dist/mermaid.min.js
+    url: https://cdn.staticfile.org/mermaid/%s/mermaid.min.js
     sri: sha256-Zmpaaj+GXFsPF5WdPArSrnW3b30dovldeKsW00xBVwE=
 
 # Valine
 valine:
   version: 1.4.14
   js:
-    url: https://cdn.jsdelivr.net/npm/valine@%s/dist/Valine.min.js
+    url: https://cdn.staticfile.org/valine/@s/Valine.min.js
     sri: sha256-fPqMAsW3FDt/rNyneSJ7HOpZNRs/O2rM016SU08JtCk=
 
 #  Waline
