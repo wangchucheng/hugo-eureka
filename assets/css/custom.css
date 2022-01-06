@@ -97,8 +97,10 @@ html.dark body:hover::-webkit-scrollbar-thumb { background-color: rgba(115, 115,
 header #navbar-btn { outline: none; }
 #pages>div>.py-6 .content+.text-tertiary-text svg { display: none; } /* 不喜欢时间前的图标 */
 
-
-#article>.content>figure {
+#article img[alt="Featured Image"], 
+#article>.content>p>img,
+#article>.content>figure,
+#article>.content>p>video {
     box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
 }
 

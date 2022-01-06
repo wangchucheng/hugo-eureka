@@ -14,7 +14,7 @@ highlightjs:
 fontawesome:
   version: 5.14.0
   js:
-    url: https://cdn.staticfile.org/font-awesome/%s/css/all.min.js
+    url: https://cdn.staticfile.org/font-awesome/%s/js/all.min.js
     sri: sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=
 
 # KaTeX
