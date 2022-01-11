@@ -1,0 +1,26 @@
+readMore:
+  other: اقرأ المزيد
+readingTime:
+  other: '{{ .ReadingTime }} دقائق من القراءة'
+toc:
+  other: لائحة المحتوى
+seriesOfPosts:
+  other: سلسلة من المنشورات
+previous:
+  other: السابق
+next:
+  other: التالي
+seeAlso:
+  other: أنظر أيضاً
+recent:
+  other: جديد
+onThisPage:
+  other: على هذه الصفحة
+editThisPage:
+  other: عدّل هذه الصفحة
+light:
+  other: مضيئ
+dark:
+  other: مظلم
+auto:
+  other: تلقائي
