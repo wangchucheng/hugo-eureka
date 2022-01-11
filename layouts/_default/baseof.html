@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang='{{ .Site.LanguageCode }}' {{ if eq .Site.Params.colorScheme "dark" }}class="dark" {{ end }}>
+<html lang='{{ .Site.LanguageCode }}' dir='{{ .Site.Language.LanguageDirection | default "ltr" }}' {{ if eq .Site.Params.colorScheme "dark" }}class="dark" {{ end }}>
 {{- partial "head" . }}
 
 <body class="flex flex-col min-h-screen">
