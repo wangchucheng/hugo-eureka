@@ -3,7 +3,7 @@
 {{- partial "head" . }}
 
 <body class="flex flex-col min-h-screen">
-  <header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm">
+  <header class="fixed flex items-center w-full min-h-16 ps-scrollbar z-50 bg-secondary-bg shadow-sm">
     <div class="w-full max-w-screen-xl mx-auto">
       {{- partial "header" . -}}
     </div>
@@ -12,14 +12,14 @@
     {{- if or .IsHome (and (eq .Type "authors") (eq .Kind "term")) }}
     {{- block "main" . }}{{- end }}
     {{- else }}
-    <div class="pl-scrollbar">
+    <div class="ps-scrollbar">
       <div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto">
         {{- block "main" . }}{{- end }}
       </div>
     </div>
     {{ end }}
   </main>
-  <footer class="pl-scrollbar">
+  <footer class="ps-scrollbar">
     <div class="w-full max-w-screen-xl mx-auto">
       {{- partial "footer" . -}}
     </div>

@@ -11,7 +11,7 @@
   {{/*  Deprecation warning(v1.0.0) starts  */}}
   {{ else }}
     {{ warnf "Param 'hero' in params.toml is deprecated and will be removed in Eureka v1.0.0. See https://www.wangchucheng.com/en/docs/hugo-eureka/homepage-configuration/" }}
-    <div class="bg-secondary-bg pl-scrollbar">
+    <div class="bg-secondary-bg ps-scrollbar">
       <div class="max-w-screen-xl mx-auto">
         <div class="grid grid-cols-9 grid-rows-5 h-(screen-16)">
           {{- $imgLeft := partial "utils/get-image" (dict "context" . "url" .Site.Params.hero.imgLeft)}}
@@ -36,7 +36,7 @@
         </div>
       </div>
     </div>
-    <div class="pl-scrollbar">
+    <div class="ps-scrollbar">
       <div class="max-w-screen-xl mx-auto">
         <div class="pt-12 md:px-4 xl:px-8">
           {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
@@ -143,7 +143,7 @@
     {{ $widgetClass = print $widgetClass " mx-auto px-6 md:px-8 xl:px-12 py-12" }}
   {{ end }}
 
-  <div class="pl-scrollbar {{ with $backgroundClass -}}{{ partial "utils/standardize-classes" . }}{{- end }}" 
+  <div class="ps-scrollbar {{ with $backgroundClass -}}{{ partial "utils/standardize-classes" . }}{{- end }}" 
     {{ with $backgroundStyle }} style="{{ . | safeCSS }}" {{ end }}>
     <div class="max-w-screen-xl mx-auto">
       <div id="{{ .File.BaseFileName }}" class="{{ with $widgetClass -}}{{ partial "utils/standardize-classes" . }}{{- end }}">
@@ -168,10 +168,10 @@
       {{ $scaleClass = index $scaleOptions "md" }}
     {{ end }}
     <div class="flex flex-col {{ if eq $sidebar.position "right" -}} lg:flex-row-reverse {{- else -}} lg:flex-row {{- end }}">
-      <div class="flex-none {{ with $scaleClass -}}{{ partial "utils/standardize-classes" . }}{{- end }} {{ if eq $sidebar.position "left" -}} lg:mr-4 {{- else -}} lg:ml-4 {{- end }}">
+      <div class="flex-none {{ with $scaleClass -}}{{ partial "utils/standardize-classes" . }}{{- end }} {{ if eq $sidebar.position "left" -}} lg:me-4 {{- else -}} lg:ms-4 {{- end }}">
         <h2 class="font-bold text-3xl my-4">{{ .Params.Title }}</h2>
       </div>
-      <div class="flex-grow {{ if eq $sidebar.position "right" -}} lg:mr-4 {{- else -}} lg:ml-4 {{- end }}">
+      <div class="flex-grow {{ if eq $sidebar.position "right" -}} lg:me-4 {{- else -}} lg:ms-4 {{- end }}">
         {{ partial (printf "widgets/%s" .Params.widget.handler) . }}
       </div>
     </div>
