@@ -22,3 +22,7 @@
 a:hover {
     @apply text-eureka transition duration-300 ease-in-out;
 }
+
+code {
+    direction: ltr;
+}
