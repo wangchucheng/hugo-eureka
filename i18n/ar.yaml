@@ -1,7 +1,7 @@
 readMore:
   other: اقرأ المزيد
 readingTime:
-  other: '{{ .ReadingTime }} دقائق من القراءة'
+  other: '{{ .Count }} دقائق من القراءة'
 toc:
   other: لائحة المحتوى
 seriesOfPosts:
