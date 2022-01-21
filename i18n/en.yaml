@@ -1,6 +1,7 @@
 readMore:
   other: Read More
 readingTime:
+  one: One min read
   other: '{{ .Count }} mins read'
 toc:
   other: Table of Contents
