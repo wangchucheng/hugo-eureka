@@ -1,6 +1,7 @@
 readMore:
   other: اقرأ المزيد
 readingTime:
+  one: دقيقة من القراءة
   other: '{{ .Count }} دقائق من القراءة'
 toc:
   other: لائحة المحتوى
