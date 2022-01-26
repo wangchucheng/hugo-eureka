@@ -2,14 +2,14 @@
 {{ $hasSidebar := or ($hasToc) (.Params.series) }}
 <div class="lg:pt-12">
     <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
-        <div class="md:w-1/4 lg:w-1/5 border-r">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
             <div class="sticky top-16 pt-6">
                 {{ template "doc-sidebar" (dict "context" . "permalink" .Permalink) }}
             </div>
 
         </div>
         <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
-            <div class="w-full lg:w-3/4 pl-6 ml-0 mr-auto">
+            <div class="w-full lg:w-3/4 ps-6 ms-0 me-auto">
                 <h1 class="font-bold text-3xl text-primary-text">{{ .Title }}</h1>
                 {{ partial "components/post-metadata" . }}
             </div>
@@ -75,32 +75,32 @@
 {{ define "list-pages" }}
 <div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
     <span class="font-semibold">{{ i18n "toc" }}</span>
-    <i class="fas fa-caret-right ml-1"></i>
+    <i class='fas {{ cond (eq .Site.Language.LanguageDirection "rtl") "fa-caret-left" "fa-caret-right" }} ms-1'></i>
 </div>
 
 <div id="sidebar-toc"
-    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pr-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
-    <div class="flex flex-wrap ml-4 -mr-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
         <a class="{{ if eq .context.Permalink .permalink }}text-eureka{{ end }} hover:text-eureka"
             href="{{ .context.Permalink }}">{{ .context.LinkTitle }}</a>
         
         {{ $versions := partial "get-versions" (dict "context" .context) }}
         {{ if $versions }}
-        <div class="relative ml-2 cursor-pointer">
+        <div class="relative ms-2 cursor-pointer">
             <div id="doc-version" class="flex items-center bg-primary-bg md:bg-secondary-bg">
                 {{ $version := findRE "v?(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?" .context.Permalink }}
-                <span class="ml-2 mr-1">{{ cond (gt (len $version) 0) (index $version 0) "latest" }}</span>
-                <i class="fas fa-caret-right w-4 h-4 mr-1"></i>
+                <span class="ms-2 me-1">{{ cond (gt (len $version) 0) (index $version 0) "latest" }}</span>
+                <i class='fas {{ cond (eq .Site.Language.LanguageDirection "rtl") "fa-caret-left" "fa-caret-right" }} w-4 h-4 me-1'></i>
             </div>
-            <div id="version-options" class="hidden absolute left-0 bg-secondary-bg rounded z-40">
+            <div id="version-options" class="hidden absolute start-0 bg-secondary-bg rounded z-40">
                 {{ range $index, $value := $versions }}
                 {{ if eq $index 0 }}
-                <div class="ml-2 mr-8 my-1">
+                <div class="ms-2 me-8 my-1">
                     <a class="" href="{{ $.context.Parent.Permalink }}">latest</a>
                 </div>
                 {{ end }}
                 {{ $version := findRE "v?(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?" . }}
-                <div class="ml-2 mr-8 my-1">
+                <div class="ms-2 me-8 my-1">
                     <a class="" href="{{ . }}">{{ index $version 0 }}</a>
                 </div>
                 {{ end }}
@@ -122,7 +122,7 @@
 {{ end }}
 
 {{ define "list-items"}}
-<ul class="pl-6">
+<ul class="ps-6">
     {{ range .context.Pages }}
     {{ $version := findRE "v?(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?/$" .Permalink }}
     {{ if eq (len $version) 0 }}

@@ -1,7 +1,7 @@
 readMore:
   other: 더 보기
 readingTime:
-  other: "{{ .ReadingTime }} min 읽음"
+  other: "{{ .Count }} min 읽음"
 toc:
   other: 목차
 seriesOfPosts:

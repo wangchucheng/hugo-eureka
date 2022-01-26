@@ -1,7 +1,7 @@
 readMore:
   other: 閱讀更多
 readingTime:
-  other: '{{ .ReadingTime }}分鐘閱讀'
+  other: '{{ .Count }}分鐘閱讀'
 toc:
   other: 目錄
 seriesOfPosts:

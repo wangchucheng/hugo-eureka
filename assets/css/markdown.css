@@ -55,7 +55,7 @@
 }
 
 .content blockquote {
-  @apply text-base border-l-4 border-tertiary-text pl-4 pr-4 text-secondary-text;
+  @apply text-base border-s-4 border-tertiary-text ps-4 pe-4 text-secondary-text;
 }
 
 .content code {
@@ -71,11 +71,11 @@
 }
 
 .content ul {
-  @apply text-base pl-8 list-disc;
+  @apply text-base ps-8 list-disc;
 }
 
 .content ol {
-  @apply text-base pl-8 list-decimal;
+  @apply text-base ps-8 list-decimal;
 }
 
 .content kbd {

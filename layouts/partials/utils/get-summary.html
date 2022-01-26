@@ -29,7 +29,7 @@
   {{ end }}
   <div class="pt-6 hover:text-eureka">
       <a href="{{ .Permalink }}" class="font-semibold">{{ i18n "readMore" }}</a>
-      <i class="fas fa-caret-right ml-1"></i>
+      <i class='fas {{ cond (eq .Site.Language.LanguageDirection "rtl") "fa-caret-left" "fa-caret-right" }} ms-1'></i>
   </div>
 </div>
 {{ else }}
