@@ -1,0 +1,73 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  release-eureka:
+    runs-on: ubuntu-latest
+    name: Release Eureka
+    steps:
+      - name: Checkout Eureka
+        uses: actions/checkout@v2
+      - name: Release Eureka
+        uses: softprops/action-gh-release@v1
+        with:
+          generate_release_notes: true
+  release-starters:
+    runs-on: ubuntu-latest
+    name: Release Starters
+    steps:
+    - name: Checkout Eureka
+      uses: actions/checkout@v2
+      with:
+        path: 'eureka'
+    - name: Checkout Starters
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        repository: wangchucheng/hugo-eureka-starters
+        path: 'starters'
+    - name: Delete Old Folders
+      run: rm -rf starters/config starters/content 
+    - name: Copy New Folders
+      run: | 
+        cp -r eureka/exampleSite/config/. starters/config
+        cp -r eureka/exampleSite/content/. starters/content
+    - name: Setup Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: '^1.13.1'
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: 'latest'
+    - name: Update Hugo Modules
+      run: |
+        cd starters
+        hugo mod get -u
+        hugo mod tidy
+    - name: Commit
+      run: | 
+        cd starters
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add . && git commit -m "chore: upgrade to Eureka ${GITHUB_REF#refs/*/v}"
+        git config --unset-all http.https://github.com/.extraheader # https://stackoverflow.com/a/69979203
+    - name: Push to Starters
+      uses: ad-m/github-push-action@v0.6.0
+      with:
+        github_token: ${{ secrets.RELEASE_GITHUB_TOKEN }}
+        directory: starters
+        repository: wangchucheng/hugo-eureka-starters
+        branch: monolingual
+    - name: Release Starters
+      uses: softprops/action-gh-release@v1
+      with:
+        repository: wangchucheng/hugo-eureka-starters
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB_TOKEN }}
+    
