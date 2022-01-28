@@ -1,0 +1,24 @@
+<script id="giscus" src="https://giscus.app/client.js"
+        {{- range $key, $value := .Site.Params.comment.giscus }}
+            {{- if and (eq $key "theme") (eq $value "eureka") }}
+                {{- if eq $.Site.Params.colorScheme "light" }}
+                    {{ printf "%s=%v" $key "light" | safeHTMLAttr }}
+                {{- else if eq $.Site.Params.colorScheme "dark" }}
+                    {{ printf "%s=%v" $key "dark" | safeHTMLAttr }}
+                {{- else }}
+                    {{ printf "%s=%v" $key "preferred_color_scheme" | safeHTMLAttr }}
+                {{- end }}
+            {{- else if or $value (eq $value false) }}
+                {{ printf "%s=%v" $key $value | safeHTMLAttr }}
+            {{- end }}
+        {{- end }}
+        crossorigin="anonymous"
+        async>
+</script>
+<script>
+    if (storageColorScheme == "Light") {
+        document.getElementById('giscus').setAttribute('data-theme', 'light')
+    } else if (storageColorScheme == "Dark") {
+        document.getElementById('giscus').setAttribute('data-theme', 'dark')
+    }
+</script>

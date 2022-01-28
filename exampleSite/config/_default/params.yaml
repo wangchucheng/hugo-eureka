@@ -40,11 +40,22 @@ math:
   #   leqno:
 
 comment:
-  # Options: disqus, commento, valine and utterances.
+  # Options: disqus, commento, valine giscus and utterances.
   handler:
 
   # disqus:
   #   shortname:
+
+  # giscus:
+  #   data-repo: "iuxt/iuxt.github.io"
+  #   data-repo-id: ""
+  #   data-category: "General"
+  #   data-category-id: ""
+  #   data-mapping: "pathname"
+  #   data-reactions-enabled: "1"
+  #   data-emit-metadata: "0"
+  #   data-input-position: "bottom"
+  #   data-lang: "zh-CN"
 
   # utterances:
   #   # Browse https://utteranc.es/ to see the options available.
