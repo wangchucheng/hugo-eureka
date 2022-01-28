@@ -1,16 +1,16 @@
 baseURL: /
 title: Eureka Demo
 
-# Comment when installing using Hugo Modules
-theme: eureka
-# Uncomment when installing using Hugo Modules
-# theme: wangchucheng.com/hugo-eureka
+# Uncomment when not installing with Hugo Modules
+# theme: eureka
+# Comment when not installing with Hugo Modules
+theme: wangchucheng.com/hugo-eureka
 # If you cannot access the Github mirror, you can also use the Gitee mirror: gitee.com/wangchucheng/hugo-eureka
 
 paginate: 3
 copyright: >
-  &copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a
-  href="https://www.ruiqima.com/">R. Ma</a>
+  &copy; 2021 <a href="https://www.wangchucheng.com/">WANG Chucheng</a> and <a
+  href="https://www.ruiqima.com/">MA Ruiqi</a>
 enableEmoji: true
 enableGitInfo: false
 summaryLength: 75
