@@ -77,8 +77,10 @@
   <script defer src="{{ printf $assets.highlightjs.languages.url $assets.highlightjs.version . }}"
     {{ with $assets.highlightjs.languages.sri }} integrity="{{ . }}" {{ end }} crossorigin></script>
 {{ end }}
-<script defer src="{{ printf $assets.fontawesome.js.url $assets.fontawesome.version }}"
-  {{ with $assets.fontawesome.js.sri }} integrity="{{ . }}" {{ end }} crossorigin></script>
+
+{{ $fontawesomeJS := resources.Get "js/fontawesome.js" | resources.ExecuteAsTemplate "js/fontawesome.js" . | js.Build (dict "minify" true) | minify | fingerprint "sha384" }}
+<script defer type="text/javascript" src="{{ $fontawesomeJS.Permalink }}" integrity="{{ $fontawesomeJS.Data.Integrity }}"></script>
+
 
 {{- $enableMath := false }}
 {{- if .Site.Params.math.handler }}
@@ -95,17 +97,6 @@
     {{- end }}
   {{- end }}
 {{- end }}
-
-{{ define "partials/camelize" }}
-{{ $input := . }}
-{{ $regexp := "(-|_)([a-z])" }}
-{{ $matches := findRE $regexp $input }}
-{{ range $matches }}
-    {{ $input = $input | replaceRE . (upper .) }}
-{{ end }}
-{{ $input = $input | replaceRE "(-|_)" "" }}
-{{ return $input }}
-{{ end }}
 
 {{/*  KaTeX  */}}
 {{- if and (eq .Site.Params.math.handler "katex") $enableMath }}
