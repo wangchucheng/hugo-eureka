@@ -2,6 +2,14 @@
   @apply text-eureka transition duration-300 ease-in-out;
 }
 
+.prose blockquote {
+  @apply overflow-x-auto;
+}
+
+.prose code {
+  @apply break-words;
+}
+
 .prose .katex {
   @apply overflow-x-auto overflow-y-hidden;
 }
