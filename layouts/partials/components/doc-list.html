@@ -1,11 +1,4 @@
-<article class="mx-6 my-8">
-  <h1 class="font-bold text-3xl text-primary-text">{{ .Title }}</h1>
-  {{ with .Content }}
-  <div class="content">
-      {{ . }}
-  </div>
-  {{ end }}
-</article>
+{{ partial "components/list-article" . }}
 <div class="bg-secondary-bg rounded px-6">
   {{ partial "components/summary-list-plain" .Paginator.Pages }}
 </div>

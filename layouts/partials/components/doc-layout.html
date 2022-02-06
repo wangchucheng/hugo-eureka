@@ -9,21 +9,10 @@
 
         </div>
         <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
-            <div class="w-full lg:w-3/4 ps-6 ms-0 me-auto">
-                <h1 class="font-bold text-3xl text-primary-text">{{ .Title }}</h1>
-                {{ partial "components/post-metadata" . }}
-            </div>
             <div class="flex">
                 <div class="w-full lg:w-3/4 px-6">
-                    {{ $featured := partial "utils/get-featured" . }}
-                    {{ with $featured }}
-                    <div class="my-4">
-                        {{ . }}
-                    </div>
-                    {{ end }}
-                    <div class="content">
-                        {{ .Content}}
-                    </div>
+                    {{ partial "components/post-article" . }}
+                    
                     {{ with .GetTerms "tags" }}
                     {{ partial "components/post-tags" . }}
                     {{ end }}

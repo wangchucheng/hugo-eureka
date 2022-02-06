@@ -54,12 +54,11 @@
 
 <meta name="generator" content="Hugo Eureka {{ .Site.Data.eureka.version }}" />
 
-{{- $eurekaCSS := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js") }}
-{{- $eurekaCSS := $eurekaCSS | minify }}
-<link rel="stylesheet" href="{{ $eurekaCSS.Permalink }}">
+{{- $eurekaCSS := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js") | minify | fingerprint "sha384" }}
+<link rel="stylesheet" href="{{ $eurekaCSS.Permalink }}" integrity="{{ $eurekaCSS.Data.Integrity }}">
 
-{{- $eurekaJS := resources.Get "js/eureka.js" | resources.ExecuteAsTemplate "js/eureka.js" . | minify }}
-<script defer src="{{ $eurekaJS.Permalink }}"></script>
+{{- $eurekaJS := resources.Get "js/eureka.js" | resources.ExecuteAsTemplate "js/eureka.js" . | minify | fingerprint "sha384" }}
+<script defer src="{{ $eurekaJS.Permalink }}" integrity="{{ $eurekaJS.Data.Integrity }}"></script>
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload"

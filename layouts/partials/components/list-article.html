@@ -1,0 +1,6 @@
+<article class="prose mx-6 my-8 max-w-none">
+  <h1 class="text-primary-text text-3xl font-bold">{{ .Title }}</h1>
+  {{ with .Content }}
+    {{ . }}
+  {{ end }}
+</article>

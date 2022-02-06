@@ -53,22 +53,22 @@ function enableStickyToc() {
     }
 
     // Track all sections that have an `id` applied
-    document.querySelectorAll('.content h1[id]').forEach((section) => {
+    document.querySelectorAll('.prose h1[id]').forEach((section) => {
         observer.observe(section);
     });
-    document.querySelectorAll('.content h2[id]').forEach((section) => {
+    document.querySelectorAll('.prose h2[id]').forEach((section) => {
         observer.observe(section);
     });
-    document.querySelectorAll('.content h3[id]').forEach((section) => {
+    document.querySelectorAll('.prose h3[id]').forEach((section) => {
         observer.observe(section);
     });
-    document.querySelectorAll('.content h4[id]').forEach((section) => {
+    document.querySelectorAll('.prose h4[id]').forEach((section) => {
         observer.observe(section);
     });
-    document.querySelectorAll('.content h5[id]').forEach((section) => {
+    document.querySelectorAll('.prose h5[id]').forEach((section) => {
         observer.observe(section);
     });
-    document.querySelectorAll('.content h6[id]').forEach((section) => {
+    document.querySelectorAll('.prose h6[id]').forEach((section) => {
         observer.observe(section);
     });
 }
