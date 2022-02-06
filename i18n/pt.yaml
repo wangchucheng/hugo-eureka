@@ -3,7 +3,7 @@ readMore:
 readingTime:
   other: '{{ .Count }} minutos de leitura'
 toc:
-  other: Tabela de conteúdos
+  other: Índice
 seriesOfPosts:
   other: Série de publicações
 previous:
