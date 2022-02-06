@@ -1,37 +1,38 @@
-<div class="mb-4">
-  <a href="{{ .Permalink }}" class="text-xl font-bold">{{ .LinkTitle }}</a>
-</div>
 <div class="prose max-w-none">
+  <a href="{{ .Permalink }}" class="no-underline">
+    <h3 class="mt-0">{{ .LinkTitle }}</h3>
+  </a>
   {{ if .Description }}
     {{ .Description | plainify | htmlUnescape }}
   {{ else if .Summary }}
     {{ .Summary | plainify | htmlUnescape }}
   {{ end }}
-</div>
-{{ if eq .Type "docs" }}
-  <div class="px-6 pt-4">
-    {{ range $index, $value := first 3 .Pages }}
-      {{ if gt $index 0 }}
-        <div class="-mx-4 my-4 border-t"></div>
-      {{ end -}}
-      <div class="mb-2">
-        <a href="{{ .Permalink }}" class="font-semibold">{{ .LinkTitle }}</a>
-      </div>
-      <div class="prose max-w-none">
+
+  {{ if eq .Type "docs" }}
+    <div class="mx-6">
+      {{ range $index, $value := first 3 .Pages }}
+        {{ if gt $index 0 }}
+          <div class="-mx-4 my-4 border-t"></div>
+        {{ end -}}
+        <a href="{{ .Permalink }}" class="no-underline">
+          <h4>{{ .LinkTitle }}</h4>
+        </a>
         {{ if .Description }}
           {{ .Description | plainify | htmlUnescape }}
         {{ else if .Summary }}
           {{ .Summary | plainify | htmlUnescape }}
         {{ end }}
-      </div>
-    {{ end }}
-    <div class="hover:text-eureka pt-6">
-      <a href="{{ .Permalink }}" class="font-semibold">{{ i18n "readMore" }}</a>
-      <i
-        class="fas {{ cond (eq .Site.Language.LanguageDirection "rtl") "fa-caret-left" "fa-caret-right" }} ms-1"
-      ></i>
+      {{ end }}
+      <a href="{{ .Permalink }}" class="no-underline">
+        <h4>
+          {{ i18n "readMore" }}
+          <i
+            class="fas {{ cond (eq .Site.Language.LanguageDirection "rtl") "fa-caret-left" "fa-caret-right" }} ms-1"
+          ></i>
+        </h4>
+      </a>
     </div>
-  </div>
-{{ else }}
-  {{ partial "components/post-metadata" . }}
-{{ end }}
+  {{ else }}
+    {{ partial "components/post-metadata" . }}
+  {{ end }}
+</div>

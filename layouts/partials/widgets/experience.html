@@ -1,34 +1,30 @@
 {{ range .Params.experiences }}
   <div class="mb-6">
     <div
-      class="bg-secondary-bg rounded border px-6 pt-6 pb-4 transition duration-200 ease-in-out hover:shadow-lg"
+      class="bg-secondary-bg prose dark:border-tertiary-bg max-w-none rounded border p-6 transition duration-200 ease-in-out hover:shadow-lg"
     >
-      <div class="mb-4">
-        <div class="text-xl font-bold">{{ .title }}</div>
-        <div class="flex flex-col md:flex-row md:justify-between">
-          <div>
-            {{ if .organization.url }}
-              <a href="{{ .organization.url }}"
-                >{{ .organization.name | markdownify }}</a
-              >
-            {{ else }}
-              <span>{{ .organization.name | markdownify }}</span>
-            {{ end }}
+      <h3 class="">{{ .title }}</h3>
+      <div class="flex flex-col md:flex-row md:justify-between">
+        <div>
+          {{ if .organization.url }}
+            <a href="{{ .organization.url }}" class="no-underline">
+              {{ .organization.name | markdownify }}
+            </a>
+          {{ else }}
+            <span>{{ .organization.name | markdownify }}</span>
+          {{ end }}
 
-            {{ if and .organization.name .location }}
-              <span class="ms-2 me-2">·</span>
-            {{ end }}
+          {{ if and .organization.name .location }}
+            <span class="ms-2 me-2">·</span>
+          {{ end }}
 
 
-            <span>{{ .location | markdownify }} </span>
-          </div>
-          <div class="shrink-0">{{ .dates | markdownify }}</div>
+          <span>{{ .location | markdownify }} </span>
         </div>
+        <div class="shrink-0">{{ .dates | markdownify }}</div>
       </div>
 
-      <div class="prose max-w-none">
-        {{ .writeup | markdownify }}
-      </div>
+      <div class="mt-5">{{ .writeup | markdownify }}</div>
     </div>
   </div>
 {{ end }}

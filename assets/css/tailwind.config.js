@@ -2,6 +2,7 @@ const themeDir = __dirname + "/../../";
 
 module.exports = {
   important: true,
+  darkMode: "class",
   content: [
     themeDir + "layouts/**/*.html",
     themeDir + "exampleSite/content/**/*.html",
@@ -66,11 +67,6 @@ module.exports = {
             "--tw-prose-pre-bg": theme("colors.tertiary-bg"),
             "--tw-prose-th-borders": theme("colors.tertiary-bg"),
             "--tw-prose-td-borders": theme("colors.tertiary-bg"),
-            // a: {
-            //   color: "var(--tw-prose-links)",
-            //   textDecoration: "no-underline",
-            //   fontWeight: "500",
-            // },
           },
         },
       }),

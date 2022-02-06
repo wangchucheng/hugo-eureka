@@ -1,23 +1,19 @@
 <div
-  class="bg-secondary-bg overflow-hidden rounded border transition duration-200 ease-in-out hover:shadow-lg"
+  class="bg-secondary-bg dark:border-tertiary-bg overflow-hidden rounded border transition duration-200 ease-in-out hover:shadow-lg"
 >
   {{ $featured := partial "utils/get-featured" . }}
   {{ with $featured }}
     {{ . }}
   {{ end }}
-  <div class="px-6 pt-6">
-    <div class="text-primary-text mb-2 text-xl font-bold">
-      <a href="{{ .Permalink }}" class="hover:text-eureka">{{ .LinkTitle }}</a>
-    </div>
-    <div class="prose max-w-none">
-      {{ if .Description }}
-        {{ .Description | plainify | htmlUnescape }}
-      {{ else if .Summary }}
-        {{ .Summary | plainify | htmlUnescape }}
-      {{ end }}
-    </div>
-  </div>
-  <div class="px-6 pb-2">
+  <div class="prose max-w-none px-6 pt-6 pb-4">
+    <a href="{{ .Permalink }}" class="no-underline">
+      <h3 class="mt-0">{{ .LinkTitle }}</h3>
+    </a>
+    {{ if .Description }}
+      {{ .Description | plainify | htmlUnescape }}
+    {{ else if .Summary }}
+      {{ .Summary | plainify | htmlUnescape }}
+    {{ end }}
     {{ partial "components/post-metadata" . }}
   </div>
 </div>
