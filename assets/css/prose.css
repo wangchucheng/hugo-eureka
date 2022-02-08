@@ -2,8 +2,8 @@
   @apply max-w-full break-words;
 }
 
-.prose {
-  @apply inline;
+.prose :where(code):not(:where([class~="not-prose"] *)) {
+  @apply inline break-all;
 }
 
 .prose .katex {
