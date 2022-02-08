@@ -1,9 +1,5 @@
-.prose blockquote {
-  @apply overflow-x-auto;
-}
-
-.prose code {
-  @apply break-words;
+.prose {
+  @apply max-w-full break-words;
 }
 
 .prose .katex {
