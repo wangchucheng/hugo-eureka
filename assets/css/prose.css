@@ -2,6 +2,10 @@
   @apply max-w-full break-words;
 }
 
+.prose {
+  @apply inline;
+}
+
 .prose .katex {
   @apply overflow-x-auto overflow-y-hidden;
 }
