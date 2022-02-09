@@ -1,9 +1,13 @@
 .prose {
-  @apply max-w-full overflow-auto break-words;
+  @apply max-w-full;
+}
+
+.prose * {
+  @apply break-words;
 }
 
 .prose .katex {
-  @apply overflow-y-hidden;
+  @apply overflow-x-auto overflow-y-hidden;
 }
 
 .prose .katex * {
