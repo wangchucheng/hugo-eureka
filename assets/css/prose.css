@@ -1,13 +1,9 @@
 .prose {
-  @apply max-w-full break-words;
-}
-
-.prose :where(code):not(:where([class~="not-prose"] *)) {
-  @apply inline break-all;
+  @apply max-w-full overflow-auto break-words;
 }
 
 .prose .katex {
-  @apply overflow-x-auto overflow-y-hidden;
+  @apply overflow-y-hidden;
 }
 
 .prose .katex * {
