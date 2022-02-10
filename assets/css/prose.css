@@ -1,8 +1,4 @@
 .prose {
-  @apply max-w-full;
-}
-
-.prose * {
   @apply max-w-full break-words;
 }
 
