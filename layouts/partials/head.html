@@ -60,6 +60,10 @@
 {{- $eurekaJS := resources.Get "js/eureka.js" | resources.ExecuteAsTemplate "js/eureka.js" . | minify | fingerprint "sha384" }}
 <script defer src="{{ $eurekaJS.Permalink }}" integrity="{{ $eurekaJS.Data.Integrity }}"></script>
 
+{{ range .Site.Params.custom_css -}}
+  <link rel="stylesheet" href="{{ . | absURL }}">
+{{- end }}
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload"
   href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
