@@ -1,0 +1,16 @@
+<div id="waline-comments" class="mt-4"></div>
+{{- $assets := .Site.Data.assets }}
+<script defer src="{{ printf $assets.waline.js.url $assets.waline.version }}" {{ with $assets.waline.js.sri }}
+  integrity="{{ . }}" {{ end }} crossorigin></script>
+{{- with .Site.Params.comment.waline }}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    new Waline({
+      el: "#waline-comments",
+      requiredMeta: [ 'nick','mail' ],
+      dark: "html[class=\"fontawesome-i2svg-active fontawesome-i2svg-complete dark\"]",
+      {{- partial "utils/get-js-configs" . | safeJS }}
+    })
+  });
+</script>
+{{- end }}
