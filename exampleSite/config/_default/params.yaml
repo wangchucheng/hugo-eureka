@@ -40,7 +40,7 @@ math:
   #   leqno:
 
 comment:
-  # Options: disqus, commento, valine and utterances.
+  # Options: disqus, commento, valine, waline and utterances.
   handler:
 
   # disqus:
@@ -64,6 +64,20 @@ comment:
   #   # For example, `appId` should be written as `app-Id` or other acceptable formats.
   #   app-Id:
   #   app-Key:
+
+  # waline:
+  #   # Browse https://waline.js.org/reference/client.html to see the options available.
+  #   # Because Hugo's config params are case-insensitive, you need to add `-` or `_` before the uppercase letters.
+  #   server_U-R-L: 
+  #   # Language setting, default is `zh-CN`.
+  #   lang: 
+  #   # Gravatar style: mp/identicon/monsterid/wavatar/retro/hide
+  #   avatar:  
+  #   # Number of comments per page, default is 10.
+  #   page_Size: 
+  #   # Comment Box placeholder
+  #   placeholder: 
+
 
 diagram:
   handler: mermaid
