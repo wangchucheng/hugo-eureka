@@ -1,4 +1,5 @@
 const themeDir = __dirname + "/../../";
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   important: true,
@@ -11,8 +12,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      serif: ["Lora", "Noto Serif SC", "serif"],
-      mono: ["SFMono-Regular", "Menlo", "monospace"],
+      eureka: ["var(--fonts-eureka)", ...defaultTheme.fontFamily.serif],
     },
     extend: {
       height: {
