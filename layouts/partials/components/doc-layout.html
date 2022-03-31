@@ -42,9 +42,9 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        {{/* highlight */}}
+        {{/* highlight.js */}}
         {{- if eq .Site.Params.highlight.handler "highlightjs" }}
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
         {{- end }}
         changeSidebarHeight();
         switchDocToc();

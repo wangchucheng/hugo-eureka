@@ -49,11 +49,11 @@
     {{ end }}
   </div>
 
-  {{/* highlight */}}
+  {{/* highlight.js */}}
   {{- if eq .Site.Params.highlight.handler "highlightjs" }}
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
       });
     </script>
   {{- end }}
