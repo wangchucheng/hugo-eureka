@@ -26,6 +26,19 @@ Read [Getting Started](https://www.wangchucheng.com/en/docs/hugo-eureka/getting-
 - **[Multilingual Mode](https://www.wangchucheng.com/en/docs/hugo-eureka/multilingual-mode/)**: In addition to [Content Management](https://www.wangchucheng.com/en/docs/hugo-eureka/content-management/) and [Customize Eureka](https://www.wangchucheng.com/en/docs/hugo-eureka/customization/) described above, Eureka also supports [Multilingual Mode](https://www.wangchucheng.com/en/docs/hugo-eureka/multilingual-mode/). [Multilingual Mode](https://www.wangchucheng.com/en/docs/hugo-eureka/multilingual-mode/) will lead you to understand how to build a multilingual site.
 - **[Update Eureka](https://www.wangchucheng.com/en/docs/hugo-eureka/update/)**: [Update Eureka](https://www.wangchucheng.com/en/docs/hugo-eureka/update/) will introduce different ways to update Eureka.
 
+
+
+
+## [Add hugo contact form](https://fabform.io/a/hugo-contact-form)
+
+```
+<form action="https://fabform.io/f/{form-id}" method="post">
+ <label for="email">Your Email</label>
+ <input name="email" type="email">
+ <button type="submit">Submit</button> 
+</form>
+```
+
 ## Sites Using Eureka
 
 - [wangchucheng.com](https://www.wangchucheng.com)
