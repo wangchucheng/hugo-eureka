@@ -1,5 +1,5 @@
 <article class="prose mx-6 my-8">
-  <h1>{{ .Title }}</h1>
+  <h1>{{ .Title | humanize | title }}</h1>
   {{ with .Content }}
     {{ . }}
   {{ end }}

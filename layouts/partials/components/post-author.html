@@ -18,7 +18,7 @@
           href="{{ .Permalink }}"
           class="mb-2 block border-b pb-1 text-lg font-bold"
         >
-          <h3>{{ .LinkTitle }}</h3>
+          <h3>{{ .LinkTitle | humanize | title }}</h3>
         </a>
         <span class="block pb-2">{{ .Params.bio }}</span>
         {{ range .Params.social }}

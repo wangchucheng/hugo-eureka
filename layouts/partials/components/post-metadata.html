@@ -20,7 +20,7 @@
           <span>, </span>
         {{ end -}}
         <a href="{{ .Permalink }}" class="hover:text-eureka"
-          >{{ .LinkTitle }}</a
+          >{{ .LinkTitle | humanize | title }}</a
         >
       {{ end }}
     </div>
@@ -34,7 +34,7 @@
           <span>, </span>
         {{ end -}}
         <a href="{{ .Permalink }}" class="hover:text-eureka"
-          >{{ .LinkTitle }}</a
+          >{{ .LinkTitle | humanize | title }}</a
         >
       {{ end }}
     </div>
