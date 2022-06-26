@@ -1,5 +1,10 @@
+build:
+  writeStats: true
+
 module:
   imports:
+    - path: wangchucheng.com/hugo-marble/search
+    - path: wangchucheng.com/hugo-marble/utils
     - path: github.com/FortAwesome/Font-Awesome
       mounts:
         - source: js-packages/@fortawesome/fontawesome-svg-core
