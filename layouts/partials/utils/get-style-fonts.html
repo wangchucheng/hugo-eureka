@@ -1,0 +1,12 @@
+{{ $style := (index .context.Site.Data.styles (.context.Site.Params.style | default "default")) }}
+{{ $result := slice }}
+{{ range $style.fonts }}
+  {{ $item := index . $.param }}
+  {{ if $item }}
+    {{ $result = $result | append $item }}
+  {{ end }}
+{{ else }}
+  {{/* TODO: use realtime location */}}
+  {{ errorf "Could not find fonts section in style %s." .context.Site.Params.style }}
+{{ end }}
+{{ return $result }}

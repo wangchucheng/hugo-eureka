@@ -1,0 +1,26 @@
+readMore:
+  other: 더 보기
+readingTime:
+  other: "{{ .Count }} min 읽음"
+toc:
+  other: 목차
+seriesOfPosts:
+  other: 같은 시리즈의 포스트
+prxevious:
+  other: 이전
+next:
+  other: 다음
+seeAlso:
+  other: 다른 포스트
+recent:
+  other: 최신
+onThisPage:
+  other: 현재 페이지
+editThisPage:
+  other: 수정하기
+light:
+  other: Light
+dark:
+  other: Dark
+auto:
+  other: Auto

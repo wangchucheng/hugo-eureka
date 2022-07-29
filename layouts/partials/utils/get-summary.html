@@ -1,29 +1,38 @@
-<div class="mb-4">
-  <a href="{{ .Permalink }}" class="font-bold text-xl hover:text-eureka">{{ .LinkTitle }}</a>
-</div>
-<div class="content">
-  {{ .Summary | plainify }}
-</div>
-{{ if eq .Type "docs" }}
-<div class="px-6 pt-4">
-  {{ range $index, $value := first 3 .Pages }}
-  {{ if gt $index 0 }}
-  <div class="-mx-4 my-4 border-t"></div>
-  {{ end -}}
-  <div class="">
-      <div class="mb-2">
-          <a href="{{ .Permalink }}" class="font-semibold hover:text-eureka">{{ .LinkTitle }}</a>
-      </div>
-      <div class="">
-          {{- .Summary | plainify -}}
-      </div>
-  </div>
+<div class="prose">
+  <a href="{{ .Permalink }}" class="no-underline">
+    <h3 class="mt-0">{{ .LinkTitle }}</h3>
+  </a>
+  {{ if .Description }}
+    {{ .Description | plainify | htmlUnescape }}
+  {{ else if .Summary }}
+    {{ .Summary | plainify | htmlUnescape }}
   {{ end }}
-  <div class="pt-6 hover:text-eureka">
-      <a href="{{ .Permalink }}" class="font-semibold">{{ i18n "readMore" }}</a>
-      <i class="fas fa-caret-right ml-1"></i>
-  </div>
+
+  {{ if eq .Type "docs" }}
+    <div class="mx-6">
+      {{ range $index, $value := first 3 .Pages }}
+        {{ if gt $index 0 }}
+          <div class="-mx-4 my-4 border-t"></div>
+        {{ end -}}
+        <a href="{{ .Permalink }}" class="no-underline">
+          <h4>{{ .LinkTitle }}</h4>
+        </a>
+        {{ if .Description }}
+          {{ .Description | plainify | htmlUnescape }}
+        {{ else if .Summary }}
+          {{ .Summary | plainify | htmlUnescape }}
+        {{ end }}
+      {{ end }}
+      <a href="{{ .Permalink }}" class="no-underline">
+        <h4>
+          {{ i18n "readMore" }}
+          <i
+            class="fas {{ cond (eq .Site.Language.LanguageDirection "rtl") "fa-caret-left" "fa-caret-right" }} ms-1"
+          ></i>
+        </h4>
+      </a>
+    </div>
+  {{ else }}
+    {{ partial "components/post-metadata" . }}
+  {{ end }}
 </div>
-{{ else }}
-{{ partial "components/post-metadata" . }}
-{{ end }}

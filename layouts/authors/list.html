@@ -1,16 +1,16 @@
 {{ define "main" }}
-<div class="pl-scrollbar bg-secondary-bg">
-  <div class="max-w-screen-xl mx-auto">
-    <div class="lg:w-3/4 mx-auto px-6 md:px-8 xl:px-12 py-12">
-      {{ partial "widgets/about" . }}
+  <div class="pl-scrollbar bg-secondary-bg">
+    <div class="mx-auto max-w-screen-xl">
+      <div class="mx-auto px-6 py-12 md:px-8 lg:w-3/4 xl:px-12">
+        {{ partial "widgets/about" . }}
+      </div>
     </div>
   </div>
-</div>
-<div class="pl-scrollbar bg-primary-bg">
-  <div class="max-w-screen-xl mx-auto">
-    <div class="lg:w-3/4 mx-auto px-6 md:px-8 xl:px-12 py-12">
-      {{ partial "components/summary-list-plain" .Pages }}
+  <div class="pl-scrollbar bg-primary-bg">
+    <div class="mx-auto max-w-screen-xl">
+      <div class="mx-auto px-6 py-12 md:px-8 lg:w-3/4 xl:px-12">
+        {{ partial "components/summary-list-plain" .Pages }}
+      </div>
     </div>
   </div>
-</div>
 {{ end }}

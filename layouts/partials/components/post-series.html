@@ -1,12 +1,10 @@
-{{ $series := .Site.Taxonomies.series}}
-<div class="bg-secondary-bg rounded p-6">
-    <h3 class="text-lg font-semibold mb-4">{{ i18n "seriesOfPosts"}}</h3>
-    <div class="content">
-        {{ range (.GetTerms "series") }}
-        {{ range .Pages }}
-        <a href="{{ .Page.Permalink }}">{{ .Page.LinkTitle }}</a>
-        <br />
-        {{end}}
-        {{end}}
-    </div>
+{{ $series := .Site.Taxonomies.series }}
+<div class="bg-secondary-bg prose max-w-none rounded p-6">
+  <h3>{{ i18n "seriesOfPosts" }}</h3>
+  {{ range (.GetTerms "series") }}
+    {{ range .Pages }}
+      <a href="{{ .Permalink }}" class="no-underline">{{ .LinkTitle }}</a>
+      <br />
+    {{ end }}
+  {{ end }}
 </div>

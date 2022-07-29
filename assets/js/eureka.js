@@ -53,22 +53,22 @@ function enableStickyToc() {
     }
 
     // Track all sections that have an `id` applied
-    document.querySelectorAll('.content h1[id]').forEach((section) => {
+    document.querySelectorAll('.prose h1[id]').forEach((section) => {
         observer.observe(section);
     });
-    document.querySelectorAll('.content h2[id]').forEach((section) => {
+    document.querySelectorAll('.prose h2[id]').forEach((section) => {
         observer.observe(section);
     });
-    document.querySelectorAll('.content h3[id]').forEach((section) => {
+    document.querySelectorAll('.prose h3[id]').forEach((section) => {
         observer.observe(section);
     });
-    document.querySelectorAll('.content h4[id]').forEach((section) => {
+    document.querySelectorAll('.prose h4[id]').forEach((section) => {
         observer.observe(section);
     });
-    document.querySelectorAll('.content h5[id]').forEach((section) => {
+    document.querySelectorAll('.prose h5[id]').forEach((section) => {
         observer.observe(section);
     });
-    document.querySelectorAll('.content h6[id]').forEach((section) => {
+    document.querySelectorAll('.prose h6[id]').forEach((section) => {
         observer.observe(section);
     });
 }
@@ -154,12 +154,14 @@ function getcolorscheme() {
 {{ $enableUtterances := and (eq $commentHandler "utterances") (eq .Site.Params.comment.utterances.theme "eureka") }}
 {{- if $enableUtterances }}
 function switchUtterancesTheme(theme) {
-    const message = {
-        type: 'set-theme',
-        theme: theme,
-      };
-    const utterances = document.querySelector('iframe').contentWindow; // try event.source instead
-    utterances.postMessage(message, 'https://utteranc.es');
+    try {
+        const message = {
+            type: 'set-theme',
+            theme: theme,
+          };
+        const utterances = document.querySelector('iframe').contentWindow; // try event.source instead
+        utterances.postMessage(message, 'https://utteranc.es');
+    } catch {}
 }
 {{- end }}
 

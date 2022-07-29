@@ -1,7 +1,7 @@
 readMore:
   other: En savoir plus
 readingTime:
-  other: '{{ .ReadingTime }} min de lecture'
+  other: '{{ .Count }} min de lecture'
 toc:
   other: Table des matières
 seriesOfPosts:
@@ -18,3 +18,9 @@ onThisPage:
   other: Sur cette page
 editThisPage:
   other: Éditer cette page
+light:
+  other: Mode jour
+dark:
+  other: Mode nuit
+auto:
+  other: Mode automatique

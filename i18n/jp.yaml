@@ -1,0 +1,26 @@
+readMore:
+  other: 続きを読む
+readingTime:
+  other: '{{ .Count }}分読む'
+toc:
+  other: 目次
+seriesOfPosts:
+  other: シリーズ記事
+previous:
+  other: 前の記事
+next:
+  other: 次の記事
+seeAlso:
+  other: 関連
+recent:
+  other: 最近
+onThisPage:
+  other: ページ內容
+editThisPage:
+  other: ページを編集
+light:
+  other: Light
+dark:
+  other: Dark
+auto:
+  other: Auto

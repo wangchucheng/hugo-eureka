@@ -8,44 +8,51 @@
       {{ errorf "Failed to find widget param in %q" .Path }}
     {{ end }}
 
-  {{/*  Deprecation warning(v1.0.0) starts  */}}
+    {{/* Deprecation warning(v1.0.0) starts */}}
   {{ else }}
     {{ warnf "Param 'hero' in params.toml is deprecated and will be removed in Eureka v1.0.0. See https://www.wangchucheng.com/en/docs/hugo-eureka/homepage-configuration/" }}
     <div class="bg-secondary-bg pl-scrollbar">
-      <div class="max-w-screen-xl mx-auto">
-        <div class="grid grid-cols-9 grid-rows-5 h-(screen-16)">
-          {{- $imgLeft := partial "utils/get-image" (dict "context" . "url" .Site.Params.hero.imgLeft)}}
+      <div class="mx-auto max-w-screen-xl">
+        <div class="h-(screen-16) grid grid-cols-9 grid-rows-5">
+          {{- $imgLeft := partial "utils/get-image" (dict "context" . "url" .Site.Params.hero.imgLeft) }}
           {{- with $imgLeft }}
-          <div class="col-start-2 col-span-4 row-start-3 row-span-2 bg-local bg-cover z-10 shadow-2xl"
-            style="background-image: url({{ . }});"></div>
+            <div
+              class="z-10 col-span-4 col-start-2 row-span-2 row-start-3 bg-cover bg-local shadow-2xl"
+              style="background-image: url({{ . }});"
+            ></div>
           {{- end }}
-        
-          <div class="col-start-3 col-span-5 row-start-2 row-span-3 z-20">
-            <div class="flex flex-col items-center justify-center min-h-full">
-              <div class="bg-white bg-opacity-75 shadow-2xl -m-12 p-12">
-                <span class="font-bold text-black text-opacity-75 text-2xl md:text-3xl">{{ .Site.Params.hero.slogan }}</span>
+
+
+          <div class="z-20 col-span-5 col-start-3 row-span-3 row-start-2">
+            <div class="flex min-h-full flex-col items-center justify-center">
+              <div class="-m-12 bg-white bg-opacity-75 p-12 shadow-2xl">
+                <span
+                  class="text-2xl font-bold text-black text-opacity-75 md:text-3xl"
+                  >{{ .Site.Params.hero.slogan }}</span
+                >
               </div>
             </div>
           </div>
-          {{- $imgRight := partial "utils/get-image" (dict "context" . "url" .Site.Params.hero.imgRight)}}
+          {{- $imgRight := partial "utils/get-image" (dict "context" . "url" .Site.Params.hero.imgRight) }}
           {{- with $imgRight }}
-          <div class="col-start-5 col-span-4 row-start-2 row-span-2 bg-local bg-cover shadow-2xl"
-            style="background-image: url({{ . }});">
-          </div>
+            <div
+              class="col-span-4 col-start-5 row-span-2 row-start-2 bg-cover bg-local shadow-2xl"
+              style="background-image: url({{ . }});"
+            ></div>
           {{- end }}
         </div>
       </div>
     </div>
     <div class="pl-scrollbar">
-      <div class="max-w-screen-xl mx-auto">
+      <div class="mx-auto max-w-screen-xl">
         <div class="pt-12 md:px-4 xl:px-8">
           {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
           {{- partial "components/masonry" $pages }}
         </div>
       </div>
     </div>
-    {{/*  Deprecation warning(v1.0.0) ends  */}}
-    
+    {{/* Deprecation warning(v1.0.0) ends */}}
+
   {{ end }}
 {{- end }}
 
@@ -54,14 +61,14 @@
 
   {{ $fullScreenWidgets := slice "vintage" }}
 
-  {{/*  background config  */}}
+  {{/* background config */}}
   {{ $backgroundClass := "" }}
   {{ $backgroundStyle := "" }}
 
   {{ if $widget.background.image }}
     {{ $image := partial "utils/get-image.html" (dict "context" . "url" $widget.background.image) }}
     {{ $backgroundStyle = print $backgroundStyle "background-image: url(" $image ");" }}
-    {{/*  background size  */}}
+    {{/* background size */}}
     {{ $size := $widget.background.size }}
     {{ $sizeOptions := dict "auto" "bg-auto" "cover" "bg-cover" "contain" "bg-contain" }}
     {{ if $size }}
@@ -69,11 +76,11 @@
       {{ if $size }}
         {{ $backgroundClass = print $backgroundClass " " $size }}
       {{ else }}
-        {{/*  TODO error  */}}
+        {{/* TODO error */}}
       {{ end }}
     {{ end }}
 
-    {{/*  background position  */}}
+    {{/* background position */}}
     {{ $position := $widget.background.position }}
     {{ $positionOptions := dict "center" "bg-center" "top" "bg-top" "right" "bg-right" "bottom" "bg-bottom" "left" "bg-left" }}
     {{ if $position }}
@@ -81,11 +88,11 @@
       {{ if $position }}
         {{ $backgroundClass = print $backgroundClass " " $position }}
       {{ else }}
-        {{/*  TODO error  */}}
+        {{/* TODO error */}}
       {{ end }}
     {{ end }}
 
-    {{/*  background position  */}}
+    {{/* background position */}}
     {{ $attachment := $widget.background.attachment }}
     {{ $attachmentOptions := dict "fixed" "bg-fixed" "local" "bg-local" "scroll" "bg-scroll" }}
     {{ if $attachment }}
@@ -93,12 +100,12 @@
       {{ if $attachment }}
         {{ $backgroundClass = print $backgroundClass " " $attachment }}
       {{ else }}
-        {{/*  TODO error  */}}
+        {{/* TODO error */}}
       {{ end }}
     {{ end }}
 
   {{ else }}
-    {{/*  background color  */}}
+    {{/* background color */}}
     {{ $color := $widget.background.color }}
     {{ $colorOptions := dict "primary" "bg-primary-bg" "secondary" "bg-secondary-bg" "tertiary" "bg-tertiary-bg" }}
     {{ if $color }}
@@ -106,7 +113,7 @@
       {{ if $colorClass }}
         {{ $backgroundClass = print $backgroundClass " " $colorClass }}
       {{ else }}
-        {{ $backgroundStyle = print $backgroundStyle "background-color: " $color ";"}}
+        {{ $backgroundStyle = print $backgroundStyle "background-color: " $color ";" }}
       {{ end }}
     {{ else }}
       {{ $colorClass := index $colorOptions "primary" }}
@@ -114,11 +121,11 @@
     {{ end }}
   {{ end }}
 
-  {{/*  widget config  */}}
+  {{/* widget config */}}
   {{ $widgetClass := "" }}
-  
+
   {{ if not (in $fullScreenWidgets $widget.handler) }}
-    {{/*  widget width  */}}
+    {{/* widget width */}}
     {{ $width := $widget.width }}
     {{ $widthOptions := dict "sm" "lg:w-2/3" "md" "lg:w-3/4" "lg" "lg:w-4/5" "xl" "w-full" }}
     {{ if $width }}
@@ -131,7 +138,7 @@
       {{ $widgetClass = print $widgetClass " " $widthClass }}
     {{ end }}
 
-    {{/*  widget height  */}}
+    {{/* widget height */}}
     {{ $height := $widget.height }}
     {{ $heightOptions := dict "sm" "h-64" "md" "h-96" "lg" "h-128" "xl" "h-160" "screen" "h-(screen-16)" }}
     {{ if $height }}
@@ -143,10 +150,20 @@
     {{ $widgetClass = print $widgetClass " mx-auto px-6 md:px-8 xl:px-12 py-12" }}
   {{ end }}
 
-  <div class="pl-scrollbar {{ with $backgroundClass -}}{{ partial "utils/standardize-classes" . }}{{- end }}" 
-    {{ with $backgroundStyle }} style="{{ . | safeCSS }}" {{ end }}>
-    <div class="max-w-screen-xl mx-auto">
-      <div id="{{ .File.BaseFileName }}" class="{{ with $widgetClass -}}{{ partial "utils/standardize-classes" . }}{{- end }}">
+
+  <div
+    class="pl-scrollbar {{ with $backgroundClass -}}
+      {{ partial "utils/standardize-classes" . }}
+    {{- end }}"
+    {{ with $backgroundStyle }}style="{{ . | safeCSS }}"{{ end }}
+  >
+    <div class="mx-auto max-w-screen-xl">
+      <div
+        id="{{ .File.BaseFileName }}"
+        class="{{ with $widgetClass -}}
+          {{ partial "utils/standardize-classes" . }}
+        {{- end }}"
+      >
         {{ partial "widgets/load-sidebar" . }}
       </div>
     </div>
@@ -159,7 +176,7 @@
   {{ if $sidebar.position }}
 
     {{ $scaleClass := "" }}
-    {{/*  widget width  */}}
+    {{/* widget width */}}
     {{ $scale := $sidebar.scale }}
     {{ $scaleOptions := dict "sm" "lg:w-1/5" "md" "lg:w-1/4" "lg" "lg:w-1/3" "xl" "lg:w-1/2" }}
     {{ if $scale }}
@@ -167,15 +184,54 @@
     {{ else }}
       {{ $scaleClass = index $scaleOptions "md" }}
     {{ end }}
-    <div class="flex flex-col {{ if eq $sidebar.position "right" -}} lg:flex-row-reverse {{- else -}} lg:flex-row {{- end }}">
-      <div class="flex-none {{ with $scaleClass -}}{{ partial "utils/standardize-classes" . }}{{- end }} {{ if eq $sidebar.position "left" -}} lg:mr-4 {{- else -}} lg:ml-4 {{- end }}">
-        <h2 class="font-bold text-3xl my-4">{{ .Params.Title }}</h2>
+    <div
+      class="{{ if eq $sidebar.position "right" -}}
+        lg:flex-row-reverse
+      {{- else -}}
+        lg:flex-row
+      {{- end }} flex flex-col"
+    >
+      <div
+        class="{{ with $scaleClass -}}
+          {{ partial "utils/standardize-classes" . }}
+        {{- end }} {{ if eq $sidebar.position "left" -}}
+          lg:me-4
+        {{- else -}}
+          lg:ms-4
+        {{- end }} flex-none"
+      >
+        <h2 class="my-4 text-3xl font-bold">{{ .Params.Title }}</h2>
       </div>
-      <div class="flex-grow {{ if eq $sidebar.position "right" -}} lg:mr-4 {{- else -}} lg:ml-4 {{- end }}">
-        {{ partial (printf "widgets/%s" .Params.widget.handler) . }}
+      <div
+        class="{{ if eq $sidebar.position "right" -}}
+          lg:me-4
+        {{- else -}}
+          lg:ms-4
+        {{- end }} grow"
+      >
+        {{/* Deprecation warning(v1.0.0) starts */}}
+        {{- if eq .Params.widget.handler "experiences" }}
+          {{- warnf "Value `experiences` for `widget.handler` in %s is deprecated and will be removed in Eureka v1.0.0. Please use `experience` instead." .File.Path }}
+          {{ partial (printf "widgets/%s" "experience") . }}
+        {{- else }}
+          {{/* Deprecation warning(v1.0.0) ends */}}
+          {{ partial (printf "widgets/%s" .Params.widget.handler) . }}
+          {{/* Deprecation warning(v1.0.0) starts */}}
+        {{- end }}
+        {{/* Deprecation warning(v1.0.0) ends */}}
+
       </div>
     </div>
   {{ else }}
-    {{ partial (printf "widgets/%s" .Params.widget.handler) . }}
+    {{/* Deprecation warning(v1.0.0) starts */}}
+    {{- if eq .Params.widget.handler "experiences" }}
+      {{- warnf "Value `experiences` for `widget.handler` in %s is deprecated and will be removed in Eureka v1.0.0. Please use `experience` instead." .File.Path }}
+      {{ partial (printf "widgets/%s" "experience") . }}
+    {{- else }}
+      {{/* Deprecation warning(v1.0.0) ends */}}
+      {{ partial (printf "widgets/%s" .Params.widget.handler) . }}
+      {{/* Deprecation warning(v1.0.0) starts */}}
+    {{- end }}
+    {{/* Deprecation warning(v1.0.0) ends */}}
   {{ end }}
 {{ end }}

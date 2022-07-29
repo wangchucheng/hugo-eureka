@@ -1,11 +1,21 @@
-<div class="sticky top-16 z-10 hidden lg:block px-6 py-4 {{ if eq .Type "docs" }} bg-secondary-bg pt-16 -mt-16 {{ else }} bg-primary-bg {{ end }}">
-    <span class="text-lg font-semibold">{{ i18n "onThisPage" }}</span>
+<div
+  class="{{ if eq .Type "docs" }}
+    bg-secondary-bg
+  {{ else }}
+    bg-primary-bg
+  {{ end }} prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>{{ i18n "onThisPage" }}</h3>
 </div>
-<div class="sticky-toc hidden lg:block px-6 pb-6 {{ if eq .Type "docs" }} pt-10 -mt-10 border-l {{ end }}">
-    {{ .TableOfContents }}
+<div
+  class="sticky-toc {{ if eq .Type "docs" }}
+    border-s
+  {{ end }} hidden px-6 pb-6 lg:block"
+>
+  {{ .TableOfContents }}
 </div>
 <script>
-    window.addEventListener('DOMContentLoaded', () => {
-        enableStickyToc();
-    });
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
 </script>

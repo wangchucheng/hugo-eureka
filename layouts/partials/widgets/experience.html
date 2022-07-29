@@ -1,0 +1,30 @@
+{{ range .Params.experiences }}
+  <div class="mb-6">
+    <div
+      class="bg-secondary-bg prose dark:border-tertiary-bg rounded border p-6 transition duration-200 ease-in-out hover:shadow-lg"
+    >
+      <h3 class="">{{ .title }}</h3>
+      <div class="flex flex-col md:flex-row md:justify-between">
+        <div>
+          {{ if .organization.url }}
+            <a href="{{ .organization.url }}" class="no-underline">
+              {{ .organization.name | markdownify }}
+            </a>
+          {{ else }}
+            <span>{{ .organization.name | markdownify }}</span>
+          {{ end }}
+
+          {{ if and .organization.name .location }}
+            <span class="ms-2 me-2">·</span>
+          {{ end }}
+
+
+          <span>{{ .location | markdownify }} </span>
+        </div>
+        <div class="shrink-0">{{ .dates | markdownify }}</div>
+      </div>
+
+      <div class="mt-5">{{ .writeup | markdownify }}</div>
+    </div>
+  </div>
+{{ end }}

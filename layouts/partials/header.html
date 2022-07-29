@@ -15,18 +15,18 @@
     {{- end }}
 </script>
 <nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
-    <a href="{{ "/" | relLangURL }}" class="mr-6 text-primary-text text-xl font-bold">{{ .Site.Title }}</a>
+    <a href="{{ "/" | relLangURL }}" class="me-6 text-primary-text text-xl font-bold">{{ .Site.Title }}</a>
     <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
         <i class="fas fa-bars"></i>
     </button>
 
     <div id="target"
-        class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
-        <div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0">
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
             {{- $relPermalink := .RelPermalink }}
             {{- range .Site.Menus.main }}
             {{- $url := .URL | relLangURL }}
-            <a href="{{ $url }}" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 {{ if hasPrefix $relPermalink $url }} selected-menu-item {{ else }} border-transparent {{ end }} mr-4">{{ .Name }}</a>
+            <a href="{{ $url }}" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 {{ if hasPrefix $relPermalink $url }} selected-menu-item {{ else }} border-transparent {{ end }} me-4">{{ .Name }}</a>
             {{- end }}
         </div>
 
@@ -43,7 +43,7 @@
                 </div>
                 <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
                 </div>
-                <div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
                     id='lightDarkOptions'>
                     <span class="px-4 py-1 hover:text-eureka" name="Light">{{i18n "light"}}</span>
                     <span class="px-4 py-1 hover:text-eureka" name="Dark">{{i18n "dark"}}</span>
@@ -52,14 +52,14 @@
             </div>
 
             {{- if .IsTranslated }}
-            <div class="relative pt-4 pl-4 md:pt-0">
+            <div class="relative pt-4 ps-4 md:pt-0">
                 <div class="cursor-pointer hover:text-eureka" id="languageMode">
                     <i class="fas fa-globe"></i>
-                    <span class="pl-1">{{ .Language.LanguageName }}</span>
+                    <span class="ps-1">{{ .Language.LanguageName }}</span>
                 </div>
                 <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open-lang">
                 </div>
-                <div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
                     id='languageOptions'>
                     <a class="px-4 py-1 hover:text-eureka" href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
                     {{- range .Translations }}

@@ -1,0 +1,17 @@
+build:
+  writeStats: true
+
+module:
+  imports:
+    - path: wangchucheng.com/hugo-marble/search
+    - path: wangchucheng.com/hugo-marble/utils
+    - path: github.com/FortAwesome/Font-Awesome
+      mounts:
+        - source: js-packages/@fortawesome/fontawesome-svg-core
+          target: assets/js/fontawesome/fontawesome-svg-core
+        - source: js-packages/@fortawesome/free-brands-svg-icons
+          target: assets/js/fontawesome/free-brands-svg-icons
+        - source: js-packages/@fortawesome/free-regular-svg-icons
+          target: assets/js/fontawesome/free-regular-svg-icons
+        - source: js-packages/@fortawesome/free-solid-svg-icons
+          target: assets/js/fontawesome/free-solid-svg-icons

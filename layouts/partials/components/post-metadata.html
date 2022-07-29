@@ -1,34 +1,42 @@
-<div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text">
-    <div class="mr-6 my-2">
-        <i class="fas fa-calendar mr-1"></i>
-        <span>{{ .Date.Format (.Site.Params.dateFormat | default "2006-01-02") }}</span>
-    </div>
-    <div class="mr-6 my-2">
-        <i class="fas fa-clock mr-1"></i>
-        <span>{{ i18n "readingTime" . }}</span>
-    </div>
-    
-    {{ with .GetTerms "categories" }}
-    <div class="mr-6 my-2">
-        <i class="fas fa-folder mr-1"></i>
-        {{ range $index, $value := . }}
-        {{ if gt $index 0 }}
-        <span>, </span>
-        {{ end -}}
-        <a href="{{ .Permalink }}" class="hover:text-eureka">{{ .LinkTitle }}</a>
-        {{ end }}
-    </div>
-    {{ end }}
+<div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >{{ .Date.Format (.Site.Params.dateFormat | default "2006-01-02") }}</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>{{ i18n "readingTime" .ReadingTime }}</span>
+  </div>
 
-    {{ with .GetTerms "series" }}
-    <div class="mr-6 my-2">
-        <i class="fas fa-th-list mr-1"></i>
-        {{ range $index, $value := . }}
+  {{ with .GetTerms "categories" }}
+    <div class="me-6 my-2">
+      <i class="fas fa-folder me-1"></i>
+      {{ range $index, $value := . }}
         {{ if gt $index 0 }}
-        <span>, </span>
+          <span>, </span>
         {{ end -}}
-        <a href="{{ .Permalink }}" class="hover:text-eureka">{{ .LinkTitle }}</a>
-        {{ end }}
+        <a href="{{ .Permalink }}" class="hover:text-eureka"
+          >{{ .LinkTitle }}</a
+        >
+      {{ end }}
     </div>
-    {{ end }}
+  {{ end }}
+
+  {{ with .GetTerms "series" }}
+    <div class="me-6 my-2">
+      <i class="fas fa-th-list me-1"></i>
+      {{ range $index, $value := . }}
+        {{ if gt $index 0 }}
+          <span>, </span>
+        {{ end -}}
+        <a href="{{ .Permalink }}" class="hover:text-eureka"
+          >{{ .LinkTitle }}</a
+        >
+      {{ end }}
+    </div>
+  {{ end }}
 </div>

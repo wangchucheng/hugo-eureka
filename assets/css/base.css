@@ -1,24 +1,36 @@
 :root {
-    @apply font-serif bg-primary-bg text-primary-text;
-    --color-eureka: #38B2AC;
-    --color-primary-bg: rgba(242,242,247,1.00);
-    --color-secondary-bg: rgba(255,255,255,1.00);
-    --color-tertiary-bg: rgba(242,242,247,1.00);
-    --color-primary-text: rgba(0,0,0,0.85);
-    --color-secondary-text: rgba(0,0,0,0.7);
-    --color-tertiary-text: rgba(0,0,0,0.55);
+  @apply bg-primary-bg text-secondary-text font-eureka;
+  --color-eureka: {{ partial "utils/get-style-color" (dict "context" . "path" (slice "light" "theme")) }};
+  --color-primary-bg: {{ partial "utils/get-style-color" (dict "context" . "path" (slice "light" "primaryBackground")) }};
+  --color-secondary-bg: {{ partial "utils/get-style-color" (dict "context" . "path" (slice "light" "secondaryBackground")) }};
+  --color-tertiary-bg: {{ partial "utils/get-style-color" (dict "context" . "path" (slice "light" "tertiaryBackground")) }};
+  --color-primary-text: {{ partial "utils/get-style-color" (dict "context" . "path" (slice "light" "primaryText")) }};
+  --color-secondary-text: {{ partial "utils/get-style-color" (dict "context" . "path" (slice "light" "secondaryText")) }};
+  --color-tertiary-text: {{ partial "utils/get-style-color" (dict "context" . "path" (slice "light" "tertiaryText")) }};
+  --fonts-eureka: {{ $fonts := partial "utils/get-style-fonts" (dict "context" . "param" "name") }}{{ range $index, $value := $fonts }}{{ if gt $index 0 }},{{ end }}{{ $value }}{{ else }}""{{ end }}
 }
 
 .dark {
-    --color-eureka: #38B2AC;
-    --color-primary-bg: rgba(0,0,0,1.00);
-    --color-secondary-bg: rgba(28,28,30,1.00);
-    --color-tertiary-bg: rgba(44,44,46,1.00);
-    --color-primary-text: rgba(255,255,255,0.85);
-    --color-secondary-text: rgba(255,255,255,0.7);
-    --color-tertiary-text: rgba(255,255,255,0.55);
+  --color-eureka: {{ partial "utils/get-style-color" (dict "context" . "path" (slice "dark" "theme")) }};
+  --color-primary-bg: {{ partial "utils/get-style-color" (dict "context" . "path" (slice "dark" "primaryBackground")) }};
+  --color-secondary-bg: {{ partial "utils/get-style-color" (dict "context" . "path" (slice "dark" "secondaryBackground")) }};
+  --color-tertiary-bg: {{ partial "utils/get-style-color" (dict "context" . "path" (slice "dark" "tertiaryBackground")) }};
+  --color-primary-text: {{ partial "utils/get-style-color" (dict "context" . "path" (slice "dark" "primaryText")) }};
+  --color-secondary-text: {{ partial "utils/get-style-color" (dict "context" . "path" (slice "dark" "secondaryText")) }};
+  --color-tertiary-text: {{ partial "utils/get-style-color" (dict "context" . "path" (slice "dark" "tertiaryText")) }};
 }
 
-a:hover {
-    @apply text-eureka transition duration-300 ease-in-out;
+h1,
+h2,
+h3 {
+  @apply text-primary-text;
+}
+
+a:hover,
+a:hover * {
+  @apply text-eureka transition duration-300 ease-in-out;
+}
+
+code {
+  direction: ltr;
 }

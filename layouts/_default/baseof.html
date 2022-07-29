@@ -1,29 +1,35 @@
 <!DOCTYPE html>
-<html lang='{{ .Site.LanguageCode }}' {{ if eq .Site.Params.colorScheme "dark" }}class="dark" {{ end }}>
-{{- partial "head" . }}
+<html
+  lang="{{ .Site.LanguageCode }}"
+  dir="{{ .Site.Language.LanguageDirection | default "ltr" }}"
+  {{ if eq .Site.Params.colorScheme "dark" }}class="dark"{{ end }}
+>
+  {{- partial "head" . }}
 
-<body class="flex flex-col min-h-screen">
-  <header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm">
-    <div class="w-full max-w-screen-xl mx-auto">
-      {{- partial "header" . -}}
-    </div>
-  </header>
-  <main class="flex-grow pt-16">
-    {{- if or .IsHome (and (eq .Type "authors") (eq .Kind "term")) }}
-    {{- block "main" . }}{{- end }}
-    {{- else }}
-    <div class="pl-scrollbar">
-      <div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto">
-        {{- block "main" . }}{{- end }}
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl">
+        {{- partial "header" . -}}
       </div>
-    </div>
-    {{ end }}
-  </main>
-  <footer class="pl-scrollbar">
-    <div class="w-full max-w-screen-xl mx-auto">
-      {{- partial "footer" . -}}
-    </div>
-  </footer>
-</body>
-
+    </header>
+    <main class="grow pt-16">
+      {{- if or .IsHome (and (eq .Type "authors") (eq .Kind "term")) }}
+        {{- block "main" . }}{{- end }}
+      {{- else }}
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-xl lg:px-4 xl:px-8">
+            {{- block "main" . }}{{- end }}
+          </div>
+        </div>
+      {{ end }}
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-xl">
+        {{- partial "footer" . -}}
+      </div>
+    </footer>
+  </body>
 </html>

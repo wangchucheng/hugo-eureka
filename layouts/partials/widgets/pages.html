@@ -48,5 +48,5 @@
 {{ define "partials/widgets/pages-readmore" }}
   {{- $section := .Site.GetPage .Params.section }}
   <a href="{{ $section.Permalink }}" class="font-semibold">{{ i18n "readMore" }}</a>
-  <i class="fas fa-caret-right ml-1"></i>
+  <i class='fas {{ cond (eq .Site.Language.LanguageDirection "rtl") "fa-caret-left" "fa-caret-right" }} ms-1'></i>
 {{ end }}

@@ -1,7 +1,7 @@
 readMore:
   other: Mehr erfahren
 readingTime:
-  other: 'Lesezeit: {{ .ReadingTime }} min'
+  other: 'Lesezeit: {{ .Count }} min'
 toc:
   other: Inhaltsverzeichnis
 seriesOfPosts:

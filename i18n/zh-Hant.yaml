@@ -1,0 +1,26 @@
+readMore:
+  other: 閱讀更多
+readingTime:
+  other: '{{ .Count }}分鐘閱讀'
+toc:
+  other: 目錄
+seriesOfPosts:
+  other: 系列文章
+previous:
+  other: 上一頁
+next:
+  other: 下一頁
+seeAlso:
+  other: 相關
+recent:
+  other: 最近
+onThisPage:
+  other: 本頁內容
+editThisPage:
+  other: 編輯本頁
+light:
+  other: 淺色
+dark:
+  other: 深色
+auto:
+  other: 自動

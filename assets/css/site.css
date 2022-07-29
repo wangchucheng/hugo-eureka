@@ -1,9 +1,9 @@
 .sticky-toc {
-  @apply sticky top-32 z-0 ease-in-out duration-300;
+  @apply sticky top-32 z-0 duration-300 ease-in-out;
 }
 
 .sticky-toc a {
-  @apply text-primary-text ease-in-out duration-200;
+  @apply text-secondary-text duration-200 ease-in-out;
 }
 
 .sticky-toc a:hover {
@@ -11,11 +11,11 @@
 }
 
 .sticky-toc ul {
-  @apply text-base pl-8 list-disc;
+  @apply ps-8 text-tertiary-text list-disc text-base;
 }
 
 .sticky-toc ol {
-  @apply text-base pl-8 list-decimal;
+  @apply ps-8 text-tertiary-text list-decimal text-base;
 }
 
 .sticky-toc li + li {
@@ -27,7 +27,7 @@
 }
 
 .object-contain {
-    object-fit: contain !important;
+  object-fit: contain !important;
 }
 
 .pagination {
@@ -38,8 +38,8 @@
   @apply flex items-center;
 }
 
-.pagination .page-item .page-link{
-  @apply p-2 m-2;
+.pagination .page-item .page-link {
+  @apply m-2 p-2;
 }
 
 .pagination .active {

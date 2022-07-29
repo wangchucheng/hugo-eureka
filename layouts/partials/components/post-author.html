@@ -1,27 +1,36 @@
 <div class="py-2">
-    {{ range . }}
-    <div class="flex flex-col md:flex-row items-center my-8">
-        <a href="{{ .Permalink }}" class="w-24 h-24 md:mr-4">
-            {{ $img := partial "utils/get-image" (dict "context" . "url" .Params.avatar "keyword" "*avatar*")}}
-            {{ with $img }}
-            <img src="{{ . }}" class="w-full bg-primary-bg rounded-full" alt="Avatar">
-            {{ else }}
-            <i class="fas fa-user-circle fa-6x"></i>
-            {{ end }}
+  {{ range . }}
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="{{ .Permalink }}" class="md:me-4 text-primary-text h-24 w-24">
+        {{ $img := partial "utils/get-image" (dict "context" . "url" .Params.avatar "keyword" "*avatar*") }}
+        {{ with $img }}
+          <img
+            src="{{ . }}"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        {{ else }}
+          <i class="fas fa-user-circle fa-6x"></i>
+        {{ end }}
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="{{ .Permalink }}"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>{{ .LinkTitle }}</h3>
         </a>
-        <div class="w-full md:w-auto mt-4 md:mt-0">
-            <a href="{{ .Permalink }}" class="block font-bold text-lg pb-1 mb-2 border-b">{{ .LinkTitle }}</a>
-            <span class="block pb-2">{{ .Params.bio }}</span>
-            {{ range .Params.social }}
-            {{/*  Deprecation warning(v1.0.0) starts  */}}
-            {{ $iconPack := .iconPack | default .icon_pack }}
-            {{/*  Deprecation warning(v1.0.0) ends  */}}
-            {{ $src :=  print $iconPack " fa-" .icon }}
-            <a href="{{ .url }}" class="mr-1">
-                <i class="{{ print $src }}"></i>
-            </a>
-            {{ end }}
-        </div>
+        <span class="block pb-2">{{ .Params.bio }}</span>
+        {{ range .Params.social }}
+          {{/* Deprecation warning(v1.0.0) starts */}}
+          {{ $iconPack := .iconPack | default .icon_pack }}
+          {{/* Deprecation warning(v1.0.0) ends */}}
+          {{ $src :=  print $iconPack " fa-" .icon }}
+          <a href="{{ .url }}" class="me-2">
+            <i class="{{ print $src }}"></i>
+          </a>
+        {{ end }}
+      </div>
     </div>
-    {{ end }}
+  {{ end }}
 </div>

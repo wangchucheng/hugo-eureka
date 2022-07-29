@@ -1,0 +1,18 @@
+{{ $style := (index .context.Site.Data.styles (.context.Site.Params.style | default "default")) }}
+{{ $result := $style.colors }}
+{{ if $result }}
+  {{ range .path }}
+    {{ if $result }}
+      {{ $result = index $result . }}
+    {{ else }}
+      {{ errorf "Param %s is undefined in style %s" (delimit $.path ".") $.context.Site.Params.style }}
+    {{ end }}
+  {{ end }}
+  {{ if $result }}
+    {{ return $result }}
+  {{ else }}
+    {{ errorf "Param %s is undefined in style %s" (delimit $.path ".") $.context.Site.Params.style }}
+  {{ end }}
+{{ else }}
+  {{ errorf "Could not find colors section in style %s." .context.Site.Params.style }}
+{{ end }}

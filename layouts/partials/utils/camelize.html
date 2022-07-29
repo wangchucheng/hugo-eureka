@@ -1,0 +1,8 @@
+{{ $input := . }}
+{{ $regexp := "(-|_)([a-z])" }}
+{{ $matches := findRE $regexp $input }}
+{{ range $matches }}
+    {{ $input = $input | replaceRE . (upper .) }}
+{{ end }}
+{{ $input = $input | replaceRE "(-|_)" "" }}
+{{ return $input }}
