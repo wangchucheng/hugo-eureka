@@ -11,6 +11,9 @@ titleSeparator:
 # Options: auto, light and dark. Default is auto.
 colorScheme:
 
+# Do not allow user to change color scheme
+colorSchemeFixed: false
+
 # Colors and fonts. Default style is data/styles/default.yaml/
 style:
 
