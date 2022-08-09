@@ -1,7 +1,9 @@
-{{ $image := "" }}
-{{ if .Params.featuredvideo }}
-  {{ partial "utils/get-video" (dict "context" . "url" .Params.featuredvideo "keyword" "*featured*") }}
-{{ else if .Params.featuredimage }}
+{{ $video := partial "utils/get-video" (dict "context" . "url" .Params.featuredVideo "keyword" "*featured*") }}
+{{ $image := partial "utils/get-image" (dict "context" . "url" .Params.featuredImage "keyword" "*featured*") }}
+{{ $featured := ""}}
+{{ if $video }}
+  {{ $featured = $video }}
+{{ else if $image }}
   {{ if and (reflect.IsSlice .Params.featuredimage) (gt (len .Params.featuredimage) 1) }}
     {{ if .Site.Params.carouselfeatured }}
       {{ range first 1 .Params.featuredimage }}
@@ -19,5 +21,6 @@
   {{ else }}
     {{ $image = partial "utils/get-image" (dict "context" . "url" .Params.featuredimage "keyword" "*featured*") }}
   {{ end }}
+  {{ $featured = print "<img src=\"" $image "\" class=\"w-full\" alt=\"Featured Image\">" | safeHTML }}
 {{ end }}
-{{ return $image }}
+{{ return $featured }}
