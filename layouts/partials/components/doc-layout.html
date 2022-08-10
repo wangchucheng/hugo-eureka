@@ -11,12 +11,16 @@
         <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
             <div class="flex">
                 <div class="w-full lg:w-3/4 px-6">
-                    <div class="my-4">
-	                    {{ partial "utils/render-featured" . }}
-                    </div>
-
                     {{ partial "components/post-article" . }}
-                    
+
+                    {{ if isset $.Params "carousel" }}
+                      {{ if $.Params.carousel.enable }}
+                        {{ if gt (len $.Params.carousel.images) 0 }}
+                          {{ partial "components/carousel" . }}
+                        {{ end }}
+                      {{ end }}
+                    {{ end }}
+
                     {{ with .GetTerms "tags" }}
                     {{ partial "components/post-tags" . }}
                     {{ end }}
