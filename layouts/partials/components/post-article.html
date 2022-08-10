@@ -3,10 +3,18 @@
 
   {{ partial "components/post-metadata" . }}
 
+  {{ if eq .Site.Params.carouselPosition "top" }}
   {{ $featured := partial "utils/get-featured" . }}
   {{ with $featured }}
     {{ . }}
   {{ end }}
+  {{ end }}
 
   {{ .Content }}
+
+  {{ if eq .Site.Params.carouselPosition "bottom" }}
+  {{ if isset $.Params "carousel" }}
+  {{ partial "components/carousel" . }}
+  {{ end }}
+  {{ end }}
 </article>
