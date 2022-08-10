@@ -12,7 +12,15 @@
             <div class="flex">
                 <div class="w-full lg:w-3/4 px-6">
                     {{ partial "components/post-article" . }}
-                    
+
+                    {{ if isset $.Params "carousel" }}
+                      {{ if $.Params.carousel.enable }}
+                        {{ if gt (len $.Params.carousel.images) 0 }}
+                          {{ partial "components/carousel" . }}
+                        {{ end }}
+                      {{ end }}
+                    {{ end }}
+
                     {{ with .GetTerms "tags" }}
                     {{ partial "components/post-tags" . }}
                     {{ end }}

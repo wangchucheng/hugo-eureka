@@ -11,8 +11,13 @@ titleSeparator:
 # Options: auto, light and dark. Default is auto.
 colorScheme:
 
+
+# Use carousels first image as featured image on posts list
+carouselFeatured: true
+
 # Colors and fonts. Default style is data/styles/default.yaml/
 style:
+
 
 # E.g. Person, Organization, LocalBusiness, Project, EducationalOrganization
 siteType: Person

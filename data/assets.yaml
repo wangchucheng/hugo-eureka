@@ -36,3 +36,11 @@ valine:
   js:
     url: https://cdn.jsdelivr.net/npm/valine@%s/dist/Valine.min.js
     sri: sha384-e0+DNUCJo75aOAzHQbFWYBCM9/S4f0BhRJXvEgbE3mMS85RM20MSSGStHuNdY2QK
+
+# TinySlider
+tinyslider:
+  version: 2.9.3
+  css:
+    url: https://cdn.jsdelivr.net/npm/tiny-slider@%s/dist/tiny-slider.css
+  js:
+    url: https://cdn.jsdelivr.net/npm/tiny-slider@%s/dist/tiny-slider.min.js

@@ -7,11 +7,12 @@
         "@id": {{ .Permalink }}
     },
     "headline": "{{ partial "get-title" . }}",
-    {{- $img := partial "utils/get-image" (dict "context" . "url" .Params.featuredImage "keyword" "*featured*") }}
+	{{ if isset .Params "featuredImage" }}
+    {{- $img := partial "utils/get-image" (dict "context" . "url" (first 1 .Params.featuredImage) "keyword" "*featured*") }}
     {{- with $img }}
     "image": {{ . }},
     {{ end -}}
-    
+    {{ end }} 
     {{ if .IsPage -}}
     {{ if not .PublishDate.IsZero -}}
     "datePublished": {{ .PublishDate.Format "2006-01-02T15:04:05-07:00" }},

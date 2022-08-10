@@ -7,9 +7,17 @@
         {{- print "lg:col-start-2" -}}
       {{ end }} bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
     >
+
       {{ partial "components/post-article" . }}
 
+      {{ if eq .Site.Params.carouselPosition "bottom" }}
+        {{ if isset $.Params "carousel" }}
+          {{ partial "components/carousel" . }}
+        {{ end }}
+      {{ end }}
+
       {{ with .GetTerms "tags" }}
+
         {{ partial "components/post-tags" . }}
       {{ end }}
 

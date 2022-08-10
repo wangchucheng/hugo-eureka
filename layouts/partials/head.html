@@ -54,8 +54,18 @@
 
 <meta name="generator" content="Hugo Eureka {{ .Site.Data.eureka.version }}" />
 
+{{- $assets := .Site.Data.assets }}
 {{- $eurekaCSS := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js" "inlineImports" true) | resources.ExecuteAsTemplate "css/eureka.css" . | minify | fingerprint "sha384" }}
 <link rel="stylesheet" href="{{ $eurekaCSS.Permalink }}">
+{{ if isset .Params "featuredimage" }}
+{{ if (reflect.IsSlice .Params.featuredimage) }}
+{{ if (gt (len .Params.featuredimage) 1) }}
+<link preload rel="stylesheet" href="{{ printf $assets.tinyslider.css.url $assets.tinyslider.version }}" crossorigin>
+{{- $carouselCSS := resources.Get "css/carousel.css" | minify }}
+<link rel="stylesheet" href="{{ $carouselCSS.Permalink }}">
+{{ end }}
+{{ end }}
+{{ end }}
 
 {{- $eurekaJS := resources.Get "js/eureka.js" | resources.ExecuteAsTemplate "js/eureka.js" . | minify | fingerprint "sha384" }}
 <script defer src="{{ $eurekaJS.Permalink }}"></script>
@@ -99,6 +109,16 @@
 {{ $fontawesomeJS := resources.Get "js/fontawesome.js" | resources.ExecuteAsTemplate "js/fontawesome.js" . | js.Build (dict "minify" true) | minify | fingerprint "sha384" }}
 <script defer type="text/javascript" src="{{ $fontawesomeJS.Permalink }}"></script>
 
+
+{{ define "partials/get-bundles" }}
+{{ $currentPage := . }}
+{{ $bundles := slice $currentPage }}
+{{ if and (ne $currentPage.Kind "taxonomy") (or (ne $currentPage $currentPage.FirstSection) (eq $currentPage.Kind "term")) }}
+{{ $currentBundles := partial "get-bundles" $currentPage.Parent }}
+{{ $bundles = $bundles | append $currentBundles }}
+{{ end }}
+{{ return $bundles }}
+{{ end }}
 
 {{- $enableMath := false }}
 {{- if .Site.Params.math.handler }}

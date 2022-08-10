@@ -1,0 +1,15 @@
+{{ $image := "" }}
+{{ if .Params.featuredvideo }}
+  {{ partial "utils/get-video" (dict "context" . "url" .Params.featuredvideo "keyword" "*featured*") }}
+{{ else if .Params.featuredimage }}
+  {{ if and (reflect.IsSlice .Params.featuredimage) (gt (len .Params.featuredimage) 1) }}
+    {{ partial "components/carousel" . }}
+  {{ else if reflect.IsSlice .Params.featuredimage }}
+    {{ $image = partial "utils/get-image" (dict "context" . "url" (first 1 .Params.featuredimage) "keyword" "*featured*") }}
+  {{ else }}
+    {{ $image = partial "utils/get-image" (dict "context" . "url" .Params.featuredimage "keyword" "*featured*") }}
+  {{ end }}
+  {{ if $image }}
+    <img src="{{ $image }}" class="w-full" alt="Featured Image">
+  {{ end }}
+{{ end }}

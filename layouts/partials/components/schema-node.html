@@ -16,10 +16,12 @@
             "position": {{ add $index 1 }},
             "name": {{ .Title }},
             "description": {{ if .Description }}{{ .Description }}{{ else if .Summary }}{{ .Summary }}{{ else if .Site.Params.Description }}{{ .Site.Params.Description }}{{ end }},
-            {{- $img := partial "utils/get-image" (dict "context" . "url" .Params.featuredImage "keyword" "*featured*") }}
+			{{- if isset .Params "featuredImage" }}
+            {{- $img := partial "utils/get-image" (dict "context" . "url" (first 1 .Params.featuredImage) "keyword" "*featured*") }}
             {{- with $img }}
             "image": {{ . }},
             {{- end }}
+			{{- end }}
             "url": {{ .Permalink }}
         }
         {{- end }}
