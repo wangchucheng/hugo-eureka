@@ -7,9 +7,7 @@
         {{- print "lg:col-start-2" -}}
       {{ end }} bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
     >
-      <div class="my-4">
-        {{ partial "utils/render-featured" . }}
-      </div>
+
       {{ partial "components/post-article" . }}
 
       {{ with .GetTerms "tags" }}
