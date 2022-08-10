@@ -10,6 +10,12 @@
 
       {{ partial "components/post-article" . }}
 
+      {{ if eq .Site.Params.carouselPosition "bottom" }}
+        {{ if isset $.Params "carousel" }}
+          {{ partial "components/carousel" . }}
+        {{ end }}
+      {{ end }}
+
       {{ with .GetTerms "tags" }}
 
         {{ partial "components/post-tags" . }}

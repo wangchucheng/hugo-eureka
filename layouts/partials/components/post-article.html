@@ -10,9 +10,4 @@
 
   {{ .Content }}
 
-  {{ if eq .Site.Params.carouselPosition "bottom" }}
-  {{ if isset $.Params "carousel" }}
-  {{ partial "components/carousel" . }}
-  {{ end }}
-  {{ end }}
 </article>
