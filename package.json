@@ -1,18 +1,21 @@
 {
     "name": "hugo-eureka",
-    "version": "0.9.0",
+    "version": "0.9.3",
     "description": "Eureka is a feature-rich and highly customizable Hugo theme.",
     "repository": "https://github.com/wangchucheng/hugo-eureka",
     "author": "WANG Chucheng <me@wangchucheng.com>",
     "devDependencies": {
         "@fullhuman/postcss-purgecss": "^4.1.3",
+        "@tailwindcss/typography": "^0.5.2",
         "autoprefixer": "^10.4.2",
-        "cssnano": "^5.0.16",
-        "postcss": "^8.4.5",
+        "cssnano": "^5.1.1",
+        "postcss": "^8.4.8",
         "postcss-cli": "^9.1.0",
-        "postcss-import": "^14.0.2",
-        "tailwindcss": "^3.0.17",
-        "tailwindcss-rtl": "^0.8.0"
+        "prettier": "^2.5.1",
+        "prettier-plugin-go-template": "^0.0.11",
+        "prettier-plugin-tailwindcss": "^0.1.8",
+        "tailwindcss": "^3.0.23",
+        "tailwindcss-rtl": "^0.9.0"
     },
     "browserslist": [
         "last 1 version",

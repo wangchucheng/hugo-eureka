@@ -1,0 +1,56 @@
+{{ $fasIcons := slice }}
+{{ $fabIcons := slice }}
+{{ $farIcons := slice }}
+
+{{/* eureka */}}
+{{ $fasIcons = $fasIcons | append (partial "utils/camelize" "fa-adjust") }}
+{{ $fasIcons = $fasIcons | append (partial "utils/camelize" "fa-bars") }}
+{{ $fasIcons = $fasIcons | append (partial "utils/camelize" "fa-calendar") }}
+{{ $fasIcons = $fasIcons | append (partial "utils/camelize" "fa-caret-down") }}
+{{ $fasIcons = $fasIcons | append (partial "utils/camelize" "fa-caret-left") }}
+{{ $fasIcons = $fasIcons | append (partial "utils/camelize" "fa-caret-right") }}
+{{ $fasIcons = $fasIcons | append (partial "utils/camelize" "fa-clock") }}
+{{ $fasIcons = $fasIcons | append (partial "utils/camelize" "fa-edit") }}
+{{ $fasIcons = $fasIcons | append (partial "utils/camelize" "fa-folder") }}
+{{ $fasIcons = $fasIcons | append (partial "utils/camelize" "fa-globe") }}
+{{ $fasIcons = $fasIcons | append (partial "utils/camelize" "fa-moon") }}
+{{ $fasIcons = $fasIcons | append (partial "utils/camelize" "fa-sun") }}
+{{ $fasIcons = $fasIcons | append (partial "utils/camelize" "fa-th-list") }}
+{{ $fasIcons = $fasIcons | append (partial "utils/camelize" "fa-user") }}
+{{ $fasIcons = $fasIcons | append (partial "utils/camelize" "fa-user-circle") }}
+
+{{/* authors */}}
+{{ range (.Site.GetPage "taxonomyTerm" "authors").Pages }}
+  {{ range .Params.social }}
+    {{ $icon := partial "utils/camelize" (print "fa-" .icon) }}
+    {{ if and (eq .iconPack "fas") (not (in $fasIcons $icon)) }}
+      {{ $fasIcons = $fasIcons | append $icon }}
+    {{ else if and (eq .iconPack "fab") (not (in $fabIcons $icon)) }}
+      {{ $fabIcons = $fabIcons | append $icon }}
+    {{ else if and (eq .iconPack "far") (not (in $farIcons $icon)) }}
+      {{ $farIcons = $farIcons | append $icon }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{/* homepage.about */}}
+{{ $homepage := .Site.GetPage "homepage" }}
+{{ $widgets := $homepage.Resources }}
+{{ range $widgets }}
+  {{ if eq .Params.widget.handler "about" }}
+    {{ range .Params.social }}
+      {{ $icon := partial "utils/camelize" (print "fa-" .icon) }}
+      {{ if and (eq .iconPack "fas") (not (in $fasIcons $icon)) }}
+        {{ $fasIcons = $fasIcons | append $icon }}
+      {{ else if and (eq .iconPack "fab") (not (in $fabIcons $icon)) }}
+        {{ $fabIcons = $fabIcons | append $icon }}
+      {{ else if and (eq .iconPack "far") (not (in $farIcons $icon)) }}
+        {{ $farIcons = $farIcons | append $icon }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ $icons := dict "fas" $fasIcons "fab" $fabIcons "far" $farIcons }}
+
+{{ return $icons }}

@@ -1,0 +1,16 @@
+.prose {
+  @apply max-w-full break-words;
+}
+
+.prose .katex {
+  @apply overflow-x-auto overflow-y-hidden;
+}
+
+.prose .katex * {
+  @apply border-primary-text;
+}
+
+.prose *:target {
+  padding-top: 4rem;
+  margin-top: -4rem;
+}

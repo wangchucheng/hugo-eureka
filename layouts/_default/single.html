@@ -1,63 +1,60 @@
 {{ define "main" }}
-{{ $hasToc := and (in .TableOfContents "<li>" ) (.Params.toc) }}
-{{ $hasSidebar := or ($hasToc) (.Params.series) }}
-<div class="grid grid-cols-2 lg:grid-cols-8 gap-4 lg:pt-12">
+  {{ $hasToc := and (in .TableOfContents "<li>" ) (.Params.toc) }}
+  {{ $hasSidebar := or ($hasToc) (.Params.series) }}
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-8 lg:pt-12">
     <div
-        class="col-span-2 {{ if not $hasSidebar }} {{- print "lg:col-start-2" -}} {{ end }} lg:col-span-6 bg-secondary-bg rounded px-6 py-8">
-        <h1 class="font-bold text-3xl text-primary-text">{{ .Title }}</h1>
-        {{ partial "components/post-metadata" . }}
-        
-        {{ $featured := partial "utils/get-featured" . }}
-        {{ with $featured }}
-        <div class="my-4">
-            {{ . }}
-        </div>
-        {{ end }}
+      class="{{ if not $hasSidebar }}
+        {{- print "lg:col-start-2" -}}
+      {{ end }} bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
+    >
+      {{ partial "components/post-article" . }}
 
-        <div class="content">
-            {{ .Content}}
-        </div>
-        {{ with .GetTerms "tags" }}
+      {{ with .GetTerms "tags" }}
         {{ partial "components/post-tags" . }}
-        {{ end }}
-        
-        {{ partial "components/post-edit" . }}
-        
-        {{ with .GetTerms "authors" }}
+      {{ end }}
+
+      {{ partial "components/post-edit" . }}
+
+      {{ with .GetTerms "authors" }}
         {{ partial "components/post-author" . }}
-        {{ end }}
-        
-        {{ partial "components/post-footer" . }}
-        {{ partial "comment.html" . }}
+      {{ end }}
+
+      {{ partial "components/post-footer" . }}
+      {{ partial "comment.html" . }}
     </div>
-    {{ if $hasSidebar}}
-    <div class="col-span-2">
+    {{ if $hasSidebar }}
+      <div class="col-span-2">
         {{ if .GetTerms "series" }}
-        {{ partial "components/post-series" . }}
+          {{ partial "components/post-series" . }}
         {{ end }}
         {{ if $hasToc }}
-        {{ partial "components/post-toc" . }}
+          {{ partial "components/post-toc" . }}
         {{ end }}
-    </div>
+      </div>
     {{ end }}
 
     {{ $related := .Site.RegularPages.Related . | first 6 }}
     {{ with $related }}
-    <div
-        class="col-span-2 {{ if not $hasSidebar }} {{- print "lg:col-start-2" -}} {{ end }} lg:col-span-6 bg-secondary-bg rounded p-6">
-        <h2 class="text-lg font-semibold mb-4">{{ i18n "seeAlso" }}</h2>
-        <div class="content">
-            {{ range . }}
-            <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
-            <br />
-            {{ end }}
-        </div>
-    </div>
+      <div
+        class="{{ if not $hasSidebar }}
+          {{- print "lg:col-start-2" -}}
+        {{ end }} bg-secondary-bg prose col-span-2 rounded p-6 lg:col-span-6"
+      >
+        <h3>{{ i18n "seeAlso" }}</h3>
+        {{ range . }}
+          <a href="{{ .Permalink }}" class="no-underline">{{ .LinkTitle }}</a>
+          <br />
+        {{ end }}
+      </div>
     {{ end }}
-</div>
-<script>
-    document.addEventListener('DOMContentLoaded', ()=>{
-        hljs.initHighlightingOnLoad();
-    })
-</script>
+  </div>
+
+  {{/* highlight.js */}}
+  {{- if eq .Site.Params.highlight.handler "highlightjs" }}
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        hljs.highlightAll();
+      });
+    </script>
+  {{- end }}
 {{ end }}

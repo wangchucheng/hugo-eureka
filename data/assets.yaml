@@ -2,7 +2,7 @@
 
 # highlight.js
 highlightjs:
-  version: 10.1.0
+  version: 11.4.0
   css:
     url: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@%s/build/styles/%s.min.css
   js:
@@ -10,25 +10,18 @@ highlightjs:
   languages:
     url: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@%s/build/languages/%s.min.js
 
-# Font Awesome
-fontawesome:
-  version: 5.14.0
-  js:
-    url: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@%s/js/all.min.js
-    sri: sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=
-
 # KaTeX
 katex:
-  version: 0.12.0
+  version: 0.15.2
   css:
     url: https://cdn.jsdelivr.net/npm/katex@%s/dist/katex.min.css
-    sri: sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X
+    sri: sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ
   js:
     url: https://cdn.jsdelivr.net/npm/katex@%s/dist/katex.min.js
-    sri: sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4
+    sri: sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY
   autoRender:
     url: https://cdn.jsdelivr.net/npm/katex@%s/dist/contrib/auto-render.min.js
-    sri: sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa
+    sri: sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR
 
 # Mermaid
 mermaid:
@@ -39,7 +32,7 @@ mermaid:
 
 # Valine
 valine:
-  version: 1.4.14
+  version: 1.4.16
   js:
     url: https://cdn.jsdelivr.net/npm/valine@%s/dist/Valine.min.js
-    sri: sha256-fPqMAsW3FDt/rNyneSJ7HOpZNRs/O2rM016SU08JtCk=
+    sri: sha384-e0+DNUCJo75aOAzHQbFWYBCM9/S4f0BhRJXvEgbE3mMS85RM20MSSGStHuNdY2QK

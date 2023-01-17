@@ -62,7 +62,7 @@ jobs:
         github_token: ${{ secrets.RELEASE_GITHUB_TOKEN }}
         directory: starters
         repository: wangchucheng/hugo-eureka-starters
-        branch: monolingual
+        branch: main
     - name: Release Starters
       uses: softprops/action-gh-release@v1
       with:

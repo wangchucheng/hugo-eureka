@@ -1,5 +1,5 @@
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 {{ define "partials/get-title" }}
 {{ $separator := .Site.Params.titleSeparator | default "|" }}
@@ -54,31 +54,51 @@
 
 <meta name="generator" content="Hugo Eureka {{ .Site.Data.eureka.version }}" />
 
-{{- $eurekaCSS := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js") }}
-{{- $eurekaCSS := $eurekaCSS | minify }}
+{{- $eurekaCSS := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js" "inlineImports" true) | resources.ExecuteAsTemplate "css/eureka.css" . | minify | fingerprint "sha384" }}
 <link rel="stylesheet" href="{{ $eurekaCSS.Permalink }}">
 
-{{- $eurekaJS := resources.Get "js/eureka.js" | resources.ExecuteAsTemplate "js/eureka.js" . | minify }}
+{{- $eurekaJS := resources.Get "js/eureka.js" | resources.ExecuteAsTemplate "js/eureka.js" . | minify | fingerprint "sha384" }}
 <script defer src="{{ $eurekaJS.Permalink }}"></script>
 
+{{ $googleFonts := "" }}
+{{ range $index, $value := partial "utils/get-style-fonts" (dict "context" . "param" "googleFonts") }}
+{{ with $value }}
+{{ $googleFonts = print $googleFonts "family=" .  "&" }}
+{{ end }}
+{{ end }}
+
+{{ with $googleFonts }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload"
-  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+  href="{{ printf "https://fonts.googleapis.com/css2?%sdisplay=swap" . }}"
   as="style" onload="this.onload=null;this.rel='stylesheet'">
+{{ end }}
 
 {{- $assets := .Site.Data.assets }}
-{{ $highlightjsStyle := .Site.Params.highlight.highlightjs.style | default "solarized-light" }}
+
+{{/* highlight */}}
+{{- if eq .Site.Params.highlight.handler "chroma" }}
+{{- $highlightCSS := resources.Get "css/syntax.css" | minify | fingerprint "sha384" }}
+<link rel="stylesheet" href="{{ $highlightCSS.Permalink }}" media="print" onload="this.media='all';this.onload=null">
+{{- else if eq .Site.Params.highlight.handler "highlightjs" }}
+{{- $highlightjsStyle := .Site.Params.highlight.highlightjs.style | default "base16/solarized-light" }}
 <link rel="stylesheet" href="{{ printf $assets.highlightjs.css.url $assets.highlightjs.version $highlightjsStyle }}"
   {{ with $assets.highlightjs.css.sri }} integrity="{{ . }}" {{ end }} media="print"
   onload="this.media='all';this.onload=null" crossorigin>
 <script defer src="{{ printf $assets.highlightjs.js.url $assets.highlightjs.version }}"
   {{ with $assets.highlightjs.js.sri }} integrity="{{ . }}" {{ end }} crossorigin></script>
-{{ range .Site.Params.highlight.highlightjs.languages }}
+{{- range .Site.Params.highlight.highlightjs.languages }}
   <script defer src="{{ printf $assets.highlightjs.languages.url $assets.highlightjs.version . }}"
     {{ with $assets.highlightjs.languages.sri }} integrity="{{ . }}" {{ end }} crossorigin></script>
-{{ end }}
-<script defer src="{{ printf $assets.fontawesome.js.url $assets.fontawesome.version }}"
-  {{ with $assets.fontawesome.js.sri }} integrity="{{ . }}" {{ end }} crossorigin></script>
+{{- end }}
+{{- $highlightjsCSS := resources.Get "css/highlightjs.css" | minify | fingerprint "sha384" }}
+<link rel="stylesheet" href="{{ $highlightjsCSS.Permalink }}" media="print" onload="this.media='all';this.onload=null">
+{{- end }}
+
+{{ $fontawesomeJS := resources.Get "js/fontawesome.js" | resources.ExecuteAsTemplate "js/fontawesome.js" . | js.Build (dict "minify" true) | minify | fingerprint "sha384" }}
+<script defer type="text/javascript" src="{{ $fontawesomeJS.Permalink }}"></script>
+
 
 {{- $enableMath := false }}
 {{- if .Site.Params.math.handler }}
@@ -95,17 +115,6 @@
     {{- end }}
   {{- end }}
 {{- end }}
-
-{{ define "partials/camelize" }}
-{{ $input := . }}
-{{ $regexp := "(-|_)([a-z])" }}
-{{ $matches := findRE $regexp $input }}
-{{ range $matches }}
-    {{ $input = $input | replaceRE . (upper .) }}
-{{ end }}
-{{ $input = $input | replaceRE "(-|_)" "" }}
-{{ return $input }}
-{{ end }}
 
 {{/*  KaTeX  */}}
 {{- if and (eq .Site.Params.math.handler "katex") $enableMath }}
@@ -157,6 +166,8 @@
 </script>
 {{- end }}
 
+{{/*  Custom Head  */}}
+{{ partial "hugo-marble/utils/noindex" . }}
 {{ partial "custom-head" . }}
 
 {{- with .Site.Params.icon }}

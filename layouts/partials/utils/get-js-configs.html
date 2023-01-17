@@ -1,6 +1,6 @@
 {{- range $key, $value := . }}
   {{- if or $value (eq $value false) }}
-    {{- $key = partial "partials/camelize" $key }}
+    {{- $key = partial "utils/camelize" $key }}
     {{- $key }}: 
     {{- if reflect.IsMap $value }}
       {
