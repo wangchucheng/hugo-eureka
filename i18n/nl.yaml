@@ -1,0 +1,26 @@
+readMore:
+  other: Lees meer
+readingTime:
+  other: '{{ .Count }} min leestijd'
+toc:
+  other: Inhoudsopgave
+seriesOfPosts:
+  other: Serie van berichten
+previous:
+  other: Vorige
+next:
+  other: Volgende
+seeAlso:
+  other: Zie ook
+recent:
+  other: Recent
+onThisPage:
+  other: Op deze pagina
+editThisPage:
+  other: Bewerk deze pagina
+light:
+  other: Licht
+dark:
+  other: Donker
+auto:
+  other: Auto
