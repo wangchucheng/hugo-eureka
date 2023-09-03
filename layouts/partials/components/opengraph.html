@@ -1,8 +1,21 @@
 <meta property="og:title" content="{{ partial "get-title" . }}" />
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+
+
+{{ if .IsPage }}
+{{ with .Resources.GetMatch "**.jpg" }}
+    <meta property="og:image" content="{{ .RelPermalink }}">
+{{ else }}
+    {{ $icon := partial "utils/get-image" (dict "context" . "url" .Site.Params.icon) }}
+    {{ with $icon }}
+    <meta property="og:image" content="{{ . }}">
+    {{ end }}
+{{ end }}
+{{ else }}
 {{ $icon := partial "utils/get-image" (dict "context" . "url" .Site.Params.icon) }}
 {{ with $icon }}
 <meta property="og:image" content="{{ . }}">
+{{ end }}
 {{ end }}
 
 <meta property="og:url" content="{{ .Permalink }}" />
