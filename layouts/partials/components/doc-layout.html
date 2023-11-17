@@ -10,7 +10,11 @@
         </div>
         <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
             <div class="flex">
-                <div class="w-full lg:w-3/4 px-6">
+                {{ if $hasSidebar}}
+                    <div class="w-full lg:w-3/4 px-6">
+                {{ else }}
+                    <div class="w-full px-6">
+                {{ end }}
                     {{ partial "components/post-article" . }}
                     
                     {{ with .GetTerms "tags" }}
