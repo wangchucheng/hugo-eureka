@@ -9,7 +9,7 @@
         "@tailwindcss/typography": "^0.5.2",
         "autoprefixer": "^10.4.2",
         "cssnano": "^5.1.1",
-        "postcss": "^8.4.8",
+        "postcss": "^8.4.31",
         "postcss-cli": "^9.1.0",
         "prettier": "^2.5.1",
         "prettier-plugin-go-template": "^0.0.11",
