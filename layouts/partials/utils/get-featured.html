@@ -2,8 +2,25 @@
 {{ $image := partial "utils/get-image" (dict "context" . "url" .Params.featuredImage "keyword" "*featured*") }}
 {{ $featured := ""}}
 {{ if $video }}
-{{ $featured = $video }}
+  {{ $featured = $video }}
 {{ else if $image }}
-{{ $featured = print "<img src=\"" $image "\" class=\"w-full\" alt=\"Featured Image\">" | safeHTML }}
+  {{ if and (reflect.IsSlice .Params.featuredimage) (gt (len .Params.featuredimage) 1) }}
+    {{ if .Site.Params.carouselfeatured }}
+      {{ range first 1 .Params.featuredimage }}
+        {{ if reflect.IsMap . }}
+          {{ $image = partial "utils/get-image" (dict "context" $ "url" .image "keyword" .image ) }}
+        {{ else }}
+          {{ $image = partial "utils/get-image" (dict "context" $ "url" . "keyword" . ) }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ else if reflect.IsSlice .Params.featuredimage }}
+    {{ if .Site.Params.carouselfeatured }}
+      {{ $image = partial "utils/get-image" (dict "context" . "url" (first 1 .Params.featuredimage) "keyword" "*featured*") }}
+    {{ end }}
+  {{ else }}
+    {{ $image = partial "utils/get-image" (dict "context" . "url" .Params.featuredimage "keyword" "*featured*") }}
+  {{ end }}
+  {{ $featured = print "<img src=\"" $image "\" class=\"w-full\" alt=\"Featured Image\">" | safeHTML }}
 {{ end }}
 {{ return $featured }}
