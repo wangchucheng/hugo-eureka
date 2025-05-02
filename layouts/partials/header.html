@@ -15,7 +15,7 @@
     {{- end }}
 </script>
 <nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
-    <a href="{{ "/" | relLangURL }}" class="me-6 text-primary-text text-xl font-bold">{{ .Site.Title }}</a>
+    <a href="{{ .Site.BaseURL | relLangURL }}" class="me-6 text-primary-text text-xl font-bold">{{ .Site.Title }}</a>
     <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
         <i class="fas fa-bars"></i>
     </button>
